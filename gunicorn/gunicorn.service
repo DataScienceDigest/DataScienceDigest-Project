@@ -6,7 +6,7 @@ After=network.target
 User=ubuntu
 Group=www-data
 WorkingDirectory=/home/ubuntu/DataScienceDigest-Project
-ExecStart=/home/ubuntu/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/DataScienceDigest-Project/app.sock DataScienceDigest.wsgi:application
+ExecStart=/home/ubuntu/env/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/DataScienceDigest-Project/DataScienceDigest-Project/DataScienceDigest-Project.sock DataScienceDigest.wsgi:application
 
        
 [Install]
