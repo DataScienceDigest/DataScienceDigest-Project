@@ -3,81 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Coming Soon - DataScienceDigest</title>
+    <title>Learn Programming - W3Schools Style</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #3c3eb4, #8e44ad);
-            color: #fff;
+        }
+
+        /* Header */
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
             text-align: center;
         }
-        .container {
+
+        /* Navigation bar */
+        nav {
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
+            background-color: #333;
         }
-        h1 {
-            font-size: 4em;
-            margin-bottom: 0.5em;
-            color: #ecf0f1;
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
         }
-        p {
-            font-size: 1.5em;
-            margin-bottom: 1.5em;
-            color: #f1c40f;
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
         }
-        .countdown {
-            font-size: 2em;
-            color: #e74c3c;
+
+        /* Main layout */
+        .container {
+            display: flex;
+            padding: 20px;
         }
+
+        /* Sidebar */
+        aside {
+            width: 20%;
+            background-color: #f4f4f4;
+            padding: 15px;
+        }
+
+        aside ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        aside ul li {
+            padding: 8px 0;
+        }
+
+        aside ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        aside ul li a:hover {
+            color: #4CAF50;
+        }
+
+        /* Main content */
+        main {
+            width: 80%;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        /* Code box */
+        .code-box {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 20px 0;
+            white-space: pre;
+        }
+
+        /* Footer */
         footer {
-            position: absolute;
-            bottom: 10px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
             width: 100%;
-            font-size: 0.9em;
-            color: #bdc3c7;
         }
     </style>
 </head>
 <body>
+
+    <!-- Header -->
+    <header>
+        <h1>Welcome to Learn Programming</h1>
+        <p>Learn HTML, CSS, JavaScript, and more!</p>
+    </header>
+
+    <!-- Navigation bar -->
+    <nav>
+        <a href="#">HTML</a>
+        <a href="#">CSS</a>
+        <a href="#">JavaScript</a>
+        <a href="#">Python</a>
+    </nav>
+
+    <!-- Main container -->
     <div class="container">
-        <h1>Coming Soon!</h1>
-        <p>DataScienceDigest is launching in just 5 days. Stay tuned!</p>
-        <div class="countdown">Launching in <span id="days">00</span> days, <span id="hours">00</span> hours, <span id="minutes">00</span> minutes, <span id="seconds">00</span> seconds</div>
+        <!-- Sidebar -->
+        <aside>
+            <h3>Topics</h3>
+            <ul>
+                <li><a href="#">Introduction</a></li>
+                <li><a href="#">HTML Basics</a></li>
+                <li><a href="#">CSS Styling</a></li>
+                <li><a href="#">JavaScript Basics</a></li>
+                <li><a href="#">Python Programming</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main content -->
+        <main>
+            <h2>HTML Basics</h2>
+            <p>This is an example of how you can structure an HTML document.</p>
+
+            <div class="code-box">
+                &lt;!DOCTYPE html&gt;<br>
+                &lt;html&gt;<br>
+                &nbsp;&nbsp;&lt;head&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;My First HTML&lt;/title&gt;<br>
+                &nbsp;&nbsp;&lt;/head&gt;<br>
+                &nbsp;&nbsp;&lt;body&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Hello, world!&lt;/h1&gt;<br>
+                &nbsp;&nbsp;&lt;/body&gt;<br>
+                &lt;/html&gt;
+            </div>
+
+            <p>You can edit this code and see how changes are reflected in your webpage.</p>
+        </main>
     </div>
-    
+
+    <!-- Footer -->
     <footer>
-        © 2024 DataScienceDigest. All Rights Reserved.
+        <p>&copy; 2024 Learn Programming | All rights reserved.</p>
     </footer>
 
-    <script>
-        const now = new Date().getTime();
-        const fiveDaysFromNow = now + 5 * 24 * 60 * 60 * 1000; // Current time + 5 days
-        
-        const countdown = setInterval(function() {
-            const currentTime = new Date().getTime();
-            const timeLeft = fiveDaysFromNow - currentTime;
-            
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            
-            document.getElementById("days").innerHTML = days;
-            document.getElementById("hours").innerHTML = hours;
-            document.getElementById("minutes").innerHTML = minutes;
-            document.getElementById("seconds").innerHTML = seconds;
-            
-            if (timeLeft < 0) {
-                clearInterval(countdown);
-                document.querySelector(".countdown").innerHTML = "We are live!";
-            }
-        }, 1000);
-    </script>
 </body>
 </html>
