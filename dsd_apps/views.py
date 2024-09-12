@@ -12,6 +12,7 @@ def run_code(request):
     if request.method == 'POST':
         code = request.POST.get('code', '')
         inputs = request.POST.getlist('inputs[]', [])
+        inputs = inputs[0].split(',')        
         try:
             # Handling input
             process = subprocess.Popen(
@@ -21,17 +22,14 @@ def run_code(request):
                 stderr=subprocess.PIPE,
                 text=True
             )
-
             # Simulate input for the subprocess
             input_data = "\n".join(inputs) + "\n"
             stdout, stderr = process.communicate(input=input_data, timeout=10)
-
             # Capture and return output or errors
             output = stdout if process.returncode == 0 else stderr
         except subprocess.TimeoutExpired:
             output = "Execution timed out after 10 seconds."
         except Exception as e:
             output = str(e)
-
         return JsonResponse({'output': output})
     return JsonResponse({'error': 'Invalid request'}, status=400)
