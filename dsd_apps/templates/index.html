@@ -1,5 +1,7 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Python Compiler</title>
@@ -10,128 +12,55 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/python/python.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/edit/closebrackets.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/edit/matchbrackets.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            margin: 0;
-            box-sizing: border-box;
-        }
-        .section {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        .intro {
-            width: 40%;
-        }
-        .compiler {
-            width: 55%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-        .CodeMirror {
-            border: 1px solid #ddd;
-            height: 200px;
-        }
-        .compiler button {
-            padding: 10px 20px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .output {
-            margin-top: 10px;
-            background-color: #f1f1f1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            white-space: pre-wrap;
-            height: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
+
 <body>
 
-<div class="section">
-    <div class="intro">
-        <h1>Welcome to the Python Compiler</h1>
-        <p>This is a simple Python code editor and compiler. You can edit the code on the right and click "Run" to see the output.</p>
-    </div>
-    <div class="compiler">
-        <textarea id="code1">
+    <div class="section">
+        <div class="intro">
+            <h1>Welcome to the Python Compiler</h1>
+            <p>This is a simple Python code editor and compiler. You can edit the code on the right and click "Run" to
+                see the output.</p>
+        </div>
+        <div class="compiler">
+            <textarea id="code1">
 print("Hello, World!")
 for i in range(5):
     print(f"Number {i}")
         </textarea>
-        <button onclick="runCode('code1', 'output1')">Run</button>
-        <div class="output" id="output1"></div>
+            <button onclick="runCode('code1', 'output1')">Run</button>
+            <div class="output" id="output1"></div>
+        </div>
     </div>
-</div>
 
-<div class="section">
-    <div class="intro">
-        <h2>Loops in Python</h2>
-        <p>In Python, loops are used to iterate over a sequence (like a list, tuple, dictionary, set, or string). Use the editor on the right to run a loop example.</p>
-    </div>
-    <div class="compiler">
-        <textarea id="code2">
+    <div class="section">
+        <div class="intro">
+            <h2>Loops in Python</h2>
+            <p>In Python, loops are used to iterate over a sequence (like a list, tuple, dictionary, set, or string).
+                Use the editor on the right to run a loop example.</p>
+        </div>
+        <div class="compiler">
+            <textarea id="code2">
 for i in range(1, 6):
     print(f"Square of {i} is {i * i}")
         </textarea>
-        <button onclick="runCode('code2', 'output2')">Run</button>
-        <div class="output" id="output2"></div>
+            <button onclick="runCode('code2', 'output2')">Run</button>
+            <div class="output" id="output2"></div>
+        </div>
     </div>
-</div>
 
-<script>
-    // Initialize CodeMirror editors, storing them in an object to ensure only single initialization
-    const editors = {};
+    <!-- Modal for input -->
+    <div id="inputModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalPromptMessage">Enter Input</h2>
+            <input type="text" id="userInput" placeholder="Type your input here...">
+            <button onclick="submitInput()">Submit</button>
+        </div>
+    </div>
 
-    function initializeEditor(editorId) {
-        // Check if the editor is already initialized
-        if (!editors[editorId]) {
-            editors[editorId] = CodeMirror.fromTextArea(document.getElementById(editorId), {
-                mode: 'python',
-                theme: 'material',
-                lineNumbers: true,
-                matchBrackets: true,
-                autoCloseBrackets: true,
-                indentUnit: 4,
-                tabSize: 4,
-            });
-        }
-    }
-
-    // Initialize editors for all textareas
-    initializeEditor('code1');
-    initializeEditor('code2');
-
-    // Function to run Python code via Django backend
-    function runCode(editorId, outputId) {
-        const editor = editors[editorId];  // Get the correct CodeMirror instance
-        const code = editor.getValue();  // Get the code from the CodeMirror editor instance
-
-        fetch('/run/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRFToken': '{{ csrf_token }}'  // Ensure the CSRF token is correctly handled
-            },
-            body: new URLSearchParams({ 'code': code })
-        })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById(outputId).textContent = data.output || data.error;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            document.getElementById(outputId).textContent = 'Error executing code.';
-        });
-    }
-</script>
-
+    <!-- Link to the external JavaScript file -->
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
+
 </html>

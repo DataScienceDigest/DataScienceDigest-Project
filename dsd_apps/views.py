@@ -1,28 +1,34 @@
 from django.shortcuts import render
-
-# Create your views here.
-def index(request):
-    return render(request,'index.html')
-def docs(request):
-    return render(request,'docs.html')
-
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import subprocess
+import re
 
-@csrf_exempt  # Allows POST requests without CSRF token for testing purposes
+def index(request):
+    return render(request, 'index.html')
+
+@csrf_exempt
 def run_code(request):
     if request.method == 'POST':
         code = request.POST.get('code', '')
+        inputs = request.POST.getlist('inputs[]', [])
+        inputs = inputs[0].split(',')        
         try:
-            # Execute Python code using subprocess, ensure correct Python path
-            result = subprocess.run(
-                ['python3', '-c', code],  # Use 'python' or 'python3' based on your setup
-                capture_output=True, 
-                text=True, 
-                timeout=10  # Avoid infinite loops
+            # Handling input
+            process = subprocess.Popen(
+                ['python3', '-c', code],
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
             )
-            output = result.stdout if result.returncode == 0 else result.stderr
+            # Simulate input for the subprocess
+            input_data = "\n".join(inputs) + "\n"
+            stdout, stderr = process.communicate(input=input_data, timeout=10)
+            # Capture and return output or errors
+            output = stdout if process.returncode == 0 else stderr
+        except subprocess.TimeoutExpired:
+            output = "Execution timed out after 10 seconds."
         except Exception as e:
             output = str(e)
         return JsonResponse({'output': output})
