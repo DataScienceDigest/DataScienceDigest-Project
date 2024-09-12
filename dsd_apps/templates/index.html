@@ -69,6 +69,7 @@ for i in range(5):
         <button onclick="runCode('code1', 'output1')">Run</button>
         <div class="output" id="output1"></div>
     </div>
+    
 </div>
 
 <div class="section">
@@ -87,11 +88,9 @@ for i in range(1, 6):
 </div>
 
 <script>
-    // Initialize CodeMirror editors, storing them in an object to ensure only single initialization
     const editors = {};
 
     function initializeEditor(editorId) {
-        // Check if the editor is already initialized
         if (!editors[editorId]) {
             editors[editorId] = CodeMirror.fromTextArea(document.getElementById(editorId), {
                 mode: 'python',
@@ -105,33 +104,43 @@ for i in range(1, 6):
         }
     }
 
-    // Initialize editors for all textareas
     initializeEditor('code1');
     initializeEditor('code2');
 
-    // Function to run Python code via Django backend
-    function runCode(editorId, outputId) {
-        const editor = editors[editorId];  // Get the correct CodeMirror instance
-        const code = editor.getValue();  // Get the code from the CodeMirror editor instance
+    async function runCode(editorId, outputId) {
+        const editor = editors[editorId];
+        let code = editor.getValue();
+        
+        // Detect and handle input() calls
+        let inputs = [];
+        let inputPattern = /input\((.*?)\)/g;
+        let match;
 
-        fetch('/run/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'X-CSRFToken': '{{ csrf_token }}'  // Ensure the CSRF token is correctly handled
-            },
-            body: new URLSearchParams({ 'code': code })
-        })
-        .then(response => response.json())
-        .then(data => {
+        // Prompt for each input() call in sequence
+        while ((match = inputPattern.exec(code)) !== null) {
+            let userInput = prompt(match[1] ? `Input required: ${match[1]}` : 'Enter input:');
+            inputs.push(userInput || ''); // Handle cancel or empty inputs
+        }
+
+        // Send the code and collected inputs to the backend
+        try {
+            let response = await fetch('/run/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: new URLSearchParams({ 'code': code, 'inputs[]': inputs })  // Send inputs as array
+            });
+
+            let data = await response.json();
             document.getElementById(outputId).textContent = data.output || data.error;
-        })
-        .catch(error => {
+        } catch (error) {
             console.error('Error:', error);
             document.getElementById(outputId).textContent = 'Error executing code.';
-        });
+        }
     }
-</script>
 
+</script>
 </body>
 </html>
