@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="codeForm" method="post">
+        <textarea name="code" placeholder="Enter your C/C++ code"></textarea>
+        <input type="text" name="inputs[]" placeholder="Enter inputs separated by commas" />
+        <select name="language">
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+        </select>
+        <button type="submit">Run Code</button>
+    </form>
+    
+    <div id="output"></div>
+    
+    <script>
+        document.getElementById('codeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            fetch('c-compiler/run/', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('output').innerText = data.output;
+            });
+        });
+    </script>
+    
+</body>
+</html>

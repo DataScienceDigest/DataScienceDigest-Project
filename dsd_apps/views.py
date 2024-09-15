@@ -2,13 +2,15 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import subprocess
-import re
+import json
 
 def index(request):
     return render(request, 'index.html')
+def all_courses(request):
+    return render(request, 'all_courses.html')
 
 @csrf_exempt
-def run_code(request):
+def run_python(request):
     if request.method == 'POST':
         code = request.POST.get('code', '')
         inputs = request.POST.getlist('inputs[]', [])
@@ -33,3 +35,52 @@ def run_code(request):
             output = str(e)
         return JsonResponse({'output': output})
     return JsonResponse({'error': 'Invalid request'}, status=400)
+
+# __________________javascript compiler ________________
+
+@csrf_exempt
+def run_js(request):
+    if request.method == 'POST':
+        try:
+            # Parse the incoming JSON request
+            data = json.loads(request.body)
+            code = data['code']
+            
+            # Run the JavaScript code using Node.js
+            result = subprocess.run(
+                ['node', '-e', code], 
+                capture_output=True, text=True, check=True
+            )
+            print(result,'-=-==-')
+            return JsonResponse({'output': result.stdout})
+        except subprocess.CalledProcessError as e:
+            return JsonResponse({'output': e.stderr})
+        except Exception as e:
+            return JsonResponse({'output': str(e)})
+    return JsonResponse({'output': 'Invalid request method.'})
+def python_index(request):
+    return render(request, 'python.html')
+
+def javascript_index(request):
+    return render(request, 'javascript.html')
+
+def java_index(request):
+    return render(request, 'java.html')
+
+def r_index(request):
+    return render(request, 'r.html')
+
+def php_index(request):
+    return render(request, 'php.html')
+
+def csharp_index(request):
+    return render(request, 'csharp.html')
+
+def sql_index(request):
+    return render(request, 'sql.html')
+
+def html_index(request):
+    return render(request, 'html.html')
+
+def css_index(request):
+    return render(request, 'css.html')

@@ -18,6 +18,8 @@
 
     initializeEditor('code1');
     initializeEditor('code2');
+    initializeEditor('code3');
+    initializeEditor('code4');
 
     async function runCode(editorId, outputId) {
         const editor = editors[editorId];
