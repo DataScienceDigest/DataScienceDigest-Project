@@ -1,66 +1,146 @@
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% include 'header.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Python Compiler</title>
-    <!-- Include CodeMirror CSS and JavaScript from CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/theme/material.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/python/python.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/edit/closebrackets.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/edit/matchbrackets.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-
-<body>
-
-    <div class="section">
-        <div class="intro">
-            <h1>Welcome to the Python Compiler</h1>
-            <p>This is a simple Python code editor and compiler. You can edit the code on the right and click "Run" to
-                see the output.</p>
+    <section class="main-section">
+        <div class="content">
+            <h1>Master Programming for Free</h1>
+            <p>Kickstart your programming journey with easy-to-follow tutorials and real-world examples. <a href="#">Explore tutorials</a>, try hands-on coding, and build a strong foundation in programming.</p>
+            <div class="subscribe">
+                <input type="email" placeholder="Enter your email address">
+                <button>Subscribe</button>
+            </div>
         </div>
-        <div class="compiler">
-            <textarea id="code1">
-print("Hello, World!")
-for i in range(5):
-    print(f"Number {i}")
-        </textarea>
-            <button onclick="runCode('code1', 'output1')">Run</button>
-            <div class="output" id="output1"></div>
+        <div class="illustration">
+            <img src="{% static 'images/developer_male.jpg' %}" alt="Programming Illustration">
         </div>
-    </div>
+    </section>
 
-    <div class="section">
-        <div class="intro">
-            <h2>Loops in Python</h2>
-            <p>In Python, loops are used to iterate over a sequence (like a list, tuple, dictionary, set, or string).
-                Use the editor on the right to run a loop example.</p>
+    <section class="choose-section">
+        <div class="choose-content">
+            <h2>Choose Your Path</h2>
+            <p>Select the top programming languages to learn and start coding today.</p>
         </div>
-        <div class="compiler">
-            <textarea id="code2">
-for i in range(1, 6):
-    print(f"Square of {i} is {i * i}")
-        </textarea>
-            <button onclick="runCode('code2', 'output2')">Run</button>
-            <div class="output" id="output2"></div>
+        <div class="grid">
+            <div class="grid-item">
+                <img src="{% static 'images/python-5.svg' %}" alt="Python">
+                <span>Python Programming</span>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'images/database-floating-squares.png' %}" alt="SQL">
+                <span>Learn SQL</span>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'images/html-1.svg' %}" alt="HTML">
+                <span>Learn HTML</span>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'images/logo-javascript.svg' %}" alt="JavaScript">
+                <span>JavaScript</span>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'images/rust.svg' %}" alt="Rust">
+                <span>Rust Programming</span>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'images/golang-1.svg' %}" alt="Go">
+                <span>Go Programming</span>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'images/c-1.svg' %}" alt="C">
+                <span>C Programming</span>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'images/c.svg' %}" alt="C++">
+                <span>C++ Programming</span>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'images/pandas.svg' %}" alt="Data Structures">
+                <span>Pandas</span>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'images/Swift.svg' %}" alt="Swift">
+                <span>Swift Programming</span>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'images/c--4.svg' %}" alt="C#">
+                <span>C# Programming</span>
+            </div>
+            <div class="grid-item">
+                <img src="{% static 'images/numpy.svg' %}" alt="NumPy">
+                <span>NumPy</span>
+            </div>
         </div>
-    </div>
-
-    <!-- Modal for input -->
-    <div id="inputModal" class="modal">
-        <div class="modal-content">
-            <h2 id="modalPromptMessage">Enter Input</h2>
-            <input type="text" id="userInput" placeholder="Type your input here...">
-            <button onclick="submitInput()">Submit</button>
+        <div class="view-more">
+            <a href="#">View all tutorials</a>
         </div>
-    </div>
+    </section>
 
-    <!-- Link to the external JavaScript file -->
-    <script src="{% static 'js/script.js' %}"></script>
-</body>
+    <section class="learning-path-section">
+        <div class="content">
+            <h2>Get Job-Ready with Our Learning Paths</h2>
+            <ul class="benefits-list">
+                <li><span class="dot green"></span>Interactive, hands-on lessons</li>
+                <li><span class="dot gray"></span>Time-efficient and cost-effective</li>
+                <li><span class="dot gray"></span>Build real projects and get certified</li>
+            </ul>
+            <button class="join-btn">Join for FREE</button>
+        </div>
+        <div class="illustration">
+            <img src="{% static 'images/learning-path.jpg' %}" alt="Learning Path Preview">
+        </div>
+    </section>
 
-</html>
+    <!-- Compiler section start  -->
+    <section class="compilers-section">
+        <div class="compilers-container">
+            <div class="compilers-row">
+                <div class="compilers-image">
+                    <img src="{% static 'images/coding-workshop-concept-illustration.png' %}" alt="Code Example Image">
+                </div>
+                <div class="compilers-content">
+                    <h2>Code in Your Browser</h2>
+                    <p>Access our free online compilers, designed to make coding easy and accessible for everyone.</p>
+                    <div class="compiler-options">
+                        <div class="compiler-column">
+                            <a href="#" class="compiler-button">Python Compiler<br><span>Start coding Python →</span></a>
+                            <a href="#" class="compiler-button">HTML Editor<br><span>Start coding HTML →</span></a>
+                            <a href="#" class="compiler-button">Java Compiler<br><span>Start coding Java →</span></a>
+                            <a href="#" class="compiler-button">C Compiler<br><span>Start coding C →</span></a>
+                        </div>
+                        <div class="compiler-column">
+                            <a href="#" class="compiler-button">SQL Editor<br><span>Start coding SQL →</span></a>
+                            <a href="#" class="compiler-button">JS Editor<br><span>Start coding JS →</span></a>
+                            <a href="#" class="compiler-button">C# Compiler<br><span>Start coding C# →</span></a>
+                            <a href="#" class="compiler-button">C++ Compiler<br><span>Start coding C++ →</span></a>
+                        </div>
+                    </div>
+                    <div class="view-more">
+                        <a href="#">View all compilers →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Compiler section ends -->
+
+    <section class="why-programiz">
+        <h2>Why DataScienceDigest?</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">&#x2714;</div>
+                <h3>Beginner-Friendly</h3>
+                <p>Our tutorials break down complex concepts into simple, easy-to-understand steps.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">&#9733;</div>
+                <h3>Trusted Content</h3>
+                <p>Curated by experts, our resources are accurate, reliable, and always up-to-date.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">&#x3C;/&#x3E;</div>
+                <h3>Hands-On Learning</h3>
+                <p>Practice coding with real examples and interactive exercises to solidify your skills.</p>
+            </div>
+        </div>
+    </section>
+{% include 'footer.html' %}

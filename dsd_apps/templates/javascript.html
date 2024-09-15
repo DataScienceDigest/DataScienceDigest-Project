@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Compiler</title>
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/theme/material.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- CodeMirror JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/edit/matchbrackets.min.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <div style="height: 100px; padding-top: 25px; font-size: large; text-align: center;">
+        <h1>JavaScript Tutorials</h1>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section">
+        <div class="intro">
+            <h1>Welcome to the JavaScript Compiler</h1>
+            <p>This is a simple JavaScript code editor and compiler. You can edit the code on the right and click "Run" to see the output.</p>
+        </div>
+        <div class="compiler">
+            <textarea id="jsCode1"></textarea>
+            <button onclick="runJSCode('jsCode1', 'jsOutput1')">Run</button>
+            <div class="output" id="jsOutput1"></div>
+        </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="section">
+        <div class="intro">
+            <h2>Loops in JavaScript</h2>
+            <p>In JavaScript, loops are used to iterate over sequences. Use the editor on the right to run a loop example.</p>
+        </div>
+        <div class="compiler">
+            <textarea id="jsCode2"></textarea>
+            <button onclick="runJSCode('jsCode2', 'jsOutput2')">Run</button>
+            <div class="output" id="jsOutput2"></div>
+        </div>
+    </div>
+
+    <!-- Modal for input -->
+    <div id="inputModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalPromptMessage">Enter Input</h2>
+            <input type="text" id="userInput" placeholder="Type your input here...">
+            <button onclick="submitInput()">Submit</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script src="{% static 'js/jsCompiler.js' %}"></script>
+</body>
+
+</html>

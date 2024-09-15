@@ -36,7 +36,7 @@
         }
 
         try {
-            let response = await fetch('/python_run/', {
+            let response = await fetch('/run/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',

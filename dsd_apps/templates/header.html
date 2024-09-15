@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Programming for Free</title>
+    <link rel="stylesheet" href="{% static 'css/index_styles.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">DataScienceDigest</div>
+            <ul class="nav-links">
+                <li><a href="{% url 'all_courses' %}">Courses</a></li>
+                <li><a href="#">Tutorials</a></li>
+                <li><a href="#">Examples</a></li>
+            </ul>
+            <button class="pro-btn">Login/Sign Up</button>
+        </nav>
+    </header>

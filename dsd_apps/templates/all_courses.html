@@ -1,0 +1,153 @@
+{% load static %}
+{% include 'header.html' %}
+<style>
+    /* Courses Section */
+.courses-section {
+    padding: 40px 20px;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #282c34;
+}
+
+p {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #666;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.course-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.course-item:hover {
+    transform: translateY(-10px);
+}
+
+.course-item img {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.course-item h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #282c34;
+}
+
+.course-item p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.course-btn {
+    background-color: #61dafb;
+    color: #282c34;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.course-btn:hover {
+    background-color: #21a1f1;
+}
+
+/* Responsive Design for Courses Section */
+@media (max-width: 768px) {
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+    <section class="courses-section">
+        <div class="container">
+            <h1>Explore All Courses</h1>
+            <p>Browse our collection of programming courses designed for beginners and experts alike.</p>
+
+            <div class="courses-grid">
+                <div class="course-item">
+                    <img src="{% static 'images/python-5.svg' %}" alt="Python">
+                    <h2>Python Programming</h2>
+                    <p>Learn Python from basics to advanced concepts with hands-on examples.</p>
+                    <a href="{% url 'python' %}" class="course-btn">Start Course</a>
+
+                </div>
+
+                <div class="course-item">
+                    <img src="{% static 'images/database-floating-squares.png' %}" alt="SQL">
+                    <h2>SQL Fundamentals</h2>
+                    <p>Master the language of databases with our structured SQL tutorials.</p>
+                    <a href="#" class="course-btn">Start Course</a>
+                </div>
+
+                <div class="course-item">
+                    <img src="{% static 'images/html-1.svg' %}" alt="HTML">
+                    <h2>HTML & CSS</h2>
+                    <p>Build beautiful web pages with HTML and CSS, and enhance your front-end skills.</p>
+                    <a href="#" class="course-btn">Start Course</a>
+                </div>
+
+                <div class="course-item">
+                    <img src="{% static 'images/logo-javascript.svg' %}" alt="JavaScript">
+                    <h2>JavaScript</h2>
+                    <p>Get started with the language that powers the web - JavaScript.</p>
+                    <a href="#" class="course-btn">Start Course</a>
+                </div>
+
+                <div class="course-item">
+                    <img src="{% static 'images/rust.svg' %}" alt="Rust">
+                    <h2>Rust Programming</h2>
+                    <p>Learn Rust for systems programming and modern software development.</p>
+                    <a href="#" class="course-btn">Start Course</a>
+                </div>
+
+                <div class="course-item">
+                    <img src="{% static 'images/golang-1.svg' %}" alt="Go">
+                    <h2>Go Programming</h2>
+                    <p>Dive into Go for scalable and efficient software solutions.</p>
+                    <a href="#" class="course-btn">Start Course</a>
+                </div>
+
+                <div class="course-item">
+                    <img src="{% static 'images/c-1.svg' %}" alt="C">
+                    <h2>C Programming</h2>
+                    <p>Develop a strong understanding of the C programming language.</p>
+                    <a href="#" class="course-btn">Start Course</a>
+                </div>
+
+                <div class="course-item">
+                    <img src="{% static 'images/pandas.svg' %}" alt="Pandas">
+                    <h2>Data Science with Pandas</h2>
+                    <p>Master data manipulation and analysis with the Pandas library.</p>
+                    <a href="#" class="course-btn">Start Course</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'footer.html' %}
