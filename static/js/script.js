@@ -18,6 +18,8 @@
 
     initializeEditor('code1');
     initializeEditor('code2');
+    initializeEditor('code3');
+    initializeEditor('code4');
 
     async function runCode(editorId, outputId) {
         const editor = editors[editorId];
@@ -34,7 +36,7 @@
         }
 
         try {
-            let response = await fetch('/run/', {
+            let response = await fetch('/python_run/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
