@@ -3,37 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>C and C++ Online Compiler</title>
+    <style>
+        /* Simple CSS for Layout */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .compiler-section {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .compiler-section label {
+            margin-bottom: 10px;
+        }
+        .compiler-section select {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .code-editor {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            height: 300px;
+            font-family: monospace;
+            background-color: #2d2d2d;
+            color: #fff;
+        }
+        .output {
+            margin-top: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <form id="codeForm" method="post">
-        <textarea name="code" placeholder="Enter your C/C++ code"></textarea>
-        <input type="text" name="inputs[]" placeholder="Enter inputs separated by commas" />
-        <select name="language">
+
+<div class="container">
+    <h1>C and C++ Online Compiler</h1>
+    
+    <div class="compiler-section">
+        <label for="language">Select Language:</label>
+        <select id="language">
             <option value="c">C</option>
             <option value="cpp">C++</option>
         </select>
-        <button type="submit">Run Code</button>
-    </form>
+    </div>
+
+    <div class="compiler-section">
+        <label for="code">Write your code:</label>
+        <textarea id="code" class="code-editor">// Write your C or C++ code here</textarea>
+    </div>
+
+    <button onclick="runCode()">Run Code</button>
     
-    <div id="output"></div>
-    
-    <script>
-        document.getElementById('codeForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(this);
-            
-            fetch('c-compiler/run/', {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('output').innerText = data.output;
-            });
+    <div class="compiler-section">
+        <h3>Output:</h3>
+        <pre id="output" class="output"></pre>
+    </div>
+</div>
+
+<script>
+    function runCode() {
+        const code = document.getElementById('code').value;
+        const language = document.getElementById('language').value;
+        const outputElement = document.getElementById('output');
+        
+        outputElement.innerText = 'Compiling and running...';
+
+        // Send a POST request with code and language to the server
+        fetch('/c_run_code/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                code: code,
+                language: language,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                outputElement.innerText = data.output;
+            } else {
+                outputElement.innerText = 'Error: ' + data.error;
+            }
+        })
+        .catch(error => {
+            outputElement.innerText = 'Error: ' + error;
         });
-    </script>
-    
+    }
+</script>
+
 </body>
 </html>

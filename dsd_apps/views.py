@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import subprocess
 import json
-
+import os
 def index(request):
     return render(request, 'index.html')
 def all_courses(request):
@@ -36,33 +36,14 @@ def run_python(request):
         return JsonResponse({'output': output})
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
-# __________________javascript compiler ________________
-
-@csrf_exempt
-def run_js(request):
-    if request.method == 'POST':
-        try:
-            # Parse the incoming JSON request
-            data = json.loads(request.body)
-            code = data['code']
-            
-            # Run the JavaScript code using Node.js
-            result = subprocess.run(
-                ['node', '-e', code], 
-                capture_output=True, text=True, check=True
-            )
-            print(result,'-=-==-')
-            return JsonResponse({'output': result.stdout})
-        except subprocess.CalledProcessError as e:
-            return JsonResponse({'output': e.stderr})
-        except Exception as e:
-            return JsonResponse({'output': str(e)})
-    return JsonResponse({'output': 'Invalid request method.'})
 def python_index(request):
     return render(request, 'python.html')
 
 def javascript_index(request):
     return render(request, 'javascript.html')
+
+def c_cpp_index(request):
+    return render(request,'c_compiler.html')
 
 def java_index(request):
     return render(request, 'java.html')
@@ -84,3 +65,6 @@ def html_index(request):
 
 def css_index(request):
     return render(request, 'css.html')
+
+
+# c and c++ compilers 
