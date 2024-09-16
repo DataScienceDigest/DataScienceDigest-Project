@@ -78,6 +78,10 @@ def c_run_code(request):
         # Get the C code from the request
         code = request.POST.get('code', '')
 
+        # Ensure the code contains a main function
+        if 'main(' not in code:
+            return JsonResponse({'output': 'Error: Missing main() function in the provided code.'})
+
         # Path to gcc on Ubuntu
         gcc_path = '/usr/bin/gcc'
 
@@ -88,8 +92,9 @@ def c_run_code(request):
 
         try:
             # Compile the C code using gcc
+            compiled_output = temp_c_file_name[:-2]  # Remove .c to get the executable name
             compile_process = subprocess.run(
-                [gcc_path, temp_c_file_name, '-o', temp_c_file_name[:-2]],
+                [gcc_path, temp_c_file_name, '-o', compiled_output],
                 capture_output=True, text=True
             )
 
@@ -97,14 +102,17 @@ def c_run_code(request):
             if compile_process.returncode != 0:
                 return JsonResponse({'output': compile_process.stderr})
 
+            # Give execute permission to the compiled binary
+            os.chmod(compiled_output, 0o755)
+
             # Run the compiled C program
             run_process = subprocess.run(
-                [temp_c_file_name[:-2]], capture_output=True, text=True
+                [compiled_output], capture_output=True, text=True
             )
 
             # Clean up the temp files
             os.remove(temp_c_file_name)
-            os.remove(temp_c_file_name[:-2])
+            os.remove(compiled_output)
 
             # Return the program output or error
             return JsonResponse({'output': run_process.stdout if run_process.returncode == 0 else run_process.stderr})
