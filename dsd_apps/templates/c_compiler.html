@@ -14,41 +14,45 @@
             function runCode() {
                 const code = document.getElementById('code').value;
 
-                // Check if the code contains scanf (indicating input is needed)
-                if (code.includes('scanf')) {
-                    // Prompt the user for input if scanf is present
-                    const userInput = prompt("Your code requires input. Please enter the input:");
+                // Clear previous output before running new code
+                document.getElementById('output').textContent = 'Running...';
 
-                    // Send the C code and user input to the backend
-                    fetch('/c_run_code/', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRFToken': getCSRFToken() // For Django CSRF protection
-                        },
-                        body: JSON.stringify({ code: code, input: userInput })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        document.getElementById('output').textContent = data.output;
-                    })
-                    .catch(error => console.error('Error:', error));
-                } else {
-                    // Send only the C code if no input is needed
-                    fetch('/c_run_code/', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRFToken': getCSRFToken() // For Django CSRF protection
-                        },
-                        body: JSON.stringify({ code: code })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        document.getElementById('output').textContent = data.output;
-                    })
-                    .catch(error => console.error('Error:', error));
+                // Check if the code contains 'scanf' (indicating input is needed)
+                let userInput = null;
+                if (code.includes('scanf')) {
+                    userInput = prompt("Your code requires input. Please enter the input:");
+
+                    // If user cancels the input prompt
+                    if (userInput === null) {
+                        document.getElementById('output').textContent = 'No input provided. Execution aborted.';
+                        return;
+                    }
                 }
+
+                // Prepare the payload
+                const payload = { code: code };
+                if (userInput !== null) {
+                    payload.input = userInput;
+                }
+
+                // Send the C code and optional input to the backend
+                fetch('/c_run_code/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCSRFToken() // For Django CSRF protection
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Display the output returned from the backend
+                    document.getElementById('output').textContent = data.output;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('output').textContent = 'Error executing the code.';
+                });
             }
 
             function getCSRFToken() {
