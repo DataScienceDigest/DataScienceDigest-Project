@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta name="csrf-token" content="{{ csrf_token }}">
-    <title>Online Python Compiler</title>
+    <title>Online C Compiler</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
     <style>
         body {
@@ -45,12 +45,12 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to the Python Compiler</h1>
+    <h1>Welcome to the C Compiler</h1>
     <div class="section">
         <!-- Explanation Section -->
         <div class="intro">
-            <h2>Loops in Python</h2>
-            <p>In Python, loops are used to iterate over a sequence (like a list, tuple, dictionary, set, or string). Use the editor on the right to run a loop example.</p>
+            <h2>Loops in C</h2>
+            <p>In C, loops are used to repeat a block of code as long as a specified condition is true. Use the editor on the right to run a loop example.</p>
         </div>
         <!-- Compiler Section -->
         <div class="compiler">
@@ -63,8 +63,8 @@
     <div class="section">
         <!-- Explanation Section -->
         <div class="intro">
-            <h2>Welcome to the Python Compiler</h2>
-            <p>This is a simple Python code editor and compiler. You can edit the code on the right and click "Run" to see the output.</p>
+            <h2>Welcome to the C Compiler</h2>
+            <p>This is a simple C code editor and compiler. You can edit the code on the right and click "Run" to see the output.</p>
         </div>
         <!-- Compiler Section -->
         <div class="compiler">
@@ -78,15 +78,15 @@
         require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
         require(['vs/editor/editor.main'], function () {
             window.editor1 = monaco.editor.create(document.getElementById('editorContainer1'), {
-                value: 'for i in range(1, 6):\n    print(f"Square of {i} is {i * i}")\n',
-                language: 'python',
+                value: '#include <stdio.h>\n\nint main() {\n    for (int i = 1; i <= 5; i++) {\n        printf("Square of %d is %d\\n", i, i * i);\n    }\n    return 0;\n}\n',
+                language: 'c',
                 theme: 'vs-dark',
                 automaticLayout: true
             });
 
             window.editor2 = monaco.editor.create(document.getElementById('editorContainer2'), {
-                value: 'print("Hello, World!")\n',
-                language: 'python',
+                value: '#include <stdio.h>\n\nint main() {\n    printf("Hello, World!\\n");\n    return 0;\n}\n',
+                language: 'c',
                 theme: 'vs-dark',
                 automaticLayout: true
             });
@@ -94,29 +94,31 @@
 
         function runCode(editorId, outputId) {
             const code = window[editorId].getValue();
-
             document.getElementById(outputId).textContent = 'Running...';
 
-            // Detect user input requirements in the code
-            const inputPatterns = /(input|scanf|fgets)/g;
+            // Improved input detection
+            const inputPatterns = /scanf\(|fgets\(/g;
             let userInputs = [];
             let match;
+            let inputPrompt = {};
 
-            // Find all occurrences of input-related patterns in the code
+            // Find all unique occurrences of input-related patterns in the code
             while ((match = inputPatterns.exec(code)) !== null) {
-                let userInput = prompt(`Your code requires input for ${match[0]} call. Please enter the input:`);
-                
-                if (userInput === null) {
-                    document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
-                    return;
+                // Store the input prompt message if not already stored
+                if (!inputPrompt[match[0]]) {
+                    let userInput = prompt(`Your code requires input for ${match[0]} call. Please enter the input:`);
+                    if (userInput === null) {
+                        document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
+                        return;
+                    }
+                    inputPrompt[match[0]] = userInput;
                 }
-
-                userInputs.push(userInput);
             }
 
+            // Prepare the payload with the C code and any collected user inputs
             const payload = { 
                 code: code, 
-                inputs: userInputs 
+                inputs: Object.values(inputPrompt) // Send all collected inputs
             };
 
             fetch('/c_run_code/', {
