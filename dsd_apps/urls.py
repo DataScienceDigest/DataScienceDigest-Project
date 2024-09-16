@@ -12,8 +12,8 @@ urlpatterns = [
     path('csharp/', views.csharp_index, name='csharp'),  # Avoid special characters in URLs
     path('sql/', views.sql_index, name='sql'),
     path('html/', views.html_index, name='html'),
-    # path('c/',views.c_cpp_index,name='c_cpp_index'),
-    # path('c_run_code/', views.c_run_code, name='c_run_code'),
+    path('c/',views.c_cpp_index,name='c_cpp_index'),
+    path('c_run_code/', views.c_run_code, name='c_run_code'),
     path('css/', views.css_index, name='css'),
     # _______________python section ____________________
     path('python/', views.python_index, name='python'),
