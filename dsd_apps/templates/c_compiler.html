@@ -1,113 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C and C++ Online Compiler</title>
-    <style>
-        /* Simple CSS for Layout */
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #f4f4f9;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        h1 {
-            text-align: center;
-        }
-        .compiler-section {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px;
-        }
-        .compiler-section label {
-            margin-bottom: 10px;
-        }
-        .compiler-section select {
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-        .code-editor {
-            border: 1px solid #ccc;
-            padding: 10px;
-            border-radius: 5px;
-            height: 300px;
-            font-family: monospace;
-            background-color: #2d2d2d;
-            color: #fff;
-        }
-        .output {
-            margin-top: 10px;
-            background-color: #f1f1f1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            white-space: pre-wrap;
-            height: auto;
-        }
-    </style>
-</head>
-<body>
+    <head>
+        <meta name="csrf-token" content="{{ csrf_token }}">
+        <title>Online C Compiler</title>
+    </head>
+    <body>
+        <h1>Online C Compiler</h1>
+        <textarea id="code" rows="10" cols="50" placeholder="Write your C code here..."></textarea><br>
+        <button onclick="runCode()">Run</button>
+        <pre id="output"></pre>
 
-<div class="container">
-    <h1>C and C++ Online Compiler</h1>
-    
-    <div class="compiler-section">
-        <label for="language">Select Language:</label>
-        <select id="language">
-            <option value="c">C</option>
-            <option value="cpp">C++</option>
-        </select>
-    </div>
+        <script>
+            function runCode() {
+                const code = document.getElementById('code').value;
 
-    <div class="compiler-section">
-        <label for="code">Write your code:</label>
-        <textarea id="code" class="code-editor">// Write your C or C++ code here</textarea>
-    </div>
+                // Check if the code contains scanf (indicating input is needed)
+                if (code.includes('scanf')) {
+                    // Prompt the user for input if scanf is present
+                    const userInput = prompt("Your code requires input. Please enter the input:");
 
-    <button onclick="runCode()">Run Code</button>
-    
-    <div class="compiler-section">
-        <h3>Output:</h3>
-        <pre id="output" class="output"></pre>
-    </div>
-</div>
-
-<script>
-    function runCode() {
-        const code = document.getElementById('code').value;
-        const language = document.getElementById('language').value;
-        const outputElement = document.getElementById('output');
-        
-        outputElement.innerText = 'Compiling and running...';
-
-        // Send a POST request with code and language to the server
-        fetch('/c_run_code/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                code: code,
-                language: language,
-            }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                outputElement.innerText = data.output;
-            } else {
-                outputElement.innerText = 'Error: ' + data.error;
+                    // Send the C code and user input to the backend
+                    fetch('/c_run_code/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCSRFToken() // For Django CSRF protection
+                        },
+                        body: JSON.stringify({ code: code, input: userInput })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('output').textContent = data.output;
+                    })
+                    .catch(error => console.error('Error:', error));
+                } else {
+                    // Send only the C code if no input is needed
+                    fetch('/c_run_code/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCSRFToken() // For Django CSRF protection
+                        },
+                        body: JSON.stringify({ code: code })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('output').textContent = data.output;
+                    })
+                    .catch(error => console.error('Error:', error));
+                }
             }
-        })
-        .catch(error => {
-            outputElement.innerText = 'Error: ' + error;
-        });
-    }
-</script>
 
-</body>
+            function getCSRFToken() {
+                // Access the CSRF token from the meta tag
+                return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            }
+        </script>
+    </body>
 </html>
