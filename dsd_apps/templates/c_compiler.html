@@ -1,71 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="csrf-token" content="{{ csrf_token }}">
-        <title>Online C Compiler</title>
-    </head>
-    <body>
-        <h1>Online C Compiler</h1>
-        <textarea id="code" rows="10" cols="50" placeholder="Write your C code here..."></textarea><br>
-        <button onclick="runCode()">Run</button>
-        <pre id="output"></pre>
+<head>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Online Python Compiler</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .intro {
+            width: 40%;
+        }
+        .compiler {
+            width: 55%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .compiler button {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .output {
+            margin-top: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Python Compiler</h1>
+    <div class="section">
+        <!-- Explanation Section -->
+        <div class="intro">
+            <h2>Loops in Python</h2>
+            <p>In Python, loops are used to iterate over a sequence (like a list, tuple, dictionary, set, or string). Use the editor on the right to run a loop example.</p>
+        </div>
+        <!-- Compiler Section -->
+        <div class="compiler">
+            <div id="editorContainer1" style="height: 200px;"></div>
+            <button onclick="runCode('editor1', 'output1')">Run</button>
+            <pre id="output1" class="output"></pre>
+        </div>
+    </div>
 
-        <script>
-            function runCode() {
-                const code = document.getElementById('code').value;
-        
-                // Clear previous output before running new code
-                document.getElementById('output').textContent = 'Running...';
-        
-                // Detect how many `scanf()` or `fgets()` calls are present in the code
-                const inputPatterns = /(scanf|fgets)/g;
-                let userInputs = [];
-                let match;
-        
-                // Find all occurrences of `scanf` or `fgets` in the code
-                while ((match = inputPatterns.exec(code)) !== null) {
-                    // Prompt user for input for each occurrence
-                    let userInput = prompt(`Your code requires input for ${match[0]} call. Please enter the input:`);
-                    
-                    // If user cancels the input prompt
-                    if (userInput === null) {
-                        document.getElementById('output').textContent = 'Execution aborted due to missing input.';
-                        return;
-                    }
-        
-                    userInputs.push(userInput); // Collect each input
-                }
-        
-                // Prepare the payload with the C code and any collected user inputs
-                const payload = { 
-                    code: code, 
-                    inputs: userInputs // Send all inputs together
-                };
-        
-                // Send the C code and user inputs to the backend
-                fetch('/c_run_code/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': getCSRFToken() // For Django CSRF protection
-                    },
-                    body: JSON.stringify(payload)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    // Display the output returned from the backend
-                    document.getElementById('output').textContent = data.output;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    document.getElementById('output').textContent = 'Error executing the code.';
-                });
-            }
-        
-            function getCSRFToken() {
-                // Access the CSRF token from the meta tag
-                return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            }
-        </script>        
-    </body>
+    <div class="section">
+        <!-- Explanation Section -->
+        <div class="intro">
+            <h2>Welcome to the Python Compiler</h2>
+            <p>This is a simple Python code editor and compiler. You can edit the code on the right and click "Run" to see the output.</p>
+        </div>
+        <!-- Compiler Section -->
+        <div class="compiler">
+            <div id="editorContainer2" style="height: 200px;"></div>
+            <button onclick="runCode('editor2', 'output2')">Run</button>
+            <pre id="output2" class="output"></pre>
+        </div>
+    </div>
+
+    <script>
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+        require(['vs/editor/editor.main'], function () {
+            window.editor1 = monaco.editor.create(document.getElementById('editorContainer1'), {
+                value: 'for i in range(1, 6):\n    print(f"Square of {i} is {i * i}")\n',
+                language: 'python',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            window.editor2 = monaco.editor.create(document.getElementById('editorContainer2'), {
+                value: 'print("Hello, World!")\n',
+                language: 'python',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+        });
+
+        function runCode(editorId, outputId) {
+            const code = window[editorId].getValue();
+
+            document.getElementById(outputId).textContent = 'Running...';
+
+            fetch('/c_run_code/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCSRFToken()
+                },
+                body: JSON.stringify({ code: code })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById(outputId).textContent = data.output;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById(outputId).textContent = 'Error executing the code.';
+            });
+        }
+
+        function getCSRFToken() {
+            return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        }
+    </script>
+</body>
 </html>

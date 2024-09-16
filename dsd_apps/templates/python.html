@@ -5,102 +5,158 @@
 <head>
     <meta charset="UTF-8">
     <title>Python Compiler</title>
-    <!-- Include CodeMirror CSS and JavaScript from CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/theme/material.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/python/python.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/edit/closebrackets.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/addon/edit/matchbrackets.min.js"></script>
+    <!-- Include Monaco Editor from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
 <body>
-<div style="height: 100px;  padding-top: 25px; font-size: large; text-align: center;"><h1>Python Tutorials</h1></div>
+    <div style="height: 100px; padding-top: 25px; font-size: large; text-align: center;">
+        <h1>Python Tutorials</h1>
+    </div>
 
-<!-- Section 1: Hello World -->
-<div class="section">
-    <div class="intro">
-        <h1>Welcome to the Python Compiler</h1>
-        <p>This is a simple Python code editor and compiler. You can edit the code on the right and click "Run" to
-            see the output.</p>
+    <!-- Section 1: Hello World -->
+    <div class="section">
+        <div class="intro">
+            <h1>Welcome to the Python Compiler</h1>
+            <p>This is a simple Python code editor and compiler. You can edit the code on the right and click "Run" to see the output.</p>
+        </div>
+        <div class="compiler">
+            <div id="editorContainer1" style="height: 200px;"></div>
+            <button onclick="runCode('editor1', 'output1')">Run</button>
+            <div class="output" id="output1"></div>
+        </div>
     </div>
-    <div class="compiler">
-        <textarea id="code1">
-print("Hello, World!")
-for i in range(5):
-    print(f"Number {i}")
-        </textarea>
-        <button onclick="runCode('code1', 'output1')">Run</button>
-        <div class="output" id="output1"></div>
-    </div>
-</div>
 
-<!-- Section 2: Loops in Python -->
-<div class="section">
-    <div class="intro">
-        <h2>Loops in Python</h2>
-        <p>In Python, loops are used to iterate over a sequence (like a list, tuple, dictionary, set, or string).
-            Use the editor on the right to run a loop example.</p>
+    <!-- Section 2: Loops in Python -->
+    <div class="section">
+        <div class="intro">
+            <h2>Loops in Python</h2>
+            <p>In Python, loops are used to iterate over a sequence (like a list, tuple, dictionary, set, or string).
+                Use the editor on the right to run a loop example.</p>
+        </div>
+        <div class="compiler">
+            <div id="editorContainer2" style="height: 200px;"></div>
+            <button onclick="runCode('editor2', 'output2')">Run</button>
+            <div class="output" id="output2"></div>
+        </div>
     </div>
-    <div class="compiler">
-        <textarea id="code2">
-for i in range(1, 6):
-    print(f"Square of {i} is {i * i}")
-        </textarea>
-        <button onclick="runCode('code2', 'output2')">Run</button>
-        <div class="output" id="output2"></div>
-    </div>
-</div>
 
-<!-- Section 3: Conditional Statements -->
-<div class="section">
-    <div class="intro">
-        <h2>Conditional Statements</h2>
-        <p>Learn how to use if-else conditions in Python to control the flow of your code based on logical tests.</p>
+    <!-- Section 3: Conditional Statements -->
+    <div class="section">
+        <div class="intro">
+            <h2>Conditional Statements</h2>
+            <p>Learn how to use if-else conditions in Python to control the flow of your code based on logical tests.</p>
+        </div>
+        <div class="compiler">
+            <div id="editorContainer3" style="height: 200px;"></div>
+            <button onclick="runCode('editor3', 'output3')">Run</button>
+            <div class="output" id="output3"></div>
+        </div>
     </div>
-    <div class="compiler">
-        <textarea id="code3">
-number = 10
-if number > 5:
-    print("Number is greater than 5")
-else:
-    print("Number is less than or equal to 5")
-        </textarea>
-        <button onclick="runCode('code3', 'output3')">Run</button>
-        <div class="output" id="output3"></div>
+
+    <!-- Section 4: Functions in Python -->
+    <div class="section">
+        <div class="intro">
+            <h2>Functions in Python</h2>
+            <p>Use Python functions to break your program into reusable pieces of code.</p>
+        </div>
+        <div class="compiler">
+            <div id="editorContainer4" style="height: 200px;"></div>
+            <button onclick="runCode('editor4', 'output4')">Run</button>
+            <div class="output" id="output4"></div>
+        </div>
     </div>
-</div>
 
-<!-- Section 4: Functions in Python -->
-<div class="section">
-    <div class="intro">
-        <h2>Functions in Python</h2>
-        <p>Use Python functions to break your program into reusable pieces of code.</p>
+    <!-- Modal for input -->
+    <div id="inputModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalPromptMessage">Enter Input</h2>
+            <input type="text" id="userInput" placeholder="Type your input here...">
+            <button onclick="submitInput()">Submit</button>
+        </div>
     </div>
-    <div class="compiler">
-        <textarea id="code4">
-def greet(name):
-    print(f"Hello, {name}!")
 
-greet("Alice")
-        </textarea>
-        <button onclick="runCode('code4', 'output4')">Run</button>
-        <div class="output" id="output4"></div>
-    </div>
-</div>
+    <script>
+        const editors = {};
+        let currentInputResolve = null;
 
-<!-- Modal for input -->
-<div id="inputModal" class="modal">
-    <div class="modal-content">
-        <h2 id="modalPromptMessage">Enter Input</h2>
-        <input type="text" id="userInput" placeholder="Type your input here...">
-        <button onclick="submitInput()">Submit</button>
-    </div>
-</div>
+        // Monaco Editor setup using the provided JavaScript structure
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+        require(['vs/editor/editor.main'], function () {
+            // Initialize Monaco Editor for all code sections
+            initializeEditor('editor1', 'print("Hello, World!")\nfor i in range(5):\n    print(f"Number {i}")');
+            initializeEditor('editor2', 'for i in range(1, 6):\n    print(f"Square of {i} is {i * i}")');
+            initializeEditor('editor3', 'number = 10\nif number > 5:\n    print("Number is greater than 5")\nelse:\n    print("Number is less than or equal to 5")');
+            initializeEditor('editor4', 'def greet(name):\n    print(f"Hello, {name}!")\n\ngreet("Alice")');
+        });
 
-<!-- Link to the external JavaScript file -->
-<script src="{% static 'js/script.js' %}"></script>
+        // Function to initialize Monaco Editor instances
+        function initializeEditor(editorId, defaultValue) {
+            const container = document.getElementById(`editorContainer${editorId.slice(-1)}`);
+            if (!editors[editorId]) {
+                editors[editorId] = monaco.editor.create(container, {
+                    value: defaultValue,
+                    language: 'python',
+                    theme: 'vs-dark',
+                    automaticLayout: true
+                });
+            }
+        }
 
+        // Function to run code
+        async function runCode(editorId, outputId) {
+            const editor = editors[editorId];
+            let code = editor.getValue();
+
+            // Detect and handle input() calls
+            let inputs = [];
+            let inputPattern = /input\((.*?)\)/g;
+            let match;
+
+            while ((match = inputPattern.exec(code)) !== null) {
+                let userInput = await getInputFromUser(match[1] ? `Input required: ${match[1]}` : 'Enter input:');
+                inputs.push(userInput || ''); // Handle cancel or empty inputs
+            }
+
+            try {
+                let response = await fetch('/run/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                    body: new URLSearchParams({ 'code': code, 'inputs[]': inputs })  // Send inputs as array
+                });
+
+                let data = await response.json();
+                document.getElementById(outputId).textContent = data.output || data.error;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById(outputId).textContent = 'Error executing code.';
+            }
+        }
+
+        // Function to handle showing the modal for input
+        function getInputFromUser(message) {
+            return new Promise((resolve) => {
+                document.getElementById('modalPromptMessage').textContent = message;
+                document.getElementById('inputModal').style.display = 'flex';
+                document.getElementById('userInput').value = '';  // Clear previous input
+                currentInputResolve = resolve;  // Store the resolve function
+            });
+        }
+
+        // Function to submit input from the modal
+        function submitInput() {
+            let input = document.getElementById('userInput').value;
+            if (currentInputResolve) {
+                currentInputResolve(input);
+                currentInputResolve = null;
+            }
+            document.getElementById('inputModal').style.display = 'none';  // Hide modal after submitting
+        }
+    </script>
 </body>
+
 </html>
