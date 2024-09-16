@@ -44,7 +44,10 @@ def python_index(request):
 def javascript_index(request):
     return render(request, 'javascript.html')
 
-def c_cpp_index(request):
+def cpp_index(request):
+    return render(request,'cpp_compiler.html')
+
+def c_index(request):
     return render(request,'c_compiler.html')
 
 def java_index(request):
@@ -64,9 +67,6 @@ def sql_index(request):
 
 def html_index(request):
     return render(request, 'html.html')
-
-def css_index(request):
-    return render(request, 'css.html')
 
 
 # c and c++ compilers 
@@ -119,6 +119,60 @@ def c_run_code(request):
 
         except FileNotFoundError:
             return JsonResponse({'output': 'gcc not found. Please check the path.'})
+
+        except Exception as e:
+            return JsonResponse({'output': f'Error: {str(e)}'})
+
+    return JsonResponse({'output': 'Invalid request method'})
+
+# cpp code compiler
+@csrf_exempt
+def cpp_run_code(request):
+    if request.method == 'POST':
+        try:
+            # Parse JSON data from the request body
+            data = json.loads(request.body)
+            code = data.get('code', '')
+            user_inputs = data.get('inputs', [])  # Get user inputs if any
+            # Path to g++ on Ubuntu
+            gpp_path = '/usr/bin/g++'
+            # Create a temporary file to store the C++ code
+            with tempfile.NamedTemporaryFile(suffix='.cpp', delete=False) as temp_cpp_file:
+                temp_cpp_file.write(code.encode())
+                temp_cpp_file_name = temp_cpp_file.name
+
+            # Compile the C++ code using g++
+            compiled_output = temp_cpp_file_name[:-4]  # Remove .cpp to get the executable name
+            compile_process = subprocess.run(
+                [gpp_path, temp_cpp_file_name, '-o', compiled_output],
+                capture_output=True, text=True
+            )
+
+            # Check if compilation was successful
+            if compile_process.returncode != 0:
+                return JsonResponse({'output': compile_process.stderr})
+
+            # Give execute permission to the compiled binary
+            os.chmod(compiled_output, 0o755)
+
+            # Prepare the input for the C++ program (join all inputs with newlines)
+            input_data = '\n'.join(user_inputs) if user_inputs else None
+
+            # Run the compiled C++ program with user inputs
+            run_process = subprocess.run(
+                [compiled_output],
+                input=input_data, text=True, capture_output=True
+            )
+
+            # Clean up the temp files
+            os.remove(temp_cpp_file_name)
+            os.remove(compiled_output)
+
+            # Return the program output or error
+            return JsonResponse({'output': run_process.stdout if run_process.returncode == 0 else run_process.stderr})
+
+        except FileNotFoundError:
+            return JsonResponse({'output': 'g++ not found. Please check the path.'})
 
         except Exception as e:
             return JsonResponse({'output': f'Error: {str(e)}'})
