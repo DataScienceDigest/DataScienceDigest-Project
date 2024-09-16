@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class="view-more">
-            <a href="#">View all tutorials</a>
+            <a href="{% url 'all_courses' %}">View all tutorials</a>
         </div>
     </section>
 
@@ -102,16 +102,16 @@
                     <p>Access our free online compilers, designed to make coding easy and accessible for everyone.</p>
                     <div class="compiler-options">
                         <div class="compiler-column">
-                            <a href="#" class="compiler-button">Python Compiler<br><span>Start coding Python →</span></a>
-                            <a href="#" class="compiler-button">HTML Editor<br><span>Start coding HTML →</span></a>
-                            <a href="#" class="compiler-button">Java Compiler<br><span>Start coding Java →</span></a>
-                            <a href="#" class="compiler-button">C Compiler<br><span>Start coding C →</span></a>
+                            <a href="{% url 'python' %}" class="compiler-button">Python Compiler<br><span>Start coding Python →</span></a>
+                            <a href="{% url 'html' %}" class="compiler-button">HTML Editor<br><span>Start coding HTML →</span></a>
+                            <a href="{% url 'java' %}" class="compiler-button">Java Compiler<br><span>Start coding Java →</span></a>
+                            <a href="{% url 'c' %}" class="compiler-button">C Compiler<br><span>Start coding C →</span></a>
                         </div>
                         <div class="compiler-column">
-                            <a href="#" class="compiler-button">SQL Editor<br><span>Start coding SQL →</span></a>
-                            <a href="#" class="compiler-button">JS Editor<br><span>Start coding JS →</span></a>
-                            <a href="#" class="compiler-button">C# Compiler<br><span>Start coding C# →</span></a>
-                            <a href="#" class="compiler-button">C++ Compiler<br><span>Start coding C++ →</span></a>
+                            <a href="{% url 'sql' %}" class="compiler-button">SQL Editor<br><span>Start coding SQL →</span></a>
+                            <a href="{% url 'javascript' %}" class="compiler-button">JS Editor<br><span>Start coding JS →</span></a>
+                            <a href="{% url 'csharp' %}" class="compiler-button">C# Compiler<br><span>Start coding C# →</span></a>
+                            <a href="{% url 'cpp' %}" class="compiler-button">C++ Compiler<br><span>Start coding C++ →</span></a>
                         </div>
                     </div>
                     <div class="view-more">
