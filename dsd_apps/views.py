@@ -75,29 +75,25 @@ def css_index(request):
 @csrf_exempt
 def c_run_code(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        code = data['code']
+        # Get the C code from the request
+        code = request.POST.get('code', '')
+
+        # Path to gcc on Ubuntu
+        gcc_path = '/usr/bin/gcc'
 
         # Create a temporary file to store the C code
         with tempfile.NamedTemporaryFile(suffix='.c', delete=False) as temp_c_file:
             temp_c_file.write(code.encode())
             temp_c_file_name = temp_c_file.name
 
-        # Path to gcc.exe
-        # gcc_path = r'C:\Users\hp\Documents\DataScienceDigest_mainProject\DataScienceDigest-Project\gcc\bin\gcc.exe'
-        gcc_path= '/usr/bin/gcc'
-
         try:
-            # Compile the C code using gcc.exe
+            # Compile the C code using gcc
             compile_process = subprocess.run(
-                [gcc_path, temp_c_file_name, '-o', temp_c_file_name[:-2], '-Wl,-subsystem,console'],
+                [gcc_path, temp_c_file_name, '-o', temp_c_file_name[:-2]],
                 capture_output=True, text=True
             )
 
-            # Print the stderr and stdout for debugging
-            print("Compilation STDOUT:", compile_process.stdout)
-            print("Compilation STDERR:", compile_process.stderr)
-
+            # Check if compilation was successful
             if compile_process.returncode != 0:
                 return JsonResponse({'output': compile_process.stderr})
 
@@ -106,19 +102,17 @@ def c_run_code(request):
                 [temp_c_file_name[:-2]], capture_output=True, text=True
             )
 
-            # Print the stderr and stdout for debugging
-            print("Execution STDOUT:", run_process.stdout)
-            print("Execution STDERR:", run_process.stderr)
-
-            # Clean up the temp file
+            # Clean up the temp files
             os.remove(temp_c_file_name)
+            os.remove(temp_c_file_name[:-2])
 
+            # Return the program output or error
             return JsonResponse({'output': run_process.stdout if run_process.returncode == 0 else run_process.stderr})
 
-        except FileNotFoundError as e:
-            return JsonResponse({'output': f'GCC executable not found: {str(e)}'})
+        except FileNotFoundError:
+            return JsonResponse({'output': 'gcc not found. Please check the path.'})
 
         except Exception as e:
             return JsonResponse({'output': f'Error: {str(e)}'})
 
-    return JsonResponse({'output': 'Invalid request'})
+    return JsonResponse({'output': 'Invalid request method'})
