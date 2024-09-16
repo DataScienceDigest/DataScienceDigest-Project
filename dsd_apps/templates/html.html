@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Online Compiler with Expand Feature</title>
+
+    <!-- Load Monaco Editor from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs/loader.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .intro {
+            width: 40%;
+        }
+        .compiler {
+            width: 55%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .CodeMirror {
+            border: 1px solid #ddd;
+            height: 200px;
+        }
+        .compiler button {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%; 
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            overflow: auto;
+        }
+        .modal-content iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+        .modal-content button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .modal-content button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>HTML Online Compiler</h1>
+    <p>Write your HTML code in each section and click "Run" to see the output in a popup window.</p>
+    
+    <div class="section">
+        <!-- Section 1 Introduction -->
+        <div class="intro">
+            <h2>Basic HTML Example</h2>
+            <p>In this section, you can practice basic HTML by writing simple elements like headers, paragraphs, and lists.</p>
+        </div>
+
+        <!-- Section 1 Compiler -->
+        <div class="compiler">
+            <div id="editor1" class="CodeMirror"></div>
+            <button onclick="runCode(1)">Run</button>
+            <button onclick="toggleExpand(1)">Expand</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <!-- Section 2 Introduction -->
+        <div class="intro">
+            <h2>Styling with CSS</h2>
+            <p>This section allows you to add CSS to style your HTML elements. You can include inline CSS within your HTML code.</p>
+        </div>
+
+        <!-- Section 2 Compiler -->
+        <div class="compiler">
+            <div id="editor2" class="CodeMirror"></div>
+            <button onclick="runCode(2)">Run</button>
+            <button onclick="toggleExpand(2)">Expand</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <!-- Section 3 Introduction -->
+        <div class="intro">
+            <h2>HTML Forms</h2>
+            <p>In this section, you can create HTML forms with input fields, buttons, and submit actions.</p>
+        </div>
+
+        <!-- Section 3 Compiler -->
+        <div class="compiler">
+            <div id="editor3" class="CodeMirror"></div>
+            <button onclick="runCode(3)">Run</button>
+            <button onclick="toggleExpand(3)">Expand</button>
+        </div>
+    </div>
+
+    <!-- Modal for showing the output -->
+    <div id="outputModal" class="modal">
+        <div class="modal-content">
+            <h3>HTML Output:</h3>
+            <iframe id="outputFrame"></iframe>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        var editor1, editor2, editor3;
+        var isExpanded1 = false, isExpanded2 = false, isExpanded3 = false;
+
+        // Load Monaco Editor for all sections
+        require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs' }});
+        require(['vs/editor/editor.main'], function() {
+            editor1 = monaco.editor.create(document.getElementById('editor1'), {
+                value: '<!-- Write your basic HTML code here -->\n<html>\n  <body>\n    <h1>Hello, World!</h1>\n  </body>\n</html>',
+                language: 'html',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            editor2 = monaco.editor.create(document.getElementById('editor2'), {
+                value: '<!-- Write HTML with CSS here -->\n<html>\n  <head>\n    <style>\n      body { background-color: lightblue; }\n      h1 { color: navy; }\n    </style>\n  </head>\n  <body>\n    <h1>Hello, World!</h1>\n  </body>\n</html>',
+                language: 'html',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            editor3 = monaco.editor.create(document.getElementById('editor3'), {
+                value: '<!-- Write HTML forms here -->\n<html>\n  <body>\n    <form>\n      Name: <input type="text" name="name"><br>\n      Email: <input type="email" name="email"><br>\n      <input type="submit" value="Submit">\n    </form>\n  </body>\n</html>',
+                language: 'html',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+        });
+
+        // Function to run the code from the selected editor
+        function runCode(editorNumber) {
+            let code;
+            if (editorNumber === 1) {
+                code = editor1.getValue();
+            } else if (editorNumber === 2) {
+                code = editor2.getValue();
+            } else if (editorNumber === 3) {
+                code = editor3.getValue();
+            }
+
+            // Get the iframe and load the HTML code inside it
+            const outputFrame = document.getElementById('outputFrame').contentWindow.document;
+            outputFrame.open();
+            outputFrame.write(code);
+            outputFrame.close();
+
+            // Show the modal
+            document.getElementById('outputModal').style.display = 'flex';
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById('outputModal').style.display = 'none';
+        }
+
+        // Function to toggle expanding the editor
+        function toggleExpand(editorNumber) {
+            let editor, isExpanded, container;
+
+            if (editorNumber === 1) {
+                editor = editor1;
+                isExpanded = isExpanded1;
+                container = document.getElementById('editor1');
+                isExpanded1 = !isExpanded1;
+            } else if (editorNumber === 2) {
+                editor = editor2;
+                isExpanded = isExpanded2;
+                container = document.getElementById('editor2');
+                isExpanded2 = !isExpanded2;
+            } else if (editorNumber === 3) {
+                editor = editor3;
+                isExpanded = isExpanded3;
+                container = document.getElementById('editor3');
+                isExpanded3 = !isExpanded3;
+            }
+
+            if (isExpanded) {
+                container.style.height = '200px';
+            } else {
+                container.style.height = '400px'; // Expand to 400px height
+            }
+
+            editor.layout(); // Adjust the layout of Monaco editor
+        }
+    </script>
+
+</body>
+</html>
