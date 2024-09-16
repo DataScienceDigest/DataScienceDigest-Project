@@ -68,6 +68,47 @@ def sql_index(request):
 def html_index(request):
     return render(request, 'html.html')
 
+# swift compiler
+def swift_index(request):
+    return render(request, 'swift_compiler.html')
+
+# swift code 
+
+@csrf_exempt
+def run_swift_code(request):
+    if request.method == 'POST':
+        # Extract code and input from POST request
+        code = request.POST.get('code')
+        user_input = request.POST.get('input', '')  # Default to empty if not provided
+
+        # Save the Swift code to a temporary file
+        file_path = "/tmp/user_code.swift"
+        with open(file_path, 'w') as file:
+            file.write(code)
+
+        try:
+            # Run swift compiler
+            if "readLine()" in code:
+                # If the code expects input, provide it using subprocess
+                result = subprocess.run(
+                    ['swift', file_path],
+                    input=user_input,  # Pass user input to the Swift code
+                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+                )
+            else:
+                # If no input is expected
+                result = subprocess.run(
+                    ['swift', file_path],
+                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+                )
+
+            return JsonResponse({
+                'output': result.stdout or result.stderr
+            })
+        except Exception as e:
+            return JsonResponse({'output': str(e)})
+
+    return JsonResponse({'error': 'Invalid request method.'})
 
 # c and c++ compilers 
 

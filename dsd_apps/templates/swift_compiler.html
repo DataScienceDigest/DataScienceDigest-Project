@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Swift Compiler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .intro {
+            width: 40%;
+        }
+        .compiler {
+            width: 55%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .compiler button {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .output {
+            margin-top: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            height: auto;
+        }
+        .section-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .editor-container {
+            height: 300px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .run-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .run-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+
+    <!-- Include Monaco Editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs/loader.min.js"></script>
+</head>
+<body>
+    <!-- Section 1: Swift Basics -->
+    <div class="section">
+        <div class="intro">
+            <h2 class="section-title">Swift Basics</h2>
+            <p>An introduction to the basics of the Swift programming language.</p>
+        </div>
+        <div class="compiler">
+            <div id="editor1" class="editor-container"></div>
+            <button class="run-btn" id="runCode1">Run Code</button>
+            <div class="output" id="output1"></div>
+        </div>             
+    </div>
+
+    <!-- Section 2: Loops in Swift -->
+    <div class="section">
+        <div class="intro">
+            <h2 class="section-title">Loops in Swift</h2>
+            <p>Loops allow you to repeat a block of code. This example shows a basic loop in Swift.</p>
+        </div>
+        <div class="compiler">
+            <div id="editor2" class="editor-container"></div>
+            <button class="run-btn" id="runCode2">Run Code</button>
+            <div class="output" id="output2"></div>
+        </div>
+    </div>
+
+    <!-- Section 3: Conditionals in Swift -->
+    <div class="section">
+        <div class="intro">
+            <h2 class="section-title">Conditionals in Swift</h2>
+            <p>Conditionals let you execute different code based on a condition. Here’s an example.</p>
+        </div>
+        <div class="compiler">
+            <div id="editor3" class="editor-container"></div>
+            <button class="run-btn" id="runCode3">Run Code</button>
+            <div class="output" id="output3"></div>
+        </div>
+    </div>
+
+    <!-- Section 4: Functions in Swift -->
+    <div class="section">
+        <div class="intro">
+            <h2 class="section-title">Functions in Swift</h2>
+            <p>Functions are reusable blocks of code. Below is an example of a simple function in Swift.</p>
+        </div>
+        <div class="compiler">
+            <div id="editor4" class="editor-container"></div>
+            <button class="run-btn" id="runCode4">Run Code</button>
+            <div class="output" id="output4"></div>
+        </div>
+    </div>
+
+    <script>
+        // Load Monaco Editor using require.js
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs' }});
+        
+        require(['vs/editor/editor.main'], function() {
+            // Editor for Section 1 (Swift Basics)
+            var editor1 = monaco.editor.create(document.getElementById('editor1'), {
+                value: `print("Hello, World!")`,
+                language: 'swift',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            // Editor for Section 2 (Loops in Swift)
+            var editor2 = monaco.editor.create(document.getElementById('editor2'), {
+                value: `for i in 1...5 {\n    print("Number \\(i)")\n}`,
+                language: 'swift',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            // Editor for Section 3 (Conditionals in Swift)
+            var editor3 = monaco.editor.create(document.getElementById('editor3'), {
+                value: `let number = 4\nif number % 2 == 0 {\n    print("\\(number) is even")\n} else {\n    print("\\(number) is odd")\n}`,
+                language: 'swift',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            // Editor for Section 4 (Functions in Swift)
+            var editor4 = monaco.editor.create(document.getElementById('editor4'), {
+                value: `func greet(name: String) {\n    print("Hello, \\(name)!")\n}\ngreet(name: "John")`,
+                language: 'swift',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            // Run button for each section
+            document.getElementById('runCode1').addEventListener('click', function() {
+                const code = editor1.getValue();
+                runCode(code, 'output1');
+            });
+
+            document.getElementById('runCode2').addEventListener('click', function() {
+                const code = editor2.getValue();
+                runCode(code, 'output2');
+            });
+
+            document.getElementById('runCode3').addEventListener('click', function() {
+                const code = editor3.getValue();
+                runCode(code, 'output3');
+            });
+
+            document.getElementById('runCode4').addEventListener('click', function() {
+                const code = editor4.getValue();
+                runCode(code, 'output4');
+            });
+        });
+
+        // Function to run the Swift code and display output
+        function runCode(code, outputId, inputId) {
+            const outputElement = document.getElementById(outputId);
+            let userInput = '';
+
+            // Check if the code contains 'readLine()' to determine if user input is needed
+            if (code.includes('readLine()')) {
+                userInput = prompt('Enter input for the Swift program:');
+            }
+
+            fetch('/run_swift_code/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({ code: code, input: userInput })
+            })
+            .then(response => response.json())
+            .then(data => {
+                outputElement.textContent = data.output;
+            })
+            .catch(error => {
+                outputElement.textContent = 'Error: ' + error;
+            });
+        }
+
+        // Function to get CSRF token for Django
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+</body>
+</html>
