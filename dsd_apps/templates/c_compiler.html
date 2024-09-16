@@ -13,29 +13,36 @@
         <script>
             function runCode() {
                 const code = document.getElementById('code').value;
-
+        
                 // Clear previous output before running new code
                 document.getElementById('output').textContent = 'Running...';
-
-                // Check if the code contains 'scanf' (indicating input is needed)
-                let userInput = null;
-                if (code.includes('scanf')) {
-                    userInput = prompt("Your code requires input. Please enter the input:");
-
+        
+                // Detect how many `scanf()` or `fgets()` calls are present in the code
+                const inputPatterns = /(scanf|fgets)/g;
+                let userInputs = [];
+                let match;
+        
+                // Find all occurrences of `scanf` or `fgets` in the code
+                while ((match = inputPatterns.exec(code)) !== null) {
+                    // Prompt user for input for each occurrence
+                    let userInput = prompt(`Your code requires input for ${match[0]} call. Please enter the input:`);
+                    
                     // If user cancels the input prompt
                     if (userInput === null) {
-                        document.getElementById('output').textContent = 'No input provided. Execution aborted.';
+                        document.getElementById('output').textContent = 'Execution aborted due to missing input.';
                         return;
                     }
+        
+                    userInputs.push(userInput); // Collect each input
                 }
-
-                // Prepare the payload
-                const payload = { code: code };
-                if (userInput !== null) {
-                    payload.input = userInput;
-                }
-
-                // Send the C code and optional input to the backend
+        
+                // Prepare the payload with the C code and any collected user inputs
+                const payload = { 
+                    code: code, 
+                    inputs: userInputs // Send all inputs together
+                };
+        
+                // Send the C code and user inputs to the backend
                 fetch('/c_run_code/', {
                     method: 'POST',
                     headers: {
@@ -54,11 +61,11 @@
                     document.getElementById('output').textContent = 'Error executing the code.';
                 });
             }
-
+        
             function getCSRFToken() {
                 // Access the CSRF token from the meta tag
                 return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             }
-        </script>
+        </script>        
     </body>
 </html>
