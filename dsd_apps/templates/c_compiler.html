@@ -97,13 +97,35 @@
 
             document.getElementById(outputId).textContent = 'Running...';
 
+            // Detect user input requirements in the code
+            const inputPatterns = /(input|scanf|fgets)/g;
+            let userInputs = [];
+            let match;
+
+            // Find all occurrences of input-related patterns in the code
+            while ((match = inputPatterns.exec(code)) !== null) {
+                let userInput = prompt(`Your code requires input for ${match[0]} call. Please enter the input:`);
+                
+                if (userInput === null) {
+                    document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
+                    return;
+                }
+
+                userInputs.push(userInput);
+            }
+
+            const payload = { 
+                code: code, 
+                inputs: userInputs 
+            };
+
             fetch('/c_run_code/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRFToken': getCSRFToken()
                 },
-                body: JSON.stringify({ code: code })
+                body: JSON.stringify(payload)
             })
             .then(response => response.json())
             .then(data => {
