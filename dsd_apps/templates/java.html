@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Online Compiler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #codeArea {
+            width: 100%;
+            height: 300px;
+        }
+        #outputArea {
+            width: 100%;
+            height: 150px;
+            background-color: #f4f4f4;
+            padding: 10px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Java Online Compiler</h1>
+    <textarea id="codeArea" placeholder="Enter your Java code here..."></textarea>
+    <br>
+    <button id="runCode">Run Code</button>
+    <h3>Output:</h3>
+    <div id="outputArea"></div>
+
+    <script>
+        document.getElementById('runCode').addEventListener('click', function() {
+            const code = document.getElementById('codeArea').value;
+            
+            // Send Java code to backend via POST request
+            fetch('/run_java_code/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken') // Required for Django CSRF protection
+                },
+                body: JSON.stringify({ code: code })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('outputArea').innerText = data.output;
+            })
+            .catch(error => {
+                document.getElementById('outputArea').innerText = 'Error: ' + error;
+            });
+        });
+
+        // Function to get CSRF token
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+</body>
+</html>
