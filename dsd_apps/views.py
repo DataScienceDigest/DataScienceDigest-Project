@@ -76,15 +76,10 @@ def css_index(request):
 def c_run_code(request):
     if request.method == 'POST':
         # Get the C code from the request
-        code = request.POST.get('code', '')
-
-        # Ensure the code contains a main function
-        if 'main(' not in code:
-            return JsonResponse({'output': 'Error: Missing main() function in the provided code.'})
-
+        data = json.loads(request.body)
+        code = data.get('code', '')
         # Path to gcc on Ubuntu
         gcc_path = '/usr/bin/gcc'
-
         # Create a temporary file to store the C code
         with tempfile.NamedTemporaryFile(suffix='.c', delete=False) as temp_c_file:
             temp_c_file.write(code.encode())
