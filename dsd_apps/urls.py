@@ -6,6 +6,7 @@ urlpatterns = [
     # ________________javascript Compiler __________________
     path('javascript/', views.javascript_index, name='javascript'), #done
     path('java/', views.java_index, name='java'),
+    path('run_java_code/', views.run_java_code, name='run_java_code'),
     path('r/', views.r_index, name='r'),  # 'R' should be lowercase for the URL
     path('php/', views.php_index, name='php'),
     path('csharp/', views.csharp_index, name='csharp'),  # Avoid special characters in URLs

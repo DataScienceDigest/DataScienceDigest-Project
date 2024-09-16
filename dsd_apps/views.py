@@ -178,3 +178,54 @@ def cpp_run_code(request):
             return JsonResponse({'output': f'Error: {str(e)}'})
 
     return JsonResponse({'output': 'Invalid request method'})
+
+# java compiler code 
+@csrf_exempt
+def run_java_code(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        java_code = data.get('code', '')
+
+        # Create a temporary directory to store the Java file
+        with tempfile.TemporaryDirectory() as temp_dir:
+            java_file_path = os.path.join(temp_dir, "Main.java")
+            
+            # Write the Java code to a file
+            with open(java_file_path, "w") as java_file:
+                java_file.write(java_code)
+
+            try:
+                # Compile the Java code
+                compile_process = subprocess.run(
+                    ['javac', java_file_path],
+                    capture_output=True,
+                    text=True
+                )
+
+                if compile_process.returncode != 0:
+                    return JsonResponse({
+                        'output': 'Compilation Error:\n' + compile_process.stderr
+                    })
+
+                # Run the Java program
+                run_process = subprocess.run(
+                    ['java', '-cp', temp_dir, 'Main'],
+                    capture_output=True,
+                    text=True
+                )
+
+                if run_process.returncode == 0:
+                    return JsonResponse({
+                        'output': run_process.stdout
+                    })
+                else:
+                    return JsonResponse({
+                        'output': 'Runtime Error:\n' + run_process.stderr
+                    })
+
+            except Exception as e:
+                return JsonResponse({
+                    'output': 'Error executing Java code:\n' + str(e)
+                })
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=400)
