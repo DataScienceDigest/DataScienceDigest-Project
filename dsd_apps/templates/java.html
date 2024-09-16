@@ -7,51 +7,253 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
         }
-        #codeArea {
+        .container {
+            margin: 20px;
+        }
+        .section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        .left-panel {
+            width: 45%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .right-panel {
+            width: 50%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        #monaco-editor1, #monaco-editor2, #monaco-editor3 {
             width: 100%;
             height: 300px;
+            border: 1px solid #ccc;
         }
-        #outputArea {
+        .output-area {
             width: 100%;
-            height: 150px;
             background-color: #f4f4f4;
             padding: 10px;
             white-space: pre-wrap;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        }
+        .output-expanded {
+            max-height: 300px; /* Adjust based on the content */
+            padding: 10px;
+        }
+        .run-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .run-btn:hover {
+            background-color: #218838;
         }
     </style>
+    <!-- Include Monaco Editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs/loader.min.js"></script>
 </head>
 <body>
-    <h1>Java Online Compiler</h1>
-    <textarea id="codeArea" placeholder="Enter your Java code here..."></textarea>
-    <br>
-    <button id="runCode">Run Code</button>
-    <h3>Output:</h3>
-    <div id="outputArea"></div>
+    <div class="container">
+        <!-- Section 1: Java Loops -->
+        <div class="section">
+            <!-- Left Panel for Explanations -->
+            <div class="left-panel">
+                <h2>Java Loops</h2>
+                <p>Loops in Java allow you to iterate over a block of code a number of times. Below is an example that prints numbers from 1 to 5 using a loop.</p>
+            </div>
+
+            <!-- Right Panel for Code Editor -->
+            <div class="right-panel">
+                <div id="monaco-editor1"></div>
+                <br>
+                <button class="run-btn" id="runCode1">Run Code</button>
+                <h3>Output:</h3>
+                <div id="outputArea1" class="output-area"></div>
+            </div>
+        </div>
+
+        <!-- Section 2: Java Conditionals -->
+        <div class="section">
+            <!-- Left Panel for Explanations -->
+            <div class="left-panel">
+                <h2>Java Conditionals</h2>
+                <p>Conditionals in Java help you execute different code based on certain conditions. Below is an example that checks if a number is even or odd.</p>
+            </div>
+
+            <!-- Right Panel for Code Editor -->
+            <div class="right-panel">
+                <div id="monaco-editor2"></div>
+                <br>
+                <button class="run-btn" id="runCode2">Run Code</button>
+                <h3>Output:</h3>
+                <div id="outputArea2" class="output-area"></div>
+            </div>
+        </div>
+
+        <!-- Section 3: Java Classes -->
+        <div class="section">
+            <!-- Left Panel for Explanations -->
+            <div class="left-panel">
+                <h2>Java Classes</h2>
+                <p>Classes in Java are the foundation of object-oriented programming. Below is an example that demonstrates a simple class definition and object creation.</p>
+            </div>
+
+            <!-- Right Panel for Code Editor -->
+            <div class="right-panel">
+                <div id="monaco-editor3"></div>
+                <br>
+                <button class="run-btn" id="runCode3">Run Code</button>
+                <h3>Output:</h3>
+                <div id="outputArea3" class="output-area"></div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        document.getElementById('runCode').addEventListener('click', function() {
-            const code = document.getElementById('codeArea').value;
+        // Load Monaco Editor using require.js
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs' }});
+
+        require(['vs/editor/editor.main'], function() {
+            // Editor for Section 1 (Loops)
+            var editor1 = monaco.editor.create(document.getElementById('monaco-editor1'), {
+                value: `public class Main {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Number " + i);
+        }
+    }
+}`,
+                language: 'java',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            // Editor for Section 2 (Conditionals)
+            var editor2 = monaco.editor.create(document.getElementById('monaco-editor2'), {
+                value: `import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int num = scanner.nextInt();
+        if (num % 2 == 0) {
+            System.out.println(num + " is even.");
+        } else {
+            System.out.println(num + " is odd.");
+        }
+    }
+}`,
+                language: 'java',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            // Editor for Section 3 (Classes)
+            var editor3 = monaco.editor.create(document.getElementById('monaco-editor3'), {
+                value: `class Dog {
+    String name;
+    int age;
+
+    Dog(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void bark() {
+        System.out.println(name + " is barking!");
+    }
+
+    public static void main(String[] args) {
+        Dog dog = new Dog("Rex", 5);
+        dog.bark();
+    }
+}`,
+                language: 'java',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            // Button to run code for Section 1 (Loops)
+            document.getElementById('runCode1').addEventListener('click', function() {
+                const code = editor1.getValue();
+                let userInput = '';
+                runCode(code, userInput, 'outputArea1');
+            });
+
+            // Button to run code for Section 2 (Conditionals)
+            document.getElementById('runCode2').addEventListener('click', function() {
+                const code = editor2.getValue();
+                let userInput = prompt('Enter input:');
+                runCode(code, userInput, 'outputArea2');
+            });
+
+            // Button to run code for Section 3 (Classes)
+            document.getElementById('runCode3').addEventListener('click', function() {
+                const code = editor3.getValue();
+                let userInput = '';
+                runCode(code, userInput, 'outputArea3');
+            });
+        });
+
+        // Function to send code to backend and display output
+        function runCode(code, input, outputAreaId) {
+            const outputArea = document.getElementById(outputAreaId);
             
-            // Send Java code to backend via POST request
             fetch('/run_java_code/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken') // Required for Django CSRF protection
+                    'X-CSRFToken': getCookie('csrftoken')
                 },
-                body: JSON.stringify({ code: code })
+                body: JSON.stringify({ code: code, input: input })
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('outputArea').innerText = data.output;
+                outputArea.innerText = data.output;
+
+                // Expand the output area
+                outputArea.classList.add('output-expanded');
             })
             .catch(error => {
-                document.getElementById('outputArea').innerText = 'Error: ' + error;
-            });
-        });
+                outputArea.innerText = 'Error: ' + error;
 
-        // Function to get CSRF token
+                // Expand the output area even
+
+            });
+        }
+
+        // Function to get CSRF token for Django
         function getCookie(name) {
             let cookieValue = null;
             if (document.cookie && document.cookie !== '') {
