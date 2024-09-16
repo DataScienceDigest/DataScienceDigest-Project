@@ -5,138 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Java Online Compiler</title>
     <style>
+        /* Global body styles */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
             margin: 0;
-            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f2f5;
         }
-        .container {
-            margin: 20px;
-        }
+        
+        /* Section layout and styles */
         .section {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 40px;
-        }
-        .left-panel {
-            width: 45%;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        .right-panel {
-            width: 50%;
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            font-size: 24px;
             margin-bottom: 20px;
-            color: #333;
         }
-        h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: #333;
+        
+        /* Intro and explanation section (left) */
+        .intro {
+            width: 40%;
         }
-        #monaco-editor1, #monaco-editor2, #monaco-editor3 {
-            width: 100%;
-            height: 300px;
-            border: 1px solid #ccc;
-        }
-        .output-area {
-            width: 100%;
-            background-color: #f4f4f4;
+        
+        /* Code editor section (right) */
+        .compiler {
+            width: 55%;
             padding: 10px;
-            white-space: pre-wrap;
-            margin-top: 10px;
             border: 1px solid #ccc;
-            border-radius: 6px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            border-radius: 8px;
+            background-color: #f9f9f9;
         }
-        .output-expanded {
-            max-height: 300px; /* Adjust based on the content */
-            padding: 10px;
-        }
-        .run-btn {
-            display: inline-block;
-            margin-top: 10px;
+        
+        /* Button styles */
+        .compiler button {
             padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
             background-color: #28a745;
             color: white;
             border: none;
             border-radius: 6px;
             font-size: 16px;
-            cursor: pointer;
             transition: background-color 0.3s;
         }
-        .run-btn:hover {
+        
+        .compiler button:hover {
             background-color: #218838;
+        }
+        
+        /* Output section styles */
+        .output {
+            margin-top: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            height: auto;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        }
+        
+        .output-expanded {
+            max-height: 300px;
+            padding: 10px;
+        }
+        
+        /* Monaco Editor styles */
+        #monaco-editor1, #monaco-editor2, #monaco-editor3 {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
         }
     </style>
     <!-- Include Monaco Editor -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs/loader.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <!-- Section 1: Java Loops -->
-        <div class="section">
-            <!-- Left Panel for Explanations -->
-            <div class="left-panel">
-                <h2>Java Loops</h2>
-                <p>Loops in Java allow you to iterate over a block of code a number of times. Below is an example that prints numbers from 1 to 5 using a loop.</p>
-            </div>
-
-            <!-- Right Panel for Code Editor -->
-            <div class="right-panel">
-                <div id="monaco-editor1"></div>
-                <br>
-                <button class="run-btn" id="runCode1">Run Code</button>
-                <h3>Output:</h3>
-                <div id="outputArea1" class="output-area"></div>
-            </div>
+    <div class="section">
+        <!-- Left Panel for Explanations -->
+        <div class="intro">
+            <h2>Java Loops</h2>
+            <p>Loops in Java allow you to iterate over a block of code a number of times. Below is an example that prints numbers from 1 to 5 using a loop.</p>
         </div>
 
-        <!-- Section 2: Java Conditionals -->
-        <div class="section">
-            <!-- Left Panel for Explanations -->
-            <div class="left-panel">
-                <h2>Java Conditionals</h2>
-                <p>Conditionals in Java help you execute different code based on certain conditions. Below is an example that checks if a number is even or odd.</p>
-            </div>
+        <!-- Right Panel for Code Editor -->
+        <div class="compiler">
+            <div id="monaco-editor1"></div>
+            <br>
+            <button class="run-btn" id="runCode1">Run Code</button>
+            <h3>Output:</h3>
+            <div id="outputArea1" class="output"></div>
+        </div>
+    </div>
 
-            <!-- Right Panel for Code Editor -->
-            <div class="right-panel">
-                <div id="monaco-editor2"></div>
-                <br>
-                <button class="run-btn" id="runCode2">Run Code</button>
-                <h3>Output:</h3>
-                <div id="outputArea2" class="output-area"></div>
-            </div>
+    <div class="section">
+        <!-- Left Panel for Explanations -->
+        <div class="intro">
+            <h2>Java Conditionals</h2>
+            <p>Conditionals in Java help you execute different code based on certain conditions. Below is an example that checks if a number is even or odd.</p>
         </div>
 
-        <!-- Section 3: Java Classes -->
-        <div class="section">
-            <!-- Left Panel for Explanations -->
-            <div class="left-panel">
-                <h2>Java Classes</h2>
-                <p>Classes in Java are the foundation of object-oriented programming. Below is an example that demonstrates a simple class definition and object creation.</p>
-            </div>
+        <!-- Right Panel for Code Editor -->
+        <div class="compiler">
+            <div id="monaco-editor2"></div>
+            <br>
+            <button class="run-btn" id="runCode2">Run Code</button>
+            <h3>Output:</h3>
+            <div id="outputArea2" class="output"></div>
+        </div>
+    </div>
 
-            <!-- Right Panel for Code Editor -->
-            <div class="right-panel">
-                <div id="monaco-editor3"></div>
-                <br>
-                <button class="run-btn" id="runCode3">Run Code</button>
-                <h3>Output:</h3>
-                <div id="outputArea3" class="output-area"></div>
-            </div>
+    <div class="section">
+        <!-- Left Panel for Explanations -->
+        <div class="intro">
+            <h2>Java Classes</h2>
+            <p>Classes in Java are the foundation of object-oriented programming. Below is an example that demonstrates a simple class definition and object creation.</p>
+        </div>
+
+        <!-- Right Panel for Code Editor -->
+        <div class="compiler">
+            <div id="monaco-editor3"></div>
+            <br>
+            <button class="run-btn" id="runCode3">Run Code</button>
+            <h3>Output:</h3>
+            <div id="outputArea3" class="output"></div>
         </div>
     </div>
 

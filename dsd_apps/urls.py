@@ -22,4 +22,7 @@ urlpatterns = [
     # _______________python section ____________________
     path('python/', views.python_index, name='python'),  #done
     path('run/', views.run_python, name='run_code'), #done
+    # _______________swift section _______________________
+    path('swift/', views.swift_index, name='swift'),  #done
+    path('run_swift_code/', views.run_swift_code, name='run_swift_code'),
 ]
