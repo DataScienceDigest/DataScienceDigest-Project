@@ -185,11 +185,12 @@ def run_java_code(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         java_code = data.get('code', '')
+        user_input = data.get('input', '')
 
         # Create a temporary directory to store the Java file
         with tempfile.TemporaryDirectory() as temp_dir:
             java_file_path = os.path.join(temp_dir, "Main.java")
-            
+
             # Write the Java code to a file
             with open(java_file_path, "w") as java_file:
                 java_file.write(java_code)
@@ -207,9 +208,10 @@ def run_java_code(request):
                         'output': 'Compilation Error:\n' + compile_process.stderr
                     })
 
-                # Run the Java program
+                # Run the Java program and pass the user input
                 run_process = subprocess.run(
                     ['java', '-cp', temp_dir, 'Main'],
+                    input=user_input,  # Pass user input to the program
                     capture_output=True,
                     text=True
                 )
