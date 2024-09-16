@@ -75,17 +75,18 @@ def css_index(request):
 @csrf_exempt
 def c_run_code(request):
     if request.method == 'POST':
-        # Get the C code from the request
-        data = json.loads(request.body)
-        code = data.get('code', '')
-        # Path to gcc on Ubuntu
-        gcc_path = '/usr/bin/gcc'
-        # Create a temporary file to store the C code
-        with tempfile.NamedTemporaryFile(suffix='.c', delete=False) as temp_c_file:
-            temp_c_file.write(code.encode())
-            temp_c_file_name = temp_c_file.name
-
         try:
+            # Parse JSON data from the request body
+            data = json.loads(request.body)
+            code = data.get('code', '')
+            user_inputs = data.get('inputs', [])  # Get user inputs if any
+            # Path to gcc on Ubuntu
+            gcc_path = '/usr/bin/gcc'
+            # Create a temporary file to store the C code
+            with tempfile.NamedTemporaryFile(suffix='.c', delete=False) as temp_c_file:
+                temp_c_file.write(code.encode())
+                temp_c_file_name = temp_c_file.name
+
             # Compile the C code using gcc
             compiled_output = temp_c_file_name[:-2]  # Remove .c to get the executable name
             compile_process = subprocess.run(
@@ -100,9 +101,13 @@ def c_run_code(request):
             # Give execute permission to the compiled binary
             os.chmod(compiled_output, 0o755)
 
-            # Run the compiled C program
+            # Prepare the input for the C program (join all inputs with newlines)
+            input_data = '\n'.join(user_inputs) if user_inputs else None
+
+            # Run the compiled C program with user inputs
             run_process = subprocess.run(
-                [compiled_output], capture_output=True, text=True
+                [compiled_output],
+                input=input_data, text=True, capture_output=True
             )
 
             # Clean up the temp files
