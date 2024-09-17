@@ -285,27 +285,32 @@ def go_index(request):
 @csrf_exempt
 def go_run_code(request):
     if request.method == 'POST':
-        # Extract Go code and optional input from the POST request
-        go_code = request.POST.get('code', '')
-        user_input = request.POST.get('input', '')  # Optional, if code uses input
-        # Save the Go code to a temporary file
-        file_path = "/tmp/user_code.go"
-        with open(file_path, 'w') as file:
-            file.write(go_code)
-
         try:
-            # Compile and run the Go code
-            result = subprocess.run(
-                ['/usr/bin/go', 'run', file_path],
-                input=user_input,  # Pass user input if needed
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
-            )
+            # Extract Go code and optional input from the JSON request body
+            data = json.loads(request.body)
+            go_code = data.get('code', '')
+            user_input = data.get('inputs', '')
+            print(go_code,'===-=-=-==')
+            # Save the Go code to a temporary file
+            file_path = "/tmp/user_code.go"
+            with open(file_path, 'w') as file:
+                file.write(go_code)
 
-            # Send back the output (or error) in JSON format
-            return JsonResponse({
-                'output': result.stdout or result.stderr
-            })
-        except Exception as e:
-            return JsonResponse({'output': str(e)})
+            try:
+                # Compile and run the Go code
+                result = subprocess.run(
+                    ['/usr/bin/go', 'run', file_path],
+                    input=user_input,  # Pass user input if needed
+                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+                )
 
+                # Send back the output (or error) in JSON format
+                return JsonResponse({
+                    'output': result.stdout or result.stderr
+                })
+            except Exception as e:
+                return JsonResponse({'output': str(e)})
+
+        except json.JSONDecodeError as e:
+            return JsonResponse({'error': 'Invalid JSON input.'})
     return JsonResponse({'error': 'Invalid request method.'})
