@@ -277,3 +277,35 @@ def run_java_code(request):
                 })
     else:
         return JsonResponse({'error': 'Invalid request method'}, status=400)
+    
+# go index
+def go_index(request):
+    return render(request, 'go.html')
+# go compiler
+@csrf_exempt
+def go_run_code(request):
+    if request.method == 'POST':
+        # Extract Go code and optional input from the POST request
+        go_code = request.POST.get('code', '')
+        user_input = request.POST.get('input', '')  # Optional, if code uses input
+        # Save the Go code to a temporary file
+        file_path = "/tmp/user_code.go"
+        with open(file_path, 'w') as file:
+            file.write(go_code)
+
+        try:
+            # Compile and run the Go code
+            result = subprocess.run(
+                ['go', 'run', file_path],
+                input=user_input,  # Pass user input if needed
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
+            )
+
+            # Send back the output (or error) in JSON format
+            return JsonResponse({
+                'output': result.stdout or result.stderr
+            })
+        except Exception as e:
+            return JsonResponse({'output': str(e)})
+
+    return JsonResponse({'error': 'Invalid request method.'})
