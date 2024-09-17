@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Online Go Compiler</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .intro {
+            width: 40%;
+        }
+        .compiler {
+            width: 55%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .compiler button {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .output {
+            margin-top: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Go Compiler</h1>
+    <div class="section">
+        <!-- Explanation Section -->
+        <div class="intro">
+            <h2>Loops in Go</h2>
+            <p>In Go, loops are used to repeat a block of code as long as a specified condition is true. Use the editor on the right to run a loop example.</p>
+        </div>
+        <!-- Compiler Section -->
+        <div class="compiler">
+            <div id="editorContainer1" style="height: 200px;"></div>
+            <button onclick="runGoCode('editor1', 'output1')">Run</button>
+            <pre id="output1" class="output">Output will appear here...</pre>
+        </div>
+    </div>
+
+    <div class="section">
+        <!-- Explanation Section -->
+        <div class="intro">
+            <h2>Welcome to the Go Compiler</h2>
+            <p>This is a simple Go code editor and compiler. You can edit the code on the right and click "Run" to see the output.</p>
+        </div>
+        <!-- Compiler Section -->
+        <div class="compiler">
+            <div id="editorContainer2" style="height: 200px;"></div>
+            <button onclick="runGoCode('editor2', 'output2')">Run</button>
+            <pre id="output2" class="output">Output will appear here...</pre>
+        </div>
+    </div>
+
+    <script>
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+        require(['vs/editor/editor.main'], function () {
+            window.editor1 = monaco.editor.create(document.getElementById('editorContainer1'), {
+                value: 'package main\n\nimport "fmt"\n\nfunc main() {\n    for i := 1; i <= 5; i++ {\n        fmt.Printf("Square of %d is %d\\n", i, i*i)\n    }\n}\n',
+                language: 'go',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            window.editor2 = monaco.editor.create(document.getElementById('editorContainer2'), {
+                value: 'package main\n\nimport "fmt"\n\nfunc main() {\n    fmt.Println("Hello, World!")\n}\n',
+                language: 'go',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+        });
+
+        function runGoCode(editorId, outputId) {
+            const code = window[editorId].getValue();
+            document.getElementById(outputId).textContent = 'Running...';
+
+            // Detect input-related patterns
+            const inputPatterns = /fmt.Scan|fmt.Scanln|fmt.Fscan|fmt.Fscanln/g;
+            let match;
+            let userInputs = [];
+            let inputPrompt = {};
+
+            // Find all unique occurrences of input-related patterns in the code
+            while ((match = inputPatterns.exec(code)) !== null) {
+                // Store the input prompt message if not already stored
+                if (!inputPrompt[match[0]]) {
+                    let userInput = prompt(`Your code requires input for ${match[0]} call. Please enter the input:`);
+                    if (userInput === null) {
+                        document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
+                        return;
+                    }
+                    inputPrompt[match[0]] = userInput;
+                }
+            }
+
+            // Prepare the payload with the Go code and any collected user inputs
+            const payload = { 
+                code: code, 
+                inputs: Object.values(inputPrompt) // Send all collected inputs
+            };
+
+            fetch('/go_run_code/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCSRFToken()
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById(outputId).textContent = data.output;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById(outputId).textContent = 'Error executing the code.';
+            });
+        }
+
+        function getCSRFToken() {
+            return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        }
+    </script>
+</body>
+</html>

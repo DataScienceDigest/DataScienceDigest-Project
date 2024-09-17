@@ -25,4 +25,7 @@ urlpatterns = [
     # _______________swift section _______________________
     path('swift/', views.swift_index, name='swift'),  #done
     path('run_swift_code/', views.run_swift_code, name='run_swift_code'),
+    # _______________go section _______________________
+    path('go/', views.go_index, name='go'),
+    path('go_run_code/', views.go_run_code, name='go_run_code'),
 ]
