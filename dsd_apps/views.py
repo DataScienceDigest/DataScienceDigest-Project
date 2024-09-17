@@ -77,10 +77,12 @@ def swift_index(request):
 @csrf_exempt
 def run_swift_code(request):
     if request.method == 'POST':
-        # Extract code and input from POST request
-        code = request.POST.get('code')
-        user_input = request.POST.get('input', '')  # Default to empty if not provided
-
+        try:
+            data = json.loads(request.body)
+            code = data.get('code')
+            user_input = data.get('input', '')  # Default to empty if not provided
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON format'}, status=400)
         # Save the Swift code to a temporary file
         file_path = "/tmp/user_code.swift"
         with open(file_path, 'w') as file:
