@@ -296,7 +296,7 @@ def go_run_code(request):
         try:
             # Compile and run the Go code
             result = subprocess.run(
-                ['go', 'run', file_path],
+                ['/usr/bin/go', 'run', file_path],
                 input=user_input,  # Pass user input if needed
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True
             )
