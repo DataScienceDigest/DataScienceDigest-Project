@@ -118,7 +118,7 @@
             // Prepare the payload with the Go code and any collected user inputs
             const payload = { 
                 code: code, 
-                inputs: Object.values(inputPrompt) // Send all collected inputs
+                inputs: Object.values(inputPrompt).join("\n") // Concatenate inputs with new lines if multiple inputs
             };
 
             fetch('/go_run_code/', {
