@@ -88,6 +88,9 @@ def run_swift_code(request):
         with open(file_path, 'w') as file:
             file.write(code)
 
+         # Ensure Swift is available in PATH
+        os.environ["PATH"] += os.pathsep + "/usr/local/swift/usr/bin"
+
         try:
             # Run swift compiler
             if "readLine()" in code:
