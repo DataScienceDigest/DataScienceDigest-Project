@@ -3,9 +3,10 @@ from . import views
 urlpatterns = [
     path('',views.index),
     path('all_courses/',views.all_courses,name='all_courses'), #done
+    path('all_compilers',views.all_compilers,name='all_compilers'),
     # ________________javascript Compiler __________________
     path('javascript/', views.javascript_index, name='javascript'), #done
-    path('java/', views.java_index, name='java'),
+    path('java/', views.java_index, name='java'),     # done 
     path('run_java_code/', views.run_java_code, name='run_java_code'),
     path('r/', views.r_index, name='r'),  # 'R' should be lowercase for the URL
     path('php/', views.php_index, name='php'),
@@ -26,6 +27,9 @@ urlpatterns = [
     path('swift/', views.swift_index, name='swift'),  #done
     path('run_swift_code/', views.run_swift_code, name='run_swift_code'),
     # _______________go section _______________________
-    path('go/', views.go_index, name='go'),
+    path('go/', views.go_index, name='go'), #done
     path('go_run_code/', views.go_run_code, name='go_run_code'),
+    # _______________rust section _______________________
+    path('rust/', views.rust_index, name='rust'),
+    path('compile_rust/',views.compile_rust,name='compile_rust')
 ]
