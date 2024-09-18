@@ -98,6 +98,7 @@ def run_r_code(request):
             return JsonResponse({'error': str(e)}, status=500)
 
     return JsonResponse({'error': 'Only POST method is allowed'}, status=400)
+
 def php_index(request):
     return render(request, 'php.html')
 
@@ -404,3 +405,44 @@ def compile_rust(request):
             return JsonResponse({'status': 'error', 'output': str(e)})
 
     return JsonResponse({'status': 'error', 'output': 'Invalid request method'})
+
+# php editor 
+@csrf_exempt
+def php_run_code(request):
+    if request.method == 'POST':
+        try:
+            # Parse the JSON payload from request body
+            data = json.loads(request.body.decode('utf-8'))
+            code = data.get('code', '')
+            inputs = data.get('inputs', [])
+
+            # Create temporary PHP file
+            file_path = "/tmp/temp_code.php"
+            with open(file_path, 'w') as php_file:
+                php_file.write(code)
+
+            # Execute PHP code with inputs (if any)
+            try:
+                result = subprocess.run(
+                    ['php', file_path], 
+                    input="\n".join(inputs), 
+                    stdout=subprocess.PIPE, 
+                    stderr=subprocess.PIPE, 
+                    text=True, 
+                    timeout=10
+                )
+                output = result.stdout
+                error = result.stderr
+            except subprocess.TimeoutExpired:
+                return JsonResponse({"output": "", "error": "Code execution timed out."})
+
+            # Clean up the temporary file
+            os.remove(file_path)
+
+            # Return output or error as JSON
+            return JsonResponse({"output": output, "error": error})
+
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON payload."}, status=400)
+
+    return JsonResponse({"error": "Invalid request method"}, status=400)

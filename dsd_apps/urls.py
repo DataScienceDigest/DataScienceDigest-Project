@@ -11,6 +11,7 @@ urlpatterns = [
     path('r/', views.r_index, name='r'),  # 'R' should be lowercase for the URL
     path('run_r_code/',views.run_r_code,name='run_r_code'),
     path('php/', views.php_index, name='php'),
+    path('php_run_code/',views.php_run_code,name='php_run_code'),
     path('csharp/', views.csharp_index, name='csharp'),  # Avoid special characters in URLs
     path('sql/', views.sql_index, name='sql'),
     path('html/', views.html_index, name='html'),   # done
