@@ -100,49 +100,47 @@
         });
 
         function runCode(editorId, outputId) {
-            const code = window[editorId].getValue();
-            document.getElementById(outputId).textContent = 'Running...';
+                const code = window[editorId].getValue();
+                document.getElementById(outputId).textContent = 'Running...';
 
-            // Improved input detection
-            const inputPatterns = /std::io::stdin|read_line/g;
-            let userInputs = [];
-            let match;
-            let inputPrompt = {};
+                const inputPatterns = /std::io::stdin|read_line/g;
+                let inputPrompt = {};
 
-            // Find all unique occurrences of input-related patterns in the code
-            while ((match = inputPatterns.exec(code)) !== null) {
-                if (!inputPrompt[match[0]]) {
-                    let userInput = prompt(`Your code requires input for ${match[0]} call. Please enter the input:`);
+                // If user input is detected in the Rust code, prompt the user
+                if (inputPatterns.test(code)) {
+                    let userInput = prompt("Your code requires input. Please enter the input:");
                     if (userInput === null) {
                         document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
                         return;
                     }
-                    inputPrompt[match[0]] = userInput;
+                    inputPrompt['input'] = userInput;
                 }
+
+                // Create payload to send code and input to the server
+                const payload = {
+                    code: code,
+                    input: inputPrompt['input'] || ''
+                };
+
+                // Send the code to the backend using fetch
+                fetch('/compile_rust/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCSRFToken()
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById(outputId).textContent = data.output;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById(outputId).textContent = 'Error executing the code.';
+                });
             }
 
-            const payload = { 
-                code: code, 
-                inputs: Object.values(inputPrompt) // Send all collected inputs
-            };
-
-            fetch('/compile_rust/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCSRFToken()
-                },
-                body: JSON.stringify(payload)
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById(outputId).textContent = data.output;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById(outputId).textContent = 'Error executing the code.';
-            });
-        }
 
         function getCSRFToken() {
             return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
