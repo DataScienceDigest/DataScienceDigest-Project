@@ -14,6 +14,7 @@ urlpatterns = [
     path('php_run_code/',views.php_run_code,name='php_run_code'),
     path('csharp/', views.csharp_index, name='csharp'),  # Avoid special characters in URLs
     path('sql/', views.sql_index, name='sql'),
+     path('execute_sql/', views.execute_sql, name='execute_sql'),
     path('html/', views.html_index, name='html'),   # done
     # ____________________c compiler __________________________
     path('c/',views.c_index,name='c'), #done

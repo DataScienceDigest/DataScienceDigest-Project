@@ -5,7 +5,8 @@ import subprocess
 import json
 import os
 import tempfile
-
+import sqlite3
+from django.conf import settings 
 def index(request):
     return render(request, 'index.html')
 def all_courses(request):
@@ -107,6 +108,81 @@ def csharp_index(request):
 
 def sql_index(request):
     return render(request, 'sql.html')
+
+@csrf_exempt  # Bypass CSRF for now (for simplicity)
+def execute_sql(request):
+    if request.method == 'POST':
+        try:
+            # Parse JSON data from the request body
+            data = json.loads(request.body.decode('utf-8'))
+            query = data.get('query', '').strip()
+
+            if not query:
+                return JsonResponse({'error': 'No query provided'}, status=400)
+
+            # Path to the database file in your project folder
+            db_path = str(settings.BASE_DIR / "db.sqlite3")
+            conn = sqlite3.connect(db_path)
+            cursor = conn.cursor()
+
+            try:
+                query_lower = query.lower()
+
+                # Handle SELECT queries separately
+                if query_lower.startswith('select'):
+                    cursor.execute(query)
+                    result = cursor.fetchall()
+                    columns = [desc[0] for desc in cursor.description]  # Extract column names
+                    return JsonResponse({
+                        'columns': columns,
+                        'result': result
+                    })
+
+                # Execute other types of queries (INSERT, UPDATE, DELETE, CREATE, etc.)
+                cursor.execute(query)
+                conn.commit()
+
+                # Determine if we need to fetch data from an affected table
+                table_name = None
+
+                if query_lower.startswith('insert into'):
+                    table_name = query.split()[2]  # Extract table name after 'insert into'
+                elif query_lower.startswith('update'):
+                    table_name = query.split()[1]  # Extract table name after 'update'
+                elif query_lower.startswith('delete from'):
+                    table_name = query.split()[2]  # Extract table name after 'delete from'
+                elif query_lower.startswith('create table'):
+                    table_name = query.split()[2]  # Extract table name after 'create table'
+                elif query_lower.startswith('alter table'):
+                    table_name = query.split()[2]  # Extract table name after 'alter table'
+
+                if table_name:
+                    # Fetch data from the affected table to show the updated content
+                    cursor.execute(f'SELECT * FROM {table_name}')
+                    result = cursor.fetchall()
+
+                    # Fetch column names
+                    cursor.execute(f'PRAGMA table_info({table_name})')
+                    columns = [col[1] for col in cursor.fetchall()]
+
+                    return JsonResponse({
+                        'columns': columns,
+                        'result': result
+                    })
+                else:
+                    # No table affected; return a success message for other queries
+                    return JsonResponse({'result': "Query executed successfully."})
+
+            except Exception as e:
+                return JsonResponse({'error': str(e)})
+
+            finally:
+                conn.close()
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON data'}, status=400)
+
+
 # html code editor
 def html_index(request):
     return render(request, 'html.html')
