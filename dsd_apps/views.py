@@ -11,6 +11,11 @@ def index(request):
 def all_courses(request):
     return render(request, 'all_courses.html')
 
+def all_compilers(request):
+    return render(request,'all_compilers.html')
+def python_index(request):
+    return render(request, 'python.html')
+
 @csrf_exempt
 def run_python(request):
     if request.method == 'POST':
@@ -38,18 +43,16 @@ def run_python(request):
         return JsonResponse({'output': output})
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
-def python_index(request):
-    return render(request, 'python.html')
 
 def javascript_index(request):
     return render(request, 'javascript.html')
 
 def cpp_index(request):
     return render(request,'cpp_compiler.html')
-
+# 
 def c_index(request):
     return render(request,'c_compiler.html')
-
+#  java editor 
 def java_index(request):
     return render(request, 'java.html')
 
@@ -64,7 +67,7 @@ def csharp_index(request):
 
 def sql_index(request):
     return render(request, 'sql.html')
-
+# html code editor
 def html_index(request):
     return render(request, 'html.html')
 
@@ -314,3 +317,52 @@ def go_run_code(request):
         except json.JSONDecodeError as e:
             return JsonResponse({'error': 'Invalid JSON input.'})
     return JsonResponse({'error': 'Invalid request method.'})
+# rust index
+def rust_index(request):
+    return render(request, 'rust.html')
+# rust editor
+@csrf_exempt
+def compile_rust(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            rust_code = data.get('code')  # Get the Rust code from JSON
+            user_input = data.get('input')  # Get user input for the Rust program
+            print(rust_code, '-=-=-=-=-=')  # Debugging print
+        except json.JSONDecodeError:
+            return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'})
+        # Write the Rust code to a file
+        file_path = '/tmp/user_code.rs'
+        with open(file_path, 'w') as rust_file:
+            rust_file.write(rust_code)
+
+        try:
+            # Compile the Rust code
+            compile_result = subprocess.run(
+                ['rustc', file_path, '-o', '/tmp/user_code'], 
+                capture_output=True, text=True, timeout=10
+            )
+
+            # If there are compilation errors, return them
+            if compile_result.returncode != 0:
+                return JsonResponse({'status': 'error', 'output': compile_result.stderr})
+
+            # Run the compiled code, providing the user input
+            execution_result = subprocess.run(
+                ['/tmp/user_code'], 
+                input=user_input, capture_output=True, text=True, timeout=10
+            )
+
+            # Return the output of the program
+            if execution_result.returncode == 0:
+                return JsonResponse({'status': 'success', 'output': execution_result.stdout})
+            else:
+                return JsonResponse({'status': 'error', 'output': execution_result.stderr})
+
+        except subprocess.TimeoutExpired:
+            return JsonResponse({'status': 'error', 'output': 'Execution timed out'})
+        
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'output': str(e)})
+
+    return JsonResponse({'status': 'error', 'output': 'Invalid request method'})

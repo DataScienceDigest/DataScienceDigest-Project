@@ -12,7 +12,7 @@ body {
 
 header {
     background-color: #fff;
-    padding: 10px 50px;
+    padding: 10px 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
@@ -155,6 +155,7 @@ nav {
 .choose-content {
     text-align: left;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .choose-content h2 {
@@ -369,6 +370,7 @@ nav {
     display: flex;
     gap: 40px;
     margin-bottom: 20px;
+    justify-content: center;
 }
 
 .compiler-column {
