@@ -58,7 +58,46 @@ def java_index(request):
 
 def r_index(request):
     return render(request, 'r.html')
+# r compiler 
+@csrf_exempt
+def run_r_code(request):
+    if request.method == 'POST':
+        try:
+            # Parse the JSON data from the request
+            data = json.loads(request.body.decode('utf-8'))
+            code = data.get('code')
+            inputs = data.get('inputs', [])
+            # Create an R script with the provided code
+            script_file = 'script.R'
+            with open(script_file, 'w') as file:
+                file.write(code)
 
+            # Prepare the R environment to handle inputs
+            input_file = 'inputs.txt'
+            with open(input_file, 'w') as file:
+                for user_input in inputs:
+                    file.write(user_input + '\n')
+
+            # Run the R script
+            result = subprocess.run(
+                ['Rscript', '--vanilla', script_file],
+                input='\n'.join(inputs),  # Provide inputs to the R script
+                text=True,
+                capture_output=True
+            )
+
+            # Read the output from the R script
+            output = result.stdout
+            error = result.stderr if result.stderr else None
+
+            # Return the output and error (if any) as JSON
+            return JsonResponse({'output': output, 'error': error})
+        except Exception as e:
+            # Log the exception to the console or to a file
+            print(f"Error: {str(e)}")
+            return JsonResponse({'error': str(e)}, status=500)
+
+    return JsonResponse({'error': 'Only POST method is allowed'}, status=400)
 def php_index(request):
     return render(request, 'php.html')
 
