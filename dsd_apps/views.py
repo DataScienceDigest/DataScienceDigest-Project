@@ -328,7 +328,6 @@ def compile_rust(request):
             data = json.loads(request.body)
             rust_code = data.get('code')  # Get the Rust code from JSON
             user_input = data.get('input')  # Get user input for the Rust program
-            print(rust_code, '-=-=-=-=-=')  # Debugging print
         except json.JSONDecodeError:
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'})
         # Write the Rust code to a file
