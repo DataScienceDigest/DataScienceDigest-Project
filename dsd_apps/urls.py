@@ -35,5 +35,8 @@ urlpatterns = [
     path('go_run_code/', views.go_run_code, name='go_run_code'),
     # _______________rust section _______________________
     path('rust/', views.rust_index, name='rust'),
-    path('compile_rust/',views.compile_rust,name='compile_rust')
+    path('compile_rust/',views.compile_rust,name='compile_rust'),
+    # ______________perl section ___________________________
+    path('perl/',views.perl_index, name='perl'),
+    path('run_perl_code/',views.run_perl_code,name='run_perl_code')
 ]
