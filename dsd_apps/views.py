@@ -571,3 +571,33 @@ def csharp_run_code(request):
         return JsonResponse({'output': output})
 
     return JsonResponse({'output': 'Invalid request method'}, status=400)
+
+def perl_index(request):
+    return render(request, 'perl.html')
+
+# perl editor 
+@csrf_exempt
+def run_perl_code(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)  # Capture JSON data
+        code = data.get('code')          # Perl code
+        input_data = data.get('input_data', '')  # Input data for Perl code
+        # Save the Perl code to a temporary file
+        with open('temp_code.pl', 'w') as file:
+            file.write(code)
+
+        try:
+            # Execute the Perl code, pass input data through stdin
+            result = subprocess.run(
+                ['perl', 'temp_code.pl'],
+                input=input_data,               # Pass input data to the Perl script
+                capture_output=True, text=True, timeout=5
+            )
+            output = result.stdout if result.returncode == 0 else result.stderr
+        except Exception as e:
+            output = str(e)
+        finally:
+            # Clean up the temporary file
+            os.remove('temp_code.pl')
+
+        return JsonResponse({'output': output})
