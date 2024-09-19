@@ -112,48 +112,47 @@
         });
 
         function runCode(editorId, outputId) {
-            const code = window[editorId].getValue();
-            document.getElementById(outputId).textContent = 'Running...';
+                const code = window[editorId].getValue();
+                document.getElementById(outputId).textContent = 'Running...';
 
-            // Improved input detection for C# (handling Console.ReadLine)
-            const inputPatterns = /Console\.ReadLine/g;
-            let userInputs = [];
-            let match;
-            let inputPrompt = {};
+                // Improved input detection for multiple Console.ReadLine
+                const inputPatterns = /Console\.ReadLine/g;
+                let userInputs = [];
+                let match;
 
-            while ((match = inputPatterns.exec(code)) !== null) {
-                if (!inputPrompt[match[0]]) {
-                    let userInput = prompt(`Your code requires input for ${match[0]} call. Please enter the input:`);
+                // Loop through all occurrences of Console.ReadLine in the code
+                while ((match = inputPatterns.exec(code)) !== null) {
+                    let userInput = prompt("Your code requires input for Console.ReadLine(). Please enter the input:");
                     if (userInput === null) {
                         document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
                         return;
                     }
-                    inputPrompt[match[0]] = userInput;
+                    userInputs.push(userInput);
                 }
+
+                // Prepare the payload with the C# code and collected user inputs
+                const payload = { 
+                    code: code, 
+                    inputs: userInputs // Send all collected inputs
+                };
+
+                fetch('/csharp_run_code/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCSRFToken()
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById(outputId).textContent = data.output;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById(outputId).textContent = 'Error executing the code.';
+                });
             }
-
-            const payload = { 
-                code: code, 
-                inputs: Object.values(inputPrompt)
-            };
-
-            fetch('/csharp_run_code/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCSRFToken()
-                },
-                body: JSON.stringify(payload)
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById(outputId).textContent = data.output;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById(outputId).textContent = 'Error executing the code.';
-            });
-        }
 
         function getCSRFToken() {
             return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
