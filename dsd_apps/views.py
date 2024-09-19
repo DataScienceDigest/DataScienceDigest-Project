@@ -522,3 +522,52 @@ def php_run_code(request):
             return JsonResponse({"error": "Invalid JSON payload."}, status=400)
 
     return JsonResponse({"error": "Invalid request method"}, status=400)
+
+# c# compiler 
+
+@csrf_exempt
+def csharp_run_code(request):
+    if request.method == 'POST':
+        # Use json.loads() to parse the JSON body from the request
+        data = json.loads(request.body)
+        code = data.get('code', '')
+        inputs = data.get('inputs', [])
+        print(code,'-=-=-=',inputs,'=====')
+
+        # Write code to a temporary file
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".cs") as temp_file:
+            temp_file.write(code.encode('utf-8'))
+            temp_file_path = temp_file.name
+
+        try:
+            # Compile the C# code
+            compile_process = subprocess.run(
+                ['mcs', temp_file_path],
+                capture_output=True, text=True
+            )
+
+            if compile_process.returncode == 0:
+                # If compilation succeeded, run the compiled executable
+                exe_file = temp_file_path.replace(".cs", ".exe")
+
+                # Join inputs with newline characters (to simulate multiple Console.ReadLine calls)
+                input_string = "\n".join(inputs)
+
+                run_process = subprocess.run(
+                    ['mono', exe_file],
+                    input=input_string,  # Pass input to stdin
+                    capture_output=True, text=True
+                )
+                output = run_process.stdout + run_process.stderr
+            else:
+                output = compile_process.stderr
+        finally:
+            # Clean up temporary files
+            os.remove(temp_file_path)
+            exe_file = temp_file_path.replace(".cs", ".exe")
+            if os.path.exists(exe_file):
+                os.remove(exe_file)
+
+        return JsonResponse({'output': output})
+
+    return JsonResponse({'output': 'Invalid request method'}, status=400)

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Online C# Compiler</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .intro {
+            width: 40%;
+        }
+        .compiler {
+            width: 55%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .compiler button {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .output {
+            margin-top: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the C# Compiler</h1>
+
+    <div class="section">
+        <!-- Explanation Section -->
+        <div class="intro">
+            <h2>Basics of C#</h2>
+            <p>C# is a modern object-oriented programming language. Use the editor on the right to write and run your C# code.</p>
+        </div>
+        <!-- Compiler Section -->
+        <div class="compiler">
+            <div id="editorContainer1" style="height: 200px;"></div>
+            <button onclick="runCode('editor1', 'output1')">Run</button>
+            <pre id="output1" class="output"></pre>
+        </div>
+    </div>
+
+    <script>
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+        require(['vs/editor/editor.main'], function () {
+            window.editor1 = monaco.editor.create(document.getElementById('editorContainer1'), {
+                value: 'using System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine("Hello, World!");\n    }\n}\n',
+                language: 'csharp',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+        });
+
+        function runCode(editorId, outputId) {
+            const code = window[editorId].getValue();
+            document.getElementById(outputId).textContent = 'Running...';
+
+            // Improved input detection for C# (handling Console.ReadLine)
+            const inputPatterns = /Console\.ReadLine/g;
+            let userInputs = [];
+            let match;
+            let inputPrompt = {};
+
+            // Find all unique occurrences of input-related patterns in the code
+            while ((match = inputPatterns.exec(code)) !== null) {
+                // Store the input prompt message if not already stored
+                if (!inputPrompt[match[0]]) {
+                    let userInput = prompt(`Your code requires input for ${match[0]} call. Please enter the input:`);
+                    if (userInput === null) {
+                        document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
+                        return;
+                    }
+                    inputPrompt[match[0]] = userInput;
+                }
+            }
+
+            // Prepare the payload with the C# code and any collected user inputs
+            const payload = { 
+                code: code, 
+                inputs: Object.values(inputPrompt) // Send all collected inputs
+            };
+
+            fetch('/csharp_run_code/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCSRFToken()
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById(outputId).textContent = data.output;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById(outputId).textContent = 'Error executing the code.';
+            });
+        }
+
+        function getCSRFToken() {
+            return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        }
+    </script>
+</body>
+</html>
