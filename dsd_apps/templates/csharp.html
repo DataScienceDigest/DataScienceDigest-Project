@@ -47,17 +47,42 @@
 <body>
     <h1>Welcome to the C# Compiler</h1>
 
+    <!-- Section 1: Basics of C# -->
     <div class="section">
-        <!-- Explanation Section -->
         <div class="intro">
             <h2>Basics of C#</h2>
             <p>C# is a modern object-oriented programming language. Use the editor on the right to write and run your C# code.</p>
         </div>
-        <!-- Compiler Section -->
         <div class="compiler">
             <div id="editorContainer1" style="height: 200px;"></div>
             <button onclick="runCode('editor1', 'output1')">Run</button>
             <pre id="output1" class="output"></pre>
+        </div>
+    </div>
+
+    <!-- Section 2: Loops in C# -->
+    <div class="section">
+        <div class="intro">
+            <h2>Loops in C#</h2>
+            <p>In C#, loops like for, while, and foreach are used to execute code repeatedly. Try running an example.</p>
+        </div>
+        <div class="compiler">
+            <div id="editorContainer2" style="height: 200px;"></div>
+            <button onclick="runCode('editor2', 'output2')">Run</button>
+            <pre id="output2" class="output"></pre>
+        </div>
+    </div>
+
+    <!-- Section 3: Conditional Statements in C# -->
+    <div class="section">
+        <div class="intro">
+            <h2>Conditional Statements in C#</h2>
+            <p>Conditional statements like if, else, and switch control the flow of execution based on conditions.</p>
+        </div>
+        <div class="compiler">
+            <div id="editorContainer3" style="height: 200px;"></div>
+            <button onclick="runCode('editor3', 'output3')">Run</button>
+            <pre id="output3" class="output"></pre>
         </div>
     </div>
 
@@ -66,6 +91,20 @@
         require(['vs/editor/editor.main'], function () {
             window.editor1 = monaco.editor.create(document.getElementById('editorContainer1'), {
                 value: 'using System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine("Hello, World!");\n    }\n}\n',
+                language: 'csharp',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            window.editor2 = monaco.editor.create(document.getElementById('editorContainer2'), {
+                value: 'using System;\n\nclass Program {\n    static void Main() {\n        for (int i = 0; i < 5; i++) {\n            Console.WriteLine($"Loop iteration: {i}");\n        }\n    }\n}\n',
+                language: 'csharp',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            window.editor3 = monaco.editor.create(document.getElementById('editorContainer3'), {
+                value: 'using System;\n\nclass Program {\n    static void Main() {\n        int x = 10;\n        if (x > 5) {\n            Console.WriteLine("x is greater than 5");\n        } else {\n            Console.WriteLine("x is 5 or less");\n        }\n    }\n}\n',
                 language: 'csharp',
                 theme: 'vs-dark',
                 automaticLayout: true
@@ -82,9 +121,7 @@
             let match;
             let inputPrompt = {};
 
-            // Find all unique occurrences of input-related patterns in the code
             while ((match = inputPatterns.exec(code)) !== null) {
-                // Store the input prompt message if not already stored
                 if (!inputPrompt[match[0]]) {
                     let userInput = prompt(`Your code requires input for ${match[0]} call. Please enter the input:`);
                     if (userInput === null) {
@@ -95,10 +132,9 @@
                 }
             }
 
-            // Prepare the payload with the C# code and any collected user inputs
             const payload = { 
                 code: code, 
-                inputs: Object.values(inputPrompt) // Send all collected inputs
+                inputs: Object.values(inputPrompt)
             };
 
             fetch('/csharp_run_code/', {
