@@ -583,13 +583,17 @@ def run_perl_code(request):
         code = data.get('code')          # Perl code
         input_data = data.get('input_data', '')  # Input data for Perl code
         # Save the Perl code to a temporary file
-        with open('temp_code.pl', 'w') as file:
-            file.write(code)
+        # with open('temp_code.pl', 'w') as file:
+        #     file.write(code)
+        # Create a temporary file
+        with tempfile.NamedTemporaryFile(suffix='.pl', delete=False) as temp_file:
+            temp_file.write(code.encode())
+            temp_file_path = temp_file.name  # Save the file path
 
         try:
             # Execute the Perl code, pass input data through stdin
             result = subprocess.run(
-                ['perl', 'temp_code.pl'],
+                ['perl', temp_file_path],
                 input=input_data,               # Pass input data to the Perl script
                 capture_output=True, text=True, timeout=5
             )
@@ -598,6 +602,6 @@ def run_perl_code(request):
             output = str(e)
         finally:
             # Clean up the temporary file
-            os.remove('temp_code.pl')
+            os.remove(temp_file_path)
 
         return JsonResponse({'output': output})
