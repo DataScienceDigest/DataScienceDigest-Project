@@ -582,9 +582,6 @@ def run_perl_code(request):
         data = json.loads(request.body)  # Capture JSON data
         code = data.get('code')          # Perl code
         input_data = data.get('input_data', '')  # Input data for Perl code
-        # Save the Perl code to a temporary file
-        # with open('temp_code.pl', 'w') as file:
-        #     file.write(code)
         # Create a temporary file
         with tempfile.NamedTemporaryFile(suffix='.pl', delete=False) as temp_file:
             temp_file.write(code.encode())
@@ -619,8 +616,9 @@ def run_ruby_code(request):
             inputs = data.get('inputs', [])  # List of inputs (if any)
             print(data,'-=-=-=-=')
             # Save the Ruby code to a temporary file
-            with open('temp.rb', 'w') as f:
-                f.write(code)
+            with tempfile.NamedTemporaryFile(suffix='.pl', delete=False) as temp_file:
+                temp_file.write(code.encode())
+                temp_file_path = temp_file.name 
 
             # Convert the input list into a string format (newlines between inputs)
             input_data = "\n".join(inputs)
@@ -628,7 +626,7 @@ def run_ruby_code(request):
             try:
                 # Execute the Ruby code using subprocess, providing inputs through stdin
                 result = subprocess.run(
-                    ['ruby', 'temp.rb'], 
+                    ['ruby', temp_file_path], 
                     input=input_data,  # Send user inputs to the Ruby script
                     capture_output=True, 
                     text=True, 
@@ -641,8 +639,8 @@ def run_ruby_code(request):
                 output = ''
 
             # Cleanup: Remove the temporary Ruby file after execution
-            if os.path.exists('temp.rb'):
-                os.remove('temp.rb')
+            if os.path.exists(temp_file_path):
+                os.remove(temp_file_path)
 
             # Return the output or error back to the frontend
             return JsonResponse({'output': output, 'error': error})
