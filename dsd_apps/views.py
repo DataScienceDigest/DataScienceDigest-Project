@@ -649,3 +649,42 @@ def run_ruby_code(request):
             return JsonResponse({'error': 'Invalid JSON'}, status=400)
 
     return JsonResponse({'error': 'Invalid request method'}, status=400)
+
+# julia section
+def julia_index(request):
+    return render(request, 'julia.html')
+@csrf_exempt
+def run_julia_code(request):
+    if request.method == 'POST':
+        # Parse the incoming JSON data from the request body
+        data = json.loads(request.body)
+        code = data.get('code', '')
+        inputs = data.get('inputs', [])  # List of inputs (if any)
+        print(data,'-=-=-=-=')
+        # Save the Julia code to a temporary file
+        with tempfile.NamedTemporaryFile(suffix='.jl', delete=False) as temp_file:
+            temp_file.write(code.encode())
+            temp_file_path = temp_file.name 
+
+        try:
+            # Prepare the input string
+            input_str = '\n'.join(inputs)
+
+            # Execute the Julia code, passing inputs as stdin
+            result = subprocess.run(
+                ['julia', temp_file_path],
+                input=input_str,  # Pass the input values as standard input
+                capture_output=True, 
+                text=True, 
+                timeout=10
+            )
+
+            # Remove the temporary file after execution
+            if os.path.exists(temp_file_path):
+                os.remove(temp_file_path)
+
+            # Return the output and any error messages
+            return JsonResponse({'output': result.stdout, 'error': result.stderr})
+        except Exception as e:
+            return JsonResponse({'error': str(e)})
+
