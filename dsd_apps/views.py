@@ -720,6 +720,8 @@ def run_scala_code(request):
                 timeout=10
             )
 
+            if result.stderr:
+                print("Error during execution:", result.stderr) 
             # Remove the temporary file after execution
             if os.path.exists(temp_file_path):
                 os.remove(temp_file_path)
