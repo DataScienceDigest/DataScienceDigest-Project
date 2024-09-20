@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>Online Julia Compiler</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .intro {
+            width: 40%;
+        }
+        .compiler {
+            width: 55%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .compiler button {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .output {
+            margin-top: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Julia Compiler</h1>
+    <div class="section">
+        <!-- Explanation Section -->
+        <div class="intro">
+            <h2>Loops in Julia</h2>
+            <p>In Julia, loops are used to repeat a block of code. Use the editor on the right to run a loop example.</p>
+        </div>
+        <!-- Compiler Section -->
+        <div class="compiler">
+            <div id="editorContainer1" style="height: 200px;"></div>
+            <button onclick="runCode('editor1', 'output1')">Run</button>
+            <pre id="output1" class="output"></pre>
+        </div>
+    </div>
+
+    <div class="section">
+        <!-- Explanation Section -->
+        <div class="intro">
+            <h2>Welcome to the Julia Compiler</h2>
+            <p>This is a simple Julia code editor and compiler. You can edit the code on the right and click "Run" to see the output.</p>
+        </div>
+        <!-- Compiler Section -->
+        <div class="compiler">
+            <div id="editorContainer2" style="height: 200px;"></div>
+            <button onclick="runCode('editor2', 'output2')">Run</button>
+            <pre id="output2" class="output"></pre>
+        </div>
+    </div>
+
+    <script>
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+        require(['vs/editor/editor.main'], function () {
+            window.editor1 = monaco.editor.create(document.getElementById('editorContainer1'), {
+                value: 'for i in 1:5\n    println("Square of ", i, " is ", i * i)\nend\n',
+                language: 'julia',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+
+            window.editor2 = monaco.editor.create(document.getElementById('editorContainer2'), {
+                value: 'println("Hello, World!")\n',
+                language: 'julia',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+        });
+
+        function runCode(editorId, outputId) {
+            const code = window[editorId].getValue();
+            const outputElement = document.getElementById(outputId);
+            outputElement.textContent = 'Running...';
+
+            // Detect `readline()` or other Julia input methods
+            const inputPatterns = /readline\(\)/g;  // Add more patterns as needed
+            let userInputs = [];
+            let match;
+
+            // Check if the Julia code requires inputs
+            while ((match = inputPatterns.exec(code)) !== null) {
+                let userInput = prompt('Your code requires input for readline(). Please enter the input:');
+                if (userInput === null) {
+                    outputElement.textContent = 'Execution aborted due to missing input.';
+                    return;
+                }
+                userInputs.push(userInput);
+            }
+
+            // Prepare the payload with the Julia code and inputs
+            const payload = {
+                code: code,
+                inputs: userInputs
+            };
+
+            fetch('/run_julia_code/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCSRFToken()
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    outputElement.textContent = `Error: ${data.error}`;
+                } else {
+                    outputElement.textContent = data.output;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                outputElement.textContent = 'Error executing the code.';
+            });
+        }
+
+        function getCSRFToken() {
+            return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        }
+    </script>
+</body>
+</html>

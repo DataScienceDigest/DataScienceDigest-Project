@@ -42,4 +42,7 @@ urlpatterns = [
     # ______________ruby section __________________________
     path('ruby/',views.ruby_index, name='ruby'),
     path('run_ruby_code/', views.run_ruby_code, name='run_ruby_code'),
+    # _______________julis section _______________________
+    path('julia/',views.julia_index,name='julia_index'),
+    path('run_julia_code/',views.run_julia_code,name='run_julia_code'),
 ]
