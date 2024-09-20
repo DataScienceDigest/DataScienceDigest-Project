@@ -48,4 +48,5 @@ urlpatterns = [
     # _________________scala section _____________________
     path('scala/',views.scala_index,name='scala'),
     path('run_scala_code/',views.run_scala_code,name='run_scala_code')
+    
 ]
