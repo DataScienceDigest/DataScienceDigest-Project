@@ -7,6 +7,9 @@ import os
 import tempfile
 import sqlite3
 from django.conf import settings 
+env = os.environ.copy()
+env['JAVA_HOME'] = '/usr/lib/jvm/java-11-openjdk-amd64'  # or your actual JDK path
+
 def index(request):
     return render(request, 'index.html')
 def all_courses(request):
@@ -717,7 +720,8 @@ def run_scala_code(request):
                 input=input_str,  # Pass the input values as standard input
                 capture_output=True, 
                 text=True, 
-                timeout=10
+                timeout=10,
+                env=env  # Pass the environment
             )
 
             if result.stderr:
