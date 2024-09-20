@@ -43,9 +43,9 @@ urlpatterns = [
     path('ruby/',views.ruby_index, name='ruby'),
     path('run_ruby_code/', views.run_ruby_code, name='run_ruby_code'),
     # _______________julis section _______________________
-    path('julia/',views.julia_index,name='julia_index'),
+    path('julia/',views.julia_index,name='julia'),
     path('run_julia_code/',views.run_julia_code,name='run_julia_code'),
     # _________________scala section _____________________
-    path('scala/',views.scala_index,name='scala_index'),
+    path('scala/',views.scala_index,name='scala'),
     path('run_scala_code/',views.run_scala_code,name='run_scala_code')
 ]
