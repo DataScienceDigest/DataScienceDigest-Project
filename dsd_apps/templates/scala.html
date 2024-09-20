@@ -76,18 +76,23 @@
             // Get the code from the editor
             var code = editor.getValue();
 
-            // Prompt user for multiple inputs (e.g., name and age)
-            var name = prompt("Please enter your name:");
-            var age = prompt("Please enter your age:");
+            // Check for input requests in the code
+            var requiresInput = code.includes("scala.io.StdIn.readLine()") || code.includes("scala.io.StdIn.readInt()");
+            var inputs = [];
 
-            // If any input is missing, abort execution
-            if (name === null || age === null) {
-                document.getElementById('output').textContent = 'Execution aborted due to missing input.';
-                return;
+            // Prompt user for input only if required
+            if (requiresInput) {
+                var name = prompt("Please enter your name:");
+                var age = prompt("Please enter your age:");
+
+                // If any input is missing, abort execution
+                if (name === null || age === null) {
+                    document.getElementById('output').textContent = 'Execution aborted due to missing input.';
+                    return;
+                }
+
+                inputs.push(name, age);
             }
-
-            // Prepare inputs to be passed to the Scala code
-            var inputs = name + " " + age;
 
             // Make a POST request to the backend to execute the Scala code
             fetch('/run_scala_code/', {
