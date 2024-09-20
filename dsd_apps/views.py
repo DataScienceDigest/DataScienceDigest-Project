@@ -7,8 +7,6 @@ import os
 import tempfile
 import sqlite3
 from django.conf import settings 
-env = os.environ.copy()
-env['JAVA_HOME'] = '/usr/lib/jvm/java-11-openjdk-amd64'  # or your actual JDK path
 
 def index(request):
     return render(request, 'index.html')
@@ -714,23 +712,48 @@ def run_scala_code(request):
             # Prepare input string if there are inputs
             input_str = '\n'.join(inputs) if inputs else ''
 
-            # Execute the Scala code, passing inputs as stdin
-            result = subprocess.run(
-                ['scala', temp_file_path],
+            # Ensure JAVA_HOME is set (adjust path as per your environment)
+            env = os.environ.copy()
+            env['JAVA_HOME'] = '/usr/lib/jvm/java-11-openjdk-amd64'  # Change to your JDK path if different
+            env['PATH'] = env['JAVA_HOME'] + '/bin:' + env['PATH']
+
+            # Step 1: Compile the Scala code using 'scalac'
+            compile_result = subprocess.run(
+                ['scalac', temp_file_path],
+                capture_output=True,
+                text=True,
+                env=env
+            )
+
+            # Check for compilation errors
+            if compile_result.returncode != 0:
+                # Compilation error occurred
+                if os.path.exists(temp_file_path):
+                    os.remove(temp_file_path)
+                return JsonResponse({'error': compile_result.stderr})
+
+            # Step 2: Run the compiled Scala class file
+            # Extract the class name from the file name (without .scala extension)
+            class_name = os.path.splitext(os.path.basename(temp_file_path))[0]
+            run_result = subprocess.run(
+                ['scala', class_name],
                 input=input_str,  # Pass the input values as standard input
                 capture_output=True, 
                 text=True, 
                 timeout=10,
-                env=env  # Pass the environment
+                env=env
             )
 
-            if result.stderr:
-                print("Error during execution:", result.stderr) 
-            # Remove the temporary file after execution
+            # Remove the temporary Scala file and any class files generated
             if os.path.exists(temp_file_path):
                 os.remove(temp_file_path)
+            class_file = class_name + ".class"
+            if os.path.exists(class_file):
+                os.remove(class_file)
 
-            # Return the output and any error messages
-            return JsonResponse({'output': result.stdout, 'error': result.stderr})
+            # Return the output and any error messages from the Scala code execution
+            return JsonResponse({'output': run_result.stdout, 'error': run_result.stderr})
+
         except Exception as e:
+            # In case of an exception, return the error message
             return JsonResponse({'error': str(e)})
