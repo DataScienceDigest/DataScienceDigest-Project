@@ -605,3 +605,49 @@ def run_perl_code(request):
             os.remove(temp_file_path)
 
         return JsonResponse({'output': output})
+    
+# ruby code editor 
+def  ruby_index(request):
+    return render(request, 'ruby.html')
+@csrf_exempt
+def run_ruby_code(request):
+    if request.method == 'POST':
+        try:
+            # Parse the incoming JSON data from the request body
+            data = json.loads(request.body)
+            code = data.get('code', '')
+            inputs = data.get('inputs', [])  # List of inputs (if any)
+            print(data,'-=-=-=-=')
+            # Save the Ruby code to a temporary file
+            with open('temp.rb', 'w') as f:
+                f.write(code)
+
+            # Convert the input list into a string format (newlines between inputs)
+            input_data = "\n".join(inputs)
+
+            try:
+                # Execute the Ruby code using subprocess, providing inputs through stdin
+                result = subprocess.run(
+                    ['ruby', 'temp.rb'], 
+                    input=input_data,  # Send user inputs to the Ruby script
+                    capture_output=True, 
+                    text=True, 
+                    timeout=10
+                )
+                output = result.stdout
+                error = result.stderr
+            except subprocess.TimeoutExpired:
+                error = 'Execution timed out'
+                output = ''
+
+            # Cleanup: Remove the temporary Ruby file after execution
+            if os.path.exists('temp.rb'):
+                os.remove('temp.rb')
+
+            # Return the output or error back to the frontend
+            return JsonResponse({'output': output, 'error': error})
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+
+    return JsonResponse({'error': 'Invalid request method'}, status=400)

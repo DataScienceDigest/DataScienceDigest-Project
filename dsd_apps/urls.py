@@ -38,5 +38,8 @@ urlpatterns = [
     path('compile_rust/',views.compile_rust,name='compile_rust'),
     # ______________perl section ___________________________
     path('perl/',views.perl_index, name='perl'),
-    path('run_perl_code/',views.run_perl_code,name='run_perl_code')
+    path('run_perl_code/',views.run_perl_code,name='run_perl_code'),
+    # ______________ruby section __________________________
+    path('ruby',views.ruby_index, name='ruby'),
+    path('run_ruby_code/', views.run_ruby_code, name='run_ruby_code'),
 ]

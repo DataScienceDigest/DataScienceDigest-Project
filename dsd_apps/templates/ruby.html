@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruby Online Compiler</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .intro {
+            width: 40%;
+        }
+        .compiler {
+            width: 55%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .compiler button {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .output {
+            margin-top: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ruby Online Compiler</h1>
+
+    <div class="section">
+        <!-- Explanation Section -->
+        <div class="intro">
+            <h2>Example: Simple Ruby Program</h2>
+            <p>Write Ruby code in the editor to the right. Click "Run Code" to execute the program. If your code requires input (e.g., `gets`), a prompt will appear asking for user input.</p>
+        </div>
+        <!-- Compiler Section -->
+        <div class="compiler">
+            <div id="editorContainer" style="height: 200px;"></div>
+            <button onclick="runRubyCode()">Run Code</button>
+            <pre id="output" class="output"></pre>
+        </div>
+    </div>
+
+    <script>
+        // Load Monaco Editor
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+        require(['vs/editor/editor.main'], function () {
+            window.editor = monaco.editor.create(document.getElementById('editorContainer'), {
+                value: '# Example Ruby code\nputs "Enter your name:"\nname = gets.chomp\nputs "Hello, #{name}!"\n',
+                language: 'ruby',
+                theme: 'vs-dark',
+                automaticLayout: true
+            });
+        });
+
+        // Function to handle running Ruby code
+        async function runRubyCode() {
+            const code = window.editor.getValue();
+            document.getElementById('output').textContent = 'Running...';
+
+            // Detect number of gets calls in the code
+            const inputPatterns = /gets/g;
+            const inputMatches = code.match(inputPatterns);  // Find all 'gets' occurrences
+            const inputCount = inputMatches ? inputMatches.length : 0;
+            let userInputs = [];
+
+            // If the code includes inputs, prompt the user for each input
+            for (let i = 0; i < inputCount; i++) {
+                let userInput = prompt(`Your code requires input for gets #${i + 1}. Please provide the input:`);
+                if (userInput === null) {
+                    document.getElementById('output').textContent = 'Execution aborted due to missing input.';
+                    return;
+                }
+                userInputs.push(userInput);
+            }
+
+            // Prepare the payload to send to the server
+            const payload = {
+                code: code,
+                inputs: userInputs
+            };
+
+            // Send code to Django backend for execution
+            try {
+                const response = await fetch('/run_ruby_code/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCSRFToken()
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                document.getElementById('output').textContent = result.output || result.error;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('output').textContent = 'Error executing the code.';
+            }
+        }
+
+        // Function to get CSRF token
+        function getCSRFToken() {
+            return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        }
+    </script>
+</body>
+</html>
