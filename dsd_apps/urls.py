@@ -45,4 +45,7 @@ urlpatterns = [
     # _______________julis section _______________________
     path('julia/',views.julia_index,name='julia_index'),
     path('run_julia_code/',views.run_julia_code,name='run_julia_code'),
+    # _________________scala section _____________________
+    path('scala/',views.scala_index,name='scala_index'),
+    path('run_scala_code/',views.run_scala_code,name='run_scala_code')
 ]

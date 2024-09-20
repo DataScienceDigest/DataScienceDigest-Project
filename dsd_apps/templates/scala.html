@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Scala Code Editor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .intro {
+            width: 40%;
+        }
+        .compiler {
+            width: 55%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .compiler button {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .output {
+            margin-top: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Scala Code Editor</h1>
+
+    <div class="section">
+        <!-- Explanation Section -->
+        <div class="intro">
+            <h2>Introduction to Scala Loops</h2>
+            <p>Scala loops allow repeating a block of code. Write and run a Scala loop in the editor on the right.</p>
+        </div>
+        <!-- Editor Section -->
+        <div class="compiler">
+            <div id="editor" style="height: 200px;"></div>
+            <button onclick="runCode()">Run Code</button>
+            <pre id="output" class="output">Output will be displayed here...</pre>
+        </div>
+    </div>
+
+    <!-- Load Ace Editor from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+
+    <script>
+        // Initialize Ace Editor
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/scala");
+
+        function runCode() {
+            // Get the code from the editor
+            var code = editor.getValue();
+
+            // Prompt user for multiple inputs (e.g., name and age)
+            var name = prompt("Please enter your name:");
+            var age = prompt("Please enter your age:");
+
+            // If any input is missing, abort execution
+            if (name === null || age === null) {
+                document.getElementById('output').textContent = 'Execution aborted due to missing input.';
+                return;
+            }
+
+            // Prepare inputs to be passed to the Scala code
+            var inputs = name + " " + age;
+
+            // Make a POST request to the backend to execute the Scala code
+            fetch('/run_scala_code/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'  // Ensure CSRF token is passed
+                },
+                body: JSON.stringify({ code: code, inputs: inputs })  // Pass the code and inputs
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the output or error
+                document.getElementById('output').textContent = data.output || data.error;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+    </script>
+
+</body>
+</html>
