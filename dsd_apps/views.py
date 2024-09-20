@@ -689,3 +689,39 @@ def run_julia_code(request):
             return JsonResponse({'error': 'Execution timed out. Your code might be taking too long to run.'})
         except Exception as e:
             return JsonResponse({'error': str(e)})
+        
+
+# scala editor
+def scala_index(request):
+    return render(request,'scala.html')
+@csrf_exempt  # Disable CSRF for simplicity; consider using proper CSRF handling in production
+def run_scala_code(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        code = data.get('code', '')
+        inputs = data.get('inputs', '')  # Multiple inputs in a single string
+        print(data)
+
+        # Save the Scala code to a temporary file
+        with tempfile.NamedTemporaryFile(suffix='.scala', delete=False) as temp_file:
+            temp_file.write(code.encode())
+            temp_file_path = temp_file.name
+
+        try:
+            # Execute the Scala code, passing inputs via stdin
+            result = subprocess.run(
+                ['scala', temp_file_path],
+                input=inputs,  # Provide inputs as standard input
+                capture_output=True,
+                text=True,
+                timeout=10
+            )
+
+            # Clean up the temp file
+            if os.path.exists(temp_file_path):
+                os.remove(temp_file_path)
+
+            return JsonResponse({'output': result.stdout, 'error': result.stderr})
+
+        except Exception as e:
+            return JsonResponse({'error': str(e)})
