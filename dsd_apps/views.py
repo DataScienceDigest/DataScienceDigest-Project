@@ -697,31 +697,34 @@ def scala_index(request):
 @csrf_exempt  # Disable CSRF for simplicity; consider using proper CSRF handling in production
 def run_scala_code(request):
     if request.method == 'POST':
+        # Parse the incoming JSON data from the request body
         data = json.loads(request.body)
         code = data.get('code', '')
-        inputs = data.get('inputs', '')  # Multiple inputs in a single string
-        print(data)
+        inputs = data.get('inputs', [])  # List of inputs (if any)
 
         # Save the Scala code to a temporary file
         with tempfile.NamedTemporaryFile(suffix='.scala', delete=False) as temp_file:
             temp_file.write(code.encode())
-            temp_file_path = temp_file.name
+            temp_file_path = temp_file.name 
 
         try:
-            # Execute the Scala code, passing inputs via stdin
+            # Prepare input string if there are inputs
+            input_str = '\n'.join(inputs) if inputs else ''
+
+            # Execute the Scala code, passing inputs as stdin
             result = subprocess.run(
                 ['scala', temp_file_path],
-                input=inputs,  # Provide inputs as standard input
-                capture_output=True,
-                text=True,
+                input=input_str,  # Pass the input values as standard input
+                capture_output=True, 
+                text=True, 
                 timeout=10
             )
 
-            # Clean up the temp file
+            # Remove the temporary file after execution
             if os.path.exists(temp_file_path):
                 os.remove(temp_file_path)
 
+            # Return the output and any error messages
             return JsonResponse({'output': result.stdout, 'error': result.stderr})
-
         except Exception as e:
             return JsonResponse({'error': str(e)})
