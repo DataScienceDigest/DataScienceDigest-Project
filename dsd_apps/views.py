@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import subprocess
 import json
+import stat
 import os
 import tempfile
 import sqlite3
@@ -707,6 +708,8 @@ def run_scala_code(request):
         with tempfile.NamedTemporaryFile(suffix='.scala', delete=False) as temp_file:
             temp_file.write(code.encode())
             temp_file_path = temp_file.name 
+                # Set the file permissions to ensure it can be executed
+        os.chmod(temp_file_path, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IWGRP | stat.S_IROTH)
 
         try:
             # Prepare input string if there are inputs
