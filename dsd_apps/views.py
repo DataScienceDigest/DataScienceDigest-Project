@@ -696,63 +696,51 @@ def run_julia_code(request):
 # scala editor
 def scala_index(request):
     return render(request,'scala.html')
-@csrf_exempt  # Disable CSRF for simplicity; consider using proper CSRF handling in production
+
+@csrf_exempt
 def run_scala_code(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        code = data.get('code', '')
-        inputs = data.get('inputs', [])  # Optional input handling
-
-        # Create a temporary file for the Scala code
-        with tempfile.NamedTemporaryFile(suffix='.scala', delete=False) as temp_file:
-            temp_file.write(code.encode())
-            temp_file_path = temp_file.name
-        
-        # Set appropriate permissions for the temporary file
-        os.chmod(temp_file_path, 0o755)
-
         try:
-            # Prepare input string if inputs exist
-            input_str = '\n'.join(inputs) if inputs else ''
+            data = json.loads(request.body)
+            code = data.get('code', '')
+            inputs = data.get('inputs', [])  # Optional input handling
+            print(data,'-=-=-=-')
+            if not code:
+                return JsonResponse({'error': 'No Scala code provided'}, status=400)
 
-            # Set up environment variables
-            env = os.environ.copy()
-            env['JAVA_HOME'] = '/usr/lib/jvm/java-11-openjdk-amd64'  # Ensure the JDK path is correct
-            env['PATH'] = '/usr/bin:' + env['JAVA_HOME'] + '/bin:' + env['PATH']
+            # Create a temporary file for the Scala code
+            with tempfile.NamedTemporaryFile(suffix='.scala', delete=False) as temp_file:
+                temp_file.write(code.encode())
+                temp_file_path = temp_file.name
 
-            # Compile the Scala code
-            compile_result = subprocess.run(
-                ['scalac', temp_file_path],
-                capture_output=True,
-                text=True,
-                env=env
-            )
+            try:
+                # Prepare input string if inputs exist
+                input_str = '\n'.join(inputs) if inputs else ''
 
-            if compile_result.returncode != 0:
-                # Compilation error
-                return JsonResponse({'error': compile_result.stderr})
+                # Run the Scala script without compiling
+                run_result = subprocess.run(
+                    ['scala', temp_file_path],
+                    input=input_str,
+                    capture_output=True,
+                    text=True,
+                )
 
-            # Get class name from the temp file (e.g., Main)
-            class_name = os.path.splitext(os.path.basename(temp_file_path))[0]
+                # Clean up files
+                os.remove(temp_file_path)
 
-            # Run the compiled Scala class
-            run_result = subprocess.run(
-                ['scala', class_name],
-                input=input_str,
-                capture_output=True,
-                text=True,
-                env=env
-            )
+                # Return the output or error
+                return JsonResponse({
+                    'output': run_result.stdout,
+                    'error': run_result.stderr
+                })
 
-            # Clean up files
-            os.remove(temp_file_path)
-            class_file = class_name + ".class"
-            if os.path.exists(class_file):
-                os.remove(class_file)
+            except Exception as e:
+                # Handle exceptions
+                return JsonResponse({'error': str(e)}, status=500)
 
-            # Return the output or error
-            return JsonResponse({'output': run_result.stdout, 'error': run_result.stderr})
+        finally:
+            # Ensure the temp file is cleaned up
+            if os.path.exists(temp_file_path):
+                os.remove(temp_file_path)
 
-        except Exception as e:
-            # Handle exceptions
-            return JsonResponse({'error': str(e)})
+    return JsonResponse({'error': 'Invalid request method'}, status=405)
