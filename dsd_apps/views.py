@@ -764,13 +764,14 @@ def run_kotlin_code(request):
                 temp_file.flush()  # Flush to ensure all data is written
                 temp_file_path = temp_file.name
 
+
             try:
                 # Prepare input string if inputs exist
                 input_str = '\n'.join(inputs) if inputs else ''
 
                 # Run the Kotlin script without compiling
                 run_result = subprocess.run(
-                    ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlin', temp_file_path],  # Use full path to Kotlin
+                    ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlin','-cp', temp_file_path],  # Use full path to Kotlin
                     input=input_str,
                     capture_output=True,
                     text=True,
