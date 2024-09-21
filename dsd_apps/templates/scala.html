@@ -50,12 +50,11 @@
     <h1>Welcome to the Scala Code Editor</h1>
 
     <div class="section">
-        <!-- Explanation Section -->
         <div class="intro">
             <h2>Introduction to Scala Loops</h2>
             <p>Scala loops allow repeating a block of code. Write and run a Scala loop in the editor on the right.</p>
         </div>
-        <!-- Editor Section -->
+
         <div class="compiler">
             <div id="editor" style="height: 200px;"></div>
             <button onclick="runCode()">Run Code</button>
@@ -63,7 +62,6 @@
         </div>
     </div>
 
-    <!-- Load Ace Editor from CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
 
     <script>
@@ -72,26 +70,35 @@
         editor.setTheme("ace/theme/monokai");
         editor.session.setMode("ace/mode/scala");
 
+        // Pre-fill editor with default Scala code
+        editor.setValue("println(\"Hello, Scala!\")", 1);
+
         function runCode() {
+            // Get CSRF token from the meta tag
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
             // Get the code from the editor
             var code = editor.getValue();
 
-            // Check for input requests in the code
-            var requiresInput = code.includes("scala.io.StdIn.readLine()") || code.includes("scala.io.StdIn.readInt()");
+            // Detect input requests dynamically (e.g., scala.io.StdIn.readLine() or scala.io.StdIn.readInt())
+            var inputRegex = /scala\.io\.StdIn\.(readLine|readInt|readDouble|readFloat|readBoolean|readByte|readShort|readLong|readChar)\(\)/g;
+            var matches = [...code.matchAll(inputRegex)];
+
+            // If inputs are detected, prompt the user for inputs dynamically
             var inputs = [];
+            if (matches.length > 0) {
+                // Loop through each detected input function
+                for (var i = 0; i < matches.length; i++) {
+                    var inputPrompt = prompt("Please provide input for " + matches[i][0]);
+                    
+                    // Validate input to ensure it's not null or empty
+                    if (inputPrompt === null || inputPrompt.trim() === '') {
+                        document.getElementById('output').textContent = 'Execution aborted due to missing or invalid input.';
+                        return;
+                    }
 
-            // Prompt user for input only if required
-            if (requiresInput) {
-                var name = prompt("Please enter your name:");
-                var age = prompt("Please enter your age:");
-
-                // If any input is missing, abort execution
-                if (name === null || age === null) {
-                    document.getElementById('output').textContent = 'Execution aborted due to missing input.';
-                    return;
+                    inputs.push(inputPrompt);
                 }
-
-                inputs.push(name, age);
             }
 
             // Make a POST request to the backend to execute the Scala code
@@ -99,7 +106,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}'  // Ensure CSRF token is passed
+                    'X-CSRFToken': csrfToken  // Get CSRF token from meta tag
                 },
                 body: JSON.stringify({ code: code, inputs: inputs })  // Pass the code and inputs
             })
@@ -108,7 +115,10 @@
                 // Display the output or error
                 document.getElementById('output').textContent = data.output || data.error;
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('output').textContent = 'An error occurred while running the code.';
+            });
         }
 
     </script>
