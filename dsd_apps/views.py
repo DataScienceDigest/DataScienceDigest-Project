@@ -757,49 +757,60 @@ def run_kotlin_code(request):
             inputs = data.get('inputs', [])  # Optional input handling
             if not code:
                 return JsonResponse({'error': 'No Kotlin code provided'}, status=400)
-
+            
+            print(data, '_____')
+            
             # Create a temporary file for the Kotlin code
             with tempfile.NamedTemporaryFile(suffix='.kt', delete=False) as temp_file:
                 temp_file.write(code.encode())
-                temp_file.flush()
+                temp_file.flush()  # Ensure all data is written
                 temp_file_path = temp_file.name
 
-            # Compile Kotlin code using kotlinc
-            compile_result = subprocess.run(
-                ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlinc', temp_file_path, '-d', '/tmp/compiled_class'],
-                capture_output=True,
-                text=True
-            )
+            # Prepare output directory for compiled class
+            output_dir = tempfile.mkdtemp()
 
-            if compile_result.returncode != 0:
-                # If compilation fails, return the error
+            try:
+                # Compile the Kotlin code
+                compile_result = subprocess.run(
+                    ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlinc', temp_file_path, '-d', output_dir],
+                    capture_output=True,
+                    text=True
+                )
+
+                # Check if compilation failed
+                if compile_result.returncode != 0:
+                    return JsonResponse({
+                        'output': compile_result.stdout,
+                        'error': compile_result.stderr
+                    })
+
+                # Prepare input string if inputs exist
+                input_str = '\n'.join(inputs) if inputs else ''
+
+                # Assuming the main function is in MainKt class
+                run_result = subprocess.run(
+                    ['java', '-cp', output_dir, 'MainKt'],
+                    input=input_str,
+                    capture_output=True,
+                    text=True
+                )
+
+                # Clean up temporary files
+                os.remove(temp_file_path)
+                os.rmdir(output_dir)
+
+                # Return the output or error
                 return JsonResponse({
-                    'output': compile_result.stdout,
-                    'error': compile_result.stderr
+                    'output': run_result.stdout,
+                    'error': run_result.stderr
                 })
 
-            # Prepare input string if inputs exist
-            input_str = '\n'.join(inputs) if inputs else ''
+            except Exception as e:
+                return JsonResponse({'error': str(e)}, status=500)
 
-            # Run the compiled Kotlin class using java
-            run_result = subprocess.run(
-                ['java', '-cp', '/tmp/compiled_class', 'MainKt'],  # Assuming the main function is in MainKt class
-                input=input_str,
-                capture_output=True,
-                text=True
-            )
-
-            # Clean up files
-            os.remove(temp_file_path)
-
-            # Return the output or error
-            return JsonResponse({
-                'output': run_result.stdout,
-                'error': run_result.stderr
-            })
-
-        except Exception as e:
-            # Handle exceptions
-            return JsonResponse({'error': str(e)}, status=500)
+        finally:
+            # Ensure the temp file is cleaned up
+            if os.path.exists(temp_file_path):
+                os.remove(temp_file_path)
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)
