@@ -785,13 +785,14 @@ def run_kotlin_code(request):
                         'error': compile_result.stderr
                     })
 
-                # Prepare input string if inputs exist
-                input_str = '\n'.join(inputs) if inputs else ''
+                # List the compiled class files to identify the correct class name
+                compiled_files = os.listdir(output_dir)
+                print("Compiled files:", compiled_files)
 
-                # Assuming the main function is in MainKt class
+                # Assuming the main function is in MainKt class, update this based on the output of compiled files
                 run_result = subprocess.run(
-                    ['java', '-cp', output_dir, 'MainKt'],
-                    input=input_str,
+                    ['java', '-cp', output_dir, 'MainKt'],  # Adjust class name based on compiled output
+                    input='\n'.join(inputs) if inputs else '',
                     capture_output=True,
                     text=True
                 )
