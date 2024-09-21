@@ -719,12 +719,11 @@ def run_scala_code(request):
 
                 # Run the Scala script without compiling
                 run_result = subprocess.run(
-                    ['scala', temp_file_path],
+                    ['/home/ubuntu/.sdkman/candidates/scala/current/bin/scala', temp_file_path],  # Use full path to Scala
                     input=input_str,
                     capture_output=True,
                     text=True,
                 )
-
                 # Clean up files
                 os.remove(temp_file_path)
 
