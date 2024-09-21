@@ -47,6 +47,9 @@ urlpatterns = [
     path('run_julia_code/',views.run_julia_code,name='run_julia_code'),
     # _________________scala section _____________________
     path('scala/',views.scala_index,name='scala'),
-    path('run_scala_code/',views.run_scala_code,name='run_scala_code')
+    path('run_scala_code/',views.run_scala_code,name='run_scala_code'),
+    # ________________kotlin Section _______________________
+    path('kotlin/',views.kotlin_index,name='kotlin'),
+    path('run_kotlin_code/',views.run_kotlin_code,name='run_kotlin_code'),
     
 ]

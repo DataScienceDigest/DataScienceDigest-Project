@@ -743,3 +743,54 @@ def run_scala_code(request):
                 os.remove(temp_file_path)
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+
+# kotlin compiler
+def kotlin_index(request):
+    return render(request,'kotlin.html')
+@csrf_exempt
+def run_kotlin_code(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            code = data.get('code', '')
+            inputs = data.get('inputs', [])  # Optional input handling
+            if not code:
+                return JsonResponse({'error': 'No Kotlin code provided'}, status=400)
+
+            # Create a temporary file for the Kotlin code
+            with tempfile.NamedTemporaryFile(suffix='.kt', delete=False) as temp_file:
+                temp_file.write(code.encode())
+                temp_file_path = temp_file.name
+
+            try:
+                # Prepare input string if inputs exist
+                input_str = '\n'.join(inputs) if inputs else ''
+
+                # Run the Kotlin script without compiling
+                run_result = subprocess.run(
+                    ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlin', temp_file_path],  # Use full path to Kotlin
+                    input=input_str,
+                    capture_output=True,
+                    text=True,
+                )
+
+                # Clean up files
+                os.remove(temp_file_path)
+
+                # Return the output or error
+                return JsonResponse({
+                    'output': run_result.stdout,
+                    'error': run_result.stderr
+                })
+
+            except Exception as e:
+                # Handle exceptions
+                return JsonResponse({'error': str(e)}, status=500)
+
+        finally:
+            # Ensure the temp file is cleaned up
+            if os.path.exists(temp_file_path):
+                os.remove(temp_file_path)
+
+    return JsonResponse({'error': 'Invalid request method'}, status=405)
