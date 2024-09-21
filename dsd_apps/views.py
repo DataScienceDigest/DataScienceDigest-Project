@@ -703,12 +703,13 @@ def run_scala_code(request):
         data = json.loads(request.body)
         code = data.get('code', '')
         inputs = data.get('inputs', [])  # List of inputs (if any)
-        # print(data,'-=-=-=-=-')
+        
         # Save the Scala code to a temporary file
         with tempfile.NamedTemporaryFile(suffix='.scala', delete=False) as temp_file:
             temp_file.write(code.encode())
-            temp_file_path = temp_file.name 
-                # Set the file permissions to ensure it can be executed
+            temp_file_path = temp_file.name
+
+        # Set the file permissions to ensure it can be executed
         os.chmod(temp_file_path, stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IWGRP | stat.S_IROTH)
 
         try:
@@ -721,8 +722,9 @@ def run_scala_code(request):
             env['PATH'] = env['JAVA_HOME'] + '/bin:' + env['PATH']
 
             # Step 1: Compile the Scala code using 'scalac'
+            compile_output_dir = tempfile.mkdtemp()  # Temporary directory for compiled classes
             compile_result = subprocess.run(
-                ['scalac', temp_file_path],
+                ['scalac', '-d', compile_output_dir, temp_file_path],
                 capture_output=True,
                 text=True,
                 env=env
@@ -739,20 +741,26 @@ def run_scala_code(request):
             # Extract the class name from the file name (without .scala extension)
             class_name = os.path.splitext(os.path.basename(temp_file_path))[0]
             run_result = subprocess.run(
-                ['scala', class_name],
+                ['scala', '-cp', compile_output_dir, class_name],
                 input=input_str,  # Pass the input values as standard input
-                capture_output=True, 
-                text=True, 
+                capture_output=True,
+                text=True,
                 timeout=10,
                 env=env
             )
 
-            # Remove the temporary Scala file and any class files generated
+            # Remove the temporary Scala file
             if os.path.exists(temp_file_path):
                 os.remove(temp_file_path)
-            class_file = class_name + ".class"
-            if os.path.exists(class_file):
-                os.remove(class_file)
+
+            # Remove the temporary compiled class files
+            for file_name in os.listdir(compile_output_dir):
+                file_path = os.path.join(compile_output_dir, file_name)
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+
+            # Clean up the directory itself
+            os.rmdir(compile_output_dir)
 
             # Return the output and any error messages from the Scala code execution
             return JsonResponse({'output': run_result.stdout, 'error': run_result.stderr})
