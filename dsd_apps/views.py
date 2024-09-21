@@ -703,7 +703,7 @@ def run_scala_code(request):
         data = json.loads(request.body)
         code = data.get('code', '')
         inputs = data.get('inputs', [])  # List of inputs (if any)
-
+        # print(data,'-=-=-=-=-')
         # Save the Scala code to a temporary file
         with tempfile.NamedTemporaryFile(suffix='.scala', delete=False) as temp_file:
             temp_file.write(code.encode())
