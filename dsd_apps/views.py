@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 import subprocess
 import json
 import stat
+import shutil
 import os
 import tempfile
 import sqlite3
@@ -795,9 +796,8 @@ def run_kotlin_code(request):
                     text=True
                 )
 
-                # Clean up temporary files
+                # Clean up the Kotlin source file
                 os.remove(temp_file_path)
-                os.rmdir(output_dir)
 
                 # Return the output or error
                 return JsonResponse({
@@ -808,8 +808,13 @@ def run_kotlin_code(request):
             except Exception as e:
                 return JsonResponse({'error': str(e)}, status=500)
 
+            finally:
+                # Ensure the compiled files and directory are cleaned up
+                if os.path.exists(output_dir):
+                    shutil.rmtree(output_dir)  # This will remove the directory and its contents
+
         finally:
-            # Ensure the temp file is cleaned up
+            # Ensure the temp file is cleaned up in case of an exception
             if os.path.exists(temp_file_path):
                 os.remove(temp_file_path)
 
