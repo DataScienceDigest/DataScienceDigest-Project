@@ -757,10 +757,11 @@ def run_kotlin_code(request):
             inputs = data.get('inputs', [])  # Optional input handling
             if not code:
                 return JsonResponse({'error': 'No Kotlin code provided'}, status=400)
-
+            print(data,'_____')
             # Create a temporary file for the Kotlin code
             with tempfile.NamedTemporaryFile(suffix='.kt', delete=False) as temp_file:
                 temp_file.write(code.encode())
+                temp_file.flush()  # Flush to ensure all data is written
                 temp_file_path = temp_file.name
 
             try:
