@@ -820,7 +820,7 @@ def run_kotlin_code(request):
 
         finally:
             # Ensure the temp file is cleaned up in case of an exception
-            if os.path.exists(temp_file_path):
-                os.remove(temp_file_path)
+            print(' inside finally block -----')
+            pass
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)
