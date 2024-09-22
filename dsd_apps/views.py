@@ -772,12 +772,16 @@ def run_kotlin_code(request):
 
             try:
                 # Compile the Kotlin code
-                compile_result = subprocess.run(
-                    ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlinc', temp_file_path, '-d', output_dir],
-                    capture_output=True,
-                    text=True
-                )
+                # compile_result = subprocess.run(
+                #     ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlinc', temp_file_path, '-d', output_dir],
+                #     capture_output=True,
+                #     text=True
+                # )
 
+                compile_result = subprocess.run(
+                ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlinc', 'code.kt', '-include-runtime', '-d', 'code.jar'],
+                capture_output=True, text=True, timeout=10
+                )
                 # Check if compilation failed
                 if compile_result.returncode != 0:
                     return JsonResponse({
@@ -785,21 +789,18 @@ def run_kotlin_code(request):
                         'error': compile_result.stderr
                     })
 
-                # List the compiled class files to identify the correct class name
-                compiled_files = os.listdir(output_dir)
-                print("Compiled files:", compiled_files)
-
                 # Assuming the main function is in MainKt class, update this based on the output of compiled files
+                # run_result = subprocess.run(
+                #     ['java', '-cp', output_dir, 'MainKt'],  # Adjust class name based on compiled output
+                #     input='\n'.join(inputs) if inputs else '',
+                #     capture_output=True,
+                #     text=True
+                # )
                 run_result = subprocess.run(
-                    ['java', '-cp', output_dir, 'MainKt'],  # Adjust class name based on compiled output
-                    input='\n'.join(inputs) if inputs else '',
-                    capture_output=True,
-                    text=True
+                ['java', '-jar', 'code.jar'],
+                input='\n'.join(inputs) if inputs else '',
+                capture_output=True, text=True, timeout=10
                 )
-
-                # Clean up the Kotlin source file
-                os.remove(temp_file_path)
-
                 # Return the output or error
                 return JsonResponse({
                     'output': run_result.stdout,
