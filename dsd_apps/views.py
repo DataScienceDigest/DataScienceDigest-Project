@@ -762,6 +762,7 @@ def run_kotlin_code(request):
             print(data, '_____')
             # Save the Kotlin code to a file
             file_path = "/tmp/code.kt"
+            jar_path = '/tmp/code.jar'
             with open(file_path, 'w') as file:
                 file.write(code)
             
@@ -783,7 +784,7 @@ def run_kotlin_code(request):
                 # )
 
                 compile_result = subprocess.run(
-                ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlinc', file_path, '-include-runtime', '-d', 'code.jar'],
+                ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlinc', file_path, '-include-runtime', '-d', jar_path],
                 capture_output=True, text=True, timeout=30
                 )
                 # Check if compilation failed
@@ -792,6 +793,9 @@ def run_kotlin_code(request):
                         'output': compile_result.stdout,
                         'error': compile_result.stderr
                     })
+                # Check if the JAR file exists
+                if not os.path.exists(jar_path):
+                    return JsonResponse({'output': 'Error: JAR file not created'})
 
                 # Assuming the main function is in MainKt class, update this based on the output of compiled files
                 # run_result = subprocess.run(
@@ -801,7 +805,7 @@ def run_kotlin_code(request):
                 #     text=True
                 # )
                 run_result = subprocess.run(
-                ['java', '-jar', 'code.jar'],
+                ['java', '-jar', jar_path],
                 input='\n'.join(inputs) if inputs else '',
                 capture_output=True, text=True, timeout=20
                 )
