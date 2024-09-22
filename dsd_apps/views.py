@@ -761,7 +761,8 @@ def run_kotlin_code(request):
             
             print(data, '_____')
             # Save the Kotlin code to a file
-            with open('code.kt', 'w') as file:
+            file_path = "/tmp/code.kt"
+            with open(file_path, 'w') as file:
                 file.write(code)
             
             # Create a temporary file for the Kotlin code
@@ -782,8 +783,8 @@ def run_kotlin_code(request):
                 # )
 
                 compile_result = subprocess.run(
-                ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlinc', 'code.kt', '-include-runtime', '-d', 'code.jar'],
-                capture_output=True, text=True, timeout=10
+                ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlinc', file_path, '-include-runtime', '-d', 'code.jar'],
+                capture_output=True, text=True, timeout=30
                 )
                 # Check if compilation failed
                 if compile_result.returncode != 0:
@@ -802,7 +803,7 @@ def run_kotlin_code(request):
                 run_result = subprocess.run(
                 ['java', '-jar', 'code.jar'],
                 input='\n'.join(inputs) if inputs else '',
-                capture_output=True, text=True, timeout=10
+                capture_output=True, text=True, timeout=20
                 )
                 # Return the output or error
                 return JsonResponse({
