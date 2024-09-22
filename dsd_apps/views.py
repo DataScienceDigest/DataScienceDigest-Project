@@ -765,23 +765,8 @@ def run_kotlin_code(request):
             jar_path = '/tmp/code.jar'
             with open(file_path, 'w') as file:
                 file.write(code)
-            
-            # Create a temporary file for the Kotlin code
-            # with tempfile.NamedTemporaryFile(suffix='.kt', delete=False) as temp_file:
-            #     temp_file.write(code.encode())
-            #     temp_file.flush()  # Ensure all data is written
-            #     temp_file_path = temp_file.name
-
-            # Prepare output directory for compiled class
-            output_dir = tempfile.mkdtemp()
 
             try:
-                # Compile the Kotlin code
-                # compile_result = subprocess.run(
-                #     ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlinc', temp_file_path, '-d', output_dir],
-                #     capture_output=True,
-                #     text=True
-                # )
 
                 compile_result = subprocess.run(
                 ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlinc', file_path, '-include-runtime', '-d', jar_path],
@@ -797,13 +782,6 @@ def run_kotlin_code(request):
                 if not os.path.exists(jar_path):
                     return JsonResponse({'output': 'Error: JAR file not created'})
 
-                # Assuming the main function is in MainKt class, update this based on the output of compiled files
-                # run_result = subprocess.run(
-                #     ['java', '-cp', output_dir, 'MainKt'],  # Adjust class name based on compiled output
-                #     input='\n'.join(inputs) if inputs else '',
-                #     capture_output=True,
-                #     text=True
-                # )
                 run_result = subprocess.run(
                 ['java', '-jar', jar_path],
                 input='\n'.join(inputs) if inputs else '',
@@ -817,15 +795,7 @@ def run_kotlin_code(request):
 
             except Exception as e:
                 return JsonResponse({'error': str(e)}, status=500)
-
-            finally:
-                # Ensure the compiled files and directory are cleaned up
-                if os.path.exists(output_dir):
-                    shutil.rmtree(output_dir)  # This will remove the directory and its contents
-
-        finally:
-            # Ensure the temp file is cleaned up in case of an exception
-            print(' inside finally block -----')
-            pass
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)
