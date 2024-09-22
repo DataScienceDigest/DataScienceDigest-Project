@@ -760,12 +760,15 @@ def run_kotlin_code(request):
                 return JsonResponse({'error': 'No Kotlin code provided'}, status=400)
             
             print(data, '_____')
+            # Save the Kotlin code to a file
+            with open('code.kt', 'w') as file:
+                file.write(code)
             
             # Create a temporary file for the Kotlin code
-            with tempfile.NamedTemporaryFile(suffix='.kt', delete=False) as temp_file:
-                temp_file.write(code.encode())
-                temp_file.flush()  # Ensure all data is written
-                temp_file_path = temp_file.name
+            # with tempfile.NamedTemporaryFile(suffix='.kt', delete=False) as temp_file:
+            #     temp_file.write(code.encode())
+            #     temp_file.flush()  # Ensure all data is written
+            #     temp_file_path = temp_file.name
 
             # Prepare output directory for compiled class
             output_dir = tempfile.mkdtemp()
