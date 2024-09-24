@@ -71,7 +71,8 @@
         editor.session.setMode("ace/mode/scala");
 
         // Pre-fill editor with default Scala code
-        editor.setValue("println(\"Hello, Scala!\")", 1);
+        editor.setValue(`object Main {def main(args: Array[String]): Unit = {    println("Hello, Scala!")}}`, 1);
+
 
         function runCode() {
             // Get CSRF token from the meta tag
