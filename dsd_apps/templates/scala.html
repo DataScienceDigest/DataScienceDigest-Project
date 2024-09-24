@@ -49,6 +49,7 @@
 
     <h1>Welcome to the Scala Code Editor</h1>
 
+    <!-- First Section -->
     <div class="section">
         <div class="intro">
             <h2>Introduction to Scala Loops</h2>
@@ -56,45 +57,82 @@
         </div>
 
         <div class="compiler">
-            <div id="editor" style="height: 200px;"></div>
-            <button onclick="runCode()">Run Code</button>
-            <pre id="output" class="output">Output will be displayed here...</pre>
+            <div id="editor1" style="height: 200px;"></div>
+            <button onclick="runCode('editor1', 'output1')">Run Code</button>
+            <pre id="output1" class="output"></pre>
+        </div>
+    </div>
+
+    <!-- Second Section -->
+    <div class="section">
+        <div class="intro">
+            <h2>Scala Functions Example</h2>
+            <p>Here, you can try writing a Scala function. Define and run a Scala function in the editor on the right.</p>
+        </div>
+
+        <div class="compiler">
+            <div id="editor2" style="height: 200px;"></div>
+            <button onclick="runCode('editor2', 'output2')">Run Code</button>
+            <pre id="output2" class="output"></pre>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
 
     <script>
-        // Initialize Ace Editor
-        var editor = ace.edit("editor");
-        editor.setTheme("ace/theme/monokai");
-        editor.session.setMode("ace/mode/scala");
+        // Initialize Ace Editor for the first section
+        var editor1 = ace.edit("editor1");
+        editor1.setTheme("ace/theme/monokai");
+        editor1.session.setMode("ace/mode/scala");
 
-        // Pre-fill editor with default Scala code
-        editor.setValue(`object Main {def main(args: Array[String]): Unit = {    println("Hello, Scala!")}}`, 1);
+        // Pre-fill editor1 with default Scala code for loops
+        editor1.setValue(`object Main {
+            def main(args: Array[String]): Unit = {
+                for (i <- 1 to 5) {
+                    println(s"Value of i: $i")
+                }
+            }
+        }`, 1);
 
+        // Initialize Ace Editor for the second section
+        var editor2 = ace.edit("editor2");
+        editor2.setTheme("ace/theme/monokai");
+        editor2.session.setMode("ace/mode/scala");
 
-        function runCode() {
+        // Pre-fill editor2 with default Scala function code
+        editor2.setValue(`object Main {
+            def main(args: Array[String]): Unit = {
+                println(add(2, 3))
+            }
+            
+            def add(a: Int, b: Int): Int = {
+                a + b
+            }
+        }`, 1);
+
+        function runCode(editorId, outputId) {
+            // Show "Running..." in the output section
+            document.getElementById(outputId).textContent = 'Running...';
+
             // Get CSRF token from the meta tag
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-            // Get the code from the editor
-            var code = editor.getValue();
+            // Get the code from the specified editor
+            var code = ace.edit(editorId).getValue();
 
-            // Detect input requests dynamically (e.g., scala.io.StdIn.readLine() or scala.io.StdIn.readInt())
+            // Detect input requests dynamically (e.g., scala.io.StdIn.readLine())
             var inputRegex = /scala\.io\.StdIn\.(readLine|readInt|readDouble|readFloat|readBoolean|readByte|readShort|readLong|readChar)\(\)/g;
             var matches = [...code.matchAll(inputRegex)];
 
             // If inputs are detected, prompt the user for inputs dynamically
             var inputs = [];
             if (matches.length > 0) {
-                // Loop through each detected input function
                 for (var i = 0; i < matches.length; i++) {
                     var inputPrompt = prompt("Please provide input for " + matches[i][0]);
-                    
+
                     // Validate input to ensure it's not null or empty
                     if (inputPrompt === null || inputPrompt.trim() === '') {
-                        document.getElementById('output').textContent = 'Execution aborted due to missing or invalid input.';
+                        document.getElementById(outputId).textContent = 'Execution aborted due to missing or invalid input.';
                         return;
                     }
 
@@ -114,11 +152,11 @@
             .then(response => response.json())
             .then(data => {
                 // Display the output or error
-                document.getElementById('output').textContent = data.output || data.error;
+                document.getElementById(outputId).textContent = data.output || data.error;
             })
             .catch(error => {
                 console.error('Error:', error);
-                document.getElementById('output').textContent = 'An error occurred while running the code.';
+                document.getElementById(outputId).textContent = 'An error occurred while running the code.';
             });
         }
 
