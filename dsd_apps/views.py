@@ -71,28 +71,23 @@ def run_r_code(request):
             data = json.loads(request.body.decode('utf-8'))
             code = data.get('code')
             inputs = data.get('inputs', [])
-            # Create an R script with the provided code
-            script_file = 'script.R'
-            with open(script_file, 'w') as file:
-                file.write(code)
+            # Create a temporary R script file
+            with tempfile.TemporaryDirectory() as temp_dir:
+                script_file = os.path.join(temp_dir, 'script.R')
+                with open(script_file, 'w') as file:
+                    file.write(code)
 
-            # Prepare the R environment to handle inputs
-            input_file = 'inputs.txt'
-            with open(input_file, 'w') as file:
-                for user_input in inputs:
-                    file.write(user_input + '\n')
+                # Run the R script using subprocess and provide inputs through stdin
+                result = subprocess.run(
+                    ['Rscript', '--vanilla', script_file],
+                    input='\n'.join(inputs),  # Provide inputs directly to R script via stdin
+                    text=True,
+                    capture_output=True
+                )
 
-            # Run the R script
-            result = subprocess.run(
-                ['Rscript', '--vanilla', script_file],
-                input='\n'.join(inputs),  # Provide inputs to the R script
-                text=True,
-                capture_output=True
-            )
-
-            # Read the output from the R script
-            output = result.stdout
-            error = result.stderr if result.stderr else None
+                # Capture the output and error (if any) from the R script execution
+                output = result.stdout
+                error = result.stderr if result.stderr else None
 
             # Return the output and error (if any) as JSON
             return JsonResponse({'output': output, 'error': error})
