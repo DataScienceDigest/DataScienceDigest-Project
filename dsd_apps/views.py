@@ -3,8 +3,6 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import subprocess
 import json
-import stat
-import shutil
 import os
 import tempfile
 import sqlite3
@@ -753,8 +751,6 @@ def run_kotlin_code(request):
             inputs = data.get('inputs', [])  # Optional input handling
             if not code:
                 return JsonResponse({'error': 'No Kotlin code provided'}, status=400)
-            
-            print(data, '_____')
             # Save the Kotlin code to a file
             file_path = "/tmp/code.kt"
             jar_path = '/tmp/code.jar'

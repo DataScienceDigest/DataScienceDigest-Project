@@ -1,12 +1,4 @@
 
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    margin: 0;
-    box-sizing: border-box;
-}
 .section {
     display: flex;
     justify-content: space-between;
