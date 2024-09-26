@@ -72,3 +72,22 @@
 .modal-content button:hover {
     background-color: #218838;
 }
+.section-switcher {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.section-switcher button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.section-switcher button:hover {
+    background-color: #0056b3;
+}
