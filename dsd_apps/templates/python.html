@@ -1,59 +1,14 @@
 {% load static %}
 {% include 'header.html' %}
 
-
-    <!-- Section 1: Hello World -->
-    <div class="section">
-        <div class="intro">
-            <h1>Welcome to the Python Compiler</h1>
-            <p>This is a simple Python code editor and compiler. You can edit the code on the right and click "Run" to see the output.</p>
-        </div>
-        <div class="compiler">
-            <div id="editorContainer1" style="height: 200px;"></div>
-            <button onclick="runCode('editor1', 'output1')">Run</button>
-            <div class="output" id="output1"></div>
-        </div>
+    <div class="section-switcher">
+        <button onclick="loadSection('basic')">Basic</button>
+        <button onclick="loadSection('medium')">Medium</button>
+        <button onclick="loadSection('advanced')">Advanced</button>
     </div>
 
-    <!-- Section 2: Loops in Python -->
-    <div class="section">
-        <div class="intro">
-            <h2>Loops in Python</h2>
-            <p>In Python, loops are used to iterate over a sequence (like a list, tuple, dictionary, set, or string).
-                Use the editor on the right to run a loop example.</p>
-        </div>
-        <div class="compiler">
-            <div id="editorContainer2" style="height: 200px;"></div>
-            <button onclick="runCode('editor2', 'output2')">Run</button>
-            <div class="output" id="output2"></div>
-        </div>
-    </div>
-
-    <!-- Section 3: Conditional Statements -->
-    <div class="section">
-        <div class="intro">
-            <h2>Conditional Statements</h2>
-            <p>Learn how to use if-else conditions in Python to control the flow of your code based on logical tests.</p>
-        </div>
-        <div class="compiler">
-            <div id="editorContainer3" style="height: 200px;"></div>
-            <button onclick="runCode('editor3', 'output3')">Run</button>
-            <div class="output" id="output3"></div>
-        </div>
-    </div>
-
-    <!-- Section 4: Functions in Python -->
-    <div class="section">
-        <div class="intro">
-            <h2>Functions in Python</h2>
-            <p>Use Python functions to break your program into reusable pieces of code.</p>
-        </div>
-        <div class="compiler">
-            <div id="editorContainer4" style="height: 200px;"></div>
-            <button onclick="runCode('editor4', 'output4')">Run</button>
-            <div class="output" id="output4"></div>
-        </div>
-    </div>
+    <!-- Section Content that will change dynamically -->
+    <div id="sectionContent"></div>
 
     <!-- Modal for input -->
     <div id="inputModal" class="modal">
@@ -63,22 +18,132 @@
             <button onclick="submitInput()">Submit</button>
         </div>
     </div>
-
     <script>
         const editors = {};
         let currentInputResolve = null;
+    
+        // Automatically load 'Basic' section on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            loadSection('basic');  // Load the basic section by default
+        });
+    
+        // AJAX function to load section dynamically
+        function loadSection(section) {
+            let sectionIntro = '';
+            let topics = [];
+
+            // Define section intro and multiple topics with relevant code
+            if (section === 'basic') {
+                sectionIntro = `<h1>Python Basics</h1>
+                                <p>Learn the basics of Python with examples. Here are multiple basic examples for you to explore.</p>`;
+                topics = [
+                    {
+                        title: 'Hello World Example',
+                        description: 'This is a simple "Hello, World!" program.',
+                        code: `print("Hello, World!")`
+                    },
+                    {
+                        title: 'Basic For Loop',
+                        description: 'A basic loop that prints numbers from 0 to 4.',
+                        code: `for i in range(5):\n    print(f"Number {i}")`
+                    }
+                ];
+            } else if (section === 'medium') {
+                sectionIntro = `<h1>Medium Level Python</h1>
+                                <p>This section covers medium-difficulty Python programs.</p>`;
+                topics = [
+                    {
+                        title: 'Square of Numbers',
+                        description: 'This program calculates the square of numbers from 1 to 5.',
+                        code: `for i in range(1, 6):\n    print(f"Square of {i} is {i * i}")`
+                    },
+                    {
+                        title: 'Conditional Statements',
+                        description: 'A simple if-else conditional example.',
+                        code: `number = 10\nif number > 5:\n    print("Number is greater than 5")\nelse:\n    print("Number is less than or equal to 5")`
+                    }
+                ];
+            } else if (section === 'advanced') {
+                sectionIntro = `<h1>Advanced Python</h1>
+                                <p>Explore advanced topics in Python like functions and recursion.</p>`;
+                topics = [
+                    {
+                        title: 'Function Example',
+                        description: 'This program defines and calls a function that greets the user.',
+                        code: `def greet(name):\n    print(f"Hello, {name}!")\n\ngreet("Alice")`
+                    },
+                    {
+                        title: 'Recursion Example',
+                        description: 'A simple example demonstrating recursion in Python.',
+                        code: `def factorial(n):\n    if n == 0:\n        return 1\n    else:\n        return n * factorial(n-1)\n\nprint(factorial(5))`
+                    }
+                ];
+            }
+
+            // Dispose of existing editors before loading the new section
+            Object.keys(editors).forEach(editorId => {
+                if (editors[editorId]) {
+                    editors[editorId].dispose();
+                    delete editors[editorId];  // Clean up editor instances
+                }
+            });
+
+            // Create section content with multiple topics, each having its own compiler
+            let sectionContent = `
+                <div class="intro">
+                    ${sectionIntro}
+                </div>`;
+
+            topics.forEach((topic, index) => {
+                sectionContent += `
+                    <div class="topic">
+                        <h2>${topic.title}</h2>
+                        <p>${topic.description}</p>
+                        <div class="compiler">
+                            <div id="editorContainer${index}" style="height: 200px; border: 1px solid #ccc;"></div>
+                            <button onclick="runCode('editor${index}', 'output${index}')">Run</button>
+                            <div class="output" id="output${index}" style="margin-top: 10px; background: #f4f4f4; padding: 10px;"></div>
+                        </div>
+                    </div>`;
+            });
+
+            // Insert the dynamically generated content into the page
+            document.getElementById('sectionContent').innerHTML = sectionContent;
+
+            // Ensure Monaco Editor is properly re-initialized for each topic
+            require(['vs/editor/editor.main'], function () {
+                topics.forEach((topic, index) => {
+                    initializeEditor(`editor${index}`, topic.code);  // Re-initialize Monaco editor for each topic
+                });
+            });
+        }
 
         // Monaco Editor setup using the provided JavaScript structure
         require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
         require(['vs/editor/editor.main'], function () {
-            // Initialize Monaco Editor for all code sections
-            initializeEditor('editor1', 'print("Hello, World!")\nfor i in range(5):\n    print(f"Number {i}")');
-            initializeEditor('editor2', 'for i in range(1, 6):\n    print(f"Square of {i} is {i * i}")');
-            initializeEditor('editor3', 'number = 10\nif number > 5:\n    print("Number is greater than 5")\nelse:\n    print("Number is less than or equal to 5")');
-            initializeEditor('editor4', 'def greet(name):\n    print(f"Hello, {name}!")\n\ngreet("Alice")');
+            initializeEditors();  // Initialize Monaco editors for the default section
         });
+    
+        // Function to initialize all Monaco Editor instances after loading new content
+        function initializeEditors() {
+            const editorContainers = document.querySelectorAll('[id^=editorContainer]');
+            
+            // Dispose of any existing editors before re-initializing
+            Object.keys(editors).forEach(editorId => {
+                if (editors[editorId]) {
+                    editors[editorId].dispose();  // Dispose of the existing editor
+                    delete editors[editorId];     // Remove from the editors object
+                }
+            });
 
-        // Function to initialize Monaco Editor instances
+            editorContainers.forEach(container => {
+                const editorId = container.id.replace('editorContainer', 'editor');
+                initializeEditor(editorId, '');  // Initialize editor with default empty value
+            });
+        }
+
+    
+        // Function to initialize a Monaco Editor instance
         function initializeEditor(editorId, defaultValue) {
             const container = document.getElementById(`editorContainer${editorId.slice(-1)}`);
             if (!editors[editorId]) {
@@ -90,22 +155,22 @@
                 });
             }
         }
-
-        // Function to run code
+    
+        // Function to run the code
         async function runCode(editorId, outputId) {
             const editor = editors[editorId];
             let code = editor.getValue();
-
+    
             // Detect and handle input() calls
             let inputs = [];
             let inputPattern = /input\((.*?)\)/g;
             let match;
-
+    
             while ((match = inputPattern.exec(code)) !== null) {
                 let userInput = await getInputFromUser(match[1] ? `Input required: ${match[1]}` : 'Enter input:');
                 inputs.push(userInput || ''); // Handle cancel or empty inputs
             }
-
+    
             try {
                 let response = await fetch('/run/', {
                     method: 'POST',
@@ -115,7 +180,7 @@
                     },
                     body: new URLSearchParams({ 'code': code, 'inputs[]': inputs })  // Send inputs as array
                 });
-
+    
                 let data = await response.json();
                 document.getElementById(outputId).textContent = data.output || data.error;
             } catch (error) {
@@ -123,7 +188,7 @@
                 document.getElementById(outputId).textContent = 'Error executing code.';
             }
         }
-
+    
         // Function to handle showing the modal for input
         function getInputFromUser(message) {
             return new Promise((resolve) => {
@@ -133,7 +198,7 @@
                 currentInputResolve = resolve;  // Store the resolve function
             });
         }
-
+    
         // Function to submit input from the modal
         function submitInput() {
             let input = document.getElementById('userInput').value;
@@ -144,4 +209,5 @@
             document.getElementById('inputModal').style.display = 'none';  // Hide modal after submitting
         }
     </script>
+    
 {% include 'footer.html' %}
