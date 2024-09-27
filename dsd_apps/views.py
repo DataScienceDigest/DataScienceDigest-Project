@@ -7,6 +7,12 @@ import os
 import tempfile
 import sqlite3
 from django.conf import settings 
+from django.http import FileResponse
+
+def sitemap_view(request):
+    # Assuming the file is in a folder named 'static/sitemaps/' in your project root
+    file_path = os.path.join(settings.BASE_DIR, 'static/sitemaps/sitemap.xml')
+    return FileResponse(open(file_path, 'rb'), content_type='application/xml')
 
 def index(request):
     return render(request, 'index.html')
