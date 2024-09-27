@@ -2,13 +2,13 @@
 {% include 'header.html' %}
 
     <div class="section-switcher">
-        <button onclick="loadSection('basic')">Basic</button>
-        <button onclick="loadSection('medium')">Medium</button>
-        <button onclick="loadSection('advanced')">Advanced</button>
+        <button onclick="loadSection('basic')" id="basic">Basic</button>
+        <button onclick="loadSection('medium')" id="medium">Medium</button>
+        <button onclick="loadSection('advanced')" id="advanced">Advanced</button>
     </div>
 
     <!-- Section Content that will change dynamically -->
-    <div id="sectionContent"></div>
+    <div id="sectionContent">
 
     <!-- Modal for input -->
     <div id="inputModal" class="modal">
@@ -18,6 +18,7 @@
             <button onclick="submitInput()">Submit</button>
         </div>
     </div>
+    
     <script>
         const editors = {};
         let currentInputResolve = null;
@@ -25,6 +26,7 @@
         // Automatically load 'Basic' section on page load
         document.addEventListener("DOMContentLoaded", function() {
             loadSection('basic');  // Load the basic section by default
+
         });
     
         // AJAX function to load section dynamically
@@ -34,6 +36,9 @@
 
             // Define section intro and multiple topics with relevant code
             if (section === 'basic') {
+                document.querySelector("#basic").style.backgroundColor="green";
+                document.querySelector("#advanced").style.backgroundColor=""
+                document.querySelector("#medium").style.backgroundColor=""
                 sectionIntro = `<h1>Python Basics</h1>
                                 <p>Learn the basics of Python with examples. Here are multiple basic examples for you to explore.</p>`;
                 topics = [
@@ -49,6 +54,9 @@
                     }
                 ];
             } else if (section === 'medium') {
+                document.querySelector("#medium").style.backgroundColor="green"
+                document.querySelector("#basic").style.backgroundColor=""
+                document.querySelector("#advanced").style.backgroundColor=""
                 sectionIntro = `<h1>Medium Level Python</h1>
                                 <p>This section covers medium-difficulty Python programs.</p>`;
                 topics = [
@@ -64,6 +72,9 @@
                     }
                 ];
             } else if (section === 'advanced') {
+                document.querySelector("#advanced").style.backgroundColor="green"
+                document.querySelector("#basic").style.backgroundColor=""
+                document.querySelector("#medium").style.backgroundColor=""
                 sectionIntro = `<h1>Advanced Python</h1>
                                 <p>Explore advanced topics in Python like functions and recursion.</p>`;
                 topics = [
@@ -96,10 +107,12 @@
 
             topics.forEach((topic, index) => {
                 sectionContent += `
-                    <div class="topic">
+                    <div class="topic" style="heigth:500px">
+                         <div style="width:50%;heigth:500px">
                         <h2>${topic.title}</h2>
                         <p>${topic.description}</p>
-                        <div class="compiler">
+                        </div>
+                        <div class="compiler" style="width:50%;heigth:500px">
                             <div id="editorContainer${index}" style="height: 200px; border: 1px solid #ccc;"></div>
                             <button onclick="runCode('editor${index}', 'output${index}')">Run</button>
                             <div class="output" id="output${index}" style="margin-top: 10px; background: #f4f4f4; padding: 10px;"></div>
