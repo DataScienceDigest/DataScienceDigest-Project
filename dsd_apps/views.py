@@ -19,17 +19,7 @@ def index(request):
 def all_courses(request):
     return render(request, 'all_courses.html')
 
-def load_section(request):
-    section_type = request.GET.get('type', 'basic')
-    
-    if section_type == 'basic':
-        return render(request, 'basic_section.html')
-    elif section_type == 'medium':
-        return render(request, 'medium_section.html')
-    elif section_type == 'advanced':
-        return render(request, 'advanced_section.html')
-    
-    return HttpResponse("Invalid section", status=400)
+
 def all_compilers(request):
     return render(request,'all_compilers.html')
 def python_index(request):

@@ -8,8 +8,7 @@
     </div>
 
     <!-- Section Content that will change dynamically -->
-    <div id="sectionContent">
-
+    <div id="sectionContent"></div>
     <!-- Modal for input -->
     <div id="inputModal" class="modal">
         <div class="modal-content">
@@ -44,13 +43,43 @@
                 topics = [
                     {
                         title: 'Hello World Example',
-                        description: 'This is a simple "Hello, World!" program.',
+                        description: 'This is the simplest Python program. It uses the "print()" function to display the text "Hello, World!" on the screen. The "print()" function is used to show output in Python.',
                         code: `print("Hello, World!")`
                     },
                     {
                         title: 'Basic For Loop',
-                        description: 'A basic loop that prints numbers from 0 to 4.',
+                        description: 'A "for" loop in Python is used to repeat a block of code multiple times. In this example, the loop repeats 5 times, printing numbers from 0 to 4. "range(5)" generates numbers starting from 0 up to (but not including) 5.',
                         code: `for i in range(5):\n    print(f"Number {i}")`
+                    },
+                    {
+                        title: 'Basic If-Else Condition',
+                        description: 'Conditional statements allow us to make decisions in our code. This example checks if a number is greater than 5 or not. If it is, it prints a message saying so; otherwise, it prints a different message.',
+                        code: `number = 10\nif number > 5:\n    print("Number is greater than 5")\nelse:\n    print("Number is less than or equal to 5")`
+                    },
+                    {
+                        title: 'Sum of Numbers',
+                        description: 'This example calculates the sum of numbers from 1 to 5 using a loop. It adds each number to the "total" variable. In the end, the total sum is printed.',
+                        code: `total = 0\nfor i in range(1, 6):\n    total += i\nprint(f"Sum of numbers from 1 to 5 is {total}")`
+                    },
+                    {
+                        title: 'Find Maximum in a List',
+                        description: 'This code finds the largest number in a list of numbers. The "max()" function returns the biggest number. Lists in Python are used to store multiple items.',
+                        code: `numbers = [3, 7, 2, 9, 4]\nmax_number = max(numbers)\nprint(f"The largest number is {max_number}")`
+                    },
+                    {
+                        title: 'Simple Function Example',
+                        description: 'Functions in Python allow you to organize your code into reusable blocks. This example defines a function "greet" that takes a name as input and prints a greeting message. The function is then called with the name "Alice".',
+                        code: `def greet(name):\n    print(f"Hello, {name}!")\ngreet("Alice")`
+                    },
+                    {
+                        title: 'List Comprehension',
+                        description: 'List comprehensions provide a concise way to create lists. In this example, it generates a list of squares of numbers from 1 to 5 in one line of code.',
+                        code: `squares = [x**2 for x in range(1, 6)]\nprint(squares)`
+                    },
+                    {
+                        title: 'Basic While Loop',
+                        description: 'A "while" loop repeats as long as a condition is true. In this example, the loop continues to run as long as the value of "i" is less than 5. After each loop, the value of "i" increases by 1.',
+                        code: `i = 0\nwhile i < 5:\n    print(f"Number {i}")\n    i += 1`
                     }
                 ];
             } else if (section === 'medium') {
@@ -134,7 +163,9 @@
         // Monaco Editor setup using the provided JavaScript structure
         require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
         require(['vs/editor/editor.main'], function () {
-            initializeEditors();  // Initialize Monaco editors for the default section
+            document.addEventListener("DOMContentLoaded", function() {
+            loadSection('basic');  // Load the basic section by default after Monaco is ready
+        });
         });
     
         // Function to initialize all Monaco Editor instances after loading new content
