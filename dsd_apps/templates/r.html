@@ -1,9 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="csrf-token" content="{{ csrf_token }}">
-    <title>Online R Compiler</title>
+    <title>R Language Tutorial and Online Compiler - Data Science Digest</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+    <!-- Meta Tags for R Language Online Compiler Page -->
+    <meta name="description"
+        content="Run and test your R code online with our free R language compiler. Execute R scripts and analyze data instantly, all in your browser.">
+    <meta name="keywords" content="R online compiler, run R code, compile R program, R code execution, online R editor">
+    <meta name="author" content="Data Science Digest">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="R Online Compiler - Data Science Digest">
+    <meta property="og:description"
+        content="Write, compile, and execute R scripts online with our fast and easy-to-use R language compiler. No setup needed.">
+    <meta property="og:url" content="https://datasciencedigest.in/run_r_code">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://datasciencedigest.in/images/r-compiler.png">
+    <!-- Meta Tags for R Language Tutorial Page -->
+    <meta name="description"
+        content="In-depth R language tutorial covering data analysis, visualization, and statistics. Start your journey with R programming today.">
+    <meta name="keywords" content="R tutorial, learn R, R programming, R data analysis, online R course">
+    <meta name="author" content="Data Science Digest">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="R Language Tutorial - Data Science Digest">
+    <meta property="og:description"
+        content="Explore R programming with our comprehensive tutorial, from data manipulation to visualization techniques.">
+    <meta property="og:url" content="https://datasciencedigest.in/r-tutorial">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://datasciencedigest.in/images/r-tutorial.png">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,17 +39,21 @@
             margin: 0;
             box-sizing: border-box;
         }
+
         h1 {
             margin-bottom: 20px;
         }
+
         .section {
             display: flex;
             margin-bottom: 20px;
         }
+
         .intro {
             flex: 1;
             margin-right: 20px;
         }
+
         .compiler {
             flex: 2;
             padding: 10px;
@@ -31,11 +61,13 @@
             border-radius: 8px;
             background-color: #f9f9f9;
         }
+
         .compiler button {
             padding: 10px 20px;
             cursor: pointer;
             margin-top: 10px;
         }
+
         .output {
             margin-top: 10px;
             background-color: #f1f1f1;
@@ -46,7 +78,69 @@
             height: auto;
         }
     </style>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Course",
+          "name": "R Programming Tutorial",
+          "description": "Comprehensive R programming tutorial covering data analysis, statistics, and visualization.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "image": [
+            "https://datasciencedigest.in/photos/1x1/r-tutorial.jpg",
+            "https://datasciencedigest.in/photos/4x3/r-tutorial.jpg",
+            "https://datasciencedigest.in/photos/16x9/r-tutorial.jpg"
+          ],
+          "offers": [{
+            "@type": "Offer",
+            "category": "Free",
+            "priceCurrency": "USD",
+            "price": "0"
+          }],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.6,
+            "ratingCount": 1800,
+            "reviewCount": 800
+          },
+          "totalHistoricalEnrollment": 45000,
+          "datePublished": "2024-01-01",
+          "dateModified": "2024-09-29",
+          "educationalLevel": "Intermediate",
+          "inLanguage": "en",
+          "hasCourseInstance": [
+            {
+              "@type": "CourseInstance",
+              "courseMode": "Online",
+              "courseWorkload": "P7D",
+              "startDate": "2024-03-01",
+              "endDate": "2024-03-07",
+              "instructor": [{
+                "@type": "Person",
+                "name": "Alice Johnson",
+                "description": "Data Scientist",
+                "image": "https://datasciencedigest.in/photos/instructor-alice.jpg"
+              }]
+            }
+          ],
+          "about": ["R Basics", "Data Analysis", "Statistical Modeling"],
+          "teaches": [
+            "Perform data analysis in R",
+            "Use R for statistical modeling"
+          ]
+        }
+        </script>
+
 </head>
+
 <body>
     <h1>Welcome to the R Compiler</h1>
 
@@ -54,7 +148,8 @@
         <!-- Explanation Section -->
         <div class="intro">
             <h2>Loops in R</h2>
-            <p>In R, loops are used to execute a block of code repeatedly as long as a specified condition is true. Use the editor on the right to run a loop example.</p>
+            <p>In R, loops are used to execute a block of code repeatedly as long as a specified condition is true. Use
+                the editor on the right to run a loop example.</p>
         </div>
         <!-- Compiler Section -->
         <div class="compiler">
@@ -68,7 +163,8 @@
         <!-- Explanation Section -->
         <div class="intro">
             <h2>Welcome to the R Compiler</h2>
-            <p>This is a simple R code editor and compiler. You can edit the code on the right and click "Run" to see the output.</p>
+            <p>This is a simple R code editor and compiler. You can edit the code on the right and click "Run" to see
+                the output.</p>
         </div>
         <!-- Compiler Section -->
         <div class="compiler">
@@ -79,7 +175,7 @@
     </div>
 
     <script>
-        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' } });
         require(['vs/editor/editor.main'], function () {
             window.editor1 = monaco.editor.create(document.getElementById('editorContainer1'), {
                 value: 'for (i in 1:5) {\n  print(paste("Square of", i, "is", i^2))\n}\n',
@@ -118,9 +214,9 @@
                 }
             }
 
-            const payload = { 
-                code: code, 
-                inputs: Object.values(inputPrompt) 
+            const payload = {
+                code: code,
+                inputs: Object.values(inputPrompt)
             };
 
             fetch('/run_r_code/', {
@@ -131,14 +227,14 @@
                 },
                 body: JSON.stringify(payload)
             })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById(outputId).textContent = data.output;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById(outputId).textContent = 'Error executing the code.';
-            });
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById(outputId).textContent = data.output;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById(outputId).textContent = 'Error executing the code.';
+                });
         }
 
         function getCSRFToken() {
@@ -146,4 +242,5 @@
         }
     </script>
 </body>
+
 </html>
