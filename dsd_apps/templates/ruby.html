@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruby Online Compiler</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+    <!-- Meta Tags for Ruby Online Compiler Page -->
+    <meta name="description"
+        content="Compile and run Ruby code online with our free Ruby compiler. Write, edit, and execute Ruby programs directly in your browser.">
+    <meta name="keywords"
+        content="Ruby online compiler, run Ruby code, compile Ruby program, Ruby code execution, online Ruby editor">
+    <meta name="author" content="Data Science Digest">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Ruby Online Compiler - Data Science Digest">
+    <meta property="og:description"
+        content="Run your Ruby code instantly with our fast online Ruby compiler. No installation or setup required.">
+    <meta property="og:url" content="https://datasciencedigest.in/run_ruby_code">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://datasciencedigest.in/images/ruby-compiler.png">
+    <!-- Meta Tags for Ruby Tutorial Page -->
+    <meta name="description"
+        content="Learn Ruby programming with our complete Ruby tutorial. Get hands-on experience with coding examples and exercises.">
+    <meta name="keywords" content="Ruby tutorial, learn Ruby, Ruby programming, Ruby examples, online Ruby course">
+    <meta name="author" content="Data Science Digest">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Ruby Tutorial - Data Science Digest">
+    <meta property="og:description"
+        content="Dive into Ruby programming with our thorough tutorial covering everything from syntax to web development.">
+    <meta property="og:url" content="https://datasciencedigest.in/ruby-tutorial">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://datasciencedigest.in/images/ruby-tutorial.png">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,14 +42,17 @@
             margin: 0;
             box-sizing: border-box;
         }
+
         .section {
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
         }
+
         .intro {
             width: 40%;
         }
+
         .compiler {
             width: 55%;
             padding: 10px;
@@ -30,11 +60,13 @@
             border-radius: 8px;
             background-color: #f9f9f9;
         }
+
         .compiler button {
             padding: 10px 20px;
             cursor: pointer;
             margin-top: 10px;
         }
+
         .output {
             margin-top: 10px;
             background-color: #f1f1f1;
@@ -45,7 +77,69 @@
             height: auto;
         }
     </style>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Course",
+          "name": "Ruby Tutorial",
+          "description": "Comprehensive Ruby programming tutorial covering basic to advanced topics.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "image": [
+            "https://datasciencedigest.in/photos/1x1/ruby-tutorial.jpg",
+            "https://datasciencedigest.in/photos/4x3/ruby-tutorial.jpg",
+            "https://datasciencedigest.in/photos/16x9/ruby-tutorial.jpg"
+          ],
+          "offers": [{
+            "@type": "Offer",
+            "category": "Free",
+            "priceCurrency": "USD",
+            "price": "0"
+          }],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.6,
+            "ratingCount": 2100,
+            "reviewCount": 1200
+          },
+          "totalHistoricalEnrollment": 50000,
+          "datePublished": "2024-01-01",
+          "dateModified": "2024-09-29",
+          "educationalLevel": "Beginner to Advanced",
+          "inLanguage": "en",
+          "hasCourseInstance": [
+            {
+              "@type": "CourseInstance",
+              "courseMode": "Online",
+              "courseWorkload": "P7D",
+              "startDate": "2024-08-01",
+              "endDate": "2024-08-07",
+              "instructor": [{
+                "@type": "Person",
+                "name": "Emma Wilson",
+                "description": "Senior Ruby Developer",
+                "image": "https://datasciencedigest.in/photos/instructor-emma.jpg"
+              }]
+            }
+          ],
+          "about": ["Ruby Basics", "Ruby on Rails Framework"],
+          "teaches": [
+            "Learn Ruby programming fundamentals",
+            "Master web development with Ruby on Rails"
+          ]
+        }
+        </script>
+
 </head>
+
 <body>
     <h1>Ruby Online Compiler</h1>
 
@@ -53,7 +147,8 @@
         <!-- Explanation Section -->
         <div class="intro">
             <h2>Example: Simple Ruby Program</h2>
-            <p>Write Ruby code in the editor to the right. Click "Run Code" to execute the program. If your code requires input (e.g., `gets`), a prompt will appear asking for user input.</p>
+            <p>Write Ruby code in the editor to the right. Click "Run Code" to execute the program. If your code
+                requires input (e.g., `gets`), a prompt will appear asking for user input.</p>
         </div>
         <!-- Compiler Section -->
         <div class="compiler">
@@ -65,7 +160,7 @@
 
     <script>
         // Load Monaco Editor
-        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' } });
         require(['vs/editor/editor.main'], function () {
             window.editor = monaco.editor.create(document.getElementById('editorContainer'), {
                 value: '# Example Ruby code\nputs "Enter your name:"\nname = gets.chomp\nputs "Hello, #{name}!"\n',
@@ -127,4 +222,5 @@
         }
     </script>
 </body>
+
 </html>

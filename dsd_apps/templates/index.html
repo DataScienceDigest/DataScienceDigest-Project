@@ -1,6 +1,269 @@
 {% load static %}
-{% include 'header.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Programming Tutorials, Coding Examples & Online Compilers | Learn Python, Java, SQL - DataScienceDigest.in</title>
+    <meta name="description" content="Learn programming for free with hands-on tutorials and online compilers from DataScienceDigest.in. Master Python, HTML, JavaScript, SQL, and more with real coding examples. Practice live coding with our online compilers. Join now!">
+    <meta name="keywords" content="DataScience Digest,Programming Tutorials, Learn Python Free, JavaScript Tutorial, SQL Tutorial, Free Coding Examples, Online Compiler, DataScienceDigest">
+    <meta name="google-site-verification" content="mkIFT0Gf0kASPWjbgMCGIgw2bHVQthe6wMzfyldxmuM" />
+    <!-- Social Media Meta Tags -->
+    <meta property="og:title" content="Learn Programming for Free | DataScienceDigest.in">
+    <meta property="og:description" content="Master Python, JavaScript, HTML, and more with free programming tutorials.">
+    <meta property="og:image" content="https://www.datasciencedigest.in/images/share-image.png">
+    <meta property="og:url" content="https://www.datasciencedigest.in/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Learn Programming for Free | DataScienceDigest.in">
+    <meta name="twitter:description" content="Master programming with hands-on coding tutorials on Python, JavaScript, and more.">
+    <meta name="twitter:image" content="https://www.datasciencedigest.in/images/twitter-card-image.png">
+    <!-- additional seo  -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "DataScienceDigest.in",
+          "url": "https://www.datasciencedigest.in",
+          "description": "Free programming tutorials with hands-on coding examples and online compilers. Learn Python, JavaScript, SQL, HTML, and more with easy-to-follow tutorials on DataScienceDigest.in.",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.datasciencedigest.in/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+        </script>
+        <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "item": {
+                    "@type": "Course",
+                    "name": "Python Programming",
+                    "description": "Learn Python from basics to advanced concepts.",
+                    "url": "https://www.datasciencedigest.in/python-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "item": {
+                    "@type": "Course",
+                    "name": "SQL Fundamentals",
+                    "description": "Master SQL queries and database management.",
+                    "url": "https://www.datasciencedigest.in/sql-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "item": {
+                    "@type": "Course",
+                    "name": "HTML & CSS",
+                    "description": "Build responsive web pages with HTML5 and CSS3.",
+                    "url": "https://www.datasciencedigest.in/html-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 4,
+                  "item": {
+                    "@type": "Course",
+                    "name": "JavaScript Programming",
+                    "description": "Learn JavaScript from basics to advanced concepts.",
+                    "url": "https://www.datasciencedigest.in/javascript-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 5,
+                  "item": {
+                    "@type": "Course",
+                    "name": "Rust Programming",
+                    "description": "Explore Rust programming for building safe, concurrent, and performant applications.",
+                    "url": "https://www.datasciencedigest.in/rust-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 6,
+                  "item": {
+                    "@type": "Course",
+                    "name": "Go Programming",
+                    "description": "Learn Go programming for scalable and efficient software solutions.",
+                    "url": "https://www.datasciencedigest.in/go-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 7,
+                  "item": {
+                    "@type": "Course",
+                    "name": "C Programming",
+                    "description": "Gain a deep understanding of the C programming language.",
+                    "url": "https://www.datasciencedigest.in/c-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 8,
+                  "item": {
+                    "@type": "Course",
+                    "name": "C++ Programming",
+                    "description": "Master C++ programming for performance-critical applications.",
+                    "url": "https://www.datasciencedigest.in/cpp-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 9,
+                  "item": {
+                    "@type": "Course",
+                    "name": "Java Programming",
+                    "description": "Build powerful applications in Java using the latest frameworks.",
+                    "url": "https://www.datasciencedigest.in/java-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 10,
+                  "item": {
+                    "@type": "Course",
+                    "name": "R Programming",
+                    "description": "Learn R for data science, statistical analysis, and visualization.",
+                    "url": "https://www.datasciencedigest.in/r-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 11,
+                  "item": {
+                    "@type": "Course",
+                    "name": "Swift Programming",
+                    "description": "Learn Swift programming for building iOS and macOS applications.",
+                    "url": "https://www.datasciencedigest.in/swift-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 12,
+                  "item": {
+                    "@type": "Course",
+                    "name": "Scala Programming",
+                    "description": "Explore Scala for building scalable, functional applications.",
+                    "url": "https://www.datasciencedigest.in/scala-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 13,
+                  "item": {
+                    "@type": "Course",
+                    "name": "Julia Programming",
+                    "description": "Learn Julia for high-performance numerical and scientific computing.",
+                    "url": "https://www.datasciencedigest.in/julia-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 14,
+                  "item": {
+                    "@type": "Course",
+                    "name": "Ruby Programming",
+                    "description": "Master Ruby programming for web development and scripting.",
+                    "url": "https://www.datasciencedigest.in/ruby-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 15,
+                  "item": {
+                    "@type": "Course",
+                    "name": "Perl Programming",
+                    "description": "Learn Perl for text processing and scripting.",
+                    "url": "https://www.datasciencedigest.in/perl-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 16,
+                  "item": {
+                    "@type": "Course",
+                    "name": "PHP Programming",
+                    "description": "Master PHP for back-end web development.",
+                    "url": "https://www.datasciencedigest.in/php-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 17,
+                  "item": {
+                    "@type": "Course",
+                    "name": "C# Programming",
+                    "description": "Learn C# for developing desktop, web, and game applications.",
+                    "url": "https://www.datasciencedigest.in/csharp-tutorial"
+                  }
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 18,
+                  "item": {
+                    "@type": "Course",
+                    "name": "Kotlin Programming",
+                    "description": "Learn Kotlin for Android development with functional programming.",
+                    "url": "https://www.datasciencedigest.in/kotlin-tutorial"
+                  }
+                }
+              ]
+            }
+            </script>
+            
+        
+        <!-- Additional meta tags for better SEO -->
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="DataScienceDigest" />
+        <meta name="robots" content="index, follow" />
+        
+        <!-- Consider adding canonical link for avoiding duplicate content -->
+        <link rel="canonical" href="https://www.datasciencedigest.in/" />
+        
+        <!-- Already optimized meta description and keywords -->
+        <meta name="description" content="Learn programming for free with hands-on tutorials and online compilers from DataScienceDigest.in. Master Python, HTML, JavaScript, SQL, and more with real coding examples. Practice live coding with our online compilers. Join now!">
+        <meta name="keywords" content="DataScience Digest,Programming Tutorials, Learn Python Free, JavaScript Tutorial, SQL Tutorial, Free Coding Examples, Online Compiler, DataScienceDigest">
+        
+        <!-- Add favicon for branding -->
+        <link rel="icon" href="https://www.datasciencedigest.in/images/favicon.ico" type="image/x-icon" />
+        
+
+    <!-- Include Monaco Editor from CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/index_styles.css' %}"> <!-- index page css -->
+    <link rel="stylesheet" href="{% static 'css/all-courses.css' %}"> <!-- all courses css -->
+    <link rel="stylesheet" href="{% static 'css/compiler-styles.css' %}"> <!-- all compilers css -->
+
+   
+</head>
+
+<body>
+    <header>
+        <nav>
+          <div class="logo">
+            <img src="{% static 'images/dsd.svg' %}" alt="DataScienceDigest Logo" style="height:395px;position: absolute;top:-152px;"/>
+        </div>
+        
+            <ul class="nav-links">
+                <li><a href="{% url 'all_courses' %}">Courses</a></li>
+                <li><a href="#">Tutorials</a></li>
+                <li><a href="#">Examples</a></li>
+            </ul>
+            <button class="pro-btn">Login/Sign Up</button>
+        </nav>
+    </header>
     <section class="main-section">
         <div class="content">
             <h1>Master Programming for Free</h1>

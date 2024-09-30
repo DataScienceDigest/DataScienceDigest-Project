@@ -16,12 +16,12 @@ def sitemap_view(request):
 
 def index(request):
     return render(request, 'index.html')
+
 def all_courses(request):
     return render(request, 'all_courses.html')
 
 
-def all_compilers(request):
-    return render(request,'all_compilers.html')
+
 def python_index(request):
     return render(request, 'python.html')
 

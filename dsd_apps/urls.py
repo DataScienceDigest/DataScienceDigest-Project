@@ -3,7 +3,6 @@ from . import views
 urlpatterns = [
     path('',views.index),
     path('all-courses/',views.all_courses,name='all_courses'), #done
-    path('all-compilers/',views.all_compilers,name='all_compilers'),
     # ________________javascript Compiler __________________
     path('javascript-tutorial/', views.javascript_index, name='javascript-tutorial'), #done
     path('java-tutorial/', views.java_index, name='java-tutorial'),     # done 

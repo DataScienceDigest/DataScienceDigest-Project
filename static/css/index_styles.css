@@ -15,6 +15,7 @@ header {
     padding: 10px 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
+    height: 90px;
     justify-content: space-between;
     align-items: center;
 }
@@ -28,6 +29,7 @@ nav {
     padding: 15px 30px;
     color: #ffffff;
     width: 100%; /* Ensure full width */
+    height: 90px;
     box-sizing: border-box; /* Make sure padding is included in the width */
 }
 
@@ -35,6 +37,7 @@ nav {
     font-size: 24px;
     font-weight: bold;
     color: #ffffff;
+    height: 90px;
 }
 
 .nav-links {

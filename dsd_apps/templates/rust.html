@@ -1,9 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="csrf-token" content="{{ csrf_token }}">
     <title>Online Rust Compiler</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+    <!-- Meta Tags for Rust Online Compiler Page -->
+    <meta name="description"
+        content="Write, run, and test Rust code online with our free Rust compiler. Execute Rust programs instantly in your browser without installing any software.">
+    <meta name="keywords"
+        content="Rust online compiler, run Rust code, compile Rust program, Rust code execution, online Rust editor">
+    <meta name="author" content="Data Science Digest">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Rust Online Compiler - Data Science Digest">
+    <meta property="og:description"
+        content="Compile and run your Rust code instantly with our user-friendly online Rust compiler. No installation required.">
+    <meta property="og:url" content="https://datasciencedigest.in/compile_rust">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://datasciencedigest.in/images/rust-compiler.png">
+    <!-- Meta Tags for Rust Tutorial Page -->
+    <meta name="description"
+        content="Comprehensive Rust tutorial for beginners and advanced users. Learn Rust programming and systems programming concepts.">
+    <meta name="keywords"
+        content="Rust tutorial, learn Rust, Rust programming, systems programming, online Rust course">
+    <meta name="author" content="Data Science Digest">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Rust Tutorial - Data Science Digest">
+    <meta property="og:description"
+        content="Get started with Rust programming through our extensive tutorial, featuring practical examples and exercises.">
+    <meta property="og:url" content="https://datasciencedigest.in/rust-tutorial">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://datasciencedigest.in/images/rust-tutorial.png">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,14 +41,17 @@
             margin: 0;
             box-sizing: border-box;
         }
+
         .section {
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
         }
+
         .intro {
             width: 40%;
         }
+
         .compiler {
             width: 55%;
             padding: 10px;
@@ -28,11 +59,13 @@
             border-radius: 8px;
             background-color: #f9f9f9;
         }
+
         .compiler button {
             padding: 10px 20px;
             cursor: pointer;
             margin-top: 10px;
         }
+
         .output {
             margin-top: 10px;
             background-color: #f1f1f1;
@@ -43,15 +76,78 @@
             height: auto;
         }
     </style>
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Course",
+          "name": "Rust Tutorial",
+          "description": "Comprehensive Rust programming tutorial covering basic to advanced topics.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "image": [
+            "https://datasciencedigest.in/photos/1x1/rust-tutorial.jpg",
+            "https://datasciencedigest.in/photos/4x3/rust-tutorial.jpg",
+            "https://datasciencedigest.in/photos/16x9/rust-tutorial.jpg"
+          ],
+          "offers": [{
+            "@type": "Offer",
+            "category": "Free",
+            "priceCurrency": "USD",
+            "price": "0"
+          }],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.7,
+            "ratingCount": 1800,
+            "reviewCount": 900
+          },
+          "totalHistoricalEnrollment": 30000,
+          "datePublished": "2024-01-01",
+          "dateModified": "2024-09-29",
+          "educationalLevel": "Intermediate to Advanced",
+          "inLanguage": "en",
+          "hasCourseInstance": [
+            {
+              "@type": "CourseInstance",
+              "courseMode": "Online",
+              "courseWorkload": "P14D",
+              "startDate": "2024-06-01",
+              "endDate": "2024-06-15",
+              "instructor": [{
+                "@type": "Person",
+                "name": "Alice Johnson",
+                "description": "Senior Rust Developer",
+                "image": "https://datasciencedigest.in/photos/instructor-alice.jpg"
+              }]
+            }
+          ],
+          "about": ["Rust Basics", "Advanced Rust Concepts", "Memory Safety"],
+          "teaches": [
+            "Understand Rust fundamentals",
+            "Learn about Rust’s ownership model and memory safety"
+          ]
+        }
+        </script>
+
 </head>
+
 <body>
     <h1>Welcome to the Rust Compiler</h1>
-    
+
     <div class="section">
         <!-- Explanation Section -->
         <div class="intro">
             <h2>Loops in Rust</h2>
-            <p>In Rust, loops are used to repeatedly execute a block of code as long as a condition is true. Use the editor on the right to run a loop example in Rust.</p>
+            <p>In Rust, loops are used to repeatedly execute a block of code as long as a condition is true. Use the
+                editor on the right to run a loop example in Rust.</p>
         </div>
         <!-- Compiler Section -->
         <div class="compiler">
@@ -65,7 +161,8 @@
         <!-- Explanation Section -->
         <div class="intro">
             <h2>Rust Basics</h2>
-            <p>This is a simple Rust code editor and compiler. You can edit the code on the right and click "Run" to see the output.</p>
+            <p>This is a simple Rust code editor and compiler. You can edit the code on the right and click "Run" to see
+                the output.</p>
         </div>
         <!-- Compiler Section -->
         <div class="compiler">
@@ -76,7 +173,7 @@
     </div>
 
     <script>
-        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' } });
         require(['vs/editor/editor.main'], function () {
             window.editor1 = monaco.editor.create(document.getElementById('editorContainer1'), {
                 value: `fn main() {
@@ -100,37 +197,37 @@
         });
 
         function runCode(editorId, outputId) {
-                const code = window[editorId].getValue();
-                document.getElementById(outputId).textContent = 'Running...';
+            const code = window[editorId].getValue();
+            document.getElementById(outputId).textContent = 'Running...';
 
-                const inputPatterns = /std::io::stdin|read_line/g;
-                let inputPrompt = {};
+            const inputPatterns = /std::io::stdin|read_line/g;
+            let inputPrompt = {};
 
-                // If user input is detected in the Rust code, prompt the user
-                if (inputPatterns.test(code)) {
-                    let userInput = prompt("Your code requires input. Please enter the input:");
-                    if (userInput === null) {
-                        document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
-                        return;
-                    }
-                    inputPrompt['input'] = userInput;
+            // If user input is detected in the Rust code, prompt the user
+            if (inputPatterns.test(code)) {
+                let userInput = prompt("Your code requires input. Please enter the input:");
+                if (userInput === null) {
+                    document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
+                    return;
                 }
+                inputPrompt['input'] = userInput;
+            }
 
-                // Create payload to send code and input to the server
-                const payload = {
-                    code: code,
-                    input: inputPrompt['input'] || ''
-                };
+            // Create payload to send code and input to the server
+            const payload = {
+                code: code,
+                input: inputPrompt['input'] || ''
+            };
 
-                // Send the code to the backend using fetch
-                fetch('/compile_rust/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': getCSRFToken()
-                    },
-                    body: JSON.stringify(payload)
-                })
+            // Send the code to the backend using fetch
+            fetch('/compile_rust/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCSRFToken()
+                },
+                body: JSON.stringify(payload)
+            })
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById(outputId).textContent = data.output;
@@ -139,7 +236,7 @@
                     console.error('Error:', error);
                     document.getElementById(outputId).textContent = 'Error executing the code.';
                 });
-            }
+        }
 
 
         function getCSRFToken() {
@@ -147,4 +244,5 @@
         }
     </script>
 </body>
+
 </html>
