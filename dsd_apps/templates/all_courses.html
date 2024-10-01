@@ -25,193 +25,464 @@
     <link rel="stylesheet" href="{% static 'css/all-courses.css' %}"> <!-- all courses css -->
     <link rel="stylesheet" href="{% static 'css/compiler-styles.css' %}"> <!-- all compilers css -->
     <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "item": {
-                "@type": "Course",
-                "name": "Python Programming",
-                "description": "Learn Python from basics to advanced concepts.",
-                "url": "https://www.datasciencedigest.in/python-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "item": {
-                "@type": "Course",
-                "name": "SQL Fundamentals",
-                "description": "Master SQL queries and database management.",
-                "url": "https://www.datasciencedigest.in/sql-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "item": {
-                "@type": "Course",
-                "name": "HTML & CSS",
-                "description": "Build responsive web pages with HTML5 and CSS3.",
-                "url": "https://www.datasciencedigest.in/html-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 4,
-              "item": {
-                "@type": "Course",
-                "name": "JavaScript Programming",
-                "description": "Learn JavaScript from basics to advanced concepts.",
-                "url": "https://www.datasciencedigest.in/javascript-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 5,
-              "item": {
-                "@type": "Course",
-                "name": "Rust Programming",
-                "description": "Explore Rust programming for building safe, concurrent, and performant applications.",
-                "url": "https://www.datasciencedigest.in/rust-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 6,
-              "item": {
-                "@type": "Course",
-                "name": "Go Programming",
-                "description": "Learn Go programming for scalable and efficient software solutions.",
-                "url": "https://www.datasciencedigest.in/go-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 7,
-              "item": {
-                "@type": "Course",
-                "name": "C Programming",
-                "description": "Gain a deep understanding of the C programming language.",
-                "url": "https://www.datasciencedigest.in/c-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 8,
-              "item": {
-                "@type": "Course",
-                "name": "C++ Programming",
-                "description": "Master C++ programming for performance-critical applications.",
-                "url": "https://www.datasciencedigest.in/cpp-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 9,
-              "item": {
-                "@type": "Course",
-                "name": "Java Programming",
-                "description": "Build powerful applications in Java using the latest frameworks.",
-                "url": "https://www.datasciencedigest.in/java-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 10,
-              "item": {
-                "@type": "Course",
-                "name": "R Programming",
-                "description": "Learn R for data science, statistical analysis, and visualization.",
-                "url": "https://www.datasciencedigest.in/r-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 11,
-              "item": {
-                "@type": "Course",
-                "name": "Swift Programming",
-                "description": "Learn Swift programming for building iOS and macOS applications.",
-                "url": "https://www.datasciencedigest.in/swift-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 12,
-              "item": {
-                "@type": "Course",
-                "name": "Scala Programming",
-                "description": "Explore Scala for building scalable, functional applications.",
-                "url": "https://www.datasciencedigest.in/scala-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 13,
-              "item": {
-                "@type": "Course",
-                "name": "Julia Programming",
-                "description": "Learn Julia for high-performance numerical and scientific computing.",
-                "url": "https://www.datasciencedigest.in/julia-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 14,
-              "item": {
-                "@type": "Course",
-                "name": "Ruby Programming",
-                "description": "Master Ruby programming for web development and scripting.",
-                "url": "https://www.datasciencedigest.in/ruby-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 15,
-              "item": {
-                "@type": "Course",
-                "name": "Perl Programming",
-                "description": "Learn Perl for text processing and scripting.",
-                "url": "https://www.datasciencedigest.in/perl-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 16,
-              "item": {
-                "@type": "Course",
-                "name": "PHP Programming",
-                "description": "Master PHP for back-end web development.",
-                "url": "https://www.datasciencedigest.in/php-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 17,
-              "item": {
-                "@type": "Course",
-                "name": "C# Programming",
-                "description": "Learn C# for developing desktop, web, and game applications.",
-                "url": "https://www.datasciencedigest.in/csharp-tutorial"
-              }
-            },
-            {
-              "@type": "ListItem",
-              "position": 18,
-              "item": {
-                "@type": "Course",
-                "name": "Kotlin Programming",
-                "description": "Learn Kotlin for Android development with functional programming.",
-                "url": "https://www.datasciencedigest.in/kotlin-tutorial"
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "Course",
+              "name": "Python Programming",
+              "description": "Learn Python from basics to advanced concepts.",
+              "url": "https://www.datasciencedigest.in/python-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
               }
             }
-          ]
-        }
-        </script>
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "Course",
+              "name": "SQL Fundamentals",
+              "description": "Master SQL queries and database management.",
+              "url": "https://www.datasciencedigest.in/sql-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "Course",
+              "name": "HTML & CSS",
+              "description": "Build responsive web pages with HTML5 and CSS3.",
+              "url": "https://www.datasciencedigest.in/html-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "Course",
+              "name": "JavaScript Programming",
+              "description": "Learn JavaScript from basics to advanced concepts.",
+              "url": "https://www.datasciencedigest.in/javascript-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@type": "Course",
+              "name": "Rust Programming",
+              "description": "Explore Rust programming for building safe, concurrent, and performant applications.",
+              "url": "https://www.datasciencedigest.in/rust-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "item": {
+              "@type": "Course",
+              "name": "Go Programming",
+              "description": "Learn Go programming for scalable and efficient software solutions.",
+              "url": "https://www.datasciencedigest.in/go-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 7,
+            "item": {
+              "@type": "Course",
+              "name": "C Programming",
+              "description": "Gain a deep understanding of the C programming language.",
+              "url": "https://www.datasciencedigest.in/c-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 8,
+            "item": {
+              "@type": "Course",
+              "name": "C++ Programming",
+              "description": "Master C++ programming for performance-critical applications.",
+              "url": "https://www.datasciencedigest.in/cpp-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 9,
+            "item": {
+              "@type": "Course",
+              "name": "Java Programming",
+              "description": "Build powerful applications in Java using the latest frameworks.",
+              "url": "https://www.datasciencedigest.in/java-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 10,
+            "item": {
+              "@type": "Course",
+              "name": "R Programming",
+              "description": "Learn R for data science, statistical analysis, and visualization.",
+              "url": "https://www.datasciencedigest.in/r-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 11,
+            "item": {
+              "@type": "Course",
+              "name": "Swift Programming",
+              "description": "Learn Swift programming for building iOS and macOS applications.",
+              "url": "https://www.datasciencedigest.in/swift-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 12,
+            "item": {
+              "@type": "Course",
+              "name": "Kotlin Programming",
+              "description": "Learn Kotlin for Android development and more.",
+              "url": "https://www.datasciencedigest.in/kotlin-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 13,
+            "item": {
+              "@type": "Course",
+              "name": "PHP Programming",
+              "description": "Master PHP for building dynamic web applications.",
+              "url": "https://www.datasciencedigest.in/php-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 14,
+            "item": {
+              "@type": "Course",
+              "name": "Ruby Programming",
+              "description": "Learn Ruby to build clean, maintainable software.",
+              "url": "https://www.datasciencedigest.in/ruby-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 15,
+            "item": {
+              "@type": "Course",
+              "name": "Django Framework",
+              "description": "Learn to develop web applications using Django.",
+              "url": "https://www.datasciencedigest.in/django-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 16,
+            "item": {
+              "@type": "Course",
+              "name": "Flask Framework",
+              "description": "Build lightweight web applications using Flask.",
+              "url": "https://www.datasciencedigest.in/flask-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 17,
+            "item": {
+              "@type": "Course",
+              "name": "Data Science with Python",
+              "description": "Learn data science techniques using Python.",
+              "url": "https://www.datasciencedigest.in/data-science-python-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 18,
+            "item": {
+              "@type": "Course",
+              "name": "Machine Learning with Python",
+              "description": "Master machine learning techniques and algorithms using Python.",
+              "url": "https://www.datasciencedigest.in/machine-learning-python-tutorial",
+              "offers": {
+                "@type": "Offer",
+                "price": "Free",
+                "priceCurrency": "USD"
+              },
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://www.datasciencedigest.in"
+              },
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-01-01"
+              }
+            }
+          }
+        ]
+      }
+      </script>
+      
         
    
 </head>
