@@ -3,33 +3,360 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Programming Courses | Learn Python, SQL, Swift, C++, Kotlin & More | DataScienceDigest</title>
-    <meta name="description" content="Explore a wide range of programming courses on DataScienceDigest.in, including Python, JavaScript, and SQL. Start learning for free!">
-    <meta name="keywords" content="programming courses, learn Python, JavaScript tutorials, SQL course, online compilers, free programming tutorials">
-    <meta name="google-site-verification" content="mkIFT0Gf0kASPWjbgMCGIgw2bHVQthe6wMzfyldxmuM" />
-    <!-- Social Media Meta Tags -->
-    <meta property="og:title" content="Learn Programming for Free | DataScienceDigest.in">
-    <meta property="og:description" content="Master Python, JavaScript, HTML, and more with free programming tutorials.">
-    <meta property="og:image" content="https://www.datasciencedigest.in/images/share-image.png">
-    <meta property="og:url" content="https://www.datasciencedigest.in/">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Learn Programming for Free | DataScienceDigest.in">
-    <meta name="twitter:description" content="Master programming with hands-on coding tutorials on Python, JavaScript, and more.">
-    <meta name="twitter:image" content="https://www.datasciencedigest.in/images/twitter-card-image.png">
-    
-    <!-- Include Monaco Editor from CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/index_styles.css' %}"> <!-- index page css -->
-    <link rel="stylesheet" href="{% static 'css/all-courses.css' %}"> <!-- all courses css -->
-    <link rel="stylesheet" href="{% static 'css/compiler-styles.css' %}"> <!-- all compilers css -->
-    <script type="application/ld+json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Programming Courses | Learn Python, SQL, Swift, C++, Kotlin & More | DataScienceDigest</title>
+  <meta name="description"
+    content="Explore a wide range of programming courses on DataScienceDigest.in, including Python, JavaScript, and SQL. Start learning for free!">
+  <meta name="keywords"
+    content="programming courses, learn Python, JavaScript tutorials, SQL course, online compilers, free programming tutorials">
+  <meta name="google-site-verification" content="mkIFT0Gf0kASPWjbgMCGIgw2bHVQthe6wMzfyldxmuM" />
+  <!-- Social Media Meta Tags -->
+  <meta property="og:title" content="Learn Programming for Free | DataScienceDigest.in">
+  <meta property="og:description" content="Master Python, JavaScript, HTML, and more with free programming tutorials.">
+  <meta property="og:image" content="https://www.datasciencedigest.in/images/share-image.png">
+  <meta property="og:url" content="https://www.datasciencedigest.in/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Learn Programming for Free | DataScienceDigest.in">
+  <meta name="twitter:description"
+    content="Master programming with hands-on coding tutorials on Python, JavaScript, and more.">
+  <meta name="twitter:image" content="https://www.datasciencedigest.in/images/twitter-card-image.png">
+
+  <!-- Include Monaco Editor from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/index_styles.css' %}"> <!-- index page css -->
+  <link rel="stylesheet" href="{% static 'css/all-courses.css' %}"> <!-- all courses css -->
+  <link rel="stylesheet" href="{% static 'css/compiler-styles.css' %}"> <!-- all compilers css -->
+  <!-- R Programming -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Course",
+    "name": "R Programming Tutorial",
+    "description": "Comprehensive R programming tutorial covering data analysis, statistics, and visualization.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Data Science Digest",
+      "url": "https://datasciencedigest.in"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Data Science Digest",
+      "url": "https://datasciencedigest.in"
+    },
+    "image": [
+      "https://datasciencedigest.in/photos/1x1/r-tutorial.jpg",
+      "https://datasciencedigest.in/photos/4x3/r-tutorial.jpg",
+      "https://datasciencedigest.in/photos/16x9/r-tutorial.jpg"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "0",
+      "category": "Free"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": 4.6,
+      "ratingCount": 1800,
+      "reviewCount": 800
+    },
+    "totalHistoricalEnrollment": 45000,
+    "datePublished": "2024-01-01",
+    "dateModified": "2024-09-29",
+    "educationalLevel": "Intermediate",
+    "inLanguage": "en",
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "Online",
+      "startDate": "2024-03-01",
+      "endDate": "2024-03-07",
+      "instructor": {
+        "@type": "Person",
+        "name": "Alice Johnson",
+        "description": "Data Scientist",
+        "image": "https://datasciencedigest.in/photos/instructor-alice.jpg"
+      },
+      "courseWorkload": "PT7H",
+      "courseSchedule": {
+        "@type": "Schedule",
+        "name": "Weekly",
+        "repeatCount": "1"
+      }
+    },
+    "about": ["R Basics", "Data Analysis", "Statistical Modeling"],
+    "teaches": [
+      "Perform data analysis in R",
+      "Use R for statistical modeling"
+    ]
+  }
+  </script>
+
+  <!-- JavaScript Programming -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Course",
+    "name": "JavaScript Programming Tutorial",
+    "description": "Comprehensive JavaScript programming tutorial covering front-end and back-end development.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Data Science Digest",
+      "url": "https://datasciencedigest.in"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Data Science Digest",
+      "url": "https://datasciencedigest.in"
+    },
+    "image": [
+      "https://datasciencedigest.in/photos/1x1/js-tutorial.jpg",
+      "https://datasciencedigest.in/photos/4x3/js-tutorial.jpg",
+      "https://datasciencedigest.in/photos/16x9/js-tutorial.jpg"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "0",
+      "category": "Free"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": 4.5,
+      "ratingCount": 1200,
+      "reviewCount": 500
+    },
+    "totalHistoricalEnrollment": 30000,
+    "datePublished": "2024-01-01",
+    "dateModified": "2024-09-29",
+    "educationalLevel": "Intermediate",
+    "inLanguage": "en",
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "Online",
+      "startDate": "2024-03-01",
+      "endDate": "2024-03-07",
+      "instructor": {
+        "@type": "Person",
+        "name": "John Doe",
+        "description": "JavaScript Developer",
+        "image": "https://datasciencedigest.in/photos/instructor-john.jpg"
+      },
+      "courseWorkload": "PT6H",
+      "courseSchedule": {
+        "@type": "Schedule",
+        "name": "Weekly",
+        "repeatCount": "1"
+      }
+    },
+    "about": ["JavaScript Basics", "DOM Manipulation", "Node.js"],
+    "teaches": [
+      "Develop interactive web pages using JavaScript",
+      "Use JavaScript for back-end development"
+    ]
+  }
+  </script>
+
+  <!-- Java Programming -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Course",
+    "name": "Java Programming Tutorial",
+    "description": "Comprehensive Java programming tutorial covering object-oriented programming and data structures.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Data Science Digest",
+      "url": "https://datasciencedigest.in"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Data Science Digest",
+      "url": "https://datasciencedigest.in"
+    },
+    "image": [
+      "https://datasciencedigest.in/photos/1x1/java-tutorial.jpg",
+      "https://datasciencedigest.in/photos/4x3/java-tutorial.jpg",
+      "https://datasciencedigest.in/photos/16x9/java-tutorial.jpg"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "0",
+      "category": "Free"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": 4.7,
+      "ratingCount": 2000,
+      "reviewCount": 1000
+    },
+    "totalHistoricalEnrollment": 50000,
+    "datePublished": "2024-01-01",
+    "dateModified": "2024-09-29",
+    "educationalLevel": "Intermediate",
+    "inLanguage": "en",
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "Online",
+      "startDate": "2024-03-01",
+      "endDate": "2024-03-07",
+      "instructor": {
+        "@type": "Person",
+        "name": "Jane Smith",
+        "description": "Java Developer",
+        "image": "https://datasciencedigest.in/photos/instructor-jane.jpg"
+      },
+      "courseWorkload": "PT8H",
+      "courseSchedule": {
+        "@type": "Schedule",
+        "name": "Weekly",
+        "repeatCount": "1"
+      }
+    },
+    "about": ["Java Basics", "OOP", "Data Structures"],
+    "teaches": [
+      "Build Java applications",
+      "Understand object-oriented programming"
+    ]
+  }
+  </script>
+
+  <!-- PHP Programming -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Course",
+    "name": "PHP Programming Tutorial",
+    "description": "Comprehensive PHP programming tutorial covering server-side scripting and web development.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Data Science Digest",
+      "url": "https://datasciencedigest.in"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Data Science Digest",
+      "url": "https://datasciencedigest.in"
+    },
+    "image": [
+      "https://datasciencedigest.in/photos/1x1/php-tutorial.jpg",
+      "https://datasciencedigest.in/photos/4x3/php-tutorial.jpg",
+      "https://datasciencedigest.in/photos/16x9/php-tutorial.jpg"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "0",
+      "category": "Free"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": 4.4,
+      "ratingCount": 1500,
+      "reviewCount": 600
+    },
+    "totalHistoricalEnrollment": 35000,
+    "datePublished": "2024-01-01",
+    "dateModified": "2024-09-29",
+    "educationalLevel": "Intermediate",
+    "inLanguage": "en",
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "Online",
+      "startDate": "2024-03-01",
+      "endDate": "2024-03-07",
+      "instructor": {
+        "@type": "Person",
+        "name": "Mark Johnson",
+        "description": "PHP Developer",
+        "image": "https://datasciencedigest.in/photos/instructor-mark.jpg"
+      },
+      "courseWorkload": "PT5H",
+      "courseSchedule": {
+        "@type": "Schedule",
+        "name": "Weekly",
+        "repeatCount": "1"
+      }
+    },
+    "about": ["PHP Basics", "Server-Side Scripting"],
+    "teaches": [
+      "Build dynamic websites using PHP",
+      "Use PHP for server-side scripting"
+    ]
+  }
+  </script>
+  <!-- c programing  -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Course",
+      "name": "C Programming Tutorial",
+      "description": "Comprehensive C programming tutorial covering procedural programming and system-level programming.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Data Science Digest",
+        "url": "https://datasciencedigest.in"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Data Science Digest",
+        "url": "https://datasciencedigest.in"
+      },
+      "image": [
+        "https://datasciencedigest.in/photos/1x1/c-tutorial.jpg",
+        "https://datasciencedigest.in/photos/4x3/c-tutorial.jpg",
+        "https://datasciencedigest.in/photos/16x9/c-tutorial.jpg"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "0",
+        "category": "Free"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.7,
+        "ratingCount": 1800,
+        "reviewCount": 800
+      },
+      "totalHistoricalEnrollment": 45000,
+      "datePublished": "2024-01-01",
+      "dateModified": "2024-09-29",
+      "educationalLevel": "Intermediate",
+      "inLanguage": "en",
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "Online",
+        "startDate": "2024-03-01",
+        "endDate": "2024-03-07",
+        "instructor": {
+          "@type": "Person",
+          "name": "James Wilson",
+          "description": "C Programmer",
+          "image": "https://datasciencedigest.in/photos/instructor-james.jpg"
+        },
+        "courseWorkload": "PT6H",
+        "courseSchedule": {
+          "@type": "Schedule",
+          "name": "Weekly",
+          "repeatCount": "1"
+        }
+      },
+      "about": ["C Basics", "System-Level Programming"],
+      "teaches": [
+        "Write efficient programs using C",
+        "Understand procedural programming"
+      ]
+    }
+    </script>
+  <!-- sql programing  -->
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org/",
         "@type": "Course",
-        "name": "R Programming Tutorial",
-        "description": "Comprehensive R programming tutorial covering data analysis, statistics, and visualization.",
+        "name": "SQL Programming Tutorial",
+        "description": "Comprehensive SQL programming tutorial covering database management and query optimization.",
         "provider": {
           "@type": "Organization",
           "name": "Data Science Digest",
@@ -41,23 +368,23 @@
           "url": "https://datasciencedigest.in"
         },
         "image": [
-          "https://datasciencedigest.in/photos/1x1/r-tutorial.jpg",
-          "https://datasciencedigest.in/photos/4x3/r-tutorial.jpg",
-          "https://datasciencedigest.in/photos/16x9/r-tutorial.jpg"
+          "https://datasciencedigest.in/photos/1x1/sql-tutorial.jpg",
+          "https://datasciencedigest.in/photos/4x3/sql-tutorial.jpg",
+          "https://datasciencedigest.in/photos/16x9/sql-tutorial.jpg"
         ],
         "offers": {
           "@type": "Offer",
           "priceCurrency": "USD",
           "price": "0",
-          "category": "Free"  // Correctly categorize the offer
+          "category": "Free"
         },
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": 4.6,
-          "ratingCount": 1800,
-          "reviewCount": 800
+          "ratingValue": 4.8,
+          "ratingCount": 2200,
+          "reviewCount": 1100
         },
-        "totalHistoricalEnrollment": 45000,
+        "totalHistoricalEnrollment": 55000,
         "datePublished": "2024-01-01",
         "dateModified": "2024-09-29",
         "educationalLevel": "Intermediate",
@@ -69,178 +396,958 @@
           "endDate": "2024-03-07",
           "instructor": {
             "@type": "Person",
-            "name": "Alice Johnson",
-            "description": "Data Scientist",
-            "image": "https://datasciencedigest.in/photos/instructor-alice.jpg"
+            "name": "Emily Davis",
+            "description": "Database Administrator",
+            "image": "https://datasciencedigest.in/photos/instructor-emily.jpg"
           },
-          "courseWorkload": "PT7H",  // ISO 8601 duration for 7 hours per week
+          "courseWorkload": "PT5H",
           "courseSchedule": {
             "@type": "Schedule",
             "name": "Weekly",
-            "repeatCount": "1",
-           
+            "repeatCount": "1"
           }
-
         },
-        "about": ["R Basics", "Data Analysis", "Statistical Modeling"],
+        "about": ["SQL Basics", "Database Management"],
         "teaches": [
-          "Perform data analysis in R",
-          "Use R for statistical modeling"
+          "Design and manage databases using SQL",
+          "Optimize SQL queries for performance"
         ]
       }
       </script>
-      
+  <!-- c# programing -->
+  <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Course",
+          "name": "C# Programming Tutorial",
+          "description": "Comprehensive C# programming tutorial covering object-oriented programming and .NET development.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "image": [
+            "https://datasciencedigest.in/photos/1x1/csharp-tutorial.jpg",
+            "https://datasciencedigest.in/photos/4x3/csharp-tutorial.jpg",
+            "https://datasciencedigest.in/photos/16x9/csharp-tutorial.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "USD",
+            "price": "0",
+            "category": "Free"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.6,
+            "ratingCount": 1700,
+            "reviewCount": 700
+          },
+          "totalHistoricalEnrollment": 40000,
+          "datePublished": "2024-01-01",
+          "dateModified": "2024-09-29",
+          "educationalLevel": "Intermediate",
+          "inLanguage": "en",
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "Online",
+            "startDate": "2024-03-01",
+            "endDate": "2024-03-07",
+            "instructor": {
+              "@type": "Person",
+              "name": "Chris Lee",
+              "description": "C# Developer",
+              "image": "https://datasciencedigest.in/photos/instructor-chris.jpg"
+            },
+            "courseWorkload": "PT6H",
+            "courseSchedule": {
+              "@type": "Schedule",
+              "name": "Weekly",
+              "repeatCount": "1"
+            }
+          },
+          "about": ["C# Basics", ".NET Development", "Object-Oriented Programming"],
+          "teaches": [
+            "Build applications using C#",
+            "Understand object-oriented programming in C#"
+          ]
+        }
+        </script>
+  <!-- perl -->
+  <script type="application/ld+json">
+          {
+            "@context": "https://schema.org/",
+            "@type": "Course",
+            "name": "Perl Programming Tutorial",
+            "description": "Comprehensive Perl programming tutorial covering scripting and web development.",
+            "provider": {
+              "@type": "Organization",
+              "name": "Data Science Digest",
+              "url": "https://datasciencedigest.in"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Data Science Digest",
+              "url": "https://datasciencedigest.in"
+            },
+            "image": [
+              "https://datasciencedigest.in/photos/1x1/perl-tutorial.jpg",
+              "https://datasciencedigest.in/photos/4x3/perl-tutorial.jpg",
+              "https://datasciencedigest.in/photos/16x9/perl-tutorial.jpg"
+            ],
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "USD",
+              "price": "0",
+              "category": "Free"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.3,
+              "ratingCount": 900,
+              "reviewCount": 300
+            },
+            "totalHistoricalEnrollment": 18000,
+            "datePublished": "2024-01-01",
+            "dateModified": "2024-09-29",
+            "educationalLevel": "Intermediate",
+            "inLanguage": "en",
+            "hasCourseInstance": {
+              "@type": "CourseInstance",
+              "courseMode": "Online",
+              "startDate": "2024-03-01",
+              "endDate": "2024-03-07",
+              "instructor": {
+                "@type": "Person",
+                "name": "Michael Clark",
+                "description": "Web Developer",
+                "image": "https://datasciencedigest.in/photos/instructor-michael.jpg"
+              },
+              "courseWorkload": "PT4H",
+              "courseSchedule": {
+                "@type": "Schedule",
+                "name": "Weekly",
+                "repeatCount": "1"
+              }
+            },
+            "about": ["Perl Basics", "Scripting", "Web Development"],
+            "teaches": [
+              "Use Perl for web development",
+              "Master scripting with Perl"
+            ]
+          }
+          </script>
+  <!-- kotlin  -->
+  <script type="application/ld+json">
+            {
+              "@context": "https://schema.org/",
+              "@type": "Course",
+              "name": "Kotlin Programming Tutorial",
+              "description": "Comprehensive Kotlin programming tutorial covering Android development and cross-platform applications.",
+              "provider": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://datasciencedigest.in"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Data Science Digest",
+                "url": "https://datasciencedigest.in"
+              },
+              "image": [
+                "https://datasciencedigest.in/photos/1x1/kotlin-tutorial.jpg",
+                "https://datasciencedigest.in/photos/4x3/kotlin-tutorial.jpg",
+                "https://datasciencedigest.in/photos/16x9/kotlin-tutorial.jpg"
+              ],
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "USD",
+                "price": "0",
+                "category": "Free"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": 4.8,
+                "ratingCount": 1500,
+                "reviewCount": 600
+              },
+              "totalHistoricalEnrollment": 35000,
+              "datePublished": "2024-01-01",
+              "dateModified": "2024-09-29",
+              "educationalLevel": "Intermediate",
+              "inLanguage": "en",
+              "hasCourseInstance": {
+                "@type": "CourseInstance",
+                "courseMode": "Online",
+                "startDate": "2024-03-01",
+                "endDate": "2024-03-07",
+                "instructor": {
+                  "@type": "Person",
+                  "name": "John Doe",
+                  "description": "Android Developer",
+                  "image": "https://datasciencedigest.in/photos/instructor-john.jpg"
+                },
+                "courseWorkload": "PT6H",
+                "courseSchedule": {
+                  "@type": "Schedule",
+                  "name": "Weekly",
+                  "repeatCount": "1"
+                }
+              },
+              "about": ["Kotlin Basics", "Android Development", "Cross-Platform Apps"],
+              "teaches": [
+                "Develop Android apps using Kotlin",
+                "Create cross-platform applications"
+              ]
+            }
+            </script>
+  <!-- julia -->
+  <script type="application/ld+json">
+              {
+                "@context": "https://schema.org/",
+                "@type": "Course",
+                "name": "Julia Programming Tutorial",
+                "description": "Comprehensive Julia programming tutorial covering scientific computing and data science applications.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "Data Science Digest",
+                  "url": "https://datasciencedigest.in"
+                },
+                "publisher": {
+                  "@type": "Organization",
+                  "name": "Data Science Digest",
+                  "url": "https://datasciencedigest.in"
+                },
+                "image": [
+                  "https://datasciencedigest.in/photos/1x1/julia-tutorial.jpg",
+                  "https://datasciencedigest.in/photos/4x3/julia-tutorial.jpg",
+                  "https://datasciencedigest.in/photos/16x9/julia-tutorial.jpg"
+                ],
+                "offers": {
+                  "@type": "Offer",
+                  "priceCurrency": "USD",
+                  "price": "0",
+                  "category": "Free"
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": 4.5,
+                  "ratingCount": 1200,
+                  "reviewCount": 500
+                },
+                "totalHistoricalEnrollment": 32000,
+                "datePublished": "2024-01-01",
+                "dateModified": "2024-09-29",
+                "educationalLevel": "Intermediate",
+                "inLanguage": "en",
+                "hasCourseInstance": {
+                  "@type": "CourseInstance",
+                  "courseMode": "Online",
+                  "startDate": "2024-03-01",
+                  "endDate": "2024-03-07",
+                  "instructor": {
+                    "@type": "Person",
+                    "name": "Lisa Brown",
+                    "description": "Data Scientist",
+                    "image": "https://datasciencedigest.in/photos/instructor-lisa.jpg"
+                  },
+                  "courseWorkload": "PT5H",
+                  "courseSchedule": {
+                    "@type": "Schedule",
+                    "name": "Weekly",
+                    "repeatCount": "1"
+                  }
+                },
+                "about": ["Julia Basics", "Scientific Computing", "Data Science"],
+                "teaches": [
+                  "Leverage Julia for scientific computing",
+                  "Use Julia in data science workflows"
+                ]
+              }
+              </script>
+  <!-- rust -->
+  <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org/",
+                  "@type": "Course",
+                  "name": "Rust Programming Tutorial",
+                  "description": "Comprehensive Rust programming tutorial covering systems programming and concurrency.",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "Data Science Digest",
+                    "url": "https://datasciencedigest.in"
+                  },
+                  "publisher": {
+                    "@type": "Organization",
+                    "name": "Data Science Digest",
+                    "url": "https://datasciencedigest.in"
+                  },
+                  "image": [
+                    "https://datasciencedigest.in/photos/1x1/rust-tutorial.jpg",
+                    "https://datasciencedigest.in/photos/4x3/rust-tutorial.jpg",
+                    "https://datasciencedigest.in/photos/16x9/rust-tutorial.jpg"
+                  ],
+                  "offers": {
+                    "@type": "Offer",
+                    "priceCurrency": "USD",
+                    "price": "0",
+                    "category": "Free"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": 4.6,
+                    "ratingCount": 1000,
+                    "reviewCount": 400
+                  },
+                  "totalHistoricalEnrollment": 20000,
+                  "datePublished": "2024-01-01",
+                  "dateModified": "2024-09-29",
+                  "educationalLevel": "Intermediate",
+                  "inLanguage": "en",
+                  "hasCourseInstance": {
+                    "@type": "CourseInstance",
+                    "courseMode": "Online",
+                    "startDate": "2024-03-01",
+                    "endDate": "2024-03-07",
+                    "instructor": {
+                      "@type": "Person",
+                      "name": "Karen Smith",
+                      "description": "Systems Programmer",
+                      "image": "https://datasciencedigest.in/photos/instructor-karen.jpg"
+                    },
+                    "courseWorkload": "PT5H",
+                    "courseSchedule": {
+                      "@type": "Schedule",
+                      "name": "Weekly",
+                      "repeatCount": "1"
+                    }
+                  },
+                  "about": ["Rust Basics", "Systems Programming"],
+                  "teaches": [
+                    "Write efficient systems-level code in Rust",
+                    "Master concurrency in Rust"
+                  ]
+                }
+                </script>
+  <!-- swift -->
+  <script type="application/ld+json">
+                  {
+                    "@context": "https://schema.org/",
+                    "@type": "Course",
+                    "name": "Swift Programming Tutorial",
+                    "description": "Comprehensive Swift programming tutorial covering iOS development and app programming.",
+                    "provider": {
+                      "@type": "Organization",
+                      "name": "Data Science Digest",
+                      "url": "https://datasciencedigest.in"
+                    },
+                    "publisher": {
+                      "@type": "Organization",
+                      "name": "Data Science Digest",
+                      "url": "https://datasciencedigest.in"
+                    },
+                    "image": [
+                      "https://datasciencedigest.in/photos/1x1/swift-tutorial.jpg",
+                      "https://datasciencedigest.in/photos/4x3/swift-tutorial.jpg",
+                      "https://datasciencedigest.in/photos/16x9/swift-tutorial.jpg"
+                    ],
+                    "offers": {
+                      "@type": "Offer",
+                      "priceCurrency": "USD",
+                      "price": "0",
+                      "category": "Free"
+                    },
+                    "aggregateRating": {
+                      "@type": "AggregateRating",
+                      "ratingValue": 4.7,
+                      "ratingCount": 1100,
+                      "reviewCount": 500
+                    },
+                    "totalHistoricalEnrollment": 25000,
+                    "datePublished": "2024-01-01",
+                    "dateModified": "2024-09-29",
+                    "educationalLevel": "Intermediate",
+                    "inLanguage": "en",
+                    "hasCourseInstance": {
+                      "@type": "CourseInstance",
+                      "courseMode": "Online",
+                      "startDate": "2024-03-01",
+                      "endDate": "2024-03-07",
+                      "instructor": {
+                        "@type": "Person",
+                        "name": "David Lee",
+                        "description": "iOS Developer",
+                        "image": "https://datasciencedigest.in/photos/instructor-david.jpg"
+                      },
+                      "courseWorkload": "PT6H",
+                      "courseSchedule": {
+                        "@type": "Schedule",
+                        "name": "Weekly",
+                        "repeatCount": "1"
+                      }
+                    },
+                    "about": ["Swift Basics", "iOS Development"],
+                    "teaches": [
+                      "Develop iOS applications using Swift",
+                      "Master app programming with Swift"
+                    ]
+                  }
+                  </script>
+  <!-- go language -->
+  <script type="application/ld+json">
+                    {
+                      "@context": "https://schema.org/",
+                      "@type": "Course",
+                      "name": "Go Programming Tutorial",
+                      "description": "Comprehensive Go programming tutorial covering web development and concurrency.",
+                      "provider": {
+                        "@type": "Organization",
+                        "name": "Data Science Digest",
+                        "url": "https://datasciencedigest.in"
+                      },
+                      "publisher": {
+                        "@type": "Organization",
+                        "name": "Data Science Digest",
+                        "url": "https://datasciencedigest.in"
+                      },
+                      "image": [
+                        "https://datasciencedigest.in/photos/1x1/go-tutorial.jpg",
+                        "https://datasciencedigest.in/photos/4x3/go-tutorial.jpg",
+                        "https://datasciencedigest.in/photos/16x9/go-tutorial.jpg"
+                      ],
+                      "offers": {
+                        "@type": "Offer",
+                        "priceCurrency": "USD",
+                        "price": "0",
+                        "category": "Free"
+                      },
+                      "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": 4.8,
+                        "ratingCount": 900,
+                        "reviewCount": 350
+                      },
+                      "totalHistoricalEnrollment": 30000,
+                      "datePublished": "2024-01-01",
+                      "dateModified": "2024-09-29",
+                      "educationalLevel": "Intermediate",
+                      "inLanguage": "en",
+                      "hasCourseInstance": {
+                        "@type": "CourseInstance",
+                        "courseMode": "Online",
+                        "startDate": "2024-03-01",
+                        "endDate": "2024-03-07",
+                        "instructor": {
+                          "@type": "Person",
+                          "name": "Mark Taylor",
+                          "description": "Web Developer",
+                          "image": "https://datasciencedigest.in/photos/instructor-mark.jpg"
+                        },
+                        "courseWorkload": "PT4H",
+                        "courseSchedule": {
+                          "@type": "Schedule",
+                          "name": "Weekly",
+                          "repeatCount": "1"
+                        }
+                      },
+                      "about": ["Go Basics", "Web Development"],
+                      "teaches": [
+                        "Build web applications with Go",
+                        "Master concurrency in Go"
+                      ]
+                    }
+                    </script>
+  <!-- c++ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Course",
+    "name": "C++ Programming Tutorial",
+    "description": "Comprehensive C++ programming tutorial covering object-oriented programming and systems-level development.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Data Science Digest",
+      "url": "https://datasciencedigest.in"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Data Science Digest",
+      "url": "https://datasciencedigest.in"
+    },
+    "image": [
+      "https://datasciencedigest.in/photos/1x1/cpp-tutorial.jpg",
+      "https://datasciencedigest.in/photos/4x3/cpp-tutorial.jpg",
+      "https://datasciencedigest.in/photos/16x9/cpp-tutorial.jpg"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "price": "0",
+      "category": "Free"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": 4.5,
+      "ratingCount": 1200,
+      "reviewCount": 600
+    },
+    "totalHistoricalEnrollment": 28000,
+    "datePublished": "2024-01-01",
+    "dateModified": "2024-09-29",
+    "educationalLevel": "Intermediate",
+    "inLanguage": "en",
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "Online",
+      "startDate": "2024-03-01",
+      "endDate": "2024-03-07",
+      "instructor": {
+        "@type": "Person",
+        "name": "Laura White",
+        "description": "Software Engineer",
+        "image": "https://datasciencedigest.in/photos/instructor-laura.jpg"
+      },
+      "courseWorkload": "PT5H",
+      "courseSchedule": {
+        "@type": "Schedule",
+        "name": "Weekly",
+        "repeatCount": "1"
+      }
+    },
+    "about": ["C++ Basics", "Object-Oriented Programming"],
+    "teaches": [
+      "Develop applications using C++",
+      "Understand object-oriented programming concepts"
+    ]
+  }
+  </script>
+  <!-- html and css -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Course",
+      "name": "HTML and CSS Tutorial",
+      "description": "Comprehensive HTML and CSS tutorial covering web development fundamentals.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Data Science Digest",
+        "url": "https://datasciencedigest.in"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Data Science Digest",
+        "url": "https://datasciencedigest.in"
+      },
+      "image": [
+        "https://datasciencedigest.in/photos/1x1/html-css-tutorial.jpg",
+        "https://datasciencedigest.in/photos/4x3/html-css-tutorial.jpg",
+        "https://datasciencedigest.in/photos/16x9/html-css-tutorial.jpg"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "0",
+        "category": "Free"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.9,
+        "ratingCount": 1500,
+        "reviewCount": 800
+      },
+      "totalHistoricalEnrollment": 35000,
+      "datePublished": "2024-01-01",
+      "dateModified": "2024-09-29",
+      "educationalLevel": "Beginner",
+      "inLanguage": "en",
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "Online",
+        "startDate": "2024-03-01",
+        "endDate": "2024-03-07",
+        "instructor": {
+          "@type": "Person",
+          "name": "Jessica Brown",
+          "description": "Web Developer",
+          "image": "https://datasciencedigest.in/photos/instructor-jessica.jpg"
+        },
+        "courseWorkload": "PT3H",
+        "courseSchedule": {
+          "@type": "Schedule",
+          "name": "Weekly",
+          "repeatCount": "1"
+        }
+      },
+      "about": ["HTML Basics", "CSS Fundamentals"],
+      "teaches": [
+        "Build web pages using HTML",
+        "Style web pages using CSS"
+      ]
+    }
+    </script>
+  <!-- scala -->
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Course",
+        "name": "Scala Programming Tutorial",
+        "description": "Comprehensive Scala programming tutorial covering functional programming and data processing.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Data Science Digest",
+          "url": "https://datasciencedigest.in"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Data Science Digest",
+          "url": "https://datasciencedigest.in"
+        },
+        "image": [
+          "https://datasciencedigest.in/photos/1x1/scala-tutorial.jpg",
+          "https://datasciencedigest.in/photos/4x3/scala-tutorial.jpg",
+          "https://datasciencedigest.in/photos/16x9/scala-tutorial.jpg"
+        ],
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "0",
+          "category": "Free"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": 4.7,
+          "ratingCount": 800,
+          "reviewCount": 300
+        },
+        "totalHistoricalEnrollment": 22000,
+        "datePublished": "2024-01-01",
+        "dateModified": "2024-09-29",
+        "educationalLevel": "Intermediate",
+        "inLanguage": "en",
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Online",
+          "startDate": "2024-03-01",
+          "endDate": "2024-03-07",
+          "instructor": {
+            "@type": "Person",
+            "name": "Henry Wilson",
+            "description": "Data Engineer",
+            "image": "https://datasciencedigest.in/photos/instructor-henry.jpg"
+          },
+          "courseWorkload": "PT5H",
+          "courseSchedule": {
+            "@type": "Schedule",
+            "name": "Weekly",
+            "repeatCount": "1"
+          }
+        },
+        "about": ["Scala Basics", "Functional Programming"],
+        "teaches": [
+          "Write functional code in Scala",
+          "Process data with Scala"
+        ]
+      }
+      </script>
+  <!-- python -->
+  <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Course",
+          "name": "Python Programming Tutorial",
+          "description": "Comprehensive Python programming tutorial covering data analysis, web development, and automation.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "image": [
+            "https://datasciencedigest.in/photos/1x1/python-tutorial.jpg",
+            "https://datasciencedigest.in/photos/4x3/python-tutorial.jpg",
+            "https://datasciencedigest.in/photos/16x9/python-tutorial.jpg"
+          ],
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "USD",
+            "price": "0",
+            "category": "Free"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.9,
+            "ratingCount": 2000,
+            "reviewCount": 1200
+          },
+          "totalHistoricalEnrollment": 50000,
+          "datePublished": "2024-01-01",
+          "dateModified": "2024-09-29",
+          "educationalLevel": "Beginner",
+          "inLanguage": "en",
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "Online",
+            "startDate": "2024-03-01",
+            "endDate": "2024-03-07",
+            "instructor": {
+              "@type": "Person",
+              "name": "James Smith",
+              "description": "Data Scientist",
+              "image": "https://datasciencedigest.in/photos/instructor-james.jpg"
+            },
+            "courseWorkload": "PT6H",
+            "courseSchedule": {
+              "@type": "Schedule",
+              "name": "Weekly",
+              "repeatCount": "1"
+            }
+          },
+          "about": ["Python Basics", "Data Analysis"],
+          "teaches": [
+            "Analyze data with Python",
+            "Build web applications using Flask and Django"
+          ]
+        }
+        </script>
+  <!-- ruby -->
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Course",
+        "name": "Ruby Programming Tutorial",
+        "description": "Comprehensive Ruby programming tutorial covering web development with Ruby on Rails.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Data Science Digest",
+          "url": "https://datasciencedigest.in"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Data Science Digest",
+          "url": "https://datasciencedigest.in"
+        },
+        "image": [
+          "https://datasciencedigest.in/photos/1x1/ruby-tutorial.jpg",
+          "https://datasciencedigest.in/photos/4x3/ruby-tutorial.jpg",
+          "https://datasciencedigest.in/photos/16x9/ruby-tutorial.jpg"
+        ],
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "0",
+          "category": "Free"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": 4.8,
+          "ratingCount": 850,
+          "reviewCount": 400
+        },
+        "totalHistoricalEnrollment": 18000,
+        "datePublished": "2024-01-01",
+        "dateModified": "2024-09-29",
+        "educationalLevel": "Intermediate",
+        "inLanguage": "en",
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Online",
+          "startDate": "2024-03-01",
+          "endDate": "2024-03-07",
+          "instructor": {
+            "@type": "Person",
+            "name": "Emma Davis",
+            "description": "Web Developer",
+            "image": "https://datasciencedigest.in/photos/instructor-emma.jpg"
+          },
+          "courseWorkload": "PT4H",
+          "courseSchedule": {
+            "@type": "Schedule",
+            "name": "Weekly",
+            "repeatCount": "1"
+          }
+        },
+        "about": ["Ruby Basics", "Ruby on Rails"],
+        "teaches": [
+          "Build web applications using Ruby on Rails",
+          "Understand object-oriented programming in Ruby"
+        ]
+      }
+      </script>
+
+  <!-- Repeat this for each language -->
+
 </head>
 
 <body>
-    <header>
-        <nav>
-          <div class="logo">
-            <img src="{% static 'images/dsd.svg' %}" alt="DataScienceDigest Logo" style="height:395px;position: absolute;top:-152px;"/>
-        </div>
-        
-            <ul class="nav-links">
-                <li><a href="{% url 'all_courses' %}">Courses</a></li>
-                <li><a href="#">Tutorials</a></li>
-                <li><a href="#">Examples</a></li>
-            </ul>
-            <button class="pro-btn">Login/Sign Up</button>
-        </nav>
-    </header>
-    <section class="courses-section">
-        <div class="container">
-            <h1>Explore All Courses</h1>
-            <p>Browse our collection of programming courses designed for beginners and experts alike.</p>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="{% static 'images/dsd.svg' %}" alt="DataScienceDigest Logo"
+          style="height:395px;position: absolute;top:-152px;" />
+      </div>
 
-            <div class="courses-grid">
-                <div class="course-item">
-                    <img src="{% static 'images/python-5.svg' %}" alt="Python Programming Language Logo">
-                    <h3>Python Programming</h3>
-                    <p>Learn Python from basics to advanced concepts, including hands-on projects to master Python skills.</p>
-                    <a href="{% url 'python-tutorial' %}" class="course-btn" title="Start Python Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/database-floating-squares.png' %}" alt="SQL Database Fundamentals Logo">
-                    <h3>SQL Fundamentals</h3>
-                    <p>Master SQL queries and database management with our structured SQL tutorials for beginners and advanced users.</p>
-                    <a href="{% url 'sql-tutorial' %}" class="course-btn" title="Start SQL Fundamentals Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/html-1.svg' %}" alt="HTML & CSS Logo">
-                    <h3>HTML & CSS</h3>
-                    <p>Build responsive, beautiful web pages with HTML5 and CSS3, and enhance your front-end development skills.</p>
-                    <a href="{% url 'html-tutorial' %}" class="course-btn" title="Start HTML & CSS Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/logo-javascript.svg' %}" alt="JavaScript Logo">
-                    <h3>JavaScript Programming</h3>
-                    <p>Learn JavaScript, the language that powers modern web development, from basics to advanced concepts.</p>
-                    <a href="{% url 'javascript-tutorial' %}" class="course-btn" title="Start JavaScript Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/rust.svg' %}" alt="Rust Programming Language Logo">
-                    <h3>Rust Programming</h3>
-                    <p>Explore Rust programming for building safe, concurrent, and performant applications.</p>
-                    <a href="{% url 'rust-tutorial' %}" class="course-btn" title="Start Rust Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/golang-1.svg' %}" alt="Go Programming Language Logo">
-                    <h3>Go Programming</h3>
-                    <p>Learn Go programming for scalable and efficient software solutions with this comprehensive tutorial.</p>
-                    <a href="{% url 'go-tutorial' %}" class="course-btn" title="Start Go Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/c-1.svg' %}" alt="C Programming Language Logo">
-                    <h3>C Programming</h3>
-                    <p>Gain a deep understanding of the C programming language, with a focus on system-level development.</p>
-                    <a href="{% url 'c-tutorial' %}" class="course-btn" title="Start C Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/c.svg' %}" alt="C++ Programming Language Logo">
-                    <h3>C++ Programming</h3>
-                    <p>Master C++ programming for performance-critical applications, data structures, and algorithms.</p>
-                    <a href="{% url 'cpp-tutorial' %}" class="course-btn" title="Start C++ Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/java.svg' %}" alt="Java Programming Language Logo">
-                    <h3>Java Programming</h3>
-                    <p>Build powerful applications in Java, from desktop to web applications, using the latest frameworks and tools.</p>
-                    <a href="{% url 'java-tutorial' %}" class="course-btn" title="Start Java Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/rlang.svg' %}" alt="R Programming Language Logo">
-                    <h3>R Programming</h3>
-                    <p>Learn R for data science, statistical analysis, and visualization in a structured, easy-to-follow course.</p>
-                    <a href="{% url 'r-tutorial' %}" class="course-btn" title="Start R Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/Swift.svg' %}" alt="Swift Programming Language Logo">
-                    <h3>Swift Programming</h3>
-                    <p>Learn Swift programming for building iOS and macOS applications with an emphasis on performance and safety.</p>
-                    <a href="{% url 'swift-tutorial' %}" class="course-btn" title="Start Swift Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/scala1.svg' %}" alt="Scala Programming Language Logo">
-                    <h3>Scala Programming</h3>
-                    <p>Explore Scala for building scalable, functional, and object-oriented applications.</p>
-                    <a href="{% url 'scala-tutorial' %}" class="course-btn" title="Start Scala Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/julia-1.svg' %}" alt="Julia Programming Language Logo">
-                    <h3>Julia Programming</h3>
-                    <p>Learn Julia for high-performance numerical and scientific computing.</p>
-                    <a href="{% url 'julia-tutorial' %}" class="course-btn" title="Start Julia Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/ruby.svg' %}" alt="Ruby Programming Language Logo">
-                    <h3>Ruby Programming</h3>
-                    <p>Master Ruby programming for web development and scripting with this in-depth course.</p>
-                    <a href="{% url 'ruby-tutorial' %}" class="course-btn" title="Start Ruby Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/perl.svg' %}" alt="Perl Programming Language Logo">
-                    <h3>Perl Programming</h3>
-                    <p>Learn Perl for text processing, scripting, and rapid prototyping in this comprehensive course.</p>
-                    <a href="{% url 'perl-tutorial' %}" class="course-btn" title="Start Perl Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/php.svg' %}" alt="PHP Programming Language Logo">
-                    <h3>PHP Programming</h3>
-                    <p>Master PHP for back-end web development, focusing on dynamic websites and database interaction.</p>
-                    <a href="{% url 'php-tutorial' %}" class="course-btn" title="Start PHP Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/c--4.svg' %}" alt="C# Programming Language Logo">
-                    <h3>C# Programming</h3>
-                    <p>Learn C# for developing desktop, web, and game applications, focusing on .NET framework development.</p>
-                    <a href="{% url 'csharp-tutorial' %}" class="course-btn" title="Start C# Programming Course">Start Course</a>
-                </div>
-            
-                <div class="course-item">
-                    <img src="{% static 'images/kotlin.svg' %}" alt="Kotlin Programming Language Logo">
-                    <h3>Kotlin Programming</h3>
-                    <p>Learn Kotlin for Android development, combining object-oriented and functional programming concepts.</p>
-                    <a href="{% url 'kotlin-tutorial' %}" class="course-btn" title="Start Kotlin Programming Course">Start Course</a>
-                </div>
-            
-            </div>
-                
+      <ul class="nav-links">
+        <li><a href="{% url 'all_courses' %}">Courses</a></li>
+        <li><a href="#">Tutorials</a></li>
+        <li><a href="#">Examples</a></li>
+      </ul>
+      <button class="pro-btn">Login/Sign Up</button>
+    </nav>
+  </header>
+  <section class="courses-section">
+    <div class="container">
+      <h1>Explore All Courses</h1>
+      <p>Browse our collection of programming courses designed for beginners and experts alike.</p>
+
+      <div class="courses-grid">
+        <div class="course-item">
+          <img src="{% static 'images/python-5.svg' %}" alt="Python Programming Language Logo">
+          <h3>Python Programming</h3>
+          <p>Learn Python from basics to advanced concepts, including hands-on projects to master Python skills.</p>
+          <a href="{% url 'python-tutorial' %}" class="course-btn" title="Start Python Programming Course">Start
+            Course</a>
         </div>
-    </section>
-{% include 'footer.html' %}
+
+        <div class="course-item">
+          <img src="{% static 'images/database-floating-squares.png' %}" alt="SQL Database Fundamentals Logo">
+          <h3>SQL Fundamentals</h3>
+          <p>Master SQL queries and database management with our structured SQL tutorials for beginners and advanced
+            users.</p>
+          <a href="{% url 'sql-tutorial' %}" class="course-btn" title="Start SQL Fundamentals Course">Start Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/html-1.svg' %}" alt="HTML & CSS Logo">
+          <h3>HTML & CSS</h3>
+          <p>Build responsive, beautiful web pages with HTML5 and CSS3, and enhance your front-end development skills.
+          </p>
+          <a href="{% url 'html-tutorial' %}" class="course-btn" title="Start HTML & CSS Course">Start Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/logo-javascript.svg' %}" alt="JavaScript Logo">
+          <h3>JavaScript Programming</h3>
+          <p>Learn JavaScript, the language that powers modern web development, from basics to advanced concepts.</p>
+          <a href="{% url 'javascript-tutorial' %}" class="course-btn" title="Start JavaScript Programming Course">Start
+            Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/rust.svg' %}" alt="Rust Programming Language Logo">
+          <h3>Rust Programming</h3>
+          <p>Explore Rust programming for building safe, concurrent, and performant applications.</p>
+          <a href="{% url 'rust-tutorial' %}" class="course-btn" title="Start Rust Programming Course">Start Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/golang-1.svg' %}" alt="Go Programming Language Logo">
+          <h3>Go Programming</h3>
+          <p>Learn Go programming for scalable and efficient software solutions with this comprehensive tutorial.</p>
+          <a href="{% url 'go-tutorial' %}" class="course-btn" title="Start Go Programming Course">Start Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/c-1.svg' %}" alt="C Programming Language Logo">
+          <h3>C Programming</h3>
+          <p>Gain a deep understanding of the C programming language, with a focus on system-level development.</p>
+          <a href="{% url 'c-tutorial' %}" class="course-btn" title="Start C Programming Course">Start Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/c.svg' %}" alt="C++ Programming Language Logo">
+          <h3>C++ Programming</h3>
+          <p>Master C++ programming for performance-critical applications, data structures, and algorithms.</p>
+          <a href="{% url 'cpp-tutorial' %}" class="course-btn" title="Start C++ Programming Course">Start Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/java.svg' %}" alt="Java Programming Language Logo">
+          <h3>Java Programming</h3>
+          <p>Build powerful applications in Java, from desktop to web applications, using the latest frameworks and
+            tools.</p>
+          <a href="{% url 'java-tutorial' %}" class="course-btn" title="Start Java Programming Course">Start Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/rlang.svg' %}" alt="R Programming Language Logo">
+          <h3>R Programming</h3>
+          <p>Learn R for data science, statistical analysis, and visualization in a structured, easy-to-follow course.
+          </p>
+          <a href="{% url 'r-tutorial' %}" class="course-btn" title="Start R Programming Course">Start Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/Swift.svg' %}" alt="Swift Programming Language Logo">
+          <h3>Swift Programming</h3>
+          <p>Learn Swift programming for building iOS and macOS applications with an emphasis on performance and safety.
+          </p>
+          <a href="{% url 'swift-tutorial' %}" class="course-btn" title="Start Swift Programming Course">Start
+            Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/scala1.svg' %}" alt="Scala Programming Language Logo">
+          <h3>Scala Programming</h3>
+          <p>Explore Scala for building scalable, functional, and object-oriented applications.</p>
+          <a href="{% url 'scala-tutorial' %}" class="course-btn" title="Start Scala Programming Course">Start
+            Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/julia-1.svg' %}" alt="Julia Programming Language Logo">
+          <h3>Julia Programming</h3>
+          <p>Learn Julia for high-performance numerical and scientific computing.</p>
+          <a href="{% url 'julia-tutorial' %}" class="course-btn" title="Start Julia Programming Course">Start
+            Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/ruby.svg' %}" alt="Ruby Programming Language Logo">
+          <h3>Ruby Programming</h3>
+          <p>Master Ruby programming for web development and scripting with this in-depth course.</p>
+          <a href="{% url 'ruby-tutorial' %}" class="course-btn" title="Start Ruby Programming Course">Start Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/perl.svg' %}" alt="Perl Programming Language Logo">
+          <h3>Perl Programming</h3>
+          <p>Learn Perl for text processing, scripting, and rapid prototyping in this comprehensive course.</p>
+          <a href="{% url 'perl-tutorial' %}" class="course-btn" title="Start Perl Programming Course">Start Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/php.svg' %}" alt="PHP Programming Language Logo">
+          <h3>PHP Programming</h3>
+          <p>Master PHP for back-end web development, focusing on dynamic websites and database interaction.</p>
+          <a href="{% url 'php-tutorial' %}" class="course-btn" title="Start PHP Programming Course">Start Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/c--4.svg' %}" alt="C# Programming Language Logo">
+          <h3>C# Programming</h3>
+          <p>Learn C# for developing desktop, web, and game applications, focusing on .NET framework development.</p>
+          <a href="{% url 'csharp-tutorial' %}" class="course-btn" title="Start C# Programming Course">Start Course</a>
+        </div>
+
+        <div class="course-item">
+          <img src="{% static 'images/kotlin.svg' %}" alt="Kotlin Programming Language Logo">
+          <h3>Kotlin Programming</h3>
+          <p>Learn Kotlin for Android development, combining object-oriented and functional programming concepts.</p>
+          <a href="{% url 'kotlin-tutorial' %}" class="course-btn" title="Start Kotlin Programming Course">Start
+            Course</a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  {% include 'footer.html' %}
