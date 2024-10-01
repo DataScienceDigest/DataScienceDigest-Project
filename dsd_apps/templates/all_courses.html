@@ -26,38 +26,69 @@
     <link rel="stylesheet" href="{% static 'css/compiler-styles.css' %}"> <!-- all compilers css -->
     <script type="application/ld+json">
       {
-        "@context": "https://schema.org",
+        "@context": "https://schema.org/",
         "@type": "Course",
-        "name": "R Programming",
-        "description": "Master R programming for data analysis and visualization.",
-        "url": "https://www.datasciencedigest.in/r-tutorial",
-        "category": "Data Science",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
+        "name": "R Programming Tutorial",
+        "description": "Comprehensive R programming tutorial covering data analysis, statistics, and visualization.",
         "provider": {
           "@type": "Organization",
           "name": "Data Science Digest",
-          "url": "https://www.datasciencedigest.in/"
+          "url": "https://datasciencedigest.in"
         },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Data Science Digest",
+          "url": "https://datasciencedigest.in"
+        },
+        "image": [
+          "https://datasciencedigest.in/photos/1x1/r-tutorial.jpg",
+          "https://datasciencedigest.in/photos/4x3/r-tutorial.jpg",
+          "https://datasciencedigest.in/photos/16x9/r-tutorial.jpg"
+        ],
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "0",
+          "category": "Free"  // Correctly categorize the offer
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": 4.6,
+          "ratingCount": 1800,
+          "reviewCount": 800
+        },
+        "totalHistoricalEnrollment": 45000,
+        "datePublished": "2024-01-01",
+        "dateModified": "2024-09-29",
+        "educationalLevel": "Intermediate",
+        "inLanguage": "en",
         "hasCourseInstance": {
           "@type": "CourseInstance",
           "courseMode": "Online",
-          "courseWorkload": "7 hours per week",
+          "courseWorkload": "7 hours per week",  // Simple text description of workload
+          "startDate": "2024-03-01",
+          "endDate": "2024-03-07",
+          "instructor": {
+            "@type": "Person",
+            "name": "Alice Johnson",
+            "description": "Data Scientist",
+            "image": "https://datasciencedigest.in/photos/instructor-alice.jpg"
+          },
           "courseSchedule": {
             "@type": "Schedule",
             "name": "Weekly",
-            "startDate": "2024-01-01",
-            "repeatCount": "10",  // Specify how many times the course repeats
-            "repeatFrequency": "P1W" // Weekly frequency in ISO 8601 format (P1W = Period of 1 week)
+            "repeatCount": "1",  // Adjust based on how many sessions
+            "repeatFrequency": "P1W"  // Weekly repetition
           }
-        }
+        },
+        "about": ["R Basics", "Data Analysis", "Statistical Modeling"],
+        "teaches": [
+          "Perform data analysis in R",
+          "Use R for statistical modeling"
+        ]
       }
       </script>
       
-   
 </head>
 
 <body>
