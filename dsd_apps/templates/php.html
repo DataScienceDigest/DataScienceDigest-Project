@@ -24,44 +24,136 @@
     <meta property="og:url" content="https://datasciencedigest.in/php_run_code">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://datasciencedigest.in/images/php-compiler.png">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
+        * {
             margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
-        .section {
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2f0ad6, #ffc3a0); /* Vibrant background */
+            color: #333;
+            padding: 40px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            font-size: 3em;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 40px;
+            text-align: center;
+            width: 100%;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 3D shadow */
+        }
+        h2 {
+            font-size: 2em;
+            font-weight: 500;
+            color: #fff;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 3D shadow */
+        }
+        p {
+            font-size: 1.2em;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            max-width: 1600px;
         }
         .intro {
-            width: 40%;
+            background: linear-gradient(135deg, #7a0c9b, #fecfef); /* Colorful sections */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* 3D effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .intro:hover {
+            transform: translateY(-10px); /* 3D hover effect */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
         .compiler {
-            width: 55%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* Colorful section */
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* 3D effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
+        .compiler:hover {
+            transform: translateY(-10px); /* 3D hover effect */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        .compiler #editorContainer1, .compiler #editorContainer2 {
+            height: 350px;
+            border: 1px solid #d1d1d1;
+            border-radius: 10px;
+            background-color: #fff;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        /* Move Run Button to Top Right of Editor */
         .compiler button {
             padding: 10px 20px;
+            background-color: #00c851; /* Bright button */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
             cursor: pointer;
-            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 3D button */
+            position: absolute;
+            top: 10px;
+            right: 10px; /* Align to top right corner of editor container */
+            z-index: 10; /* Ensures the button stays above the editor */
+        }
+
+        .compiler button:hover {
+            background-color: #007e33;
+            transform: translateY(-3px); /* Button hover 3D effect */
         }
         .output {
-            margin-top: 10px;
-            background-color: #f1f1f1;
-            padding: 10px;
+            background-color: #f0f2f5;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1em;
+            color: #333;
             white-space: pre-wrap;
-            height: auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* 3D effect */
+        }
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            p {
+                font-size: 1.1em;
+            }
+            .compiler #editorContainer1, .compiler #editorContainer2 {
+                height: 300px;
+            }
         }
     </style>
     <script type="application/ld+json">
@@ -128,7 +220,7 @@
 </head>
 <body>
     <h1>Welcome to the PHP Compiler</h1>
-    <div class="section">
+    <div class="container">
         <!-- Explanation Section -->
         <div class="intro">
             <h2>Introduction to PHP</h2>
@@ -140,9 +232,7 @@
             <button onclick="runPHPCode('editor1', 'output1')">Run</button>
             <pre id="output1" class="output"></pre>
         </div>
-    </div>
-
-    <div class="section">
+    
         <!-- Explanation Section -->
         <div class="intro">
             <h2>More PHP Code</h2>

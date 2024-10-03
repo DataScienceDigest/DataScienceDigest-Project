@@ -29,87 +29,136 @@
     <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs/loader.js"></script>
     
     <!-- Include your previous CSS styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
+        * {
             margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
-        .section {
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2f0ad6, #ffc3a0); /* Vibrant background */
+            color: #333;
+            padding: 40px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1 {
+            font-size: 3em;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 40px;
+            text-align: center;
+            width: 100%;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 3D shadow */
+        }
+        h2 {
+            font-size: 2em;
+            font-weight: 500;
+            color: #fff;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 3D shadow */
+        }
+        p {
+            font-size: 1.2em;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            max-width: 1600px;
         }
         .intro {
-            width: 40%;
+            background: linear-gradient(135deg, #7a0c9b, #fecfef); /* Colorful sections */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* 3D effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .intro:hover {
+            transform: translateY(-10px); /* 3D hover effect */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
         .compiler {
-            width: 55%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* Colorful section */
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* 3D effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
-        .CodeMirror {
-            border: 1px solid #ddd;
-            height: 200px;
+        .compiler:hover {
+            transform: translateY(-10px); /* 3D hover effect */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
+        .compiler #editorContainer1, .compiler #editorContainer2 {
+            height: 350px;
+            border: 1px solid #d1d1d1;
+            border-radius: 10px;
+            background-color: #fff;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        /* Move Run Button to Top Right of Editor */
         .compiler button {
             padding: 10px 20px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .output {
-            margin-top: 10px;
-            background-color: #f1f1f1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            white-space: pre-wrap;
-            height: auto;
-        }
-        /* Modal Styles */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%; 
-            background-color: rgba(0,0,0,0.4);
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-        }
-        .modal-content input {
-            width: 90%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        .modal-content button {
-            padding: 10px 20px;
-            margin-top: 10px;
-            background-color: #28a745;
+            background-color: #00c851; /* Bright button */
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 1em;
             cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 3D button */
+            position: absolute;
+            top: 10px;
+            right: 10px; /* Align to top right corner of editor container */
+            z-index: 10; /* Ensures the button stays above the editor */
         }
-        .modal-content button:hover {
-            background-color: #218838;
+
+        .compiler button:hover {
+            background-color: #007e33;
+            transform: translateY(-3px); /* Button hover 3D effect */
+        }
+        .output {
+            background-color: #f0f2f5;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1em;
+            color: #333;
+            white-space: pre-wrap;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* 3D effect */
+        }
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            h2 {
+                font-size: 1.6em;
+            }
+            p {
+                font-size: 1.1em;
+            }
+            .compiler #editorContainer1, .compiler #editorContainer2 {
+                height: 300px;
+            }
         }
     </style>
     <script type="application/ld+json">
@@ -179,101 +228,69 @@
     <h1>Welcome to the JavaScript Compiler</h1>
     <p>This is a simple JavaScript code editor and compiler. You can edit the code and click "Run" to see the output.</p>
     
-    <div class="section">
-        <!-- Left side for introduction -->
+    <div class="container">
+        <!-- First Section -->
         <div class="intro">
-            <h2>Welcome to the javascriptCompiler</h2>
-            <p>This is a simple javascript code editor and compiler. You can edit the code on the right and click "Run" to see the output.</p>
+            <h2>Loops in JavaScript</h2>
+            <p>Use the editor on the right to run an example of loops in JavaScript.</p>
         </div>
-
-        <!-- Right side for the compiler -->
         <div class="compiler">
-            <div id="editor1" class="CodeMirror"></div>
-            <button onclick="runCode(1)">Run</button>
-            <h3>Output 1:</h3>
-            <pre id="output1" class="output"></pre>
+            <div id="editorContainer1"></div>
+            <button onclick="runJSCode('editor1', 'output1')">Run</button>
+            <pre id="output1" class="output">Output will appear here...</pre>
         </div>
-    </div>
 
-    <div class="section">
-        <!-- Left side for introduction -->
+        <!-- Second Section -->
         <div class="intro">
-            <h2>Loops in Python</h2>
-            <p>In Python, loops are used to iterate over a sequence (like a list, tuple, dictionary, set, or string). Use the editor on the right to run a loop example.</p>
+            <h2>Explore JavaScript Code</h2>
+            <p>Edit the code in the editor and click "Run" to see the output of your JavaScript program.</p>
         </div>
-
-        <!-- Right side for the compiler -->
         <div class="compiler">
-            <div id="editor2" class="CodeMirror"></div>
-            <button onclick="runCode(2)">Run</button>
-            <h3>Output 2:</h3>
-            <pre id="output2" class="output"></pre>
+            <div id="editorContainer2"></div>
+            <button onclick="runJSCode('editor2', 'output2')">Run</button>
+            <pre id="output2" class="output">Output will appear here...</pre>
         </div>
     </div>
 
     <script>
-        var editor1, editor2;
-
-        // Load Monaco Editor
-        require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.21.2/min/vs' }});
-        require(['vs/editor/editor.main'], function() {
-            editor1 = monaco.editor.create(document.getElementById('editor1'), {
-                value: '// Write your JavaScript code here\nconsole.log("Hello from Editor 1");',
+        // Load Monaco Editor for JavaScript code
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+        require(['vs/editor/editor.main'], function () {
+            window.editor1 = monaco.editor.create(document.getElementById('editorContainer1'), {
+                value: '// JavaScript loop example\nfor (let i = 0; i < 5; i++) {\n    console.log(i);\n}',
                 language: 'javascript',
                 theme: 'vs-dark',
                 automaticLayout: true
             });
 
-            editor2 = monaco.editor.create(document.getElementById('editor2'), {
-                value: '// Write your JavaScript code here\nconsole.log("Hello from Editor 2");',
+            window.editor2 = monaco.editor.create(document.getElementById('editorContainer2'), {
+                value: '// JavaScript basic example\nconsole.log("Hello, JavaScript!");',
                 language: 'javascript',
                 theme: 'vs-dark',
                 automaticLayout: true
             });
         });
 
-        function runCode(editorNumber) {
-            let code;
-            if (editorNumber === 1) {
-                code = editor1.getValue();
-            } else if (editorNumber === 2) {
-                code = editor2.getValue();
-            }
-
-            const outputElement = document.getElementById(`output${editorNumber}`);
-            outputElement.innerText = ''; // Clear previous output
+        function runJSCode(editorId, outputId) {
+            const code = window[editorId].getValue();
+            const outputElement = document.getElementById(outputId);
+            outputElement.textContent = 'Running...';
 
             try {
-                // Redirect console.log to capture output
-                const originalLog = console.log;
                 let consoleOutput = '';
-                console.log = function(msg) {
+                const originalLog = console.log;
+                console.log = function (msg) {
                     consoleOutput += msg + '\n';
                     originalLog.apply(console, arguments);
                 };
 
-                // Evaluate the user-entered JavaScript code
                 const result = eval(code);
-
-                // Display console.log output if any
-                if (consoleOutput) {
-                    outputElement.innerText += consoleOutput;
-                }
-
-                // Display the result if there is a return value
-                if (result !== undefined) {
-                    outputElement.innerText += result + '\n';
-                } else if (!consoleOutput) {
-                    outputElement.innerText += "Code executed successfully!\n";
-                }
-
-                // Restore original console.log
+                outputElement.textContent = consoleOutput || result || "Code executed successfully!";
                 console.log = originalLog;
             } catch (error) {
-                outputElement.innerText = "Error: " + error.message;
+                outputElement.textContent = 'Error: ' + error.message;
             }
         }
     </script>
-
 </body>
 </html>

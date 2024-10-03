@@ -1217,11 +1217,12 @@
 </head>
 
 <body>
+  <!-- header section -->
     <header>
         <nav>
-          <div class="logo">
-            <img src="{% static 'images/dsd.svg' %}" alt="DataScienceDigest Logo" style="height:395px;position: absolute;top:-152px;"/>
-        </div>
+          <div>
+          DataScienceDigest
+          </div>
         
             <ul class="nav-links">
                 <li><a href="{% url 'all_courses' %}">Courses</a></li>
@@ -1231,6 +1232,7 @@
             <button class="pro-btn">Login/Sign Up</button>
         </nav>
     </header>
+<!-- main section -->
     <section class="main-section">
         <div class="content">
             <h1>Master Programming for Free</h1>
@@ -1244,7 +1246,7 @@
             <img src="{% static 'images/developer_male.jpg' %}" alt="Programming tutorials for developers" loading="lazy">
         </div>
     </section>
-
+<!-- choose section -->
     <section class="choose-section">
         <div class="choose-content">
             <h2>Choose Your Path to Learn Programming</h2>
@@ -1304,7 +1306,7 @@
             <a href="{% url 'all_courses' %}">View all tutorials</a>
         </div>
     </section>
-
+<!-- learning path section -->
     <section class="learning-path-section">
         <div class="content">
             <h2>Get Job-Ready with Our Programming Learning Paths</h2>
@@ -1373,7 +1375,7 @@
             </div>
         </div>
     </section>
-
+<!-- faq section -->
     <section class="faq">
         <h3>Frequently Asked Questions</h3>
         <div class="faq-item">
@@ -1385,6 +1387,57 @@
             <p>Not at all! Our beginner-friendly tutorials guide you step-by-step, even if you have no programming experience.</p>
         </div>
     </section>
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class="footer-container">
+          <div class="footer-left">
+              <h3>DataScienceDigest</h3>
+              <p>Stay informed with our latest tutorials and updates by subscribing to our newsletter.</p>
+              <form class="newsletter-form">
+                  <input type="email" placeholder="Enter Email Address">
+                  <button type="submit">Join</button>
+              </form>
+          </div>
+          <div class="footer-right">
+              <div class="footer-column">
+                  <h4>Tutorials</h4>
+                  <ul>
+                      <li><a href="#">Python 3 Tutorial</a></li>
+                      <li><a href="#">JavaScript Tutorial</a></li>
+                      <li><a href="#">SQL Tutorial</a></li>
+                      <li><a href="#">HTML Tutorial</a></li>
+                      <li><a href="#">R Tutorial</a></li>
+                      <li><a href="#">C++ Tutorial</a></li>
+                  </ul>
+              </div>
+              <div class="footer-column">
+                  <h4>Examples</h4>
+                  <ul>
+                      <li><a href="#">Python Examples</a></li>
+                      <li><a href="#">C++ Examples</a></li>
+                      <li><a href="#">Java Examples</a></li>
+                  </ul>
+              </div>
+              <div class="footer-column">
+                  <h4>Company</h4>
+                  <ul>
+                      <li><a href="#">About Us</a></li>
+                      <li><a href="#">Careers</a></li>
+                      <li><a href="#">Contact</a></li>
+                      <li><a href="#">Blog</a></li>
+                  </ul>
+              </div>
+              <div class="footer-column">
+                  <h4>Apps</h4>
+                  <ul>
+                      <li><a href="#">Learn Python</a></li>
+                      <li><a href="#">Learn C Programming</a></li>
+                      <li><a href="#">Learn Java</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+    </footer>
 
-
-{% include 'footer.html' %}
+</body>
+</html>
