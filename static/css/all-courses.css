@@ -4,6 +4,7 @@
     padding: 0px;
     box-sizing: border-box;
 }
+
 header {
     background: linear-gradient(135deg, #1f1c4d, #c33764); /* Same gradient as footer for consistency */
     padding: 20px 0;
@@ -14,6 +15,20 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 3D shadow effect */
 }
 
+/* Logo styling */
+header nav div {
+    font-size: 2rem;
+    color: #61dafb;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: transform 0.5s ease-in-out;
+}
+
+header nav div:hover {
+    transform: rotateY(360deg);
+}
+
+/* Navigation Bar */
 nav {
     max-width: 1200px;
     margin: auto;
@@ -23,7 +38,6 @@ nav {
     padding: 0 20px;
     color: white;
 }
-
 nav div {
     font-size: 2em;
     color: #fff;
@@ -31,56 +45,64 @@ nav div {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 3D text effect */
 }
 
+/* Navigation Links */
 .nav-links {
-    list-style: none;
     display: flex;
-    gap: 20px;
+    list-style: none;
 }
 
 .nav-links li {
-    position: relative;
+    margin-left: 20px;
 }
 
-.nav-links a {
+.nav-links li a {
     text-decoration: none;
     color: #fff;
-    font-size: 1.2em;
-    padding: 5px 15px;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: #00c851; /* Highlight on hover */
-    text-shadow: 0 0 10px rgba(0, 200, 81, 0.7); /* Glowing hover effect */
+.nav-links li a:hover {
+    color: #61dafb;
 }
 
+/* 3D hover effect for links */
+.nav-links li a:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #61dafb;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-links li a:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+/* Button Styling */
 .pro-btn {
-    background-color: #00c851; /* Bright green for button */
-    color: #fff;
-    padding: 10px 20px;
+    background-color: #61dafb;
     border: none;
+    padding: 10px 20px;
     border-radius: 25px;
-    font-size: 1em;
+    font-size: 1.1rem;
+    color: #282c34;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* 3D button effect */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
 }
 
 .pro-btn:hover {
-    background-color: #007e33; /* Darker green on hover */
-    transform: translateY(-3px); /* 3D hover effect */
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none; /* Hide links for small screens, can add a hamburger menu later */
-    }
-
-    .pro-btn {
-        font-size: 0.9em;
-        padding: 8px 15px;
-    }
+    background-color: #21a1f1;
+    transform: translateY(-5px) rotateX(10deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
 /* Courses Section */
@@ -171,7 +193,7 @@ p {
         grid-template-columns: 1fr;
     }
 }
-
+/* -------------------footer -------------------- */
 /* Footer Section */
 .footer {
     padding: 60px 20px;
@@ -180,16 +202,14 @@ p {
 }
 
 .footer-container {
-    /* display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: auto; */
     display: grid;
-    grid-template-columns: 2fr 4fr;
-    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 3fr; /* Two columns */
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
 }
 
+/* Left side (newsletter) */
 .footer-left {
     max-width: 400px;
 }
@@ -232,18 +252,16 @@ p {
     transform: translateY(-3px); /* 3D hover effect */
 }
 
+/* Right side (sections) */
 .footer-right {
     display: flex;
-    /* flex-wrap: wrap; */
-    justify-content: space-around;
-    flex-grow: 1;
-    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
     padding-left: 60px;
 }
 
 .footer-column {
-    flex: 1;
-    min-width: 200px;
+    flex: 1 1 200px; /* Ensures columns take equal width but can shrink */
     margin-bottom: 20px;
 }
 
@@ -276,7 +294,29 @@ p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .footer-right {
+    /* Stack the footer sections vertically */
+    .footer-container {
+        display: flex;
         flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-left {
+        max-width: 100%; /* Full width */
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .footer-right {
+        padding-left: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        flex: 1 1 100%; /* Full width for columns */
+        max-width: 400px;
+        text-align: center;
+        margin-bottom: 20px;
     }
 }
