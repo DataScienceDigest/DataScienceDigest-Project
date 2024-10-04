@@ -1,4 +1,9 @@
 /* Header Section */
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
 header {
     background: linear-gradient(135deg, #1f1c4d, #c33764); /* Same gradient as footer for consistency */
     padding: 20px 0;
@@ -175,11 +180,14 @@ p {
 }
 
 .footer-container {
-    display: flex;
+    /* display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     max-width: 1200px;
-    margin: auto;
+    margin: auto; */
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    grid-template-rows: 1fr;
 }
 
 .footer-left {
@@ -226,10 +234,11 @@ p {
 
 .footer-right {
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     justify-content: space-around;
     flex-grow: 1;
     margin-top: 30px;
+    padding-left: 60px;
 }
 
 .footer-column {
