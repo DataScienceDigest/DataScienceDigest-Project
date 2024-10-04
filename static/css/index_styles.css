@@ -8,8 +8,8 @@
         /* Body Styling */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f0eeee;
-            color: #e6e4e9;
+            background-color: #080808;
+            color: #030203;
             height: 100vh;
             margin: 0;
         }
@@ -112,7 +112,7 @@ header nav {
 .main-section {
     display: flex;
     justify-content: space-between;
-    padding: 100px 50px;
+    padding: 140px 50px;
 }
 
 .content {

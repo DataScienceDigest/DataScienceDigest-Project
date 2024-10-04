@@ -1188,21 +1188,21 @@
 </head>
 
 <body>
+  <!-- header section -->
   <header>
     <nav>
-      <div class="logo">
-        <img src="{% static 'images/dsd.svg' %}" alt="DataScienceDigest Logo"
-          style="height:395px;position: absolute;top:-152px;" />
+      <div>
+      DataScienceDigest
       </div>
-
-      <ul class="nav-links">
-        <li><a href="{% url 'all_courses' %}">Courses</a></li>
-        <li><a href="#">Tutorials</a></li>
-        <li><a href="#">Examples</a></li>
-      </ul>
-      <button class="pro-btn">Login/Sign Up</button>
+    
+        <ul class="nav-links">
+            <li><a href="{% url 'all_courses' %}">Courses</a></li>
+            <li><a href="#">Tutorials</a></li>
+            <li><a href="#">Examples</a></li>
+        </ul>
+        <button class="pro-btn">Login/Sign Up</button>
     </nav>
-  </header>
+</header>
   <section class="courses-section">
     <div class="container">
       <h1>Explore All Courses</h1>
@@ -1350,4 +1350,57 @@
 
     </div>
   </section>
-  {% include 'footer.html' %}
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="footer-container">
+      <div class="footer-left">
+          <h3>DataScienceDigest</h3>
+          <p>Stay informed with our latest tutorials and updates by subscribing to our newsletter.</p>
+          <form class="newsletter-form">
+              <input type="email" placeholder="Enter Email Address">
+              <button type="submit">Join</button>
+          </form>
+      </div>
+      <div class="footer-right">
+          <div class="footer-column">
+              <h4>Tutorials</h4>
+              <ul>
+                  <li><a href="#">Python 3 Tutorial</a></li>
+                  <li><a href="#">JavaScript Tutorial</a></li>
+                  <li><a href="#">SQL Tutorial</a></li>
+                  <li><a href="#">HTML Tutorial</a></li>
+                  <li><a href="#">R Tutorial</a></li>
+                  <li><a href="#">C++ Tutorial</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h4>Examples</h4>
+              <ul>
+                  <li><a href="#">Python Examples</a></li>
+                  <li><a href="#">C++ Examples</a></li>
+                  <li><a href="#">Java Examples</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h4>Company</h4>
+              <ul>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Careers</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Blog</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h4>Apps</h4>
+              <ul>
+                  <li><a href="#">Learn Python</a></li>
+                  <li><a href="#">Learn C Programming</a></li>
+                  <li><a href="#">Learn Java</a></li>
+              </ul>
+          </div>
+      </div>
+  </div>
+</footer>
+
+</body>
+</html>
