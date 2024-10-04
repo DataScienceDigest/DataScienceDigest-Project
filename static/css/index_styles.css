@@ -8,8 +8,8 @@
         /* Body Styling */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f0eeee;
-            color: #e6e4e9;
+            background-color: #ced8ec;
+            color: #030203;
             height: 100vh;
             margin: 0;
         }
@@ -22,7 +22,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(153, 17, 17, 0.1);
     perspective: 1000px;
     z-index: 1000;
 }
@@ -112,7 +112,7 @@ header nav {
 .main-section {
     display: flex;
     justify-content: space-between;
-    padding: 100px 50px;
+    padding: 140px 50px;
 }
 
 .content {
