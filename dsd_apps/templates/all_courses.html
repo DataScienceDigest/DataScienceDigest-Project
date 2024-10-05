@@ -4,6 +4,8 @@
 
 <head>
   <meta charset="UTF-8">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8256284122277421"
+     crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Programming Courses | Learn Python, SQL, Swift, C++, Kotlin & More | DataScienceDigest</title>
   <meta name="description"
@@ -1180,6 +1182,18 @@
         ]
       }
       </script>
+<!-- hamburger script -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+});
+
+</script>
 
   <!-- Repeat this for each language -->
 
@@ -1189,18 +1203,30 @@
   <!-- header section -->
   <header>
     <nav>
-      <div>
-      DataScienceDigest
-      </div>
-    
+        <div class="logo">
+            DataScienceDigest
+        </div>
+        
+        <!-- Navigation Links and Login Button -->
         <ul class="nav-links">
             <li><a href="{% url 'all_courses' %}">Courses</a></li>
             <li><a href="#">Tutorials</a></li>
             <li><a href="#">Examples</a></li>
+            <!-- Login/Sign Up Button now inside the nav-links -->
+            <li class="mobile-btn">
+                <button class="pro-btn">Login/Sign Up</button>
+            </li>
         </ul>
-        <button class="pro-btn">Login/Sign Up</button>
+
+        <!-- Hamburger Icon for Mobile -->
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 </header>
+
   <section class="courses-section">
     <div class="container">
       <h1>Explore All Courses</h1>
