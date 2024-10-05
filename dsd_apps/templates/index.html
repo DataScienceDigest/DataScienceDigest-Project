@@ -1188,6 +1188,18 @@
           ]
         }
         </script>
+    <!-- hamburger script -->
+      <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+});
+
+    </script>
   
        
         <!-- Additional meta tags for better SEO -->
@@ -1216,20 +1228,32 @@
 
 <body>
   <!-- header section -->
-    <header>
-        <nav>
-          <div>
-          DataScienceDigest
-          </div>
+  <header>
+    <nav>
+        <div class="logo">
+            DataScienceDigest
+        </div>
         
-            <ul class="nav-links">
-                <li><a href="{% url 'all_courses' %}">Courses</a></li>
-                <li><a href="#">Tutorials</a></li>
-                <li><a href="#">Examples</a></li>
-            </ul>
-            <button class="pro-btn">Login/Sign Up</button>
-        </nav>
-    </header>
+        <!-- Navigation Links and Login Button -->
+        <ul class="nav-links">
+            <li><a href="{% url 'all_courses' %}">Courses</a></li>
+            <li><a href="#">Tutorials</a></li>
+            <li><a href="#">Examples</a></li>
+            <!-- Login/Sign Up Button now inside the nav-links -->
+            <li class="mobile-btn">
+                <button class="pro-btn">Login/Sign Up</button>
+            </li>
+        </ul>
+
+        <!-- Hamburger Icon for Mobile -->
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+</header>
+
 <!-- main section -->
     <section class="main-section">
         <div class="content">
