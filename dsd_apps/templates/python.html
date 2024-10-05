@@ -1,28 +1,37 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8256284122277421"
+     crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Tutorial and Online Compiler - Data Science Digest</title>
     <meta name="google-site-verification" content="mkIFT0Gf0kASPWjbgMCGIgw2bHVQthe6wMzfyldxmuM" />
     <!-- Meta Tags for Python Tutorial Page -->
-    <meta name="description" content="Comprehensive Python tutorial covering basic to advanced topics. Learn Python programming with easy-to-follow examples and exercises.">
-    <meta name="keywords" content="Python tutorial, learn Python, Python programming, Python examples, online Python course">
+    <meta name="description"
+        content="Comprehensive Python tutorial covering basic to advanced topics. Learn Python programming with easy-to-follow examples and exercises.">
+    <meta name="keywords"
+        content="Python tutorial, learn Python, Python programming, Python examples, online Python course">
     <meta name="author" content="Data Science Digest">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Python Tutorial - Data Science Digest">
-    <meta property="og:description" content="Master Python programming with our detailed tutorial. From basics to advanced topics, we've got you covered.">
+    <meta property="og:description"
+        content="Master Python programming with our detailed tutorial. From basics to advanced topics, we've got you covered.">
     <meta property="og:url" content="https://datasciencedigest.in/python-tutorial">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://datasciencedigest.in/images/python-tutorial.png">
-        <!-- Meta Tags for Python Online Compiler Page -->
-    <meta name="description" content="Write, run, and test Python code online with our free Python compiler. Instantly execute Python scripts in your browser without any setup.">
-    <meta name="keywords" content="Python online compiler, run Python code, compile Python program, Python code execution, online Python editor">
+    <!-- Meta Tags for Python Online Compiler Page -->
+    <meta name="description"
+        content="Write, run, and test Python code online with our free Python compiler. Instantly execute Python scripts in your browser without any setup.">
+    <meta name="keywords"
+        content="Python online compiler, run Python code, compile Python program, Python code execution, online Python editor">
     <meta name="author" content="Data Science Digest">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Python Online Compiler - Data Science Digest">
-    <meta property="og:description" content="Run Python code instantly with our easy-to-use online Python compiler. Perfect for quick Python script execution without installation.">
+    <meta property="og:description"
+        content="Run Python code instantly with our easy-to-use online Python compiler. Perfect for quick Python script execution without installation.">
     <meta property="og:url" content="https://datasciencedigest.in/run_python_code">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://datasciencedigest.in/images/python-compiler.png">
@@ -30,7 +39,7 @@
     <!-- Include Monaco Editor from CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/index_styles.css' %}"> <!-- index page css -->
- 
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}"> <!-- index page css -->
 
     <!-- Structured Data for SEO (Course Schema) -->
     <script type="application/ld+json">
@@ -95,32 +104,38 @@
     </script>
 
     <style>
-    .topic{
-        display: flex;
+        .topic {
+            display: flex;
         }
+
         .section {
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
         }
+
         .intro {
             width: 40%;
         }
+
         .compiler {
             width: 55%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 8px;
         }
+
         .CodeMirror {
             border: 1px solid #ddd;
             height: 200px;
         }
+
         .compiler button {
             padding: 10px 20px;
             cursor: pointer;
             margin-top: 10px;
         }
+
         .output {
             margin-top: 10px;
             background-color: #f1f1f1;
@@ -130,28 +145,31 @@
             white-space: pre-wrap;
             height: auto;
         }
+
         /* Modal Styles */
         .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
+            display: none;
+            position: fixed;
+            z-index: 1;
             left: 0;
             top: 0;
             width: 100%;
-            height: 100%; 
-            background-color: rgba(0,0,0,0.4);
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
             justify-content: center;
             align-items: center;
         }
+
         .modal-content {
             background-color: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             width: 100%;
             text-align: center;
         }
+
         .modal-content input {
             width: 90%;
             padding: 10px;
@@ -159,6 +177,7 @@
             border-radius: 5px;
             border: 1px solid #ccc;
         }
+
         .modal-content button {
             padding: 10px 20px;
             margin-top: 10px;
@@ -168,14 +187,16 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .modal-content button:hover {
             background-color: #218838;
         }
+
         .section-switcher {
             margin-bottom: 20px;
             display: grid;
-            grid-template-columns: repeat(3,1fr);
-            grid-template-rows:1fr;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 1fr;
         }
 
         .section-switcher button {
@@ -191,24 +212,12 @@
             background-color: #0056b3;
         }
     </style>
-   
+
 </head>
 
 <body>
-    <header>
-        <nav>
-          <div class="logo">
-            <img src="{% static 'images/dsd.svg' %}" alt="DataScienceDigest Logo" />
-        </div>
-        
-            <ul class="nav-links">
-                <li><a href="{% url 'all_courses' %}">Courses</a></li>
-                <li><a href="#">Tutorials</a></li>
-                <li><a href="#">Examples</a></li>
-            </ul>
-            <button class="pro-btn">Login/Sign Up</button>
-        </nav>
-    </header>
+    <!-- header section -->
+    {% include 'header.html' %}
 
     <div class="section-switcher">
         <button onclick="loadSection('basic')" id="basic">Basic</button>
@@ -226,17 +235,17 @@
             <button onclick="submitInput()">Submit</button>
         </div>
     </div>
-    
+
     <script>
         const editors = {};
         let currentInputResolve = null;
-    
+
         // Automatically load 'Basic' section on page load
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             loadSection('basic');  // Load the basic section by default
 
         });
-    
+
         // AJAX function to load section dynamically
         function loadSection(section) {
             let sectionIntro = '';
@@ -244,9 +253,9 @@
 
             // Define section intro and multiple topics with relevant code
             if (section === 'basic') {
-                document.querySelector("#basic").style.backgroundColor="green";
-                document.querySelector("#advanced").style.backgroundColor=""
-                document.querySelector("#medium").style.backgroundColor=""
+                document.querySelector("#basic").style.backgroundColor = "green";
+                document.querySelector("#advanced").style.backgroundColor = ""
+                document.querySelector("#medium").style.backgroundColor = ""
                 sectionIntro = `<h1>Python Basics</h1>
                                 <p>Learn the basics of Python with examples. Here are multiple basic examples for you to explore.</p>`;
                 topics = [
@@ -292,9 +301,9 @@
                     }
                 ];
             } else if (section === 'medium') {
-                document.querySelector("#medium").style.backgroundColor="green"
-                document.querySelector("#basic").style.backgroundColor=""
-                document.querySelector("#advanced").style.backgroundColor=""
+                document.querySelector("#medium").style.backgroundColor = "green"
+                document.querySelector("#basic").style.backgroundColor = ""
+                document.querySelector("#advanced").style.backgroundColor = ""
                 sectionIntro = `<h1>Medium Level Python</h1>
                                 <p>This section covers medium-difficulty Python programs.</p>`;
                 topics = [
@@ -310,9 +319,9 @@
                     }
                 ];
             } else if (section === 'advanced') {
-                document.querySelector("#advanced").style.backgroundColor="green"
-                document.querySelector("#basic").style.backgroundColor=""
-                document.querySelector("#medium").style.backgroundColor=""
+                document.querySelector("#advanced").style.backgroundColor = "green"
+                document.querySelector("#basic").style.backgroundColor = ""
+                document.querySelector("#medium").style.backgroundColor = ""
                 sectionIntro = `<h1>Advanced Python</h1>
                                 <p>Explore advanced topics in Python like functions and recursion.</p>`;
                 topics = [
@@ -370,17 +379,17 @@
         }
 
         // Monaco Editor setup using the provided JavaScript structure
-        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' } });
         require(['vs/editor/editor.main'], function () {
-            document.addEventListener("DOMContentLoaded", function() {
-            loadSection('basic');  // Load the basic section by default after Monaco is ready
+            document.addEventListener("DOMContentLoaded", function () {
+                loadSection('basic');  // Load the basic section by default after Monaco is ready
+            });
         });
-        });
-    
+
         // Function to initialize all Monaco Editor instances after loading new content
         function initializeEditors() {
             const editorContainers = document.querySelectorAll('[id^=editorContainer]');
-            
+
             // Dispose of any existing editors before re-initializing
             Object.keys(editors).forEach(editorId => {
                 if (editors[editorId]) {
@@ -395,7 +404,7 @@
             });
         }
 
-    
+
         // Function to initialize a Monaco Editor instance
         function initializeEditor(editorId, defaultValue) {
             const container = document.getElementById(`editorContainer${editorId.slice(-1)}`);
@@ -408,22 +417,22 @@
                 });
             }
         }
-    
+
         // Function to run the code
         async function runCode(editorId, outputId) {
             const editor = editors[editorId];
             let code = editor.getValue();
-    
+
             // Detect and handle input() calls
             let inputs = [];
             let inputPattern = /input\((.*?)\)/g;
             let match;
-    
+
             while ((match = inputPattern.exec(code)) !== null) {
                 let userInput = await getInputFromUser(match[1] ? `Input required: ${match[1]}` : 'Enter input:');
                 inputs.push(userInput || ''); // Handle cancel or empty inputs
             }
-    
+
             try {
                 let response = await fetch('/run/', {
                     method: 'POST',
@@ -433,7 +442,7 @@
                     },
                     body: new URLSearchParams({ 'code': code, 'inputs[]': inputs })  // Send inputs as array
                 });
-    
+
                 let data = await response.json();
                 document.getElementById(outputId).textContent = data.output || data.error;
             } catch (error) {
@@ -441,7 +450,7 @@
                 document.getElementById(outputId).textContent = 'Error executing code.';
             }
         }
-    
+
         // Function to handle showing the modal for input
         function getInputFromUser(message) {
             return new Promise((resolve) => {
@@ -451,7 +460,7 @@
                 currentInputResolve = resolve;  // Store the resolve function
             });
         }
-    
+
         // Function to submit input from the modal
         function submitInput() {
             let input = document.getElementById('userInput').value;
@@ -462,5 +471,58 @@
             document.getElementById('inputModal').style.display = 'none';  // Hide modal after submitting
         }
     </script>
-    
-{% include 'footer.html' %}
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3>DataScienceDigest</h3>
+                <p>Stay informed with our latest tutorials and updates by subscribing to our newsletter.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter Email Address">
+                    <button type="submit">Join</button>
+                </form>
+            </div>
+            <div class="footer-right">
+                <div class="footer-column">
+                    <h4>Tutorials</h4>
+                    <ul>
+                        <li><a href="#">Python 3 Tutorial</a></li>
+                        <li><a href="#">JavaScript Tutorial</a></li>
+                        <li><a href="#">SQL Tutorial</a></li>
+                        <li><a href="#">HTML Tutorial</a></li>
+                        <li><a href="#">R Tutorial</a></li>
+                        <li><a href="#">C++ Tutorial</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Examples</h4>
+                    <ul>
+                        <li><a href="#">Python Examples</a></li>
+                        <li><a href="#">C++ Examples</a></li>
+                        <li><a href="#">Java Examples</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Apps</h4>
+                    <ul>
+                        <li><a href="#">Learn Python</a></li>
+                        <li><a href="#">Learn C Programming</a></li>
+                        <li><a href="#">Learn Java</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
