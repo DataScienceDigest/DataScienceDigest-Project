@@ -28,56 +28,103 @@
     <meta property="og:image" content="https://datasciencedigest.in/images/java-compiler.png">
 
     <style>
-        /* Global body styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2f0ad6, #ffc3a0); /* Vibrant background */
+            color: #333;
+            padding: 40px;
             display: flex;
             flex-direction: column;
-            padding: 20px;
-            margin: 0;
-            box-sizing: border-box;
-            background-color: #f0f2f5;
+            align-items: center;
+            min-height: 100vh;
         }
-        
-        /* Section layout and styles */
-        .section {
-            display: flex;
-            justify-content: space-between;
+        h1 {
+            font-size: 3em;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 40px;
+            text-align: center;
+            width: 100%;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 3D shadow */
+        }
+        h2 {
+            font-size: 2em;
+            font-weight: 500;
+            color: #fff;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* 3D shadow */
         }
-        
-        /* Intro and explanation section (left) */
+        p {
+            font-size: 1.2em;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            max-width: 1600px;
+        }
         .intro {
-            width: 40%;
+            background: linear-gradient(135deg, #7a0c9b, #fecfef); /* Colorful sections */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* 3D effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
-        /* Code editor section (right) */
+        .intro:hover {
+            transform: translateY(-10px); /* 3D hover effect */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
         .compiler {
-            width: 55%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* Colorful section */
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* 3D effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
-        
-        /* Button styles */
+        .compiler:hover {
+            transform: translateY(-10px); /* 3D hover effect */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        .compiler #monaco-editor1, .compiler #monaco-editor2,.compiler  #monaco-editor3 {
+            height: 350px;
+            border: 1px solid #d1d1d1;
+            border-radius: 10px;
+            background-color: #fff;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        /* Move Run Button to Top Right of Editor */
         .compiler button {
             padding: 10px 20px;
-            cursor: pointer;
-            margin-top: 10px;
-            background-color: #28a745;
+            background-color: #00c851; /* Bright button */
             color: white;
             border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: background-color 0.3s;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 3D button */
+            position: absolute;
+            top: 10px;
+            right: 10px; /* Align to top right corner of editor container */
+            z-index: 10; /* Ensures the button stays above the editor */
         }
-        
+
         .compiler button:hover {
-            background-color: #218838;
-        }
-        
-        /* Output section styles */
+            background-color: #007e33;
+            transform: translateY(-3px); /* Button hover 3D effect */
+        }        /* Output section styles */
         .output {
             margin-top: 10px;
             background-color: #f1f1f1;
@@ -94,12 +141,7 @@
             padding: 10px;
         }
         
-        /* Monaco Editor styles */
-        #monaco-editor1, #monaco-editor2, #monaco-editor3 {
-            width: 100%;
-            height: 300px;
-            border: 1px solid #ccc;
-        }
+        
     </style>
     <!-- Include Monaco Editor -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs/loader.min.js"></script>
@@ -166,7 +208,7 @@
         
 </head>
 <body>
-    <div class="section">
+    <div class="container">
         <!-- Left Panel for Explanations -->
         <div class="intro">
             <h2>Java Loops</h2>
@@ -181,9 +223,6 @@
             <h3>Output:</h3>
             <div id="outputArea1" class="output"></div>
         </div>
-    </div>
-
-    <div class="section">
         <!-- Left Panel for Explanations -->
         <div class="intro">
             <h2>Java Conditionals</h2>
@@ -198,9 +237,6 @@
             <h3>Output:</h3>
             <div id="outputArea2" class="output"></div>
         </div>
-    </div>
-
-    <div class="section">
         <!-- Left Panel for Explanations -->
         <div class="intro">
             <h2>Java Classes</h2>
