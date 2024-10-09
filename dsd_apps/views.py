@@ -128,10 +128,6 @@ def execute_sql(request):
             # Ensure the database file exists before proceeding
             if not os.path.exists(db_path):
                 return JsonResponse({'error': 'Database file not found'}, status=500)
-
-            # Change the permissions to ensure the file is writable
-            os.chmod(db_path, 0o755)  # Sets the file to be readable and writable by all users
-
             # Connect to the SQLite database
             conn = sqlite3.connect(db_path)
             cursor = conn.cursor()
