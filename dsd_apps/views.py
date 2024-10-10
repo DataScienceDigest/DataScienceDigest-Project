@@ -9,6 +9,12 @@ import sqlite3
 from django.conf import settings 
 from django.http import FileResponse
 
+def ads_txt_view(request):
+    ads_path = settings.BASE_DIR / 'static/ads.txt'
+    with open(ads_path) as f:
+        return HttpResponse(f.read(), content_type="text/plain")
+
+
 def sitemap_view(request):
     # Assuming the file is in a folder named 'static/sitemaps/' in your project root
     file_path = os.path.join(settings.BASE_DIR, 'static/sitemaps/sitemap.xml')

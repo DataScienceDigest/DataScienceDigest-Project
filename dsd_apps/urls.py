@@ -51,5 +51,6 @@ urlpatterns = [
     path('kotlin-tutorial/',views.kotlin_index,name='kotlin-tutorial'),
     path('run_kotlin_code/',views.run_kotlin_code,name='run_kotlin_code'),
     path('sitemap.xml', views.sitemap_view, name='sitemap'),
+    path('ads.txt', views.ads_txt_view),
     
 ]
