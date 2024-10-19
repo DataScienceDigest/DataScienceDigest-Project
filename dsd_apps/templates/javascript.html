@@ -4,6 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVH1VPXS3F"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QVH1VPXS3F');
+    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8256284122277421"
      crossorigin="anonymous"></script>
     <title>JavaScript Tutorial and Online Compiler - Data Science Digest</title>
@@ -87,76 +96,279 @@
           ]
         }
         </script>
+            <style>
+                /* Styles for the sections and compiler */
+                .topic {
+                    display: flex;
+                    margin-bottom: 20px;
+                }
         
-</head>
-<body>
-
-    <h1>Welcome to the JavaScript Compiler</h1>
-    <p>This is a simple JavaScript code editor and compiler. You can edit the code and click "Run" to see the output.</p>
-    
-    <div class="container">
-        <!-- First Section -->
-        <div class="intro">
-            <h2>Loops in JavaScript</h2>
-            <p>Use the editor on the right to run an example of loops in JavaScript.</p>
-        </div>
-        <div class="compiler">
-            <div id="editorContainer1"></div>
-            <button onclick="runJSCode('editor1', 'output1')">Run</button>
-            <pre id="output1" class="output">Output will appear here...</pre>
-        </div>
-
-        <!-- Second Section -->
-        <div class="intro">
-            <h2>Explore JavaScript Code</h2>
-            <p>Edit the code in the editor and click "Run" to see the output of your JavaScript program.</p>
-        </div>
-        <div class="compiler">
-            <div id="editorContainer2"></div>
-            <button onclick="runJSCode('editor2', 'output2')">Run</button>
-            <pre id="output2" class="output">Output will appear here...</pre>
-        </div>
-    </div>
-
-    <script>
-        // Load Monaco Editor for JavaScript code
-        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
-        require(['vs/editor/editor.main'], function () {
-            window.editor1 = monaco.editor.create(document.getElementById('editorContainer1'), {
-                value: '// JavaScript loop example\nfor (let i = 0; i < 5; i++) {\n    console.log(i);\n}',
-                language: 'javascript',
-                theme: 'vs-dark',
-                automaticLayout: true
-            });
-
-            window.editor2 = monaco.editor.create(document.getElementById('editorContainer2'), {
-                value: '// JavaScript basic example\nconsole.log("Hello, JavaScript!");',
-                language: 'javascript',
-                theme: 'vs-dark',
-                automaticLayout: true
-            });
-        });
-
-        function runJSCode(editorId, outputId) {
-            const code = window[editorId].getValue();
-            const outputElement = document.getElementById(outputId);
-            outputElement.textContent = 'Running...';
-
-            try {
-                let consoleOutput = '';
-                const originalLog = console.log;
-                console.log = function (msg) {
-                    consoleOutput += msg + '\n';
-                    originalLog.apply(console, arguments);
-                };
-
-                const result = eval(code);
-                outputElement.textContent = consoleOutput || result || "Code executed successfully!";
-                console.log = originalLog;
-            } catch (error) {
-                outputElement.textContent = 'Error: ' + error.message;
-            }
-        }
-    </script>
-</body>
-</html>
+                .section {
+                    margin-bottom: 20px;
+                }
+        
+                .intro {
+                    width: 40%;
+                }
+        
+                .compiler {
+                    width: 55%;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 8px;
+                }
+        
+                .compiler button {
+                    padding: 10px 20px;
+                    cursor: pointer;
+                    margin-top: 10px;
+                }
+        
+                .output {
+                    margin-top: 10px;
+                    background-color: #f1f1f1;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    white-space: pre-wrap;
+                    height: auto;
+                }
+        
+                .section-switcher {
+                    margin-bottom: 20px;
+                    margin-top: 20px;
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                }
+        
+                .section-switcher button {
+                    padding: 10px 20px;
+                    cursor: pointer;
+                    border: none;
+                    background-color: #007bff;
+                    color: white;
+                    transition: background-color 0.3s ease;
+                }
+        
+                .section-switcher button:hover {
+                    background-color: #0056b3;
+                }
+        
+                .section-switcher button.active {
+                    background-color: green;
+                }
+        
+                /* Monaco Editor Container */
+                [id^=editorContainer] {
+                    height: 200px;
+                    border: 1px solid #ccc;
+                }
+            </style>
+            <!-- Include Monaco Editor -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+        </head>
+        <body>
+            <h1>Welcome to the JavaScript Compiler</h1>
+            <p>This is a simple JavaScript code editor and compiler. You can edit the code and click "Run" to see the output.</p>
+        
+            <!-- Section Switcher -->
+            <div class="section-switcher">
+                <button onclick="loadSection('basic')" id="basicBtn">Basic</button>
+                <button onclick="loadSection('medium')" id="mediumBtn">Medium</button>
+                <button onclick="loadSection('advanced')" id="advancedBtn">Advanced</button>
+            </div>
+        
+            <!-- Section Content -->
+            <div id="sectionContent"></div>
+        
+            <script>
+                // Editors object to hold Monaco editor instances
+                const editors = {};
+        
+                // Function to load a section dynamically
+                function loadSection(section) {
+                    let sectionIntro = '';
+                    let topics = [];
+        
+                    // Define section intro and topics with relevant code
+                    if (section === 'basic') {
+                        // Update active button styling
+                        document.querySelector("#basicBtn").classList.add("active");
+                        document.querySelector("#mediumBtn").classList.remove("active");
+                        document.querySelector("#advancedBtn").classList.remove("active");
+        
+                        sectionIntro = `<h1>JavaScript Basics</h1>
+                                        <p>Learn the basics of JavaScript with examples. Here are multiple basic examples for you to explore.</p>`;
+                        topics = [
+                            {
+                                title: 'Hello World Example',
+                                description: 'This is the simplest JavaScript program. It uses the "console.log()" function to display the text "Hello, World!" in the console.',
+                                code: `console.log("Hello, World!");`
+                            },
+                            {
+                                title: 'Basic For Loop',
+                                description: 'A "for" loop in JavaScript is used to repeat a block of code multiple times. In this example, the loop repeats 5 times, printing numbers from 0 to 4.',
+                                code: `for (let i = 0; i < 5; i++) {\n    console.log("Number " + i);\n}`
+                            },
+                            {
+                                title: 'Basic If-Else Condition',
+                                description: 'Conditional statements allow us to make decisions in our code. This example checks if a number is greater than 5 or not.',
+                                code: `let number = 10;\nif (number > 5) {\n    console.log("Number is greater than 5");\n} else {\n    console.log("Number is less than or equal to 5");\n}`
+                            },
+                            {
+                                title: 'Sum of Numbers',
+                                description: 'This example calculates the sum of numbers from 1 to 5 using a loop.',
+                                code: `let total = 0;\nfor (let i = 1; i <= 5; i++) {\n    total += i;\n}\nconsole.log("Sum of numbers from 1 to 5 is " + total);`
+                            },
+                            {
+                                title: 'Find Maximum in an Array',
+                                description: 'This code finds the largest number in an array of numbers using the Math.max() function.',
+                                code: `let numbers = [3, 7, 2, 9, 4];\nlet maxNumber = Math.max(...numbers);\nconsole.log("The largest number is " + maxNumber);`
+                            },
+                            {
+                                title: 'Simple Function Example',
+                                description: 'Functions in JavaScript allow you to organize your code into reusable blocks. This example defines a function "greet" that takes a name as input and prints a greeting message.',
+                                code: `function greet(name) {\n    console.log("Hello, " + name + "!");\n}\ngreet("Alice");`
+                            },
+                            {
+                                title: 'Array Mapping',
+                                description: 'Array mapping allows you to create a new array by applying a function to each element of an array.',
+                                code: `let numbers = [1, 2, 3, 4, 5];\nlet squares = numbers.map(x => x * x);\nconsole.log(squares);`
+                            },
+                            {
+                                title: 'Basic While Loop',
+                                description: 'A "while" loop repeats as long as a condition is true. In this example, the loop continues to run as long as the value of "i" is less than 5.',
+                                code: `let i = 0;\nwhile (i < 5) {\n    console.log("Number " + i);\n    i++;\n}`
+                            }
+                        ];
+                    } else if (section === 'medium') {
+                        // Update active button styling
+                        document.querySelector("#mediumBtn").classList.add("active");
+                        document.querySelector("#basicBtn").classList.remove("active");
+                        document.querySelector("#advancedBtn").classList.remove("active");
+        
+                        sectionIntro = `<h1>Medium Level JavaScript</h1>
+                                        <p>This section covers medium-difficulty JavaScript programs.</p>`;
+                        topics = [
+                            {
+                                title: 'Closures Example',
+                                description: 'This example demonstrates closures in JavaScript.',
+                                code: `function makeAdder(x) {\n    return function(y) {\n        return x + y;\n    };\n}\nlet add5 = makeAdder(5);\nconsole.log(add5(2)); // Outputs 7`
+                            },
+                            {
+                                title: 'Promises Example',
+                                description: 'A simple example demonstrating the use of Promises.',
+                                code: `let promise = new Promise(function(resolve, reject) {\n    setTimeout(() => resolve("Done!"), 1000);\n});\npromise.then(result => console.log(result));`
+                            }
+                        ];
+                    } else if (section === 'advanced') {
+                        // Update active button styling
+                        document.querySelector("#advancedBtn").classList.add("active");
+                        document.querySelector("#basicBtn").classList.remove("active");
+                        document.querySelector("#mediumBtn").classList.remove("active");
+        
+                        sectionIntro = `<h1>Advanced JavaScript</h1>
+                                        <p>Explore advanced topics in JavaScript like async/await and generators.</p>`;
+                        topics = [
+                            {
+                                title: 'Async/Await Example',
+                                description: 'This program demonstrates async/await in JavaScript.',
+                                code: `async function fetchData() {\n    let response = await fetch('https://api.github.com');\n    let data = await response.json();\n    console.log(data);\n}\nfetchData();`
+                            },
+                            {
+                                title: 'Generator Function',
+                                description: 'An example of a generator function in JavaScript.',
+                                code: `function* generatorExample() {\n    yield 1;\n    yield 2;\n    yield 3;\n}\nlet gen = generatorExample();\nconsole.log(gen.next().value); // 1\nconsole.log(gen.next().value); // 2\nconsole.log(gen.next().value); // 3`
+                            }
+                        ];
+                    }
+        
+                    // Dispose of existing editors before loading the new section
+                    Object.keys(editors).forEach(editorId => {
+                        if (editors[editorId]) {
+                            editors[editorId].dispose();
+                            delete editors[editorId];  // Clean up editor instances
+                        }
+                    });
+        
+                    // Create section content with multiple topics, each having its own compiler
+                    let sectionContent = `
+                        <div class="intro">
+                            ${sectionIntro}
+                        </div>`;
+        
+                    topics.forEach((topic, index) => {
+                        sectionContent += `
+                            <div class="topic">
+                                <div style="width:50%;">
+                                    <h2>${topic.title}</h2>
+                                    <p>${topic.description}</p>
+                                </div>
+                                <div class="compiler" style="width:50%;">
+                                    <div id="editorContainer${index}" style="height: 200px;"></div>
+                                    <button onclick="runJSCode('editor${index}', 'output${index}')">Run</button>
+                                    <div class="output" id="output${index}">Output will appear here...</div>
+                                </div>
+                            </div>`;
+                    });
+        
+                    // Insert the dynamically generated content into the page
+                    document.getElementById('sectionContent').innerHTML = sectionContent;
+        
+                    // Initialize Monaco Editor instances
+                    require(['vs/editor/editor.main'], function () {
+                        topics.forEach((topic, index) => {
+                            initializeEditor(`editor${index}`, topic.code);  // Initialize Monaco editor for each topic
+                        });
+                    });
+                }
+        
+                // Monaco Editor setup
+                require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
+                require(['vs/editor/editor.main'], function () {
+                    document.addEventListener("DOMContentLoaded", function () {
+                        loadSection('basic');  // Load the basic section by default after Monaco is ready
+                    });
+                });
+        
+                // Function to initialize a Monaco Editor instance
+                function initializeEditor(editorId, defaultValue) {
+                    const container = document.getElementById(`editorContainer${editorId.slice(-1)}`);
+                    if (!editors[editorId]) {
+                        editors[editorId] = monaco.editor.create(container, {
+                            value: defaultValue,
+                            language: 'javascript',
+                            theme: 'vs-dark',
+                            automaticLayout: true
+                        });
+                    }
+                }
+        
+                // Function to run the JavaScript code
+                function runJSCode(editorId, outputId) {
+                    const editor = editors[editorId];
+                    let code = editor.getValue();
+                    const outputElement = document.getElementById(outputId);
+                    outputElement.textContent = 'Running...';
+        
+                    try {
+                        let consoleOutput = '';
+                        const originalLog = console.log;
+                        console.log = function (msg) {
+                            consoleOutput += msg + '\n';
+                            originalLog.apply(console, arguments);
+                        };
+        
+                        // Evaluate the code
+                        eval(code);
+        
+                        outputElement.textContent = consoleOutput || "Code executed successfully!";
+                        console.log = originalLog;
+                    } catch (error) {
+                        outputElement.textContent = 'Error: ' + error.message;
+                    }
+                }
+            </script>
+        </body>
+        </html>
+        
