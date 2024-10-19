@@ -33,7 +33,7 @@
     <meta property="og:image" content="https://datasciencedigest.in/images/julia-tutorial-and-compiler.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="{% static 'css/content.css' %}">
     <script type="application/ld+json">
         {
           "@context": "https://schema.org/",
@@ -94,202 +94,98 @@
           ]
         }
         </script>
-            <style>
-                /* Same styling as the Python example */
-                .topic {
-                    display: flex;
-                }
-        
-                .section {
-                    display: flex;
-                    justify-content: space-between;
-                    margin-bottom: 20px;
-                }
-        
-                .intro {
-                    width: 40%;
-                }
-        
-                .compiler {
-                    width: 55%;
-                    padding: 10px;
-                    border: 1px solid #ccc;
-                    border-radius: 8px;
-                }
-        
-                .CodeMirror {
-                    border: 1px solid #ddd;
-                    height: 200px;
-                }
-        
-                .compiler button {
-                    padding: 10px 20px;
-                    cursor: pointer;
-                    margin-top: 10px;
-                }
-        
-                .output {
-                    margin-top: 10px;
-                    background-color: #f1f1f1;
-                    padding: 10px;
-                    border: 1px solid #ccc;
-                    border-radius: 5px;
-                    white-space: pre-wrap;
-                    height: auto;
-                }
-            </style>
+       
         </head>
         <body>
             <h1>Welcome to the Julia Compiler</h1>
-        
-            <div class="section-switcher">
-                <button onclick="loadSection('loops')" id="loops">Loops</button>
-                <button onclick="loadSection('functions')" id="functions">Functions</button>
-                <button onclick="loadSection('advanced')" id="advanced">Advanced</button>
+            <div class="container">
+                <!-- Explanation Section -->
+                <div class="intro">
+                    <h2>Loops in Julia</h2>
+                    <p>In Julia, loops are used to repeat a block of code. Use the editor on the right to run a loop example.</p>
+                </div>
+                <!-- Compiler Section -->
+                <div class="compiler">
+                    <div id="editorContainer1" style="height: 200px;"></div>
+                    <button onclick="runCode('editor1', 'output1')">Run</button>
+                    <pre id="output1" class="output"></pre>
+                </div>
+                <!-- Explanation Section -->
+                <div class="intro">
+                    <h2>Welcome to the Julia Compiler</h2>
+                    <p>This is a simple Julia code editor and compiler. You can edit the code on the right and click "Run" to see the output.</p>
+                </div>
+                <!-- Compiler Section -->
+                <div class="compiler">
+                    <div id="editorContainer2" style="height: 200px;"></div>
+                    <button onclick="runCode('editor2', 'output2')">Run</button>
+                    <pre id="output2" class="output"></pre>
+                </div>
             </div>
-        
-            <div id="sectionContent"></div>
-        
             <script>
-                const editors = {};
-        
-                // Automatically load 'Loops' section on page load
-                document.addEventListener("DOMContentLoaded", function () {
-                    loadSection('loops');
-                });
-        
-                // Function to load different sections dynamically
-                function loadSection(section) {
-                    let sectionIntro = '';
-                    let topics = [];
-        
-                    if (section === 'loops') {
-                        document.querySelector("#loops").style.backgroundColor = "green";
-                        document.querySelector("#functions").style.backgroundColor = "";
-                        document.querySelector("#advanced").style.backgroundColor = "";
-                        sectionIntro = `<h1>Loops in Julia</h1>
-                                        <p>Explore various loops in Julia.</p>`;
-                        topics = [
-                            {
-                                title: 'For Loop Example',
-                                description: 'A basic "for" loop in Julia to print the square of numbers from 1 to 5.',
-                                code: `for i in 1:5\n    println("Square of ", i, " is ", i * i)\nend`
-                            },
-                            {
-                                title: 'While Loop Example',
-                                description: 'A basic "while" loop in Julia to print numbers while the condition holds true.',
-                                code: `i = 1\nwhile i <= 5\n    println(i)\n    i += 1\nend`
-                            }
-                        ];
-                    } else if (section === 'functions') {
-                        document.querySelector("#functions").style.backgroundColor = "green";
-                        document.querySelector("#loops").style.backgroundColor = "";
-                        document.querySelector("#advanced").style.backgroundColor = "";
-                        sectionIntro = `<h1>Functions in Julia</h1>
-                                        <p>Learn how to define and use functions in Julia.</p>`;
-                        topics = [
-                            {
-                                title: 'Simple Function',
-                                description: 'A simple function to greet the user.',
-                                code: `function greet(name)\n    println("Hello, ", name)\nend\ngreet("Julia")`
-                            },
-                            {
-                                title: 'Sum Function',
-                                description: 'A function to calculate the sum of numbers from 1 to 5.',
-                                code: `function sumNumbers()\n    total = 0\n    for i in 1:5\n        total += i\n    end\n    return total\nend\nprintln("Sum is ", sumNumbers())`
-                            }
-                        ];
-                    } else if (section === 'advanced') {
-                        document.querySelector("#advanced").style.backgroundColor = "green";
-                        document.querySelector("#loops").style.backgroundColor = "";
-                        document.querySelector("#functions").style.backgroundColor = "";
-                        sectionIntro = `<h1>Advanced Julia</h1>
-                                        <p>Explore advanced concepts in Julia.</p>`;
-                        topics = [
-                            {
-                                title: 'Recursion Example',
-                                description: 'A recursion example to calculate the factorial of a number.',
-                                code: `function factorial(n)\n    if n == 0\n        return 1\n    else\n        return n * factorial(n-1)\n    end\nend\nprintln("Factorial of 5 is ", factorial(5))`
-                            }
-                        ];
-                    }
-        
-                    // Reset editors before loading new section
-                    Object.keys(editors).forEach(editorId => {
-                        if (editors[editorId]) {
-                            editors[editorId].dispose();
-                            delete editors[editorId];
-                        }
-                    });
-        
-                    let sectionContent = `<div class="intro">${sectionIntro}</div>`;
-                    topics.forEach((topic, index) => {
-                        sectionContent += `
-                            <div class="topic">
-                                <div style="width: 50%;">
-                                    <h2>${topic.title}</h2>
-                                    <p>${topic.description}</p>
-                                </div>
-                                <div class="compiler" style="width: 50%;">
-                                    <div id="editorContainer${index}" style="height: 200px;"></div>
-                                    <button onclick="runCode('editor${index}', 'output${index}')">Run</button>
-                                    <pre id="output${index}" class="output"></pre>
-                                </div>
-                            </div>`;
-                    });
-        
-                    document.getElementById('sectionContent').innerHTML = sectionContent;
-        
-                    // Initialize editors with the appropriate code
-                    require(['vs/editor/editor.main'], function () {
-                        topics.forEach((topic, index) => {
-                            initializeEditor(`editor${index}`, topic.code);
-                        });
-                    });
-                }
-        
-                // Monaco Editor configuration
-                require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' } });
+                require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' }});
                 require(['vs/editor/editor.main'], function () {
-                    document.addEventListener("DOMContentLoaded", function () {
-                        loadSection('loops');
+                    window.editor1 = monaco.editor.create(document.getElementById('editorContainer1'), {
+                        value: 'for i in 1:5\n    println("Square of ", i, " is ", i * i)\nend\n',
+                        language: 'julia',
+                        theme: 'vs-dark',
+                        automaticLayout: true
+                    });
+                    window.editor2 = monaco.editor.create(document.getElementById('editorContainer2'), {
+                        value: 'println("Hello, World!")\n',
+                        language: 'julia',
+                        theme: 'vs-dark',
+                        automaticLayout: true
                     });
                 });
-        
-                function initializeEditor(editorId, defaultValue) {
-                    const container = document.getElementById(`editorContainer${editorId.slice(-1)}`);
-                    if (!editors[editorId]) {
-                        editors[editorId] = monaco.editor.create(container, {
-                            value: defaultValue,
-                            language: 'julia',
-                            theme: 'vs-dark',
-                            automaticLayout: true
-                        });
+                function runCode(editorId, outputId) {
+                    const code = window[editorId].getValue();
+                    const outputElement = document.getElementById(outputId);
+                    outputElement.textContent = 'Running...';
+                    // Detect `readline()` or other Julia input methods
+                    const inputPatterns = /readline\(\)/g;  // Add more patterns as needed
+                    let userInputs = [];
+                    let match;
+                    // Check if the Julia code requires inputs
+                    while ((match = inputPatterns.exec(code)) !== null) {
+                        let userInput = prompt('Your code requires input for readline(). Please enter the input:');
+                        if (userInput === null) {
+                            outputElement.textContent = 'Execution aborted due to missing input.';
+                            return;
+                        }
+                        userInputs.push(userInput);
                     }
-                }
-        
-                // Function to run the code
-                async function runCode(editorId, outputId) {
-                    const editor = editors[editorId];
-                    const code = editor.getValue();
-        
-                    try {
-                        let response = await fetch('/run_julia_code/', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                                'X-CSRFToken': '{{ csrf_token }}'
-                            },
-                            body: new URLSearchParams({ 'code': code })
-                        });
-        
-                        let data = await response.json();
-                        document.getElementById(outputId).textContent = data.output || data.error;
-                    } catch (error) {
+                    // Prepare the payload with the Julia code and inputs
+                    const payload = {
+                        code: code,
+                        inputs: userInputs
+                    };
+                    fetch('/run_julia_code/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCSRFToken()
+                        },
+                        body: JSON.stringify(payload)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.error) {
+                            outputElement.textContent = `Error: ${data.error}`;
+                        } else {
+                            outputElement.textContent = data.output;
+                
+                        }
+                    })
+                    .catch(error => {
                         console.error('Error:', error);
-                        document.getElementById(outputId).textContent = 'Error executing code.';
-                    }
+                        outputElement.textContent = 'Error executing the code.';
+                    });
+                }
+                function getCSRFToken() {
+                    return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                 }
             </script>
         </body>
-</html>        
+</html>
+     
