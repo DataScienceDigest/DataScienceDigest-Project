@@ -23,6 +23,8 @@ def sitemap_view(request):
 def index(request):
     return render(request, 'index.html')
 
+def index1(request):
+    return render(request, 'index1.html')
 def all_courses(request):
     return render(request, 'all_courses.html')
 
