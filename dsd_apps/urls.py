@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 urlpatterns = [
     path('',views.index),
+    path('index1',views.index1),
     path('all-courses/',views.all_courses,name='all_courses'), #done
     # ________________javascript Compiler __________________
     path('javascript-tutorial/', views.javascript_index, name='javascript-tutorial'), #done
