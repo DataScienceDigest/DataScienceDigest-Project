@@ -1,9 +1,12 @@
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('',views.index),
-    path('index1',views.index1),
-    path('all-courses/',views.all_courses,name='all_courses'), #done
+    path('',views.index,name='index'),
+    path('all-courses/',views.all_courses,name='all-courses'), #done
+    path('about/',views.about,name='about'),
+    path('contact/',views.contact,name='contact'),
+    path('login/',views.user_login,name='login'),
+    path('signup/',views.signup,name='signup'),
     # ________________javascript Compiler __________________
     path('javascript-tutorial/', views.javascript_index, name='javascript-tutorial'), #done
     path('java-tutorial/', views.java_index, name='java-tutorial'),     # done 
@@ -51,6 +54,7 @@ urlpatterns = [
     # ________________kotlin Section _______________________
     path('kotlin-tutorial/',views.kotlin_index,name='kotlin-tutorial'),
     path('run_kotlin_code/',views.run_kotlin_code,name='run_kotlin_code'),
+    path('single-course',views.single),
     path('sitemap.xml', views.sitemap_view, name='sitemap'),
     path('ads.txt', views.ads_txt_view),
     
