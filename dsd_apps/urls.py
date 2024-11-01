@@ -26,7 +26,6 @@ urlpatterns = [
     # _________________cpp compiler ______________________________
     path('cpp-tutorial/',views.cpp_index,name='cpp-tutorial'), #done
     path('cpp_run_code/',views.cpp_run_code,name='cpp_run_code'), #done
-    
     # _______________python section ____________________
     path('python-tutorial/', views.python_index, name='python-tutorial'),  #done
     path('run/', views.run_python, name='run_code'), #done
