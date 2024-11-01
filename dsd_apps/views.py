@@ -23,12 +23,22 @@ def sitemap_view(request):
 def index(request):
     return render(request, 'index.html')
 
-def index1(request):
-    return render(request, 'index1.html')
+def single(request):
+    return render(request,'singlecourse-test.html')
+
 def all_courses(request):
-    return render(request, 'all_courses.html')
+    return render(request, 'all_courses1.html')
 
+def contact(request):
+    return render(request,'contact.html')
 
+def about(request):
+    return render(request,'about.html')
+
+def user_login(request):
+    return render(request,'login.html')
+def signup(request):
+    return render(request,'signup.html')
 
 def python_index(request):
     return render(request, 'python.html')
