@@ -27,7 +27,7 @@ def single(request):
     return render(request,'singlecourse-test.html')
 
 def all_courses(request):
-    return render(request, 'all_courses1.html')
+    return render(request, 'all_courses.html')
 
 def contact(request):
     return render(request,'contact.html')

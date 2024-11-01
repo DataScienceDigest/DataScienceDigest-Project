@@ -1248,7 +1248,7 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <p class="m-0 fw-bold" style="font-size: 25px;">
                 DataScienceDigest<span style="color: #fb873f;">.in</span>
             </p>
@@ -1456,7 +1456,7 @@
                     </ul>
                     </p>
 
-                    <a class="btn text-light py-3 px-5 mt-2" href="signup.html">Start For Free</a>
+                    <a class="btn text-light py-3 px-5 mt-2" href="signup">Start For Free</a>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
@@ -1485,7 +1485,7 @@
                         <img src="{% static 'images/python-5.svg' %}" class="img-fluid" alt="Python"></i>
 
                         <h5 class="my-2">
-                            <a href="python-tutorial/" class="text-center">Python</a>
+                            <a href="{% url 'python-tutorial' %}" class="text-center">Python</a>
                         </h5>
                     </div>
                 </div>
