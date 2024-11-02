@@ -24,7 +24,7 @@ def index(request):
     return render(request, 'index.html')
 
 def single(request):
-    return render(request,'singlecourse-test.html')
+    return render(request,'htmltest.html')
 
 def all_courses(request):
     return render(request, 'all_courses.html')
