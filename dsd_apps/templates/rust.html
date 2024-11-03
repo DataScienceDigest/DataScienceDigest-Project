@@ -339,48 +339,6 @@
             }
         }
     
-        // function runCode(editorId, outputId) {
-        //     const code = editors[editorId].getValue();
-        //     document.getElementById(outputId).textContent = 'Running...';
-
-        //     const inputPatterns = /std::io::stdin|read_line/g;
-        //     let inputPrompt = [];
-
-        //     // If user input is detected in the Rust code, prompt the user for multiple lines of input
-        //     if (inputPatterns.test(code)) {
-        //         let userInput = prompt("Your code requires input. Please enter each input on a new line:");
-        //         if (userInput === null) {
-        //             document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
-        //             return;
-        //         }
-        //         // Split input by new lines and store as an array for multiple lines of input
-        //         inputPrompt = userInput.split(',');
-        //     }
-
-        //     // Create payload to send code and input to the server
-        //     const payload = {
-        //         code: code,
-        //         inputs: inputPrompt // Send the array of inputs to the backend
-        //     };
-
-        //     // Send the code to the backend using fetch
-        //     fetch('/compile_rust/', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'X-CSRFToken': getCSRFToken()
-        //         },
-        //         body: JSON.stringify(payload)
-        //     })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         document.getElementById(outputId).textContent = data.output;
-        //     })
-        //     .catch(error => {
-        //         console.error('Error:', error);
-        //         document.getElementById(outputId).textContent = 'Error executing the code.';
-        //     });
-        // }
         async function runCode(editorId, outputId) {
             const code = editors[editorId].getValue();
             document.getElementById(outputId).textContent = 'Running...';
