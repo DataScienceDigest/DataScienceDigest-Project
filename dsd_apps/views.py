@@ -326,7 +326,9 @@ def cpp_run_code(request):
             # Parse JSON data from the request body
             data = json.loads(request.body)
             code = data.get('code', '')
-            user_inputs = data.get('inputs', [])  # Get user inputs if any
+            # user_inputs = data.get('inputs', [])  # Get user inputs if any
+            user_inputs = "\n".join(data.get('inputs', []))
+            print(user_inputs,'_+_+_+_+_')
             # Path to g++ on Ubuntu
             gpp_path = '/usr/bin/g++'
             # Create a temporary file to store the C++ code
