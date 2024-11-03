@@ -468,13 +468,58 @@ def go_run_code(request):
 def rust_index(request):
     return render(request, 'rust.html')
 # rust editor
+# @csrf_exempt
+# def compile_rust(request):
+#     if request.method == 'POST':
+#         try:
+#             data = json.loads(request.body)
+#             rust_code = data.get('code')  # Get the Rust code from JSON
+#             user_input = data.get('input')  # Get user input for the Rust program
+#         except json.JSONDecodeError:
+#             return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'})
+#         # Write the Rust code to a file
+#         file_path = '/tmp/user_code.rs'
+#         with open(file_path, 'w') as rust_file:
+#             rust_file.write(rust_code)
+
+#         try:
+#             # Compile the Rust code
+#             compile_result = subprocess.run(
+#                 ['rustc', file_path, '-o', '/tmp/user_code'], 
+#                 capture_output=True, text=True, timeout=10
+#             )
+
+#             # If there are compilation errors, return them
+#             if compile_result.returncode != 0:
+#                 return JsonResponse({'status': 'error', 'output': compile_result.stderr})
+
+#             # Run the compiled code, providing the user input
+#             execution_result = subprocess.run(
+#                 ['/tmp/user_code'], 
+#                 input=user_input, capture_output=True, text=True, timeout=10
+#             )
+
+#             # Return the output of the program
+#             if execution_result.returncode == 0:
+#                 return JsonResponse({'status': 'success', 'output': execution_result.stdout})
+#             else:
+#                 return JsonResponse({'status': 'error', 'output': execution_result.stderr})
+
+#         except subprocess.TimeoutExpired:
+#             return JsonResponse({'status': 'error', 'output': 'Execution timed out'})
+        
+#         except Exception as e:
+#             return JsonResponse({'status': 'error', 'output': str(e)})
+
+#     return JsonResponse({'status': 'error', 'output': 'Invalid request method'})
+
 @csrf_exempt
 def compile_rust(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
             rust_code = data.get('code')  # Get the Rust code from JSON
-            user_input = data.get('input')  # Get user input for the Rust program
+            inputs = data.get('inputs', [])  # Get user inputs as a list of strings
         except json.JSONDecodeError:
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'})
         # Write the Rust code to a file
@@ -492,11 +537,12 @@ def compile_rust(request):
             # If there are compilation errors, return them
             if compile_result.returncode != 0:
                 return JsonResponse({'status': 'error', 'output': compile_result.stderr})
-
+            # Combine all inputs, separated by newline, as a single input string for subprocess
+            combined_input = '\n'.join(inputs)
             # Run the compiled code, providing the user input
             execution_result = subprocess.run(
                 ['/tmp/user_code'], 
-                input=user_input, capture_output=True, text=True, timeout=10
+                input=combined_input, capture_output=True, text=True, timeout=10
             )
 
             # Return the output of the program
