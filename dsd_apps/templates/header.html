@@ -1,25 +1,67 @@
-<header>
-    <nav>
-        <div class="logo">
-            DataScienceDigest
+<!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
+    </div>
+    <!-- Spinner End -->
 
-        <!-- Navigation Links and Login Button -->
-        <ul class="nav-links">
-            <li><a href="{% url 'all_courses' %}">Courses</a></li>
-            <li><a href="#">Tutorials</a></li>
-            <li><a href="#">Examples</a></li>
-            <!-- Login/Sign Up Button now inside the nav-links -->
-            <li class="mobile-btn">
-                <button class="pro-btn">Login/Sign Up</button>
-            </li>
-        </ul>
 
-        <!-- Hamburger Icon for Mobile -->
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <p class="m-0 fw-bold" style="font-size: 25px;">
+                DataScienceDigest<span style="color: #fb873f;">.in</span>
+            </p>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
+                <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+                <a href="{% url 'all-courses' %}" class="nav-item nav-link">Courses</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a href="{% url 'about' %}" class="dropdown-item">Blogs</a>
+                        <a href="{% url 'about' %}" class="dropdown-item">Testimonial</a>
+
+                    </div>
+                </div>
+                <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+                <a href="{% url 'login' %}" class="nav-item nav-link"><i class="fa fa-user"></i></a>
+                <a href="#" class="nav-item nav-link">
+
+                    <div id="google_translate_element">
+                    </div>
+
+
+                </a>
+            </div>
         </div>
     </nav>
-</header>
+    <!-- Navbar End -->
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">Course</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a class="text-white" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a class="text-white" href="courses.html">Course</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">HTML Course for Beginners
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+

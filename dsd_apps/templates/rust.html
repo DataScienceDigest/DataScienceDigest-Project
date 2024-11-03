@@ -3,165 +3,349 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVH1VPXS3F"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <meta charset="utf-8">
+    <meta name="google-translate-customization" content="9f841e7780177523-3214ceb76f765f38-gc38c6fe6f9d06436-c">
+    </meta>
 
-    gtag('config', 'G-QVH1VPXS3F');
-    </script>
-    <meta name="csrf-token" content="{{ csrf_token }}">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8256284122277421"
-     crossorigin="anonymous"></script>
-    <title>Rust Programming Tutorial and Online Compiler - Data Science Digest</title>
-    
-    <!-- Rust Tutorial -->
-    <link rel="canonical" href="https://datasciencedigest.in/rust-tutorial/" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
-    <!-- Meta Tags for Rust Tutorial and Online Compiler Page -->
-    <meta name="description"
-    content="Learn Rust programming with our comprehensive tutorial and run Rust code instantly using our built-in online Rust compiler. Explore systems programming concepts, write code examples, and execute Rust programs directly in your browser.">
-    <meta name="keywords"
-    content="Rust tutorial, learn Rust, Rust programming, Rust for beginners, systems programming with Rust, Rust code execution, Rust online compiler, run Rust code online, Rust coding exercises, compile Rust programs, Rust memory safety, Rust examples, Rust syntax, Rust concurrency, Rust best practices, online Rust course, Rust tutorials, interactive Rust coding">
-    <meta name="author" content="Data Science Digest">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Rust Programming Tutorial and Online Compiler - Data Science Digest">
-    <meta property="og:description"
-    content="Master Rust programming with our in-depth tutorial and instantly test your Rust code with our online compiler. No installation needed—write, compile, and execute Rust programs all in one place.">
-    <meta property="og:url" content="https://datasciencedigest.in/rust-tutorial">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://datasciencedigest.in/images/rust-tutorial.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/content.css' %}"> <!--  css -->
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org/",
-          "@type": "Course",
-          "name": "Rust Tutorial",
-          "description": "Comprehensive Rust programming tutorial covering basic to advanced topics.",
-          "provider": {
-            "@type": "Organization",
-            "name": "Data Science Digest",
-            "url": "https://datasciencedigest.in"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "Data Science Digest",
-            "url": "https://datasciencedigest.in"
-          },
-          "image": [
-            "https://datasciencedigest.in/photos/1x1/rust-tutorial.jpg",
-            "https://datasciencedigest.in/photos/4x3/rust-tutorial.jpg",
-            "https://datasciencedigest.in/photos/16x9/rust-tutorial.jpg"
-          ],
-          "offers": [{
-            "@type": "Offer",
-            "category": "Free",
-            "priceCurrency": "USD",
-            "price": "0"
-          }],
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": 4.7,
-            "ratingCount": 1800,
-            "reviewCount": 900
-          },
-          "totalHistoricalEnrollment": 30000,
-          "datePublished": "2024-01-01",
-          "dateModified": "2024-09-29",
-          "educationalLevel": "Intermediate to Advanced",
-          "inLanguage": "en",
-          "hasCourseInstance": [
-            {
-              "@type": "CourseInstance",
-              "courseMode": "Online",
-              "courseWorkload": "P14D",
-              "startDate": "2024-06-01",
-              "endDate": "2024-06-15",
-              "instructor": [{
-                "@type": "Person",
-                "name": "Alice Johnson",
-                "description": "Senior Rust Developer",
-                "image": "https://datasciencedigest.in/photos/instructor-alice.jpg"
-              }]
-            }
-          ],
-          "about": ["Rust Basics", "Advanced Rust Concepts", "Memory Safety"],
-          "teaches": [
-            "Understand Rust fundamentals",
-            "Learn about Rust’s ownership model and memory safety"
-          ]
-        }
-        </script>
+    <title>DataScienceDigest : Online Courses</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/icon.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
 </head>
+<style>
+    .tabs ul li {
+        list-style-type: none;
+    }
+
+    .tabs ul li a {
+        font-size: 25px;
+        color: #4e4e4e !important;
+        font-weight: 500;
+    }
+
+    .tabs ul li a.active {
+        color: #f69050 !important;
+    }
+
+    .tabs ul li a:hover {
+        color: #f69050 !important;
+    }
+
+    #more {
+        display: none;
+    }
+
+    button {
+        border: none;
+        color: #f69050;
+    }
+
+    .clickable-span {
+        cursor: pointer;
+        background-color: #004085;
+        /* Changes the cursor to a pointer */
+        transition: background-color 0.3s, transform 0.2s;
+        /* Smooth hover effect */
+    }
+
+    .clickable-span:hover {
+        background-color: #004085;
+        /* Darker shade for hover effect */
+        transform: scale(1.05);
+        /* Slightly enlarges on hover */
+    }
+</style>
 
 <body>
-    <h1>Welcome to the Rust Compiler</h1>
+    {% include 'header.html' %}
+        <!-- Course Detail Start -->
+    <div class="container-xxl py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 wow fadeInUp">
 
-    <div class="container">
-        <!-- Explanation Section -->
-        <div class="intro">
-            <h2>Loops in Rust</h2>
-            <p>In Rust, loops are used to repeatedly execute a block of code as long as a condition is true. Use the
-                editor on the right to run a loop example in Rust.</p>
-        </div>
-        <!-- Compiler Section -->
-        <div class="compiler">
-            <div id="editorContainer1" style="height: 200px;"></div>
-            <button onclick="runCode('editor1', 'output1')">Run</button>
-            <pre id="output1" class="output"></pre>
-        </div>
-    
-        <!-- Explanation Section -->
-        <div class="intro">
-            <h2>Rust Basics</h2>
-            <p>This is a simple Rust code editor and compiler. You can edit the code on the right and click "Run" to see
-                the output.</p>
-        </div>
-        <!-- Compiler Section -->
-        <div class="compiler">
-            <div id="editorContainer2" style="height: 200px;"></div>
-            <button onclick="runCode('editor2', 'output2')">Run</button>
-            <pre id="output2" class="output"></pre>
+                    <div class="container">
+                        <div class="row g-5 justify-content-center">
+
+                            <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
+                                <h2>Rust Programming Course for Beginners</h2>
+                                <p>Embark on your programming journey by learning Rust — a modern systems programming language known for its safety, performance, and concurrency. This course will introduce you to Rust's fundamentals and provide you with essential skills to write efficient and reliable code.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid wow fadeInUp mt-5 tabs">
+                        <!-- Tab panes -->
+                        <div class="tab-content mt-4">
+
+                            <div class="tab-pane container active" id="Overview">
+                                <h2>About this Course</h2>
+                                <p>Rust is a powerful and popular language for systems programming, known for its memory safety without needing a garbage collector. It's widely used in performance-critical applications, from game engines and operating systems to web assembly and networking applications. With Rust, you’ll learn to write safe, concurrent code with ease, solving complex problems effectively. This course will guide you through the basics of Rust and provide hands-on practice with key concepts, preparing you for real-world applications and further learning in systems programming.</p>
+                                <h2 class="mt-4">
+                                    Select Level 
+                                </h2>
+                                <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
+                                    style="font-size: 15px; font-weight: normal;"
+                                    onclick="loadSection('basic')" id="basic">Basic</span>
+
+                                <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
+                                    style="font-size: 15px; font-weight: normal;"
+                                    onclick="loadSection('medium')" id="medium">Medium</span>
+
+                                <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
+                                    style="font-size: 15px; font-weight: normal;"
+                                    onclick="loadSection('advanced')" id="advanced">Advanced</span>
+                            </div>
+
+                            <div class="container" id="sectionContent">
+                                <h2 class="mt-4">Syllabus</h2>
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button"
+                                                onclick="loadSection('basic')" data-bs-toggle="collapse"
+                                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                                aria-controls="flush-collapseOne">
+                                                Rust Basics
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body" id="basicContent">
+                                                <!-- Basic section content will be injected here -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button"
+                                                onclick="loadSection('medium')" data-bs-toggle="collapse"
+                                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                                aria-controls="flush-collapseTwo">
+                                                Medium Level Rust
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body" id="mediumContent">
+                                                <!-- Medium section content will be injected here -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button"
+                                                onclick="loadSection('advanced')" data-bs-toggle="collapse"
+                                                data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                                aria-controls="flush-collapseThree">
+                                                Advanced Rust
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body" id="advancedContent">
+                                                <!-- Advanced section content will be injected here -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container" id="Instructor">
+                                <h2 class="mt-4">About the Writer</h2>
+                                <div class="image-div text-left mt-4">
+
+                                    <div class="des mt-4 mb-5">
+                                        Curriculum Director at DataScienceDigest and Creative Technologist. As the Curriculum Director, 
+                                        I have designed a variety of courses at DataScienceDigest, including Learn Python, Learn Rust, Learn SQL, 
+                                        and the beginner-friendly Introduction to Data Science. My focus is on creating engaging and practical content 
+                                        that empowers learners to build their skills in programming and systems development.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
+    <!-- Course Detail End -->
 
+    <div id="inputModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalPromptMessage">Enter Input</h2>
+            <input type="text" id="userInput" placeholder="Type your input here...">
+            <button onclick="submitInput()">Submit</button>
+        </div>
+    </div>
+    {% include 'footer.html' %}
     <script>
-        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' } });
-        require(['vs/editor/editor.main'], function () {
-            window.editor1 = monaco.editor.create(document.getElementById('editorContainer1'), {
-                value: `fn main() {
-    for i in 1..6 {
-        println!("Square of {} is {}", i, i * i);
-    }
-}`,
-                language: 'rust',
-                theme: 'vs-dark',
-                automaticLayout: true
-            });
-
-            window.editor2 = monaco.editor.create(document.getElementById('editorContainer2'), {
-                value: `fn main() {
-    println!("Hello, Rust World!");
-}`,
-                language: 'rust',
-                theme: 'vs-dark',
-                automaticLayout: true
-            });
+        const editors = {}; // Stores editor instances
+        let currentInputResolve = null; // Used for handling input prompts
+    
+        document.addEventListener("DOMContentLoaded", function () {
+            loadSection('basic');  // Load the basic section by default
         });
+    
+        function loadSection(section) {
+            // Clear previous editor instances
+            for (let key in editors) {
+                editors[key].dispose();
+                delete editors[key];
+            }
+    
+            // Clear accordion content
+            document.querySelector('#accordionFlushExample').innerHTML = '';
+    
+            let sectionIntro = '';
+            let topics = [];
+    
+            if (section === 'basic') {
+                document.querySelector("#basic").style.backgroundColor = "green";
+                document.querySelector("#advanced").style.backgroundColor = "";
+                document.querySelector("#medium").style.backgroundColor = "";
+                sectionIntro = `<h1>Rust Basics</h1><p>Learn the basics of Rust with examples...</p>`;
+                topics = [
+                    {
+                        title: 'Hello World Example',
+                        description: 'The simplest Rust program that prints "Hello, World!".',
+                        code: `fn main() {\n    println!("Hello, World!");\n}`
+                    },
+                    {
+                        title: 'Basic For Loop',
+                        description: 'A "for" loop in Rust, printing numbers from 0 to 4.',
+                        code: `fn main() {\n    for i in 0..5 {\n        println!("Number {}", i);\n    }\n}`
+                    },
+                    {
+                        title: 'Basic If-Else Condition',
+                        description: 'Checking if a number is greater than 5.',
+                        code: `fn main() {\n    let number = 10;\n    if number > 5 {\n        println!("Number is greater than 5");\n    } else {\n        println!("Number is less than or equal to 5");\n    }\n}`
+                    }
+                ];
+            } else if (section === 'medium') {
+                document.querySelector("#basic").style.backgroundColor = "";
+                document.querySelector("#advanced").style.backgroundColor = "";
+                document.querySelector("#medium").style.backgroundColor = "green";
+                sectionIntro = `<h1>Rust Medium</h1><p>Learn the medium level of Rust with examples...</p>`;
+                topics = [
+                    {
+                        title: 'Using Vectors',
+                        description: 'Creating and modifying a vector in Rust.',
+                        code: `fn main() {\n    let mut numbers = vec![1, 2, 3];\n    numbers.push(4);\n    numbers.push(5);\n    println!("Numbers: {:?}", numbers);\n}`
+                    },
+                    {
+                        title: 'Basic String Operations',
+                        description: 'Manipulating strings with push and concatenation.',
+                        code: `fn main() {\n    let mut s = String::from("Hello");\n    s.push(',');\n    s.push_str(" world!");\n    println!("{}", s);\n}`
+                    }
+                ];
+            } else if (section === 'advanced') {
+                document.querySelector("#basic").style.backgroundColor = "";
+                document.querySelector("#medium").style.backgroundColor = "";
+                document.querySelector("#advanced").style.backgroundColor = "green";
+                sectionIntro = `<h1>Rust Advanced</h1><p>Explore advanced Rust concepts with examples...</p>`;
+                topics = [
+                    {
+                        title: 'Using Traits and Generics',
+                        description: 'Implementing traits with generics for flexible functionality.',
+                        code: `trait Summary {\n    fn summarize(&self) -> String;\n}\n\nstruct Article {\n    title: String,\n    content: String,\n}\n\nimpl Summary for Article {\n    fn summarize(&self) -> String {\n        format!("{} - {}", self.title, self.content)\n    }\n}\n\nfn main() {\n    let article = Article {\n        title: String::from("Rust Generics and Traits"),\n        content: String::from("An advanced topic in Rust.")\n    };\n    println!("{}", article.summarize());\n}`
+                    },
+                    {
+                        title: 'Concurrency with Threads',
+                        description: 'Creating and handling multiple threads in Rust.',
+                        code: `use std::thread;\nuse std::time::Duration;\n\nfn main() {\n    let handle = thread::spawn(|| {\n        for i in 1..10 {\n            println!("hi number {} from the spawned thread!", i);\n            thread::sleep(Duration::from_millis(1));\n        }\n    });\n\n    for i in 1..5 {\n        println!("hi number {} from the main thread!", i);\n        thread::sleep(Duration::from_millis(1));\n    }\n\n    handle.join().unwrap();\n}`
+                    },
+                    {
+                        title: 'Error Handling with Result and Option',
+                        description: 'Handling errors using Result and Option types in Rust.',
+                        code: `fn divide(dividend: f64, divisor: f64) -> Result<f64, String> {\n    if divisor == 0.0 {\n        Err(String::from("Cannot divide by zero"))\n    } else {\n        Ok(dividend / divisor)\n    }\n}\n\nfn main() {\n    match divide(10.0, 2.0) {\n        Ok(result) => println!("Result: {}", result),\n        Err(e) => println!("Error: {}", e),\n    }\n\n    match divide(10.0, 0.0) {\n        Ok(result) => println!("Result: {}", result),\n        Err(e) => println!("Error: {}", e),\n    }\n}`
+                    }
+                ];
+            }
 
+    
+            // Set up accordion content
+            let accordionContent = '';
+            topics.forEach((topic, index) => {
+                accordionContent += `
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapse${index}"
+                                    aria-expanded="false" aria-controls="flush-collapse${index}">
+                                ${topic.title}
+                            </button>
+                        </h2>
+                        <div id="flush-collapse${index}" class="accordion-collapse collapse" 
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body" style="padding-bottom: 6rem;">
+                                <p>${topic.description}</p>
+                                <div class="compiler" style="height: 200px; border: 1px solid #ccc;">
+                                    <div id="editorContainer${index}" style="height: 200px;"></div>
+                                    <button onclick="runCode('editor${index}', 'output${index}')">Run</button>
+                                    <div class="output" id="output${index}" style="margin-top: 10px; background: #f4f4f4; padding: 10px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+            document.querySelector('#accordionFlushExample').innerHTML = accordionContent;
+    
+            require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' } });
+            require(['vs/editor/editor.main'], function () {
+                topics.forEach((topic, index) => {
+                    initializeEditor(`editor${index}`, topic.code);
+                });
+            });
+        }
+    
+        // Function to initialize a Monaco Editor instance for Rust
+        function initializeEditor(editorId, defaultValue) {
+            const container = document.getElementById(`editorContainer${editorId.slice(-1)}`);
+            if (!editors[editorId]) {
+                editors[editorId] = monaco.editor.create(container, {
+                    value: defaultValue,
+                    language: 'rust',
+                    theme: 'vs-dark',
+                    automaticLayout: true
+                });
+            }
+        }
+    
         function runCode(editorId, outputId) {
-            const code = window[editorId].getValue();
+            const code = editors[editorId].getValue();
             document.getElementById(outputId).textContent = 'Running...';
-
+    
             const inputPatterns = /std::io::stdin|read_line/g;
             let inputPrompt = {};
-
+    
             // If user input is detected in the Rust code, prompt the user
             if (inputPatterns.test(code)) {
                 let userInput = prompt("Your code requires input. Please enter the input:");
@@ -171,13 +355,13 @@
                 }
                 inputPrompt['input'] = userInput;
             }
-
+    
             // Create payload to send code and input to the server
             const payload = {
                 code: code,
                 input: inputPrompt['input'] || ''
             };
-
+    
             // Send the code to the backend using fetch
             fetch('/compile_rust/', {
                 method: 'POST',
@@ -196,12 +380,12 @@
                     document.getElementById(outputId).textContent = 'Error executing the code.';
                 });
         }
-
-
+    
         function getCSRFToken() {
             return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         }
     </script>
+     
 </body>
 
 </html>
