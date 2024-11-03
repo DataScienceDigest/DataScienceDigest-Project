@@ -339,31 +339,74 @@
             }
         }
     
-        function runCode(editorId, outputId) {
+        // function runCode(editorId, outputId) {
+        //     const code = editors[editorId].getValue();
+        //     document.getElementById(outputId).textContent = 'Running...';
+
+        //     const inputPatterns = /std::io::stdin|read_line/g;
+        //     let inputPrompt = [];
+
+        //     // If user input is detected in the Rust code, prompt the user for multiple lines of input
+        //     if (inputPatterns.test(code)) {
+        //         let userInput = prompt("Your code requires input. Please enter each input on a new line:");
+        //         if (userInput === null) {
+        //             document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
+        //             return;
+        //         }
+        //         // Split input by new lines and store as an array for multiple lines of input
+        //         inputPrompt = userInput.split(',');
+        //     }
+
+        //     // Create payload to send code and input to the server
+        //     const payload = {
+        //         code: code,
+        //         inputs: inputPrompt // Send the array of inputs to the backend
+        //     };
+
+        //     // Send the code to the backend using fetch
+        //     fetch('/compile_rust/', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'X-CSRFToken': getCSRFToken()
+        //         },
+        //         body: JSON.stringify(payload)
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         document.getElementById(outputId).textContent = data.output;
+        //     })
+        //     .catch(error => {
+        //         console.error('Error:', error);
+        //         document.getElementById(outputId).textContent = 'Error executing the code.';
+        //     });
+        // }
+        async function runCode(editorId, outputId) {
             const code = editors[editorId].getValue();
             document.getElementById(outputId).textContent = 'Running...';
 
+            // Detect the occurrences of Rust input (e.g., read_line calls) to estimate the number of inputs needed
             const inputPatterns = /std::io::stdin|read_line/g;
-            let inputPrompt = [];
+            const inputMatches = code.match(inputPatterns) || [];
+            const inputs = [];
 
-            // If user input is detected in the Rust code, prompt the user for multiple lines of input
-            if (inputPatterns.test(code)) {
-                let userInput = prompt("Your code requires input. Please enter each input on a new line:");
+            // Prompt the user for each required input based on the detected `read_line` occurrences
+            for (let i = 0; i < inputMatches.length; i++) {
+                let userInput = prompt(`Enter input ${i + 1}:`);
                 if (userInput === null) {
                     document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
                     return;
                 }
-                // Split input by new lines and store as an array for multiple lines of input
-                inputPrompt = userInput.split('\n');
+                inputs.push(userInput); // Add each input to the array
             }
 
-            // Create payload to send code and input to the server
+            // Create the payload with the code and multiple inputs
             const payload = {
                 code: code,
-                inputs: inputPrompt // Send the array of inputs to the backend
+                inputs: inputs // Send array of inputs to the backend
             };
 
-            // Send the code to the backend using fetch
+            // Send the code and inputs to the backend
             fetch('/compile_rust/', {
                 method: 'POST',
                 headers: {
@@ -381,6 +424,7 @@
                 document.getElementById(outputId).textContent = 'Error executing the code.';
             });
         }
+
 
         function getCSRFToken() {
             return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
