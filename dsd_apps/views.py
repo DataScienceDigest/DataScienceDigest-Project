@@ -376,7 +376,9 @@ def run_java_code(request):
     if request.method == 'POST':
         data = json.loads(request.body)
         java_code = data.get('code', '')
-        user_input = data.get('input', '')
+        # user_input = data.get('input', '')
+        user_input = data.get('inputs', [])  # Expecting an array of inputs
+        print(user_input,'-=-=-=-=-=-')
         # Extract the class name using a regex
         match = re.search(r'class\s+(\w+)', java_code)
         if not match:
