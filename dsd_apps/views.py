@@ -439,8 +439,9 @@ def go_run_code(request):
             # Extract Go code and optional input from the JSON request body
             data = json.loads(request.body)
             go_code = data.get('code', '')
-            user_input = data.get('inputs', '')
-            print(go_code,'===-=-=-==')
+            # user_input = data.get('inputs', '')
+            user_input = "\n".join(data.get('inputs', []))
+            print(user_input,'===-=-=-==')
             # Save the Go code to a temporary file
             file_path = "/tmp/user_code.go"
             with open(file_path, 'w') as file:
@@ -474,10 +475,7 @@ def compile_rust(request):
         try:
             data = json.loads(request.body)
             rust_code = data.get('code')  # Get the Rust code from JSON
-            # user_input = data.get('input')  # Get user input for the Rust program
             user_input = "\n".join(data.get('inputs', []))
-            
-            print(user_input,'_+_+_+_+_')
         except json.JSONDecodeError:
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON data'})
         # Write the Rust code to a file
