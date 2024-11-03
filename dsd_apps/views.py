@@ -91,14 +91,14 @@ def r_index(request):
 def run_r_code(request):
     if request.method == 'POST':
         try:
-            # Parse JSON data from the request body
-            data = json.loads(request.body.decode('utf-8'))
-
-            # data = json.loads(request.body)
+            
+             # Parse JSON data from the request body
+            data = json.loads(request.body)
             code = data.get('code', '')
-            inputs = data.get('inputs', [])
-            # inputs = "\n".join(data.get('inputs', []))
-            print(inputs,'-=-=-=-')
+            
+            # Combine inputs into a single string separated by newlines
+            inputs = "\n".join(data.get('inputs', []))
+            print(f"Inputs received: {inputs}") 
             # Create a temporary R script file
             with tempfile.TemporaryDirectory() as temp_dir:
                 script_file = os.path.join(temp_dir, 'script.R')
