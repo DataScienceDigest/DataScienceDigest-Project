@@ -8,6 +8,7 @@ import tempfile
 import sqlite3
 from django.conf import settings 
 from django.http import FileResponse
+import re
 
 def ads_txt_view(request):
     ads_path = settings.BASE_DIR / 'static/ads.txt'
@@ -376,10 +377,15 @@ def run_java_code(request):
         data = json.loads(request.body)
         java_code = data.get('code', '')
         user_input = data.get('input', '')
-
+        # Extract the class name using a regex
+        match = re.search(r'class\s+(\w+)', java_code)
+        if not match:
+            return JsonResponse({'output': 'Error: No valid class found in code.'})
+        
+        class_name = match.group(1)
         # Create a temporary directory to store the Java file
         with tempfile.TemporaryDirectory() as temp_dir:
-            java_file_path = os.path.join(temp_dir, "Main.java")
+            java_file_path = os.path.join(temp_dir, f"{class_name}.java")
 
             # Write the Java code to a file
             with open(java_file_path, "w") as java_file:
@@ -400,7 +406,7 @@ def run_java_code(request):
 
                 # Run the Java program and pass the user input
                 run_process = subprocess.run(
-                    ['java', '-cp', temp_dir, 'Main'],
+                    ['java', '-cp', temp_dir,  class_name],
                     input=user_input,  # Pass user input to the program
                     capture_output=True,
                     text=True
