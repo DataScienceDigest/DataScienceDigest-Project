@@ -94,8 +94,8 @@ def run_r_code(request):
             # Parse JSON data from the request body
             data = json.loads(request.body)
             code = data.get('code', '')
-            # inputs = data.get('inputs', [])
-            inputs = "\n".join(data.get('inputs', []))
+            inputs = data.get('inputs', [])
+            # inputs = "\n".join(data.get('inputs', []))
             print(inputs,'-=-=-=-')
             # Create a temporary R script file
             with tempfile.TemporaryDirectory() as temp_dir:
