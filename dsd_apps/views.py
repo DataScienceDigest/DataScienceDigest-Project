@@ -92,7 +92,9 @@ def run_r_code(request):
     if request.method == 'POST':
         try:
             # Parse JSON data from the request body
-            data = json.loads(request.body)
+            data = json.loads(request.body.decode('utf-8'))
+
+            # data = json.loads(request.body)
             code = data.get('code', '')
             inputs = data.get('inputs', [])
             # inputs = "\n".join(data.get('inputs', []))
