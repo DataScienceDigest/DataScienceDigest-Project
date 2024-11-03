@@ -332,59 +332,104 @@
             }
         }
     
-        async function runCode(editorId, outputId) {
-    const code = editors[editorId].getValue();
-    document.getElementById(outputId).textContent = 'Running...';
+        // async function runCode(editorId, outputId) {
+        //         const code = editors[editorId].getValue();
+        //         document.getElementById(outputId).textContent = 'Running...';
 
-    // Enhanced regex pattern to detect common input functions in R including readline
-    const inputPatterns = /readline\s*\(|scan\s*\(|read\.table\s*\(|read\.csv\s*\(/g;
-    const inputMatches = code.match(inputPatterns) || [];
-    const inputs = [];
+        //         // Enhanced regex pattern to detect common input functions in R including readline
+        //         const inputPatterns = /readline\s*\(|scan\s*\(|read\.table\s*\(|read\.csv\s*\(/g;
+        //         const inputMatches = code.match(inputPatterns) || [];
+        //         const inputs = [];
 
-    if (inputMatches.length > 0) {
-        console.log("Input function detected in the code:", inputMatches);
+        //         if (inputMatches.length > 0) {
+        //             console.log("Input function detected in the code:", inputMatches);
 
-        // Prompt the user for each required input based on detected input functions
-        for (let i = 0; i < inputMatches.length; i++) {
-            let userInput = prompt(`Enter input for ${inputMatches[i]}:`);
-            if (userInput === null) {
-                document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
-                return;
+        //             // Prompt the user for each required input based on detected input functions
+        //             for (let i = 0; i < inputMatches.length; i++) {
+        //                 let userInput = prompt(`Enter input for ${inputMatches[i]}:`);
+        //                 if (userInput === null) {
+        //                     document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
+        //                     return;
+        //                 }
+        //                 inputs.push(userInput); // Add each input to the array
+        //             }
+        //         } else {
+        //             console.log("No input functions detected in the code.");
+        //         }
+
+        //         // Create the payload with the code and multiple inputs
+        //         const payload = {
+        //             code: code,
+        //             inputs: inputs // Send array of inputs to the backend
+        //         };
+
+        //         // Send the code and inputs to the backend
+        //         fetch('/run_r_code/', {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //                 'X-CSRFToken': getCSRFToken()
+        //             },
+        //             body: JSON.stringify(payload)
+        //         })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             document.getElementById(outputId).textContent = data.output;
+        //             if (data.error) {
+        //                 console.error("Error from backend:", data.error);
+        //                 document.getElementById(outputId).textContent += `\nError: ${data.error}`;
+        //             }
+        //         })
+        //         .catch(error => {
+        //             console.error('Error:', error);
+        //             document.getElementById(outputId).textContent = 'Error executing the code.';
+        //         });
+        //     }
+
+        function runCode(editorId, outputId) {
+            const code = window[editorId].getValue();
+            document.getElementById(outputId).textContent = 'Running...';
+
+            // Improved input detection
+            const inputPatterns = /readline\s*\(|scan\s*\(|read\.table\s*\(|read\.csv\s*\(/g;
+            let userInputs = [];
+            let match;
+            let inputPrompt = {};
+
+            // Find all unique occurrences of input-related patterns in the code
+            while ((match = inputPatterns.exec(code)) !== null) {
+                if (!inputPrompt[match[0]]) {
+                    let userInput = prompt(`Your code requires input for ${match[0]} call. Please enter the input:`);
+                    if (userInput === null) {
+                        document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
+                        return;
+                    }
+                    inputPrompt[match[0]] = userInput;
+                }
             }
-            inputs.push(userInput); // Add each input to the array
-        }
-    } else {
-        console.log("No input functions detected in the code.");
-    }
 
-    // Create the payload with the code and multiple inputs
-    const payload = {
-        code: code,
-        inputs: inputs // Send array of inputs to the backend
-    };
+            const payload = {
+                code: code,
+                inputs: Object.values(inputPrompt)
+            };
 
-    // Send the code and inputs to the backend
-    fetch('/run_r_code/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCSRFToken()
-        },
-        body: JSON.stringify(payload)
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById(outputId).textContent = data.output;
-        if (data.error) {
-            console.error("Error from backend:", data.error);
-            document.getElementById(outputId).textContent += `\nError: ${data.error}`;
+            fetch('/run_r_code/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCSRFToken()
+                },
+                body: JSON.stringify(payload)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById(outputId).textContent = data.output;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById(outputId).textContent = 'Error executing the code.';
+                });
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById(outputId).textContent = 'Error executing the code.';
-    });
-}
 
 
         function getCSRFToken() {
