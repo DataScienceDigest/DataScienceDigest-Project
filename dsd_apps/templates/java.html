@@ -512,7 +512,8 @@
                     'Content-Type': 'application/json',
                     'X-CSRFToken': getCookie('csrftoken')
                 },
-                body: JSON.stringify({ code: code, inputs: inputs })  // Send inputs as an array
+                // body: JSON.stringify({ code: code, inputs: inputs })  // Send inputs as an array
+                body: JSON.stringify({ code: code, inputs: inputs.join(', ') })  // Send inputs as an array
             });
 
             let data = await response.json();
