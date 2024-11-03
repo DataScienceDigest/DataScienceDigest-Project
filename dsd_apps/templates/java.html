@@ -492,37 +492,38 @@
     }
 
     async function runJavaCode(editorId, outputId) {
-        const editor = editors[editorId];
-        let code = editor.getValue();
-        console.log(code, '+++++++', 'editor id:', editorId, 'output id:', outputId);
+            const editor = editors[editorId];
+            let code = editor.getValue();
 
-        // Detect and handle Scanner input calls
-        let inputs = [];
-        const scannerPattern = /Scanner\s*\(\s*System\.in\s*\)/g;
+            // Detect Scanner input calls and determine the number of inputs needed
+            const inputPatterns = /scanner\.next(?:Int|Double|Line|Float|Boolean|Byte|Short|Long)\(\)/gi;
+            const inputMatches = code.match(inputPatterns) || [];
+            const inputs = [];
 
-        if (scannerPattern.test(code)) {
-            let userInput = await getInputFromUser("Enter input for Scanner:");
-            inputs.push(userInput || ''); // Collect user input or empty if canceled
+            for (let i = 0; i < inputMatches.length; i++) {
+                // Dynamically ask for input based on occurrences of Scanner usage in code
+                let userInput = await getInputFromUser(`Enter input ${i + 1}:`);
+                inputs.push(userInput || ''); // Add input or empty string if canceled
+            }
+
+            try {
+                let response = await fetch('/run_java_code/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({ code: code, inputs: inputs })
+                });
+
+                let data = await response.json();
+                document.getElementById(outputId).textContent = data.output || data.error;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById(outputId).textContent = 'Error executing code.';
+            }
         }
 
-        try {
-            let response = await fetch('/run_java_code/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken')
-                },
-                // body: JSON.stringify({ code: code, inputs: inputs })  // Send inputs as an array
-                body: JSON.stringify({ code: code, inputs: inputs.join(', ') })  // Send inputs as an array
-            });
-
-            let data = await response.json();
-            document.getElementById(outputId).textContent = data.output || data.error;
-        } catch (error) {
-            console.error('Error:', error);
-            document.getElementById(outputId).textContent = 'Error executing code.';
-        }
-    }
     // Function to get CSRF token for Django
     function getCookie(name) {
             let cookieValue = null;
