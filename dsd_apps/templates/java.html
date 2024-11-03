@@ -5,15 +5,35 @@
 <head>
     <meta charset="utf-8">
     <meta name="google-translate-customization" content="9f841e7780177523-3214ceb76f765f38-gc38c6fe6f9d06436-c">
-    </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVH1VPXS3F"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    <title>DataScienceDigest : Online Courses</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
-    <!-- Favicon -->
-    <link href="img/icon.png" rel="icon">
+    gtag('config', 'G-QVH1VPXS3F');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8256284122277421"
+     crossorigin="anonymous"></script>
+    <title>Java Tutorial and Online Compiler - Data Science Digest</title>
+    
+    <!-- Java Tutorial -->
+    <link rel="canonical" href="https://datasciencedigest.in/java-tutorial/" />
+    <!-- Meta Tags for Java Programming Tutorial Page -->
+    <meta name="description" content="Compile and run Java programs online with our fast and free Java compiler. Test and execute Java code directly in your browser without installation.Learn Java programming with this complete tutorial, covering everything from basic Java syntax to advanced topics like OOP, multithreading, and collections.">
+    <meta name="keywords" content="Java online compiler, run Java code, compile Java program, Java code execution, online Java compiler,Java tutorial, learn Java, Java programming, Java basics, advanced Java, Java OOP, Java multithreading, Java collections">
+    <meta name="author" content="Data Science Digest">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Java Programming Tutorial and Java Online Compiler  - Data Science Digest">
+    <meta property="og:description" content="Master Java programming with this comprehensive guide, suitable for both beginners and experienced developers.">
+    <meta property="og:url" content="https://datasciencedigest.in/java-tutorial">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://datasciencedigest.in/images/java-tutorial.png">
+    <link rel="stylesheet" href="{% static 'css/content.css' %}"> <!--  css -->
+    <!-- Include Monaco Editor -->
+    
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -121,78 +141,71 @@
                 background-color: #218838;
             }
     </style>
+     <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Course",
+          "name": "Java Tutorial",
+          "description": "Comprehensive Java tutorial covering object-oriented programming and advanced topics.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "image": [
+            "https://datasciencedigest.in/photos/1x1/java-tutorial.jpg",
+            "https://datasciencedigest.in/photos/4x3/java-tutorial.jpg",
+            "https://datasciencedigest.in/photos/16x9/java-tutorial.jpg"
+          ],
+          "offers": [{
+            "@type": "Offer",
+            "category": "Free",
+            "priceCurrency": "USD",
+            "price": "0"
+          }],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.7,
+            "ratingCount": 2300,
+            "reviewCount": 900
+          },
+          "totalHistoricalEnrollment": 60000,
+          "datePublished": "2024-01-01",
+          "dateModified": "2024-09-29",
+          "educationalLevel": "Intermediate",
+          "inLanguage": "en",
+          "hasCourseInstance": [
+            {
+              "@type": "CourseInstance",
+              "courseMode": "Online",
+              "courseWorkload": "P10D",
+              "startDate": "2024-02-05",
+              "endDate": "2024-02-15",
+              "instructor": [{
+                "@type": "Person",
+                "name": "Jane Smith",
+                "description": "Senior Java Developer",
+                "image": "https://datasciencedigest.in/photos/instructor-jane.jpg"
+              }]
+            }
+          ],
+          "about": ["Java Basics", "Object-Oriented Programming", "Java Advanced Topics"],
+          "teaches": [
+            "Learn Java fundamentals",
+            "Master OOP concepts in Java"
+          ]
+        }
+        </script>
 </head>
 
 
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
-
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <p class="m-0 fw-bold" style="font-size: 25px;">
-                DataScienceDigest<span style="color: #fb873f;">.in</span>
-            </p>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
-                <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
-                <a href="{% url 'all-courses' %}" class="nav-item nav-link">Courses</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu fade-down m-0">
-                        <a href="{% url 'about' %}" class="dropdown-item">Blogs</a>
-                        <a href="{% url 'about' %}" class="dropdown-item">Testimonial</a>
-
-                    </div>
-                </div>
-                <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
-                <a href="{% url 'login' %}" class="nav-item nav-link"><i class="fa fa-user"></i></a>
-                <a href="#" class="nav-item nav-link">
-
-                    <div id="google_translate_element">
-                    </div>
-
-
-                </a>
-            </div>
-        </div>
-    </nav>
-    <!-- Navbar End -->
-
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 page-header">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">Course</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a class="text-white" href="index.html">Home</a></li>
-                            <li class="breadcrumb-item"><a class="text-white" href="courses.html">Course</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">HTML Course for Beginners
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Header End -->
-
-
+    {% include 'header.html' %}
     <!-- Course Detail Start -->
     <div class="container-xxl py-2">
         <div class="container">
@@ -309,272 +322,206 @@
 
     </div>
     <!-- Course Detail End -->
-<!-- Modal for input -->
-<div id="inputModal" class="modal">
-    <div class="modal-content">
-        <h2 id="modalPromptMessage">Enter Input</h2>
-        <input type="text" id="userInput" placeholder="Type your input here...">
-        <button onclick="submitInput()">Submit</button>
-    </div>
-</div>
-<!-- Footer Start -->
-<div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-lg-4 col-md-6">
-                <h4 class="text-white mb-3">Quick Link</h4>
-                <p><a class="text-light" href="about.html">About Us</a></p>
-                <p><a class="text-light" href="contact.html">Contact Us</a></p>
-                <p><a class="text-light" href="">Privacy Policy</a></p>
-                <p><a class="text-light" href="">Terms & Condition</a></p>
-                <p><a class="text-light" href="">FAQs & Help</a></p>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <h4 class="text-white mb-3">Contact</h4>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, Bangalore, Karnataka</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 6239739375</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>datasciencedigest.in@gmail.com</p>
-                <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <h4 class="text-white mb-3">Subscribe to our Newsletter</h4>
-                <p>Subscribe now and join our growing community of learners committed to lifelong education! </p>
-                <div class="position-relative mx-auto" style="max-width: 400px;">
-                    <form action="#">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="email"
-                            placeholder="Your email" required>
-                        <button type="submit"
-                            class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2"><a
-                                href="mailto:keertidvcorai@gmail.com">Subscribe</a></button>
-                    </form>
-                </div>
-            </div>
+    <!-- Modal for input -->
+    <div id="inputModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalPromptMessage">Enter Input</h2>
+            <input type="text" id="userInput" placeholder="Type your input here...">
+            <button onclick="submitInput()">Submit</button>
         </div>
     </div>
-    <div class="container">
-        <div class="copyright">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="index.html">DataScienceDigest</a>, All Right Reserved.
+    
+    {% include 'footer.html' %}
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Footer End -->
-
-<script>
-    const editors = {};
-    let currentInputResolve = null;
-
-    document.addEventListener("DOMContentLoaded", function () {
-        loadSection('basic');
-    });
-
-    function loadSection(section) {
-        for (let key in editors) {
-            editors[key].dispose();
-            delete editors[key];
-        }
-
-        document.querySelector('#accordionFlushExample').innerHTML = '';
-
-        let sectionIntro = '';
-        let topics = [];
-
-        if (section === 'basic') {
-            document.querySelector("#basic").style.backgroundColor = "green";
-            document.querySelector("#advanced").style.backgroundColor = "";
-            document.querySelector("#medium").style.backgroundColor = "";
-            sectionIntro = `<h1>Java Basics</h1><p>Learn the basics of Java with examples...</p>`;
-            topics = [
-                {
-                    title: 'Hello World Example',
-                    description: 'This is the simplest Java program. It uses "System.out.println()" to display "Hello, World!"',
-                    code: `public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}`
-                },
-                {
-                    title: 'Basic For Loop',
-                    description: 'A "for" loop in Java is used to repeat a block of code. In this example, it prints numbers from 1 to 5.',
-                    code: `public class Main {\n    public static void main(String[] args) {\n        for (int i = 1; i <= 5; i++) {\n            System.out.println("Number " + i);\n        }\n    }\n}`
-                }
-            ];
-        } 
-        else if (section === 'medium') {
-            document.querySelector("#medium").style.backgroundColor = "green";
-            document.querySelector("#basic").style.backgroundColor = "";
-            document.querySelector("#advanced").style.backgroundColor = "";
-            sectionIntro = `<h1>Medium Level Java</h1><p>This section covers medium-difficulty Java programs...</p>`;
-            topics = [
-                {
-                    title: 'Square of Numbers',
-                    description: 'This program calculates the square of numbers from 1 to 5 using a for loop.',
-                    code: `public class Main {\n    public static void main(String[] args) {\n        for (int i = 1; i <= 5; i++) {\n            System.out.println("Square of " + i + " is " + (i * i));\n        }\n    }\n}`
-                },
-                {
-                    title: 'Conditional Statements',
-                    description: 'A simple if-else conditional example that checks if a number is even or odd.',
-                    code: `import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print("Enter a number: ");\n        int num = scanner.nextInt();\n\n        if (num % 2 == 0) {\n            System.out.println(num + " is even.");\n        } else {\n            System.out.println(num + " is odd.");\n        }\n    }\n}`
-                }
-            ];
-        }
-        else if (section === 'advanced') {
-            document.querySelector("#advanced").style.backgroundColor = "green";
-            document.querySelector("#basic").style.backgroundColor = "";
-            document.querySelector("#medium").style.backgroundColor = "";
-            sectionIntro = `<h1>Advanced Java</h1><p>Explore advanced topics in Java...</p>`;
-            topics = [
-                {
-                    title: 'Using Classes and Objects',
-                    description: 'This example demonstrates defining a class with attributes and methods, then creating an object to use those methods.',
-                    code: `class Dog {\n    String name;\n    int age;\n\n    Dog(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n\n    public void bark() {\n        System.out.println(name + " is barking!");\n    }\n\n    public static void main(String[] args) {\n        Dog dog = new Dog("Rex", 5);\n        dog.bark();\n    }\n}`
-                },
-                {
-                    title: 'Handling Exceptions',
-                    description: 'This example shows how to handle exceptions in Java using try-catch blocks.',
-                    code: `public class Main {\n    public static void main(String[] args) {\n        try {\n            int result = 10 / 0;\n            System.out.println("Result: " + result);\n        } catch (ArithmeticException e) {\n            System.out.println("Error: Division by zero is not allowed.");\n        }\n    }\n}`
-                }
-            ];
-        }
-
-
-        let accordionContent = '';
-        topics.forEach((topic, index) => {
-            accordionContent += `
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#flush-collapse${index}"
-                                aria-expanded="false" aria-controls="flush-collapse${index}">
-                            ${topic.title}
-                        </button>
-                    </h2>
-                    <div id="flush-collapse${index}" class="accordion-collapse collapse" 
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body" style="padding-bottom: 6rem;">
-                            <p>${topic.description}</p>
-                            <div class="compiler" style="height: 200px; border: 1px solid #ccc;">
-                                <div id="editorContainer${index}" style="height: 200px;"></div>
-                                <button onclick="runJavaCode('editor${index}', 'output${index}')">Run</button>
-                                <div class="output" id="output${index}" style="margin-top: 10px; background: #f4f4f4; padding: 10px;"></div>
+    <script>
+        const editors = {};
+        let currentInputResolve = null;
+    
+        document.addEventListener("DOMContentLoaded", function () {
+            loadSection('basic');
+        });
+    
+        function loadSection(section) {
+            for (let key in editors) {
+                editors[key].dispose();
+                delete editors[key];
+            }
+    
+            document.querySelector('#accordionFlushExample').innerHTML = '';
+    
+            let sectionIntro = '';
+            let topics = [];
+    
+            if (section === 'basic') {
+                document.querySelector("#basic").style.backgroundColor = "green";
+                document.querySelector("#advanced").style.backgroundColor = "";
+                document.querySelector("#medium").style.backgroundColor = "";
+                sectionIntro = `<h1>Java Basics</h1><p>Learn the basics of Java with examples...</p>`;
+                topics = [
+                    {
+                        title: 'Hello World Example',
+                        description: 'This is the simplest Java program. It uses "System.out.println()" to display "Hello, World!"',
+                        code: `public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}`
+                    },
+                    {
+                        title: 'Basic For Loop',
+                        description: 'A "for" loop in Java is used to repeat a block of code. In this example, it prints numbers from 1 to 5.',
+                        code: `public class Main {\n    public static void main(String[] args) {\n        for (int i = 1; i <= 5; i++) {\n            System.out.println("Number " + i);\n        }\n    }\n}`
+                    }
+                ];
+            } 
+            else if (section === 'medium') {
+                document.querySelector("#medium").style.backgroundColor = "green";
+                document.querySelector("#basic").style.backgroundColor = "";
+                document.querySelector("#advanced").style.backgroundColor = "";
+                sectionIntro = `<h1>Medium Level Java</h1><p>This section covers medium-difficulty Java programs...</p>`;
+                topics = [
+                    {
+                        title: 'Square of Numbers',
+                        description: 'This program calculates the square of numbers from 1 to 5 using a for loop.',
+                        code: `public class Main {\n    public static void main(String[] args) {\n        for (int i = 1; i <= 5; i++) {\n            System.out.println("Square of " + i + " is " + (i * i));\n        }\n    }\n}`
+                    },
+                    {
+                        title: 'Conditional Statements',
+                        description: 'A simple if-else conditional example that checks if a number is even or odd.',
+                        code: `import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print("Enter a number: ");\n        int num = scanner.nextInt();\n\n        if (num % 2 == 0) {\n            System.out.println(num + " is even.");\n        } else {\n            System.out.println(num + " is odd.");\n        }\n    }\n}`
+                    }
+                ];
+            }
+            else if (section === 'advanced') {
+                document.querySelector("#advanced").style.backgroundColor = "green";
+                document.querySelector("#basic").style.backgroundColor = "";
+                document.querySelector("#medium").style.backgroundColor = "";
+                sectionIntro = `<h1>Advanced Java</h1><p>Explore advanced topics in Java...</p>`;
+                topics = [
+                    {
+                        title: 'Using Classes and Objects',
+                        description: 'This example demonstrates defining a class with attributes and methods, then creating an object to use those methods.',
+                        code: `class Dog {\n    String name;\n    int age;\n\n    Dog(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n\n    public void bark() {\n        System.out.println(name + " is barking!");\n    }\n\n    public static void main(String[] args) {\n        Dog dog = new Dog("Rex", 5);\n        dog.bark();\n    }\n}`
+                    },
+                    {
+                        title: 'Handling Exceptions',
+                        description: 'This example shows how to handle exceptions in Java using try-catch blocks.',
+                        code: `public class Main {\n    public static void main(String[] args) {\n        try {\n            int result = 10 / 0;\n            System.out.println("Result: " + result);\n        } catch (ArithmeticException e) {\n            System.out.println("Error: Division by zero is not allowed.");\n        }\n    }\n}`
+                    }
+                ];
+            }
+    
+    
+            let accordionContent = '';
+            topics.forEach((topic, index) => {
+                accordionContent += `
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapse${index}"
+                                    aria-expanded="false" aria-controls="flush-collapse${index}">
+                                ${topic.title}
+                            </button>
+                        </h2>
+                        <div id="flush-collapse${index}" class="accordion-collapse collapse" 
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body" style="padding-bottom: 6rem;">
+                                <p>${topic.description}</p>
+                                <div class="compiler" style="height: 200px; border: 1px solid #ccc;">
+                                    <div id="editorContainer${index}" style="height: 200px;"></div>
+                                    <button onclick="runJavaCode('editor${index}', 'output${index}')">Run</button>
+                                    <div class="output" id="output${index}" style="margin-top: 10px; background: #f4f4f4; padding: 10px;"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>`;
-        });
-        document.querySelector('#accordionFlushExample').innerHTML = accordionContent;
-
-        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs' } });
-        require(['vs/editor/editor.main'], function () {
-            topics.forEach((topic, index) => {
-                initializeEditor(`editor${index}`, topic.code);
+                    </div>`;
             });
-        });
-    }
-
-    function initializeEditor(editorId, defaultValue) {
-        const container = document.getElementById(`editorContainer${editorId.slice(-1)}`);
-        if (!editors[editorId]) {
-            editors[editorId] = monaco.editor.create(container, {
-                value: defaultValue,
-                language: 'java',
-                theme: 'vs-dark',
-                automaticLayout: true
-            });
-        }
-    }
-
-    async function runJavaCode(editorId, outputId) {
-            const editor = editors[editorId];
-            let code = editor.getValue();
-
-            // Detect Scanner input calls and determine the number of inputs needed
-            const inputPatterns = /scanner\.next(?:Int|Double|Line|Float|Boolean|Byte|Short|Long)\(\)/gi;
-            const inputMatches = code.match(inputPatterns) || [];
-            const inputs = [];
-
-            for (let i = 0; i < inputMatches.length; i++) {
-                // Dynamically ask for input based on occurrences of Scanner usage in code
-                let userInput = await getInputFromUser(`Enter input ${i + 1}:`);
-                inputs.push(userInput || ''); // Add input or empty string if canceled
-            }
-
-            try {
-                let response = await fetch('/run_java_code/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': getCookie('csrftoken')
-                    },
-                    body: JSON.stringify({ code: code, inputs: inputs })
+            document.querySelector('#accordionFlushExample').innerHTML = accordionContent;
+    
+            require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs' } });
+            require(['vs/editor/editor.main'], function () {
+                topics.forEach((topic, index) => {
+                    initializeEditor(`editor${index}`, topic.code);
                 });
-
-                let data = await response.json();
-                document.getElementById(outputId).textContent = data.output || data.error;
-            } catch (error) {
-                console.error('Error:', error);
-                document.getElementById(outputId).textContent = 'Error executing code.';
+            });
+        }
+    
+        function initializeEditor(editorId, defaultValue) {
+            const container = document.getElementById(`editorContainer${editorId.slice(-1)}`);
+            if (!editors[editorId]) {
+                editors[editorId] = monaco.editor.create(container, {
+                    value: defaultValue,
+                    language: 'java',
+                    theme: 'vs-dark',
+                    automaticLayout: true
+                });
             }
         }
-
-    // Function to get CSRF token for Django
-    function getCookie(name) {
-            let cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                const cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i].trim();
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
+    
+        async function runJavaCode(editorId, outputId) {
+                const editor = editors[editorId];
+                let code = editor.getValue();
+    
+                // Detect Scanner input calls and determine the number of inputs needed
+                const inputPatterns = /scanner\.next(?:Int|Double|Line|Float|Boolean|Byte|Short|Long)\(\)/gi;
+                const inputMatches = code.match(inputPatterns) || [];
+                const inputs = [];
+    
+                for (let i = 0; i < inputMatches.length; i++) {
+                    // Dynamically ask for input based on occurrences of Scanner usage in code
+                    let userInput = await getInputFromUser(`Enter input ${i + 1}:`);
+                    inputs.push(userInput || ''); // Add input or empty string if canceled
+                }
+    
+                try {
+                    let response = await fetch('/run_java_code/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCookie('csrftoken')
+                        },
+                        body: JSON.stringify({ code: code, inputs: inputs })
+                    });
+    
+                    let data = await response.json();
+                    document.getElementById(outputId).textContent = data.output || data.error;
+                } catch (error) {
+                    console.error('Error:', error);
+                    document.getElementById(outputId).textContent = 'Error executing code.';
                 }
             }
-            return cookieValue;
-        }
-
-    function getInputFromUser(message) {
-        return new Promise((resolve) => {
-            document.getElementById('modalPromptMessage').textContent = message;
-            document.getElementById('inputModal').style.display = 'flex';
-            document.getElementById('userInput').value = '';
-            currentInputResolve = resolve;
-        });
-    }
-
-    function submitInput() {
-        let input = document.getElementById('userInput').value;
-        if (currentInputResolve) {
-            currentInputResolve(input);
-            currentInputResolve = null;
-        }
-        document.getElementById('inputModal').style.display = 'none';
-    }
-</script>
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
-    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
-    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
-    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
     
-    <!-- Include Monaco Editor from CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="{% static 'js/main.js' %}"></script>
+        // Function to get CSRF token for Django
+        function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+    
+        function getInputFromUser(message) {
+            return new Promise((resolve) => {
+                document.getElementById('modalPromptMessage').textContent = message;
+                document.getElementById('inputModal').style.display = 'flex';
+                document.getElementById('userInput').value = '';
+                currentInputResolve = resolve;
+            });
+        }
+    
+        function submitInput() {
+            let input = document.getElementById('userInput').value;
+            if (currentInputResolve) {
+                currentInputResolve(input);
+                currentInputResolve = null;
+            }
+            document.getElementById('inputModal').style.display = 'none';
+        }
+    </script>
+    
 </body>
 
 </html>
