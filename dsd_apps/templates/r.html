@@ -387,7 +387,8 @@
         //     }
 
         function runCode(editorId, outputId) {
-            const code = window[editorId].getValue();
+            // const code = window[editorId].getValue();
+            const code = editors[editorId].getValue();
             document.getElementById(outputId).textContent = 'Running...';
 
             // Improved input detection
