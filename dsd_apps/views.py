@@ -91,10 +91,12 @@ def r_index(request):
 def run_r_code(request):
     if request.method == 'POST':
         try:
-            # Parse the JSON data from the request
-            data = json.loads(request.body.decode('utf-8'))
-            code = data.get('code')
-            inputs = data.get('inputs', [])
+            # Parse JSON data from the request body
+            data = json.loads(request.body)
+            code = data.get('code', '')
+            # inputs = data.get('inputs', [])
+            inputs = "\n".join(data.get('inputs', []))
+            print(inputs,'-=-=-=-')
             # Create a temporary R script file
             with tempfile.TemporaryDirectory() as temp_dir:
                 script_file = os.path.join(temp_dir, 'script.R')
@@ -104,7 +106,7 @@ def run_r_code(request):
                 # Run the R script using subprocess and provide inputs through stdin
                 result = subprocess.run(
                     ['Rscript', '--vanilla', script_file],
-                    input='\n'.join(inputs),  # Provide inputs directly to R script via stdin
+                    input=inputs,  # Provide inputs directly to R script via stdin
                     text=True,
                     capture_output=True
                 )
