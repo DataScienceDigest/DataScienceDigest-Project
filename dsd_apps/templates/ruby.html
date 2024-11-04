@@ -84,119 +84,120 @@
 <body>
     {% include 'header.html' %}
     <!-- Course Detail Start -->
-    <div class="container-xxl py-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 wow fadeInUp">
+<div class="container-xxl py-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 wow fadeInUp">
 
-                    <div class="container">
-                        <div class="row g-5 justify-content-center">
+                <div class="container">
+                    <div class="row g-5 justify-content-center">
 
-                            <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
-                                <h2>Go Programming Course for Beginners</h2>
-                                <p>Start your programming journey with Go (Golang) — an open-source language designed for simplicity, reliability, and efficiency. This course introduces Go’s fundamental concepts, providing essential skills to create high-performance and concurrent applications.</p>
-                            </div>
+                        <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
+                            <h2>Ruby Programming Course for Beginners</h2>
+                            <p>Start your programming journey with Ruby — an open-source language known for its elegance and simplicity. This course introduces Ruby’s fundamental concepts, providing essential skills to develop dynamic web applications and scripts.</p>
                         </div>
                     </div>
-                    <div class="container-fluid wow fadeInUp mt-5 tabs">
-                        <!-- Tab panes -->
-                        <div class="tab-content mt-4">
+                </div>
+                <div class="container-fluid wow fadeInUp mt-5 tabs">
+                    <!-- Tab panes -->
+                    <div class="tab-content mt-4">
 
-                            <div class="tab-pane container active" id="Overview">
-                                <h2>About this Course</h2>
-                                <p>Go, also known as Golang, is a powerful and efficient programming language created by Google. It’s known for its ease of use, speed, and built-in support for concurrent programming. Go is widely used in web development, cloud services, and distributed systems. In this course, you’ll learn to write clean and efficient Go code, explore concurrency features, and tackle real-world problems with Go’s robust standard library. This course covers Go basics and offers hands-on practice, preparing you for real-world applications and advanced topics in system and web development.</p>
-                                <h2 class="mt-4">
-                                    Select Level 
-                                </h2>
-                                <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
-                                    style="font-size: 15px; font-weight: normal;"
-                                    onclick="loadSection('basic')" id="basic">Basic</span>
+                        <div class="tab-pane container active" id="Overview">
+                            <h2>About this Course</h2>
+                            <p>Ruby is a dynamic, reflective, object-oriented programming language that is known for its simplicity and productivity. It is widely used for web development, particularly with the Ruby on Rails framework. In this course, you’ll learn to write clean and efficient Ruby code, explore object-oriented programming principles, and tackle real-world problems with Ruby’s rich ecosystem of libraries. This course covers Ruby basics and offers hands-on practice, preparing you for real-world applications and advanced topics in web development.</p>
+                            <h2 class="mt-4">
+                                Select Level 
+                            </h2>
+                            <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
+                                style="font-size: 15px; font-weight: normal;"
+                                onclick="loadSection('basic')" id="basic">Basic</span>
 
-                                <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
-                                    style="font-size: 15px; font-weight: normal;"
-                                    onclick="loadSection('medium')" id="medium">Medium</span>
+                            <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
+                                style="font-size: 15px; font-weight: normal;"
+                                onclick="loadSection('medium')" id="medium">Medium</span>
 
-                                <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
-                                    style="font-size: 15px; font-weight: normal;"
-                                    onclick="loadSection('advanced')" id="advanced">Advanced</span>
-                            </div>
+                            <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
+                                style="font-size: 15px; font-weight: normal;"
+                                onclick="loadSection('advanced')" id="advanced">Advanced</span>
+                        </div>
 
-                            <div class="container" id="sectionContent">
-                                <h2 class="mt-4">Syllabus</h2>
-                                <div class="accordion accordion-flush" id="accordionFlushExample">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button"
-                                                onclick="loadSection('basic')" data-bs-toggle="collapse"
-                                                data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                                aria-controls="flush-collapseOne">
-                                                Go Basics
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                            data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body" id="basicContent">
-                                                <!-- Basic section content will be injected here -->
-                                            </div>
+                        <div class="container" id="sectionContent">
+                            <h2 class="mt-4">Syllabus</h2>
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            onclick="loadSection('basic')" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                            aria-controls="flush-collapseOne">
+                                            Ruby Basics
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body" id="basicContent">
+                                            <!-- Basic section content will be injected here -->
                                         </div>
                                     </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button"
-                                                onclick="loadSection('medium')" data-bs-toggle="collapse"
-                                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                                aria-controls="flush-collapseTwo">
-                                                Medium Level Go
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                            data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body" id="mediumContent">
-                                                <!-- Medium section content will be injected here -->
-                                            </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            onclick="loadSection('medium')" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                            aria-controls="flush-collapseTwo">
+                                            Medium Level Ruby
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body" id="mediumContent">
+                                            <!-- Medium section content will be injected here -->
                                         </div>
                                     </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button"
-                                                onclick="loadSection('advanced')" data-bs-toggle="collapse"
-                                                data-bs-target="#flush-collapseThree" aria-expanded="false"
-                                                aria-controls="flush-collapseThree">
-                                                Advanced Go
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                            data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body" id="advancedContent">
-                                                <!-- Advanced section content will be injected here -->
-                                            </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            onclick="loadSection('advanced')" data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                            aria-controls="flush-collapseThree">
+                                            Advanced Ruby
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body" id="advancedContent">
+                                            <!-- Advanced section content will be injected here -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="container" id="Instructor">
-                                <h2 class="mt-4">About the Writer</h2>
-                                <div class="image-div text-left mt-4">
+                        <div class="container" id="Instructor">
+                            <h2 class="mt-4">About the Writer</h2>
+                            <div class="image-div text-left mt-4">
 
-                                    <div class="des mt-4 mb-5">
-                                        Curriculum Director at DataScienceDigest and Creative Technologist. As the Curriculum Director, 
-                                        I have designed a variety of courses at DataScienceDigest, including Learn Python, Learn Go, Learn SQL, 
-                                        and the beginner-friendly Introduction to Data Science. My focus is on creating engaging and practical content 
-                                        that empowers learners to build their skills in programming and systems development.
-                                    </div>
+                                <div class="des mt-4 mb-5">
+                                    Curriculum Director at DataScienceDigest and Creative Technologist. As the Curriculum Director, 
+                                    I have designed a variety of courses at DataScienceDigest, including Learn Ruby, Learn Python, Learn SQL, 
+                                    and the beginner-friendly Introduction to Data Science. My focus is on creating engaging and practical content 
+                                    that empowers learners to build their skills in programming and systems development.
                                 </div>
                             </div>
-
                         </div>
 
                     </div>
 
                 </div>
+
             </div>
         </div>
     </div>
-    <!-- Course Detail End -->
+</div>
+<!-- Course Detail End -->
+
 
 
     <div id="inputModal" class="modal">
@@ -232,56 +233,56 @@
                 document.querySelector("#basic").style.backgroundColor = "green";
                 document.querySelector("#advanced").style.backgroundColor = "";
                 document.querySelector("#medium").style.backgroundColor = "";
-                sectionIntro = `<h1>Go Basics</h1><p>Learn the basics of Go with examples...</p>`;
+                sectionIntro = `<h1>Ruby Basics</h1><p>Learn the basics of Ruby with examples...</p>`;
                 topics = [
                     {
                         title: 'Hello World Example',
-                        description: 'The simplest Go program that prints "Hello, World!".',
-                        code: `package main\n\nimport "fmt"\n\nfunc main() {\n    fmt.Println("Hello, World!")\n}`
+                        description: 'The simplest Ruby program that prints "Hello, World!".',
+                        code: `puts 'Hello, World!'`
                     },
                     {
                         title: 'Basic For Loop',
-                        description: 'A "for" loop in Go, printing numbers from 0 to 4.',
-                        code: `package main\n\nimport "fmt"\n\nfunc main() {\n    for i := 0; i < 5; i++ {\n        fmt.Println("Number", i)\n    }\n}`
+                        description: 'A "for" loop in Ruby, printing numbers from 0 to 4.',
+                        code: `for i in 0..4\n    puts "Number #{i}"\nend`
                     },
                     {
                         title: 'Basic If-Else Condition',
                         description: 'Checking if a number is greater than 5.',
-                        code: `package main\n\nimport "fmt"\n\nfunc main() {\n    number := 10\n    if number > 5 {\n        fmt.Println("Number is greater than 5")\n    } else {\n        fmt.Println("Number is less than or equal to 5")\n    }\n}`
+                        code: `number = 10\nif number > 5\n    puts "Number is greater than 5"\nelse\n    puts "Number is less than or equal to 5"\nend`
                     }
                 ];
             } else if (section === 'medium') {
                 document.querySelector("#basic").style.backgroundColor = "";
                 document.querySelector("#advanced").style.backgroundColor = "";
                 document.querySelector("#medium").style.backgroundColor = "green";
-                sectionIntro = `<h1>Go Medium</h1><p>Learn the medium level of Go with examples...</p>`;
+                sectionIntro = `<h1>Ruby Medium</h1><p>Learn the medium level of Ruby with examples...</p>`;
                 topics = [
                     {
-                        title: 'Using Slices',
-                        description: 'Creating and modifying a slice in Go.',
-                        code: `package main\n\nimport "fmt"\n\nfunc main() {\n    numbers := []int{1, 2, 3}\n    numbers = append(numbers, 4, 5)\n    fmt.Println("Numbers:", numbers)\n}`
+                        title: 'Using Arrays',
+                        description: 'Creating and modifying an array in Ruby.',
+                        code: `numbers = [1, 2, 3]\nnumbers.push(4, 5)\nputs "Numbers: #{numbers}"`
                     },
                     {
                         title: 'Basic String Operations',
-                        description: 'Concatenating strings in Go.',
-                        code: `package main\n\nimport "fmt"\n\nfunc main() {\n    s := "Hello"\n    s += ", world!"\n    fmt.Println(s)\n}`
+                        description: 'Concatenating strings in Ruby.',
+                        code: `s = "Hello"\ns += ", world!"\nputs s`
                     }
                 ];
             } else if (section === 'advanced') {
                 document.querySelector("#basic").style.backgroundColor = "";
                 document.querySelector("#medium").style.backgroundColor = "";
                 document.querySelector("#advanced").style.backgroundColor = "green";
-                sectionIntro = `<h1>Go Advanced</h1><p>Explore advanced Go concepts with examples...</p>`;
+                sectionIntro = `<h1>Ruby Advanced</h1><p>Explore advanced Ruby concepts with examples...</p>`;
                 topics = [
                     {
-                        title: 'Using Interfaces',
-                        description: 'Implementing interfaces for flexible functionality.',
-                        code: `package main\n\nimport "fmt"\n\ntype Describer interface {\n    Describe() string\n}\n\nfunc PrintDescription(d Describer) {\n    fmt.Println(d.Describe())\n}\n\ntype Product struct {\n    name string\n    price float64\n}\n\nfunc (p Product) Describe() string {\n    return fmt.Sprintf("%s costs $%.2f", p.name, p.price)\n}\n\nfunc main() {\n    item := Product{"Gadget", 29.99}\n    PrintDescription(item)\n}`
+                        title: 'Using Modules',
+                        description: 'Creating and using modules in Ruby.',
+                        code: `module Greeting\n    def self.hello\n        puts 'Hello from the module!'\n    end\nend\nGreeting.hello`
                     },
                     {
-                        title: 'Concurrency with Goroutines',
-                        description: 'Using goroutines for concurrent programming.',
-                        code: `package main\n\nimport (\n    "fmt"\n    "time"\n)\n\nfunc sayHello() {\n    for i := 0; i < 5; i++ {\n        fmt.Println("Hello")\n        time.Sleep(time.Millisecond * 500)\n    }\n}\n\nfunc main() {\n    go sayHello()\n    fmt.Println("Main function")\n    time.Sleep(time.Second * 3)\n}`
+                        title: 'Concurrency with Threads',
+                        description: 'Using threads for concurrent programming in Ruby.',
+                        code: `Thread.new do\n    5.times do\n        puts "Hello from thread"\n        sleep(0.5)\n    end\nend\n\nputs "Main thread"\nThread.list.each { |t| t.join unless t == Thread.current }`
                     }
                 ];
             }
@@ -321,13 +322,13 @@
             });
         }
     
-        // Function to initialize a Monaco Editor instance for Go
+        // Function to initialize a Monaco Editor instance for Ruby
         function initializeEditor(editorId, defaultValue) {
             const container = document.getElementById(`editorContainer${editorId.slice(-1)}`);
             if (!editors[editorId]) {
                 editors[editorId] = monaco.editor.create(container, {
                     value: defaultValue,
-                    language: 'go',
+                    language: 'ruby',
                     theme: 'vs-dark',
                     automaticLayout: true
                 });
@@ -338,12 +339,12 @@
             const code = editors[editorId].getValue();
             document.getElementById(outputId).textContent = 'Running...';
     
-            // Detect the occurrences of Go input (e.g., fmt.Scanln) to estimate the number of inputs needed
-            const inputPatterns = /fmt\.Scanln|fmt\.Scanf/g;
+            // Detect the occurrences of Ruby input (e.g., gets) to estimate the number of inputs needed
+            const inputPatterns = /gets/g;
             const inputMatches = code.match(inputPatterns) || [];
             const inputs = [];
     
-            // Prompt the user for each required input based on the detected `fmt.Scanln` occurrences
+            // Prompt the user for each required input based on the detected `gets` occurrences
             for (let i = 0; i < inputMatches.length; i++) {
                 let userInput = prompt(`Enter input ${i + 1}:`);
                 if (userInput === null) {
@@ -360,7 +361,7 @@
             };
     
             // Send the code and inputs to the backend
-            fetch('/go_run_code/', {
+            fetch('/run_ruby_code/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -382,6 +383,7 @@
             return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         }
     </script>
+    
     
      
 </body>
