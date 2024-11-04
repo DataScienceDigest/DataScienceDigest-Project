@@ -106,13 +106,19 @@ def run_r_code(request):
                 with open(script_file, 'w') as file:
                     file.write(code)
 
-                # Run the R script using subprocess and provide inputs through stdin
                 result = subprocess.run(
                     ['Rscript', '--vanilla', script_file],
                     input=inputs,  # Provide inputs directly to R script via stdin
-                    text=True,
+                    text=True,  # Handle input and output as strings
+                    capture_output=True,  # Capture stdout and stderr for easier debugging
                     timeout=10  # Optional: timeout to prevent infinite execution
                 )
+
+                # Check if the command was successful
+                if result.returncode == 0:
+                    print("Output:", result.stdout)  # Print the output of the R script
+                else:
+                    print("Error:", result.stderr) 
                 
                 output = result.stdout
                 error = result.stderr
