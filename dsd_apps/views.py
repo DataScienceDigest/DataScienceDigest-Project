@@ -145,22 +145,19 @@ def run_r_code(request):
             # Parse JSON data from the request body
             data = json.loads(request.body)
             code = data.get('code', '')
-
-            # Combine inputs into a single string separated by newlines
-            inputs = "\n".join(data.get('inputs', []))
+            inputs = data.get('inputs', [])  # Expected as a list of input values
             print(f"Inputs received: {inputs}")  # Debugging log for input received
-            
+
             # Create a temporary R script file
             with tempfile.TemporaryDirectory() as temp_dir:
                 script_file = os.path.join(temp_dir, 'script.R')
                 with open(script_file, 'w') as file:
                     file.write(code)
 
-                # Run the R script and provide the inputs via stdin
+                # Run the R script with inputs as command-line arguments
                 result = subprocess.run(
-                    ['Rscript', '--vanilla', script_file],
-                    input=inputs,  # Provide inputs directly to R script via stdin
-                    text=True,  # Handle input and output as strings
+                    ['Rscript', '--vanilla', script_file] + inputs,  # Add inputs as arguments
+                    text=True,  # Handle output as string
                     capture_output=True,  # Capture stdout and stderr for easier debugging
                     timeout=10  # Optional: timeout to prevent infinite execution
                 )
