@@ -291,7 +291,9 @@ def run_swift_code(request):
         try:
             data = json.loads(request.body)
             code = data.get('code')
-            user_input = data.get('input', '')  # Default to empty if not provided
+            user_input = "\n".join(data.get('inputs', []))  # Default to empty if not provided
+            print(user_input,'-=-=-=-=-')
+            # user_input = data.get('inputs', '')  # Default to empty if not provided
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON format'}, status=400)
         # Save the Swift code to a temporary file
