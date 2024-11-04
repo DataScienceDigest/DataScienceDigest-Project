@@ -111,13 +111,12 @@ def run_r_code(request):
                     ['Rscript', '--vanilla', script_file],
                     input=inputs,  # Provide inputs directly to R script via stdin
                     text=True,
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
                     timeout=10  # Optional: timeout to prevent infinite execution
                 )
                 
                 output = result.stdout
                 error = result.stderr
+                print(result,'--==-=-=-=')
 
                 # Capture the output and error (if any) from the R script execution
                 output = result.stdout
@@ -634,7 +633,7 @@ def run_perl_code(request):
     if request.method == 'POST':
         data = json.loads(request.body)  # Capture JSON data
         code = data.get('code')          # Perl code
-        input_data = data.get('input_data', '')  # Input data for Perl code
+        input_data = "\n".join(data.get('inputs', []))  # Input data for Perl code
         # Create a temporary file
         with tempfile.NamedTemporaryFile(suffix='.pl', delete=False) as temp_file:
             temp_file.write(code.encode())
