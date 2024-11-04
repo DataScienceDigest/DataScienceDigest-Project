@@ -523,39 +523,42 @@ def compile_rust(request):
 
     return JsonResponse({'status': 'error', 'output': 'Invalid request method'})
 
-# php editor 
+# # php editor 
 @csrf_exempt
 def php_run_code(request):
     if request.method == 'POST':
         try:
-            # Parse the JSON payload from request body
+            # Parse the JSON payload from the request body
             data = json.loads(request.body.decode('utf-8'))
             code = data.get('code', '')
             inputs = data.get('inputs', [])
-            print(inputs,'-=-=-=-=-')
+            print(f"Inputs received: {inputs}")
 
-            # Create temporary PHP file
-            file_path = "/tmp/temp_code.php"
-            with open(file_path, 'w') as php_file:
-                php_file.write(code)
+            # Create a temporary PHP file
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.php') as temp_file:
+                temp_file.write(code.encode('utf-8'))
+                temp_file_path = temp_file.name
 
-            # Execute PHP code with inputs (if any)
             try:
+                # Execute PHP code with inputs (if any)
                 result = subprocess.run(
-                    ['php', file_path], 
-                    input="\n".join(inputs), 
-                    stdout=subprocess.PIPE, 
-                    stderr=subprocess.PIPE, 
-                    text=True, 
+                    ['php', temp_file_path],
+                    input="\n".join(inputs),
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
                     timeout=10
                 )
                 output = result.stdout
                 error = result.stderr
-            except subprocess.TimeoutExpired:
-                return JsonResponse({"output": "", "error": "Code execution timed out."})
 
-            # Clean up the temporary file
-            os.remove(file_path)
+            except subprocess.TimeoutExpired:
+                output = ""
+                error = "Code execution timed out."
+
+            finally:
+                # Clean up the temporary file
+                os.remove(temp_file_path)
 
             # Return output or error as JSON
             return JsonResponse({"output": output, "error": error})
