@@ -334,94 +334,51 @@
       }
   
       async function runCode(editorId, outputId) {
-          const code = editors[editorId].getValue();
-          document.getElementById(outputId).textContent = 'Running...';
-  
-          // Detect the occurrences of PHP input (e.g., readline) to estimate the number of inputs needed
-          const inputPatterns = /readline/g;
-          const inputMatches = code.match(inputPatterns) || [];
-          const inputs = [];
-  
-          // Prompt the user for each required input based on the detected `readline` occurrences
-          for (let i = 0; i < inputMatches.length; i++) {
-              let userInput = prompt(`Enter input ${i + 1}:`);
-              if (userInput === null) {
-                  document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
-                  return;
-              }
-              inputs.push(userInput); // Add each input to the array
-          }
-  
-          // Create the payload with the code and multiple inputs
-          const payload = {
-              code: code,
-              inputs: inputs // Send array of inputs to the backend
-          };
-  
-          // Send the code and inputs to the backend
-          fetch('/php_run_code/', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'X-CSRFToken': getCSRFToken()
-              },
-              body: JSON.stringify(payload)
-          })
-          .then(response => response.json())
-          .then(data => {
-              document.getElementById(outputId).textContent = data.output;
-          })
-          .catch(error => {
-              console.error('Error:', error);
-              document.getElementById(outputId).textContent = 'Error executing the code.';
-          });
-      }
-      // async function runCode(editorId, outputId) {
-      //       // const code = window[editorId].getValue();
-      //       const code = editors[editorId].getValue();
-      //       document.getElementById(outputId).textContent = 'Running...';
+            const code = editors[editorId].getValue();
+            document.getElementById(outputId).textContent = 'Running...';
 
-      //       // Input handling for PHP
-      //       const inputPatterns = /readline|fgets/g;
-      //       let userInputs = [];
-      //       let match;
-      //       let inputPrompt = {};
+            // Detect occurrences of `fgets(STDIN)` to estimate the number of inputs needed
+            const inputPatterns = /fgets\(STDIN\)/g;
+            const inputMatches = code.match(inputPatterns) || [];
+            const inputs = [];
 
-      //       // Check for input prompts
-      //       while ((match = inputPatterns.exec(code)) !== null) {
-      //           if (!inputPrompt[match[0]]) {
-      //               let userInput = prompt(`Your code requires input for ${match[0]} call. Please enter the input:`);
-      //               if (userInput === null) {
-      //                   document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
-      //                   return;
-      //               }
-      //               inputPrompt[match[0]] = userInput;
-      //           }
-      //       }
+            // Prompt the user for each required input based on detected `fgets(STDIN)` occurrences
+            for (let i = 0; i < inputMatches.length; i++) {
+                let userInput = prompt(`Enter input ${i + 1}:`);
+                if (userInput === null) {
+                    document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
+                    return;
+                }
+                inputs.push(userInput); // Add each input to the array
+            }
 
-      //       const payload = { 
-      //           code: code, 
-      //           inputs: Object.values(inputPrompt) 
-      //       };
+            // Create the payload with the code and multiple inputs
+            const payload = {
+                code: code,
+                inputs: inputs // Send array of inputs to the backend
+            };
 
-      //       fetch('/php_run_code/', {
-      //           method: 'POST',
-      //           headers: {
-      //               'Content-Type': 'application/json',
-      //               'X-CSRFToken': getCSRFToken()
-      //           },
-      //           body: JSON.stringify(payload)
-      //       })
-      //       .then(response => response.json())
-      //       .then(data => {
-      //           document.getElementById(outputId).textContent = data.output || 'No output.';
-      //       })
-      //       .catch(error => {
-      //           console.error('Error:', error);
-      //           document.getElementById(outputId).textContent = 'Error executing the code.';
-      //       });
-      //   }
-
+            // Send the code and inputs to the backend
+            fetch('/php_run_code/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCSRFToken()
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById(outputId).textContent = data.output;
+                if (data.error) {
+                    document.getElementById(outputId).textContent += `\nError: ${data.error}`;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById(outputId).textContent = 'Error executing the code.';
+            });
+        }
       function getCSRFToken() {
           return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
       }
