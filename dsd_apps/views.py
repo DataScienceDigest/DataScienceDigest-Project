@@ -532,6 +532,7 @@ def php_run_code(request):
             data = json.loads(request.body.decode('utf-8'))
             code = data.get('code', '')
             inputs = data.get('inputs', [])
+            print(inputs,'-=-=-=-=-')
 
             # Create temporary PHP file
             file_path = "/tmp/temp_code.php"
