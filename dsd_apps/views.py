@@ -87,18 +87,57 @@ def java_index(request):
 def r_index(request):
     return render(request, 'r.html')
 # r compiler 
+# @csrf_exempt
+# def run_r_code(request):
+#     if request.method == 'POST':
+#         try:
+            
+#              # Parse JSON data from the request body
+#             data = json.loads(request.body)
+#             code = data.get('code', '')
+            
+#             # Combine inputs into a single string separated by newlines
+#             inputs = "\n".join(data.get('inputs', []))
+#             print(f"Inputs received: {inputs}") 
+#             # Create a temporary R script file
+#             with tempfile.TemporaryDirectory() as temp_dir:
+#                 script_file = os.path.join(temp_dir, 'script.R')
+#                 with open(script_file, 'w') as file:
+#                     file.write(code)
+
+#                 # Run the R script using subprocess and provide inputs through stdin
+#                 result = subprocess.run(
+#                     ['Rscript', '--vanilla', script_file],
+#                     input=inputs,  # Provide inputs directly to R script via stdin
+#                     text=True,
+#                     capture_output=True
+#                 )
+
+#                 # Capture the output and error (if any) from the R script execution
+#                 output = result.stdout
+#                 error = result.stderr if result.stderr else None
+
+#             # Return the output and error (if any) as JSON
+#             return JsonResponse({'output': output, 'error': error})
+#         except Exception as e:
+#             # Log the exception to the console or to a file
+#             print(f"Error: {str(e)}")
+#             return JsonResponse({'error': str(e)}, status=500)
+
+#     return JsonResponse({'error': 'Only POST method is allowed'}, status=400)
+
 @csrf_exempt
 def run_r_code(request):
     if request.method == 'POST':
         try:
-            
-             # Parse JSON data from the request body
+            # Parse JSON data from the request body
             data = json.loads(request.body)
             code = data.get('code', '')
             
             # Combine inputs into a single string separated by newlines
             inputs = "\n".join(data.get('inputs', []))
-            print(f"Inputs received: {inputs}") 
+            print(f"Inputs received: {inputs}")  # Debugging log for input received
+            
             # Create a temporary R script file
             with tempfile.TemporaryDirectory() as temp_dir:
                 script_file = os.path.join(temp_dir, 'script.R')
@@ -110,7 +149,8 @@ def run_r_code(request):
                     ['Rscript', '--vanilla', script_file],
                     input=inputs,  # Provide inputs directly to R script via stdin
                     text=True,
-                    capture_output=True
+                    capture_output=True,
+                    timeout=10  # Optional: timeout to prevent infinite execution
                 )
 
                 # Capture the output and error (if any) from the R script execution
@@ -119,12 +159,14 @@ def run_r_code(request):
 
             # Return the output and error (if any) as JSON
             return JsonResponse({'output': output, 'error': error})
+        
         except Exception as e:
             # Log the exception to the console or to a file
             print(f"Error: {str(e)}")
             return JsonResponse({'error': str(e)}, status=500)
 
     return JsonResponse({'error': 'Only POST method is allowed'}, status=400)
+
 
 def php_index(request):
     return render(request, 'php.html')
