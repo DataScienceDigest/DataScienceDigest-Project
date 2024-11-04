@@ -145,8 +145,8 @@ def run_r_code(request):
             # Parse JSON data from the request body
             data = json.loads(request.body)
             code = data.get('code', '')
-            inputs = "\n".join(data.get('inputs', [])) # Expected as a list of input values
-            # inputs = data.get('inputs', [])  # Expected as a list of input values
+            # inputs = "\n".join(data.get('inputs', [])) # Expected as a list of input values
+            inputs = data.get('inputs', [])  # Expected as a list of input values
             print(f"Inputs received: {inputs}")  # Debugging log for input received
 
             # Create a temporary R script file
@@ -809,7 +809,6 @@ def run_scala_code(request):
             data = json.loads(request.body)
             code = data.get('code', '')
             inputs = data.get('inputs', [])  # Optional input handling
-            print(data,'-=-=-=-')
             if not code:
                 return JsonResponse({'error': 'No Scala code provided'}, status=400)
 

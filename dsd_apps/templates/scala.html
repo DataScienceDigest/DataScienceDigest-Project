@@ -92,7 +92,7 @@
                         <div class="row g-5 justify-content-center">
                             <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
                                 <h2>Scala Programming Course for Beginners</h2>
-                                <p>Start your programming journey with Scala — a modern programming language that combines functional and object-oriented programming paradigms. This course introduces Scala's fundamental concepts, providing essential skills to create high-performance applications.</p>
+                                <p>Embark on your programming journey with Scala — a powerful language that blends object-oriented and functional programming. This course introduces Scala's fundamental concepts, providing essential skills to create robust and scalable applications.</p>
                             </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                         <div class="tab-content mt-4">
                             <div class="tab-pane container active" id="Overview">
                                 <h2>About this Course</h2>
-                                <p>Scala is a powerful programming language that blends functional and object-oriented programming styles. Developed for scalability and ease of use, Scala is widely used in big data processing with Apache Spark, web development, and more. In this course, you’ll learn to write clean and efficient Scala code, explore functional programming features, and tackle real-world problems using Scala's extensive standard library. This course covers Scala basics and offers hands-on practice, preparing you for real-world applications and advanced topics in software development.</p>
+                                <p>Scala is a modern programming language that combines the best of object-oriented and functional programming paradigms. Developed by Martin Odersky, Scala is designed to be concise and elegant, making it a great choice for both beginners and experienced developers. In this course, you'll learn to write clean and efficient Scala code, explore its powerful features, and tackle real-world problems using Scala's robust standard library. This course covers Scala basics and offers hands-on practice, preparing you for real-world applications and advanced topics in system and web development.</p>
                                 <h2 class="mt-4">
                                     Select Level 
                                 </h2>
@@ -236,13 +236,13 @@
                     },
                     {
                         title: 'Basic For Loop',
-                        description: 'A for loop in Scala, printing numbers from 0 to 4.',
-                        code: `object ForLoop {\n  def main(args: Array[String]): Unit = {\n    for (i <- 0 until 5) {\n      println(s"Number: $i")\n    }\n  }\n}`
+                        description: 'A "for" loop in Scala, printing numbers from 0 to 4.',
+                        code: `object ForLoop {\n  def main(args: Array[String]): Unit = {\n    for (i <- 0 until 5) {\n      println("Number: " + i)\n    }\n  }\n}`
                     },
                     {
                         title: 'Basic If-Else Condition',
                         description: 'Checking if a number is greater than 5.',
-                        code: `object IfElseExample {\n  def main(args: Array[String]): Unit = {\n    val number = 10\n    if (number > 5) {\n      println("Number is greater than 5")\n    } else {\n      println("Number is less than or equal to 5")\n    }\n  }\n}`
+                        code: `object IfElse {\n  def main(args: Array[String]): Unit = {\n    val number = 10\n    if (number > 5) {\n      println("Number is greater than 5")\n    } else {\n      println("Number is less than or equal to 5")\n    }\n  }\n}`
                     }
                 ];
             } else if (section === 'medium') {
@@ -254,12 +254,12 @@
                     {
                         title: 'Using Lists',
                         description: 'Creating and modifying a list in Scala.',
-                        code: `object ListExample {\n  def main(args: Array[String]): Unit = {\n    var numbers = List(1, 2, 3)\n    numbers = numbers :+ 4\n    println("Numbers: " + numbers)\n  }\n}`
+                        code: `object ListExample {\n  def main(args: Array[String]): Unit = {\n    val numbers = List(1, 2, 3)\n    val newNumbers = numbers :+ 4\n    println("Numbers: " + newNumbers)\n  }\n}`
                     },
                     {
                         title: 'Basic String Operations',
                         description: 'Concatenating strings in Scala.',
-                        code: `object StringExample {\n  def main(args: Array[String]): Unit = {\n    val s = "Hello"\n    val result = s + ", world!"\n    println(result)\n  }\n}`
+                        code: `object StringExample {\n  def main(args: Array[String]): Unit = {\n    var s = "Hello"\n    s += ", world!"\n    println(s)\n  }\n}`
                     }
                 ];
             } else if (section === 'advanced') {
@@ -268,15 +268,11 @@
                 document.querySelector("#advanced").style.backgroundColor = "green";
                 sectionIntro = `<h1>Scala Advanced</h1><p>Explore advanced Scala concepts with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Using Traits',
-                        description: 'Implementing traits for flexible functionality.',
-                        code: `trait Describer {\n  def describe(): String\n}\n\ncase class Product(name: String, price: Double) extends Describer {\n  def describe(): String = s"$name costs $$${price}"\n}\n\nobject TraitExample {\n  def main(args: Array[String]): Unit = {\n    val item = Product("Gadget", 29.99)\n    println(item.describe())\n  }\n}`
-                    },
+                   
                     {
                         title: 'Concurrency with Futures',
-                        description: 'Using futures for concurrent programming.',
-                        code: `import scala.concurrent.{Future, Await}\nimport scala.concurrent.duration._\nimport scala.concurrent.ExecutionContext.Implicits.global\n\nobject FutureExample {\n  def main(args: Array[String]): Unit = {\n    val future = Future {\n      Thread.sleep(1000)\n      "Hello from Future"\n    }\n    println(Await.result(future, 2.seconds))\n  }\n}`
+                        description: 'Using Futures for concurrent programming in Scala.',
+                        code: `import scala.concurrent.Future\nimport scala.concurrent.ExecutionContext.Implicits.global\n\nobject FutureExample {\n  def main(args: Array[String]): Unit = {\n    val future = Future {\n      Thread.sleep(1000)\n      "Hello from Future"\n    }\n    future.onComplete(result => println(result.get))\n    Thread.sleep(2000) // Wait for future to complete\n  }\n}`
                     }
                 ];
             }
@@ -330,54 +326,60 @@
         }
     
         async function runCode(editorId, outputId) {
-            const code = editors[editorId].getValue();
-            document.getElementById(outputId).textContent = 'Running...';
-    
-            // Detect the occurrences of Scala input (e.g., scala.io.StdIn.readLine) to estimate the number of inputs needed
-            const inputPatterns = /scala\.io\.StdIn\.readLine/g;
-            const inputMatches = code.match(inputPatterns) || [];
-            const inputs = [];
-    
-            // Prompt the user for each required input based on the detected `scala.io.StdIn.readLine` occurrences
-            for (let i = 0; i < inputMatches.length; i++) {
-                let userInput = prompt(`Enter input ${i + 1}:`);
-                if (userInput === null) {
-                    document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
-                    return;
-                }
-                inputs.push(userInput); // Add each input to the array
+    const code = editors[editorId].getValue();
+    document.getElementById(outputId).textContent = 'Running...';
+
+    // Simplified pattern to detect `readLine` with or without `StdIn.`
+    const inputPatterns = /readLine\s*\(/g;
+    const inputMatches = code.match(inputPatterns) || [];
+    console.log('Detected readLine occurrences99999:', inputMatches.length);
+
+    const inputs = [];
+
+    // Prompt the user for each required input based on detected `readLine` occurrences
+    if (inputMatches.length > 0) {
+        for (let i = 0; i < inputMatches.length; i++) {
+            let userInput = prompt(`Enter input ${i + 1}:`);
+            if (userInput === null) {
+                document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
+                return;
             }
-    
-            // Create the payload with the code and multiple inputs
-            const payload = {
-                code: code,
-                inputs: inputs // Send array of inputs to the backend
-            };
-    
-            // Send the code and inputs to the backend
-            fetch('/run_scala_code/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCSRFToken()
-                },
-                body: JSON.stringify(payload)
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById(outputId).textContent = data.output;
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById(outputId).textContent = 'Error executing the code.';
-            });
+            inputs.push(userInput); // Add each input to the array
         }
-    
+    } else {
+        console.log("No readLine occurrences detected; proceeding without input prompts.");
+    }
+
+    // Create the payload with the code and multiple inputs
+    const payload = {
+        code: code,
+        inputs: inputs // Send array of inputs to the backend
+    };
+
+    // Send the code and inputs to the backend
+    fetch('/run_scala_code/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById(outputId).textContent = data.output;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById(outputId).textContent = 'Error executing the code.';
+    });
+}
+
+        
         function getCSRFToken() {
             return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
         }
-    </script>
-    
+    </script>    
 </body>
 
 </html>
