@@ -867,8 +867,6 @@ def run_kotlin_code(request):
             jar_path = '/tmp/code.jar'
             with open(file_path, 'w') as file:
                 file.write(code)
-            os.chmod(file_path, 0o755)
-            os.chmod(jar_path, 0o755)
 
             try:
 
