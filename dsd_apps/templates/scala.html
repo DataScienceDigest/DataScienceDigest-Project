@@ -326,54 +326,53 @@
         }
     
         async function runCode(editorId, outputId) {
-    const code = editors[editorId].getValue();
-    document.getElementById(outputId).textContent = 'Running...';
+                const code = editors[editorId].getValue();
+                document.getElementById(outputId).textContent = 'Running...';
 
-    // Simplified pattern to detect `readLine` with or without `StdIn.`
-    const inputPatterns = /readLine\s*\(/g;
-    const inputMatches = code.match(inputPatterns) || [];
-    console.log('Detected readLine occurrences99999:', inputMatches.length);
+                // Simplified pattern to detect `readLine` with or without `StdIn.`
+                const inputPatterns = /readLine\s*\(|readInt\s*\(/g;
+                const inputMatches = code.match(inputPatterns) || [];
 
-    const inputs = [];
+                const inputs = [];
 
-    // Prompt the user for each required input based on detected `readLine` occurrences
-    if (inputMatches.length > 0) {
-        for (let i = 0; i < inputMatches.length; i++) {
-            let userInput = prompt(`Enter input ${i + 1}:`);
-            if (userInput === null) {
-                document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
-                return;
+                // Prompt the user for each required input based on detected `readLine` occurrences
+                if (inputMatches.length > 0) {
+                    for (let i = 0; i < inputMatches.length; i++) {
+                        let userInput = prompt(`Enter input ${i + 1}:`);
+                        if (userInput === null) {
+                            document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
+                            return;
+                        }
+                        inputs.push(userInput); // Add each input to the array
+                    }
+                } else {
+                    console.log("No readLine occurrences detected; proceeding without input prompts.");
+                }
+
+                // Create the payload with the code and multiple inputs
+                const payload = {
+                    code: code,
+                    inputs: inputs // Send array of inputs to the backend
+                };
+
+                // Send the code and inputs to the backend
+                fetch('/run_scala_code/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCSRFToken()
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById(outputId).textContent = data.output;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById(outputId).textContent = 'Error executing the code.';
+                });
             }
-            inputs.push(userInput); // Add each input to the array
-        }
-    } else {
-        console.log("No readLine occurrences detected; proceeding without input prompts.");
-    }
-
-    // Create the payload with the code and multiple inputs
-    const payload = {
-        code: code,
-        inputs: inputs // Send array of inputs to the backend
-    };
-
-    // Send the code and inputs to the backend
-    fetch('/run_scala_code/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': getCSRFToken()
-        },
-        body: JSON.stringify(payload)
-    })
-    .then(response => response.json())
-    .then(data => {
-        document.getElementById(outputId).textContent = data.output;
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        document.getElementById(outputId).textContent = 'Error executing the code.';
-    });
-}
 
         
         function getCSRFToken() {
