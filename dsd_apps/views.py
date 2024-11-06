@@ -859,6 +859,7 @@ def run_kotlin_code(request):
             data = json.loads(request.body)
             code = data.get('code', '')
             inputs = data.get('inputs', [])  # Optional input handling
+            print(code,'-=-=-=-=',inputs)
             if not code:
                 return JsonResponse({'error': 'No Kotlin code provided'}, status=400)
             # Save the Kotlin code to a file
@@ -866,12 +867,14 @@ def run_kotlin_code(request):
             jar_path = '/tmp/code.jar'
             with open(file_path, 'w') as file:
                 file.write(code)
+            os.chmod(file_path, 0o755)
+            os.chmod(jar_path, 0o755)
 
             try:
 
                 compile_result = subprocess.run(
                 ['/home/ubuntu/.sdkman/candidates/kotlin/current/bin/kotlinc', file_path, '-include-runtime', '-d', jar_path],
-                capture_output=True, text=True, timeout=30
+                capture_output=True, text=True, timeout=10
                 )
                 # Check if compilation failed
                 if compile_result.returncode != 0:
