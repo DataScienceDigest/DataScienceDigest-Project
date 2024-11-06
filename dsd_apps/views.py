@@ -87,57 +87,6 @@ def java_index(request):
 def r_index(request):
     return render(request, 'r.html')
 # r compiler 
-
-# @csrf_exempt
-# def run_r_code(request):
-#     if request.method == 'POST':
-#         try:
-#             # Parse JSON data from the request body
-#             data = json.loads(request.body)
-#             code = data.get('code', '')
-            
-#             # Combine inputs into a single string separated by newlines
-#             inputs = "\n".join(data.get('inputs', []))
-#             print(f"Inputs received: {inputs}")  # Debugging log for input received
-            
-#             # Create a temporary R script file
-#             with tempfile.TemporaryDirectory() as temp_dir:
-#                 script_file = os.path.join(temp_dir, 'script.R')
-#                 with open(script_file, 'w') as file:
-#                     file.write(code)
-
-#                 result = subprocess.run(
-#                     ['Rscript', '--vanilla', script_file],
-#                     input=inputs,  # Provide inputs directly to R script via stdin
-#                     text=True,  # Handle input and output as strings
-#                     capture_output=True,  # Capture stdout and stderr for easier debugging
-#                     timeout=10  # Optional: timeout to prevent infinite execution
-#                 )
-
-#                 # Check if the command was successful
-#                 if result.returncode == 0:
-#                     print("Output:", result.stdout)  # Print the output of the R script
-#                 else:
-#                     print("Error:", result.stderr) 
-                
-#                 output = result.stdout
-#                 error = result.stderr
-#                 print(result,'--==-=-=-=')
-
-#                 # Capture the output and error (if any) from the R script execution
-#                 output = result.stdout
-#                 error = result.stderr if result.stderr else None
-
-#             # Return the output and error (if any) as JSON
-#             return JsonResponse({'output': output, 'error': error})
-        
-#         except Exception as e:
-#             # Log the exception to the console or to a file
-#             print(f"Error: {str(e)}")
-#             return JsonResponse({'error': str(e)}, status=500)
-
-#     return JsonResponse({'error': 'Only POST method is allowed'}, status=400)
-
 @csrf_exempt
 def run_r_code(request):
     if request.method == 'POST':
@@ -148,6 +97,7 @@ def run_r_code(request):
             # inputs = "\n".join(data.get('inputs', [])) # Expected as a list of input values
             inputs = data.get('inputs', [])  # Expected as a list of input values
             print(f"Inputs received: {inputs}")  # Debugging log for input received
+            simulated_stdin = "\n".join(inputs) + "\n"
 
             # Create a temporary R script file
             with tempfile.TemporaryDirectory() as temp_dir:
@@ -155,9 +105,17 @@ def run_r_code(request):
                 with open(script_file, 'w') as file:
                     file.write(code)
 
-                # Run the R script with inputs as command-line arguments
+                # # Run the R script with inputs as command-line arguments
+                # result = subprocess.run(
+                #     ['Rscript', '--vanilla', script_file] + inputs,  # Add inputs as arguments
+                #     text=True,  # Handle output as string
+                #     capture_output=True,  # Capture stdout and stderr for easier debugging
+                #     timeout=10  # Optional: timeout to prevent infinite execution
+                # )
+                # Run the R script and pass inputs as simulated stdin
                 result = subprocess.run(
-                    ['Rscript', '--vanilla', script_file] + inputs,  # Add inputs as arguments
+                    ['Rscript', '--vanilla', script_file],
+                    input=simulated_stdin,  # Simulate interactive input for `readline`
                     text=True,  # Handle output as string
                     capture_output=True,  # Capture stdout and stderr for easier debugging
                     timeout=10  # Optional: timeout to prevent infinite execution
