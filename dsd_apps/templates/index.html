@@ -1300,9 +1300,9 @@
                                     online courses with certificates</h1>
                                 <p class=" text-white mb-4 pb-2">Explore a wide range of courses designed to enhance
                                     your expertise in technology, business, arts, and more. Start learning today!</p>
-                                <a href="about.html"
+                                <a href="{% url 'about' %}"
                                     class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
-                                <a href="signup.html" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join
+                                <a href="{% url 'signup' %}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join
                                     Now</a>
                             </div>
                         </div>
@@ -1322,9 +1322,9 @@
                                 </h1>
                                 <p class=" text-white mb-4 pb-2">Engage with interactive lessons, quizzes, and
                                     projects. Experience hands-on learning that keeps you motivated and inspired.</p>
-                                <a href="about.html"
+                                <a href="{% url 'about' %}"
                                     class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
-                                <a href="signup.html" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join
+                                <a href="{% url 'signup' %}" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Join
                                     Now</a>
                             </div>
                         </div>
@@ -1396,7 +1396,7 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="{% static 'img/about1.jpeg' %}" alt=""
+                        <img class="img-fluid position-absolute w-100 h-100" src="{% static 'img/about1.webp' %}" alt=""
                             style="object-fit: cover;">
                     </div>
                 </div>
@@ -1431,7 +1431,7 @@
                             <p class="mb-0"><i class="fa fa-arrow-right me-2"></i>Certification and Recognition</p>
                         </div>
                     </div>
-                    <a class="btn text-light py-3 px-5 mt-2" href="about.html">Read More</a>
+                    <a class="btn text-light py-3 px-5 mt-2" href="{% url 'about' %}">Read More</a>
                 </div>
             </div>
         </div>
@@ -1460,7 +1460,7 @@
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="{% static 'img\rb_67396.png' %}"
+                        <img class="img-fluid position-absolute w-100 h-100" src="{% static 'img\rb_67396.webp' %}"
                             alt="" style="object-fit: fill;">
                     </div>
                 </div>
@@ -1479,86 +1479,77 @@
                 <h1 class="mb-5" style="color: #fb873f;">Popular Topics to Explore</h1>
             </div>
             <div class="row g-2 m-2">
-                <div class="col-lg-3 col-md-6  text-center">
+              <div class="col-lg-3 col-md-6 text-center">
+                <a href="{% url 'python-tutorial' %}" class="d-block text-decoration-none">
                     <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/python-5.svg' %}" class="img-fluid" alt="Python"></i>
-
-                        <h5 class="my-2">
-                            <a href="{% url 'python-tutorial' %}" class="text-center">Python</a>
-                        </h5>
+                        <img src="{% static 'images/python-5.svg' %}" class="img-fluid" alt="Python">
+                        <h5 class="my-2">Python</h5>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/database-floating-squares.png' %}" class="img-fluid" alt="SQL"></i>
-
-                        <h5 class="my-2">
-                            <a href="{% url 'sql-tutorial' %}" class="text-center"> SQL </a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/html-1.svg' %}" alt="HTML" class="img-fluid"></i>
-
-                        <h5 class="my-2">
-                            <a href="{% url 'html-tutorial' %}" class="text-center">HTML</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/java.svg' %}" class="img-fluid" alt="java"></i>
-
-                        <h5 class="my-2">
-                            <a href="{% url 'java-tutorial' %}" class="text-center">Java</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/golang-1.svg' %}" class="img-fluid" alt="go-lang"></i>
-
-                        <h5 class="my-2">
-                            <a href="{% url 'go-tutorial' %}" class="text-center">GO lang</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/Swift.svg' %}" class="img-fluid" alt="swift"></i>
-
-                        <h5 class="my-2">
-                            <a href="{% url 'swift-tutorial' %}" class="text-center">Swift</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/c--4.svg' %}" class="img-fluid" alt="c#"></i>
-
-                        <h5 class="my-2">
-                            <a href="{% url 'csharp-tutorial' %}" class="text-center">C#</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/rust.svg' %}" class="img-fluid" alt="RUST"></i>
-
-                        <h5 class="my-2">
-                            <a href="{% url 'rust-tutorial' %}" class="text-center" >RUST</a>
-                        </h5>
-                    </div>
-                </div>
+                </a>
+              </div>
+              
+              <div class="col-lg-3 col-md-6 text-center">
+                  <a href="{% url 'sql-tutorial' %}" class="d-block text-decoration-none">
+                      <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                          <img src="{% static 'images/database-floating-squares.png' %}" class="img-fluid" alt="SQL">
+                          <h5 class="my-2">SQL</h5>
+                      </div>
+                  </a>
+              </div>
+              
+              <div class="col-lg-3 col-md-6 text-center">
+                  <a href="{% url 'html-tutorial' %}" class="d-block text-decoration-none">
+                      <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                          <img src="{% static 'images/html-1.svg' %}" class="img-fluid" alt="HTML">
+                          <h5 class="my-2">HTML</h5>
+                      </div>
+                  </a>
+              </div>
+              
+              <div class="col-lg-3 col-md-6 text-center">
+                  <a href="{% url 'java-tutorial' %}" class="d-block text-decoration-none">
+                      <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                          <img src="{% static 'images/java.svg' %}" class="img-fluid" alt="Java">
+                          <h5 class="my-2">Java</h5>
+                      </div>
+                  </a>
+              </div>
+              
+              <div class="col-lg-3 col-md-6 text-center">
+                  <a href="{% url 'go-tutorial' %}" class="d-block text-decoration-none">
+                      <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                          <img src="{% static 'images/golang-1.svg' %}" class="img-fluid" alt="GO lang">
+                          <h5 class="my-2">GO lang</h5>
+                      </div>
+                  </a>
+              </div>
+              
+              <div class="col-lg-3 col-md-6 text-center">
+                  <a href="{% url 'swift-tutorial' %}" class="d-block text-decoration-none">
+                      <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                          <img src="{% static 'images/Swift.svg' %}" class="img-fluid" alt="Swift">
+                          <h5 class="my-2">Swift</h5>
+                      </div>
+                  </a>
+              </div>
+              
+              <div class="col-lg-3 col-md-6 text-center">
+                  <a href="{% url 'csharp-tutorial' %}" class="d-block text-decoration-none">
+                      <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                          <img src="{% static 'images/c--4.svg' %}" class="img-fluid" alt="C#">
+                          <h5 class="my-2">C#</h5>
+                      </div>
+                  </a>
+              </div>
+              
+              <div class="col-lg-3 col-md-6 text-center">
+                  <a href="{% url 'rust-tutorial' %}" class="d-block text-decoration-none">
+                      <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                          <img src="{% static 'images/rust.svg' %}" class="img-fluid" alt="RUST">
+                          <h5 class="my-2">RUST</h5>
+                      </div>
+                  </a>
+              </div>
             </div>
         </div>
     </div>
@@ -1576,13 +1567,13 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-1.jpg' %}" alt="">
+                            <img class="img-fluid" src="{% static 'img/html5.svg' %}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
                         </div>
                         <div class="p-2 pb-0">
-                            <h5 class="mb-1"><a href="single.html" class="text-dark">Lear HTML</a></h5>
+                            <h5 class="mb-1"><a href="single.html" class="text-dark">Learn HTML</a></h5>
                         </div>
                         <div class="d-flex">
                             <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
@@ -1635,7 +1626,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-4.jpg' %}" alt="">
+                            <img class="img-fluid" src="{% static 'img/python.jpg' %}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
                                 class="px-2 py-1 fw-bold text-uppercase">Free</div>
 
@@ -1677,7 +1668,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-6.jpg' %}" alt="">
+                            <img class="img-fluid" src="{% static 'img/ruby.svg' %}" alt="">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
@@ -1837,7 +1828,7 @@
             <div class="compilers-container">
                 <div class="compilers-row">
                     <div class="compilers-image">
-                        <img src="{% static 'images/coding-workshop-concept-illustration.png' %}"
+                        <img src="{% static 'img/coding-workshop-concept-illustration.webp' %}"
                             alt="Code Example Image" loading="lazy">
                     </div>
                     <div class="compilers-content">
