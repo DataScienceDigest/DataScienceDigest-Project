@@ -229,21 +229,56 @@
                 document.querySelector("#medium").style.backgroundColor = "";
                 sectionIntro = `<h1>Scala Basics</h1><p>Learn the basics of Scala with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Hello World Example',
-                        description: 'The simplest Scala program that prints "Hello, World!".',
-                        code: `object HelloWorld {\n  def main(args: Array[String]): Unit = {\n    println("Hello, World!")\n  }\n}`
-                    },
-                    {
-                        title: 'Basic For Loop',
-                        description: 'A "for" loop in Scala, printing numbers from 0 to 4.',
-                        code: `object ForLoop {\n  def main(args: Array[String]): Unit = {\n    for (i <- 0 until 5) {\n      println("Number: " + i)\n    }\n  }\n}`
-                    },
-                    {
-                        title: 'Basic If-Else Condition',
-                        description: 'Checking if a number is greater than 5.',
-                        code: `object IfElse {\n  def main(args: Array[String]): Unit = {\n    val number = 10\n    if (number > 5) {\n      println("Number is greater than 5")\n    } else {\n      println("Number is less than or equal to 5")\n    }\n  }\n}`
-                    }
+                {
+                    title: 'Print Statement',
+                    description: 'Display a simple message in the console.',
+                    code: `println("Hello, Scala!")`
+                },
+                {
+                    title: 'Variable Declaration',
+                    description: 'Declare and assign a variable.',
+                    code: `var message = "Hello, Scala!"`
+                },
+                {
+                    title: 'Immutable Variable (val)',
+                    description: 'Declare an immutable variable using val.',
+                    code: `val pi = 3.14159`
+                },
+                {
+                    title: 'String Interpolation',
+                    description: 'Combine variables with text in a string.',
+                    code: `val name = "John"; println(s"Hello, $name!")`
+                },
+                {
+                    title: 'Basic Arithmetic',
+                    description: 'Perform basic arithmetic operations.',
+                    code: `val result = 5 + 3 * 2`
+                },
+                {
+                    title: 'If Statement',
+                    description: 'Use an if statement to check a condition.',
+                    code: `val age = 18; if (age >= 18) println("Adult")`
+                },
+                {
+                    title: 'For Loop',
+                    description: 'Print numbers from 1 to 5 using a for loop.',
+                    code: `for (i <- 1 to 5) println(i)`
+                },
+                {
+                    title: 'While Loop',
+                    description: 'Use a while loop to count down from 5.',
+                    code: `var count = 5; while (count > 0) { println(count); count -= 1 }`
+                },
+                {
+                    title: 'Functions',
+                    description: 'Create a simple function that returns a greeting message.',
+                    code: `def greet(name: String): String = s"Hello, $name!"`
+                },
+                {
+                    title: 'List Declaration',
+                    description: 'Create and print a list of integers.',
+                    code: `val numbers = List(1, 2, 3, 4, 5); println(numbers)`
+                }
                 ];
             } else if (section === 'medium') {
                 document.querySelector("#basic").style.backgroundColor = "";
@@ -251,16 +286,56 @@
                 document.querySelector("#medium").style.backgroundColor = "green";
                 sectionIntro = `<h1>Scala Medium</h1><p>Learn the medium level of Scala with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Using Lists',
-                        description: 'Creating and modifying a list in Scala.',
-                        code: `object ListExample {\n  def main(args: Array[String]): Unit = {\n    val numbers = List(1, 2, 3)\n    val newNumbers = numbers :+ 4\n    println("Numbers: " + newNumbers)\n  }\n}`
-                    },
-                    {
-                        title: 'Basic String Operations',
-                        description: 'Concatenating strings in Scala.',
-                        code: `object StringExample {\n  def main(args: Array[String]): Unit = {\n    var s = "Hello"\n    s += ", world!"\n    println(s)\n  }\n}`
-                    }
+                {
+                    title: 'Option Type',
+                    description: 'Handle nullable values using Option.',
+                    code: `val name: Option[String] = Some("Scala"); name match { case Some(value) => println(value); case None => println("No value") }`
+                },
+                {
+                    title: 'Pattern Matching',
+                    description: 'Use pattern matching to print different messages based on a number.',
+                    code: `val number = 3; number match { case 1 => println("One"); case 2 => println("Two"); case _ => println("Other") }`
+                },
+                {
+                    title: 'Map Declaration',
+                    description: 'Create a map and retrieve a value.',
+                    code: `val scores = Map("Alice" -> 95, "Bob" -> 85); println(scores("Alice"))`
+                },
+                {
+                    title: 'Enumerations',
+                    description: 'Define and use an enumeration.',
+                    code: `object Direction extends Enumeration { val North, South, East, West = Value }; val direction = Direction.North`
+                },
+                {
+                    title: 'Case Class',
+                    description: 'Define a case class and create an instance of it.',
+                    code: `case class Person(name: String, age: Int); val person = Person("Alice", 25)`
+                },
+                {
+                    title: 'Higher-Order Functions',
+                    description: 'Use a higher-order function that takes a function as an argument.',
+                    code: `def applyFunc(x: Int, func: Int => Int): Int = func(x); println(applyFunc(5, _ * 2))`
+                },
+                {
+                    title: 'Anonymous Functions (Lambdas)',
+                    description: 'Use an anonymous function to perform an operation on each element in a list.',
+                    code: `val numbers = List(1, 2, 3); numbers.foreach(x => println(x * 2))`
+                },
+                {
+                    title: 'FoldLeft',
+                    description: 'Use foldLeft to calculate the sum of a list.',
+                    code: `val numbers = List(1, 2, 3, 4); val sum = numbers.foldLeft(0)(_ + _); println(sum)`
+                },
+                {
+                    title: 'Filter with Condition',
+                    description: 'Use filter to create a new list with elements that meet a condition.',
+                    code: `val numbers = List(1, 2, 3, 4, 5); val evens = numbers.filter(_ % 2 == 0); println(evens)`
+                },
+                {
+                    title: 'Try-Catch Exception Handling',
+                    description: 'Use try-catch to handle potential exceptions in a function.',
+                    code: `def divide(a: Int, b: Int): Int = try { a / b } catch { case e: ArithmeticException => println("Cannot divide by zero"); 0 }`
+                }
                 ];
             } else if (section === 'advanced') {
                 document.querySelector("#basic").style.backgroundColor = "";
@@ -268,12 +343,56 @@
                 document.querySelector("#advanced").style.backgroundColor = "green";
                 sectionIntro = `<h1>Scala Advanced</h1><p>Explore advanced Scala concepts with examples...</p>`;
                 topics = [
-                   
-                    {
-                        title: 'Concurrency with Futures',
-                        description: 'Using Futures for concurrent programming in Scala.',
-                        code: `import scala.concurrent.Future\nimport scala.concurrent.ExecutionContext.Implicits.global\n\nobject FutureExample {\n  def main(args: Array[String]): Unit = {\n    val future = Future {\n      Thread.sleep(1000)\n      "Hello from Future"\n    }\n    future.onComplete(result => println(result.get))\n    Thread.sleep(2000) // Wait for future to complete\n  }\n}`
-                    }
+                {
+                    title: 'Traits',
+                    description: 'Define a trait and implement it in a class.',
+                    code: `trait Greetable { def greet(): Unit }; class Friend extends Greetable { def greet() = println("Hello!") }`
+                },
+                {
+                    title: 'Implicit Parameters',
+                    description: 'Use implicit parameters in a function.',
+                    code: `def greet(implicit name: String): Unit = println(s"Hello, $name"); implicit val myName = "Scala"; greet`
+                },
+                {
+                    title: 'Generics',
+                    description: 'Create a generic function that swaps two values.',
+                    code: `def swap[T](a: T, b: T): (T, T) = (b, a); println(swap(1, 2))`
+                },
+                {
+                    title: 'Type Inference and Casting',
+                    description: 'Use type inference and casting to handle different types in a list.',
+                    code: `val items: List[Any] = List("Scala", 42, 3.14); items.foreach { case i: Int => println(s"Integer: $i"); case s: String => println(s"String: $s") }`
+                },
+                {
+                    title: 'Companion Objects',
+                    description: 'Use a companion object to add a factory method.',
+                    code: `class Person(val name: String); object Person { def apply(name: String) = new Person(name) }; val person = Person("Alice")`
+                },
+                {
+                    title: 'Lazy Evaluation',
+                    description: 'Use a lazy value to defer initialization until it’s accessed.',
+                    code: `lazy val data = { println("Initializing"); "Loaded Data" }; println(data); println(data)`
+                },
+                {
+                    title: 'Implicit Conversions',
+                    description: 'Define an implicit conversion from Int to String.',
+                    code: `implicit def intToString(x: Int): String = x.toString; val str: String = 123`
+                },
+                {
+                    title: 'Partial Functions',
+                    description: 'Create a partial function to handle specific cases.',
+                    code: `val divide: PartialFunction[Int, Int] = { case x if x != 0 => 42 / x }; println(divide(2))`
+                },
+                {
+                    title: 'Collections: Maps with Transformations',
+                    description: 'Use map and flatMap to transform elements in a list.',
+                    code: `val numbers = List(1, 2, 3); val doubled = numbers.map(_ * 2); println(doubled)`
+                },
+                {
+                    title: 'Future and Asynchronous Execution',
+                    description: 'Run asynchronous code using Scala Futures.',
+                    code: `import scala.concurrent.Future; import scala.concurrent.ExecutionContext.Implicits.global; val future = Future { println("Running asynchronously") }`
+                }
                 ];
             }
     

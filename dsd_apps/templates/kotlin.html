@@ -233,21 +233,47 @@
                 document.querySelector("#medium").style.backgroundColor = "";
                 sectionIntro = `<h1>Kotlin Basics</h1><p>Learn the basics of Kotlin with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Hello World Example',
-                        description: 'The simplest Kotlin program that prints "Hello, World!".',
-                        code: `fun main() {\n    println("Hello, World!")\n}`
-                    },
-                    {
-                        title: 'Basic For Loop',
-                        description: 'A "for" loop in Kotlin, printing numbers from 0 to 4.',
-                        code: `fun main() {\n    for (i in 0..4) {\n        println("Number $i")\n    }\n}`
-                    },
-                    {
-                        title: 'Basic If-Else Condition',
-                        description: 'Checking if a number is greater than 5.',
-                        code: `fun main() {\n    val number = 10\n    if (number > 5) {\n        println("Number is greater than 5")\n    } else {\n        println("Number is less than or equal to 5")\n    }\n}`
-                    }
+                {
+                    title: 'Hello World Example',
+                    description: 'The simplest Kotlin program that prints "Hello, World!".',
+                    code: `fun main() {\n    println("Hello, World!")\n}`
+                },
+                {
+                    title: 'Variable Declaration',
+                    description: 'Declaring and printing variables in Kotlin.',
+                    code: `fun main() {\n    val name = "Alice"\n    val age = 25\n    println("Name: $name, Age: $age")\n}`
+                },
+                
+                {
+                    title: 'Basic If-Else Condition',
+                    description: 'Checking if a number is even or odd.',
+                    code: `fun main() {\n    val number = 7\n    if (number % 2 == 0) {\n        println("Even")\n    } else {\n        println("Odd")\n    }\n}`
+                },
+                {
+                    title: 'Basic For Loop',
+                    description: 'A "for" loop in Kotlin, printing numbers from 0 to 4.',
+                    code: `fun main() {\n    for (i in 0..4) {\n        println("Number $i")\n    }\n}`
+                },
+                {
+                    title: 'While Loop Example',
+                    description: 'Printing numbers from 1 to 5 using a "while" loop.',
+                    code: `fun main() {\n    var i = 1\n    while (i <= 5) {\n        println(i)\n        i++\n    }\n}`
+                },
+                {
+                    title: 'Array Example',
+                    description: 'Creating an array and accessing its elements.',
+                    code: `fun main() {\n    val fruits = arrayOf("Apple", "Banana", "Cherry")\n    println(fruits[0])\n    println(fruits[2])\n}`
+                },
+                {
+                    title: 'List Example',
+                    description: 'Creating a list and iterating through its elements.',
+                    code: `fun main() {\n    val colors = listOf("Red", "Green", "Blue")\n    for (color in colors) {\n        println(color)\n    }\n}`
+                },
+                {
+                    title: 'String Interpolation',
+                    description: 'Using string interpolation to combine strings and variables.',
+                    code: `fun main() {\n    val language = "Kotlin"\n    val version = 1.8\n    println("Welcome to $language version $version!")\n}`
+                }
                 ];
             } else if (section === 'medium') {
                 document.querySelector("#basic").style.backgroundColor = "";
@@ -255,16 +281,52 @@
                 document.querySelector("#medium").style.backgroundColor = "green";
                 sectionIntro = `<h1>Kotlin Medium</h1><p>Learn the medium level of Kotlin with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Using Lists',
-                        description: 'Creating and modifying a list in Kotlin.',
-                        code: `fun main() {\n    val numbers = mutableListOf(1, 2, 3)\n    numbers.add(4)\n    numbers.add(5)\n    println("Numbers: $numbers")\n}`
-                    },
-                    {
-                        title: 'Basic String Operations',
-                        description: 'Concatenating strings in Kotlin.',
-                        code: `fun main() {\n    var s = "Hello"\n    s += ", world!"\n    println(s)\n}`
-                    }
+                {
+                    title: 'Using the Map Function',
+                    description: 'Applying a function to each element of a list using "map".',
+                    code: `fun main() {\n    val numbers = listOf(1, 2, 3, 4)\n    val squares = numbers.map { it * it }\n    println(squares)\n}`
+                },
+                {
+                    title: 'List Comprehension',
+                    description: 'Creating a list of even numbers using list comprehension.',
+                    code: `fun main() {\n    val evenNumbers = (1..10).filter { it % 2 == 0 }\n    println(evenNumbers)\n}`
+                },
+                {
+                    title: 'When Statement Example',
+                    description: 'Using the "when" statement to check a variable\'s value.',
+                    code: `fun main() {\n    val day = 3\n    when (day) {\n        1 -> println("Monday")\n        2 -> println("Tuesday")\n        3 -> println("Wednesday")\n        else -> println("Other day")\n    }\n}`
+                },
+                {
+                    title: 'Recursive Function',
+                    description: 'Calculating the factorial of a number using recursion.',
+                    code: `fun factorial(n: Int): Int {\n    return if (n == 0) 1 else n * factorial(n - 1)\n}\nfun main() {\n    println(factorial(5))\n}`
+                },
+                {
+                    title: 'Dictionary Example',
+                    description: 'Creating a map and accessing its values.',
+                    code: `fun main() {\n    val phoneBook = mapOf("Alice" to "123-4567", "Bob" to "987-6543")\n    println(phoneBook["Alice"])\n}`
+                },
+                {
+                    title: 'Try-Catch Error Handling',
+                    description: 'Using "try-catch" to handle division by zero.',
+                    code: `fun main() {\n    try {\n        println(10 / 0)\n    } catch (e: ArithmeticException) {\n        println("Error: Division by zero")\n    }\n}`
+                },
+                {
+                    title: 'Sorting a List',
+                    description: 'Sorting a list of numbers in ascending order.',
+                    code: `fun main() {\n    val numbers = listOf(5, 2, 8, 1, 3)\n    println(numbers.sorted())\n}`
+                },
+                {
+                    title: 'Lambda Functions',
+                    description: 'Using a lambda function to filter a list.',
+                    code: `fun main() {\n    val numbers = listOf(1, 2, 3, 4, 5)\n    val evenNumbers = numbers.filter { it % 2 == 0 }\n    println(evenNumbers)\n}`
+                },
+                {
+                    title: 'Anonymous Function',
+                    description: 'Using an anonymous function to double the numbers in a list.',
+                    code: `fun main() {\n    val doubled = listOf(1, 2, 3).map(fun(x) = x * 2)\n    println(doubled)\n}`
+                }
+
                 ];
             } else if (section === 'advanced') {
                 document.querySelector("#basic").style.backgroundColor = "";
@@ -272,16 +334,57 @@
                 document.querySelector("#advanced").style.backgroundColor = "green";
                 sectionIntro = `<h1>Kotlin Advanced</h1><p>Explore advanced Kotlin concepts with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Using Interfaces',
-                        description: 'Implementing interfaces for flexible functionality.',
-                        code: `interface Describer {\n    fun describe(): String\n}\n\nclass Product(val name: String, val price: Double) : Describer {\n    override fun describe() = "$name costs $$price"\n}\n\nfun printDescription(d: Describer) {\n    println(d.describe())\n}\n\nfun main() {\n    val item = Product("Gadget", 29.99)\n    printDescription(item)\n}`
-                    },
-                    {
-                        title: 'Concurrency with Coroutines',
-                        description: 'Using coroutines for asynchronous programming.',
-                        code: `import kotlinx.coroutines.*\n\nfun main() = runBlocking {\n    launch { sayHello() }\n    println("Main function")\n}\n\nsuspend fun sayHello() {\n    repeat(5) {\n        println("Hello")\n        delay(500)\n    }\n}`
-                    }
+                {
+                    title: 'Lambda Function',
+                    description: 'Using a lambda function to filter a list of numbers.',
+                    code: `fun main() {\n    val numbers = listOf(1, 2, 3, 4, 5)\n    val evenNumbers = numbers.filter { it % 2 == 0 }\n    println(evenNumbers)\n}`
+                },
+                {
+                    title: 'Sealed Class Example',
+                    description: 'Using a sealed class to represent different types of results.',
+                    code: `sealed class Result\nclass Success(val data: String) : Result()\nclass Error(val error: String) : Result()\nfun main() {\n    val result: Result = Success("Data Loaded")\n    when (result) {\n        is Success -> println(result.data)\n        is Error -> println(result.error)\n    }\n}`
+                },
+                {
+                    title: 'Infix Function',
+                    description: 'Creating an infix function for adding two integers.',
+                    code: `infix fun Int.add(x: Int): Int = this + x\nfun main() {\n    println(5 add 3)\n}`
+                },
+                {
+                    title: 'Lazy Initialization',
+                    description: 'Using lazy initialization for a variable.',
+                    code: `val lazyValue: String by lazy {\n    println("Computing...")\n    "Hello, Kotlin!"\n}\nfun main() {\n    println(lazyValue)\n    println(lazyValue)\n}`
+                },
+                {
+                    title: 'Generics Example',
+                    description: 'Using generics in a Kotlin function.',
+                    code: `fun <T> display(value: T) {\n    println("Value: $value")\n}\nfun main() {\n    display(42)\n    display("Hello")\n}`
+                },
+                {
+                    title: 'Companion Object',
+                    description: 'Using a companion object to create static methods.',
+                    code: `class MathUtils {\n    companion object {\n        fun add(a: Int, b: Int): Int = a + b\n    }\n}\nfun main() {\n    println(MathUtils.add(3, 4))\n}`
+                },
+                {
+                    title: 'Higher-Order Function with Return Function',
+                    description: 'Returning a function from another function.',
+                    code: `fun multiplier(factor: Int): (Int) -> Int {\n    return { x -> x * factor }\n}\nfun main() {\n    val double = multiplier(2)\n    println(double(5))\n}`
+                },
+                {
+                    title: 'Using Apply Scope Function',
+                    description: 'Using "apply" to configure an object.',
+                    code: `data class Person(var name: String, var age: Int)\nfun main() {\n    val person = Person("John", 25).apply {\n        age = 30\n        name = "Doe"\n    }\n    println(person)\n}`
+                },
+                {
+                    title: 'Tail Recursion',
+                    description: 'Using tail recursion to calculate factorial.',
+                    code: `tailrec fun factorial(n: Int, accumulator: Int = 1): Int {\n    return if (n == 0) accumulator else factorial(n - 1, n * accumulator)\n}\nfun main() {\n    println(factorial(5))\n}`
+                },
+                {
+                    title: 'Exception Handling with Try-Catch',
+                    description: 'Handling exceptions using try-catch blocks.',
+                    code: `fun main() {\n    try {\n        val result = 10 / 0\n        println(result)\n    } catch (e: ArithmeticException) {\n        println("Error: Division by zero")\n    }\n}`
+                }
+
                 ];
             }
     
@@ -386,3 +489,153 @@
 </body>
 
 </html>
+
+<!-- 
+if (section === 'basic') {
+    document.querySelector("#basic").style.backgroundColor = "green";
+    document.querySelector("#advanced").style.backgroundColor = "";
+    document.querySelector("#medium").style.backgroundColor = "";
+    sectionIntro = `<h1>Kotlin Basics</h1><p>Learn the basics of Kotlin with examples...</p>`;
+    topics = [
+    {
+        title: 'Hello World Example',
+        description: 'The simplest Kotlin program that prints "Hello, World!".',
+        code: `fun main() {\n    println("Hello, World!")\n}`
+    },
+    {
+        title: 'Variable Declaration',
+        description: 'Declaring and printing variables in Kotlin.',
+        code: `fun main() {\n    val name = "Alice"\n    val age = 25\n    println("Name: $name, Age: $age")\n}`
+    },
+    {
+        title: 'Basic Arithmetic Operations',
+        description: 'Performing addition, subtraction, multiplication, and division.',
+        code: `fun main() {\n    val a = 10\n    val b = 5\n    println("Add: ${a + b}")\n    println("Subtract: ${a - b}")\n    println("Multiply: ${a * b}")\n    println("Divide: ${a / b}")\n}`
+    },
+    {
+        title: 'Basic If-Else Condition',
+        description: 'Checking if a number is even or odd.',
+        code: `fun main() {\n    val number = 7\n    if (number % 2 == 0) {\n        println("Even")\n    } else {\n        println("Odd")\n    }\n}`
+    },
+    {
+        title: 'Basic For Loop',
+        description: 'A "for" loop in Kotlin, printing numbers from 0 to 4.',
+        code: `fun main() {\n    for (i in 0..4) {\n        println("Number $i")\n    }\n}`
+    },
+    {
+        title: 'While Loop Example',
+        description: 'Printing numbers from 1 to 5 using a "while" loop.',
+        code: `fun main() {\n    var i = 1\n    while (i <= 5) {\n        println(i)\n        i++\n    }\n}`
+    },
+    {
+        title: 'Simple Function',
+        description: 'Defining and calling a function to add two numbers.',
+        code: `fun add(a: Int, b: Int): Int {\n    return a + b\n}\nfun main() {\n    println("Sum: ${add(3, 4)}")\n}`
+    },
+    {
+        title: 'Array Example',
+        description: 'Creating an array and accessing its elements.',
+        code: `fun main() {\n    val fruits = arrayOf("Apple", "Banana", "Cherry")\n    println(fruits[0])\n    println(fruits[2])\n}`
+    },
+    {
+        title: 'List Example',
+        description: 'Creating a list and iterating through its elements.',
+        code: `fun main() {\n    val colors = listOf("Red", "Green", "Blue")\n    for (color in colors) {\n        println(color)\n    }\n}`
+    },
+    {
+        title: 'String Interpolation',
+        description: 'Using string interpolation to combine strings and variables.',
+        code: `fun main() {\n    val language = "Kotlin"\n    val version = 1.8\n    println("Welcome to $language version $version!")\n}`
+    }
+    ];
+} else if (section === 'medium') {
+    document.querySelector("#basic").style.backgroundColor = "";
+    document.querySelector("#advanced").style.backgroundColor = "";
+    document.querySelector("#medium").style.backgroundColor = "green";
+    sectionIntro = `<h1>Kotlin Medium</h1><p>Learn the medium level of Kotlin with examples...</p>`;
+    topics = [
+    {
+        title: 'Using the Map Function',
+        description: 'Applying a function to each element of a list using "map".',
+        code: `fun main() {\n    val numbers = listOf(1, 2, 3, 4)\n    val squares = numbers.map { it * it }\n    println(squares)\n}`
+    },
+    {
+        title: 'List Comprehension',
+        description: 'Creating a list of even numbers using list comprehension.',
+        code: `fun main() {\n    val evenNumbers = (1..10).filter { it % 2 == 0 }\n    println(evenNumbers)\n}`
+    },
+    {
+        title: 'When Statement Example',
+        description: 'Using the "when" statement to check a variable\'s value.',
+        code: `fun main() {\n    val day = 3\n    when (day) {\n        1 -> println("Monday")\n        2 -> println("Tuesday")\n        3 -> println("Wednesday")\n        else -> println("Other day")\n    }\n}`
+    },
+    {
+        title: 'Recursive Function',
+        description: 'Calculating the factorial of a number using recursion.',
+        code: `fun factorial(n: Int): Int {\n    return if (n == 0) 1 else n * factorial(n - 1)\n}\nfun main() {\n    println(factorial(5))\n}`
+    },
+    {
+        title: 'Dictionary Example',
+        description: 'Creating a map and accessing its values.',
+        code: `fun main() {\n    val phoneBook = mapOf("Alice" to "123-4567", "Bob" to "987-6543")\n    println(phoneBook["Alice"])\n}`
+    },
+    {
+        title: 'Try-Catch Error Handling',
+        description: 'Using "try-catch" to handle division by zero.',
+        code: `fun main() {\n    try {\n        println(10 / 0)\n    } catch (e: ArithmeticException) {\n        println("Error: Division by zero")\n    }\n}`
+    },
+    {
+        title: 'Sorting a List',
+        description: 'Sorting a list of numbers in ascending order.',
+        code: `fun main() {\n    val numbers = listOf(5, 2, 8, 1, 3)\n    println(numbers.sorted())\n}`
+    },
+    {
+        title: 'Lambda Functions',
+        description: 'Using a lambda function to filter a list.',
+        code: `fun main() {\n    val numbers = listOf(1, 2, 3, 4, 5)\n    val evenNumbers = numbers.filter { it % 2 == 0 }\n    println(evenNumbers)\n}`
+    },
+    {
+        title: 'Set Operations',
+        description: 'Performing union, intersection, and difference on sets.',
+        code: `fun main() {\n    val set1 = setOf(1, 2, 3)\n    val set2 = setOf(3, 4, 5)\n    println("Union: ${set1.union(set2)}")\n    println("Intersection: ${set1.intersect(set2)}")\n}`
+    },
+    {
+        title: 'Anonymous Function',
+        description: 'Using an anonymous function to double the numbers in a list.',
+        code: `fun main() {\n    val doubled = listOf(1, 2, 3).map(fun(x) = x * 2)\n    println(doubled)\n}`
+    }
+
+    ];
+} else if (section === 'advanced') {
+    document.querySelector("#basic").style.backgroundColor = "";
+    document.querySelector("#medium").style.backgroundColor = "";
+    document.querySelector("#advanced").style.backgroundColor = "green";
+    sectionIntro = `<h1>Kotlin Advanced</h1><p>Explore advanced Kotlin concepts with examples...</p>`;
+    topics = [
+    {
+        title: 'Higher-Order Function',
+        description: 'Passing a function as an argument to another function.',
+        code: `fun applyTwice(f: (Int) -> Int, x: Int): Int {\n    return f(f(x))\n}\nfun main() {\n    println(applyTwice({ it + 2 }, 3))\n}`
+    },
+    {
+        title: 'Extension Function',
+        description: 'Creating an extension function for the String class.',
+        code: `fun String.reverse(): String {\n    return this.reversed()\n}\nfun main() {\n    println("Kotlin".reverse())\n}`
+    },
+    {
+        title: 'Working with Files',
+        description: 'Reading from and writing to a text file.',
+        code: `import java.io.File\nfun main() {\n    File("example.txt").writeText("Hello, Kotlin!")\n    println(File("example.txt").readText())\n}`
+    },
+    {
+        title: 'Data Class Example',
+        description: 'Using a data class to store user information.',
+        code: `data class User(val name: String, val age: Int)\nfun main() {\n    val user = User("Alice", 25)\n    println(user)\n}`
+    },
+    {
+        title: 'Coroutines Example',
+        description: 'Running a coroutine in Kotlin.',
+        code: `import kotlinx.coroutines.*\nfun main() = runBlocking {\n    launch {\n        delay(1000L)\n        println("Coroutine!")\n    }\n    println("Hello,")\n}`
+    }
+    ];
+} -->

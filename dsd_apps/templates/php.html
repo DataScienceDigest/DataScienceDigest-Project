@@ -233,21 +233,57 @@
               document.querySelector("#medium").style.backgroundColor = "";
               sectionIntro = `<h1>PHP Basics</h1><p>Learn the basics of PHP with examples...</p>`;
               topics = [
-                  {
-                      title: 'Hello World Example',
-                      description: 'The simplest PHP program that prints "Hello, World!".',
-                      code: `<?php\n\necho "Hello, World!";\n?>`
-                  },
-                  {
-                      title: 'Basic For Loop',
-                      description: 'A "for" loop in PHP, printing numbers from 0 to 4.',
-                      code: `<?php\nfor ($i = 0; $i < 5; $i++) {\n    echo "Number " . $i . "\\n";\n}\n?>`
-                  },
-                  {
-                      title: 'Basic If-Else Condition',
-                      description: 'Checking if a number is greater than 5.',
-                      code: `<?php\n$number = 10;\nif ($number > 5) {\n    echo "Number is greater than 5";\n} else {\n    echo "Number is less than or equal to 5";\n}\n?>`
-                  }
+                {
+                    title: 'Hello World Example',
+                    description: 'The simplest PHP program that prints "Hello, World!".',
+                    code: `<?php\n echo "Hello, World!";\n?>`
+                },
+                {
+                    title: 'Variable Declaration',
+                    description: 'Declaring and printing variables in PHP.',
+                    code: `<?php\n $name = "Alice";\n $age = 25;\n echo "Name: $name, Age: $age";\n?>`
+                },
+                {
+                    title: 'Basic Arithmetic Operations',
+                    description: 'Performing addition, subtraction, multiplication, and division.',
+                    code: `<?php\n $a = 10;\n $b = 5;\n echo "Add: " . ($a + $b) . "\\n";\n echo "Subtract: " . ($a - $b) . "\\n";\n echo "Multiply: " . ($a * $b) . "\\n";\n echo "Divide: " . ($a / $b) . "\\n";\n?>`
+                },
+                {
+                    title: 'Basic If-Else Condition',
+                    description: 'Checking if a number is even or odd.',
+                    code: `<?php\n $number = 7;\n if ($number % 2 == 0) {\n     echo "Even";\n } else {\n     echo "Odd";\n }\n?>`
+                },
+                {
+                    title: 'Basic For Loop',
+                    description: 'A "for" loop in PHP, printing numbers from 1 to 5.',
+                    code: `<?php\n for ($i = 1; $i <= 5; $i++) {\n     echo "Number: $i\\n";\n }\n?>`
+                },
+                {
+                    title: 'While Loop Example',
+                    description: 'Printing numbers from 1 to 5 using a "while" loop.',
+                    code: `<?php\n $i = 1;\n while ($i <= 5) {\n     echo "$i\\n";\n     $i++;\n }\n?>`
+                },
+                {
+                    title: 'Simple Function',
+                    description: 'Defining and calling a function to add two numbers.',
+                    code: `<?php\n function add($a, $b) {\n     return $a + $b;\n }\n echo "Sum: " . add(3, 4);\n?>`
+                },
+                {
+                    title: 'Array Example',
+                    description: 'Creating an array and accessing its elements.',
+                    code: `<?php\n $fruits = array("Apple", "Banana", "Cherry");\n echo $fruits[0] . "\\n";\n echo $fruits[2] . "\\n";\n?>`
+                },
+                {
+                    title: 'Associative Array',
+                    description: 'Creating an associative array and accessing its values.',
+                    code: `<?php\n $phone_book = array("Alice" => "123-4567", "Bob" => "987-6543");\n echo "Alice's number: " . $phone_book['Alice'];\n?>`
+                },
+                {
+                    title: 'String Concatenation',
+                    description: 'Concatenating strings using the "." operator.',
+                    code: `<?php\n $greet = "Hello";\n $name = "John";\n echo $greet . ", " . $name . "!";\n?>`
+                }
+
               ];
           } else if (section === 'medium') {
               document.querySelector("#basic").style.backgroundColor = "";
@@ -255,16 +291,56 @@
               document.querySelector("#medium").style.backgroundColor = "green";
               sectionIntro = `<h1>PHP Medium</h1><p>Learn medium level PHP with examples...</p>`;
               topics = [
-                  {
-                      title: 'Using Arrays',
-                      description: 'Creating and modifying an array in PHP.',
-                      code: `<?php\n$numbers = [1, 2, 3];\narray_push($numbers, 4, 5);\necho "Numbers: " . implode(", ", $numbers);\n?>`
-                  },
-                  {
-                      title: 'Basic String Operations',
-                      description: 'Concatenating strings in PHP.',
-                      code: `<?php\n$s = "Hello";\n$s .= ", world!";\necho $s;\n?>`
-                  }
+                {
+                    title: 'Using the Array Map Function',
+                    description: 'Applying a function to each element of an array using "array_map".',
+                    code: `<?php\n $numbers = array(1, 2, 3, 4);\n $squares = array_map(fn($n) => $n * $n, $numbers);\n print_r($squares);\n?>`
+                },
+                {
+                    title: 'Array Filtering',
+                    description: 'Filtering even numbers from an array using "array_filter".',
+                    code: `<?php\n $nums = array(1, 2, 3, 4, 5, 6);\n $evens = array_filter($nums, fn($n) => $n % 2 == 0);\n print_r($evens);\n?>`
+                },
+                {
+                    title: 'Switch Statement Example',
+                    description: 'Using a "switch" statement to check a variable\'s value.',
+                    code: `<?php\n $day = 3;\n switch ($day) {\n     case 1: echo "Monday"; break;\n     case 2: echo "Tuesday"; break;\n     case 3: echo "Wednesday"; break;\n     default: echo "Other day";\n }\n?>`
+                },
+                {
+                    title: 'Recursive Function',
+                    description: 'Calculating the factorial of a number using recursion.',
+                    code: `<?php\n function factorial($n) {\n     return ($n == 0) ? 1 : $n * factorial($n - 1);\n }\n echo factorial(5);\n?>`
+                },
+                {
+                    title: 'Reading from a File',
+                    description: 'Reading content from a text file.',
+                    code: `<?php\n $file = fopen("sample.txt", "r");\n while (!feof($file)) {\n     echo fgets($file);\n }\n fclose($file);\n?>`
+                },
+                {
+                    title: 'Sorting an Array',
+                    description: 'Sorting an array of numbers in ascending order.',
+                    code: `<?php\n $nums = array(5, 3, 8, 1);\n sort($nums);\n print_r($nums);\n?>`
+                },
+                {
+                    title: 'Regular Expressions',
+                    description: 'Matching a pattern in a string using regex.',
+                    code: `<?php\n $text = "Hello, PHP!";\n if (preg_match("/PHP/", $text)) {\n     echo "Match found!";\n }\n?>`
+                },
+                {
+                    title: 'Handling GET Request',
+                    description: 'Handling a GET request in PHP.',
+                    code: `<?php\n if (isset($_GET['name'])) {\n     echo "Hello, " . htmlspecialchars($_GET['name']);\n }\n?>`
+                },
+                {
+                    title: 'Working with JSON',
+                    description: 'Encoding and decoding JSON data.',
+                    code: `<?php\n $data = array("name" => "Alice", "age" => 25);\n $json = json_encode($data);\n echo $json;\n?>`
+                },
+                {
+                    title: 'Date and Time',
+                    description: 'Getting the current date and time.',
+                    code: `<?php\n echo "Current date and time: " . date("Y-m-d H:i:s");\n?>`
+                }
               ];
           } else if (section === 'advanced') {
               document.querySelector("#basic").style.backgroundColor = "";
@@ -272,16 +348,56 @@
               document.querySelector("#advanced").style.backgroundColor = "green";
               sectionIntro = `<h1>PHP Advanced</h1><p>Explore advanced PHP concepts with examples...</p>`;
               topics = [
-                  {
-                      title: 'Using Interfaces',
-                      description: 'Implementing interfaces for flexible functionality.',
-                      code: `<?php\ninterface Describer {\n    public function describe();\n}\nclass Product implements Describer {\n    private $name;\n    private $price;\n    public function __construct($name, $price) {\n        $this->name = $name;\n        $this->price = $price;\n    }\n    public function describe() {\n        return "$this->name costs $$this->price";\n    }\n}\n$product = new Product("Gadget", 29.99);\necho $product->describe();\n?>`
-                  },
-                  {
-                      title: 'Concurrency with Threads',
-                      description: 'Using PHP threads for concurrent programming.',
-                      code: `<?php\n// Example of threading in PHP using pthreads\n?>`
-                  }
+                {
+                    title: 'Higher-Order Function',
+                    description: 'Passing a function as an argument to another function.',
+                    code: `<?php\n function apply($func, $val) {\n     return $func($val);\n }\n echo apply(fn($x) => $x ** 2, 4);\n?>`
+                },
+                {
+                    title: 'Object-Oriented Programming',
+                    description: 'Creating a simple class and object in PHP.',
+                    code: `<?php\n class Animal {\n     public function speak() {\n         echo "Woof!";\n     }\n }\n $dog = new Animal();\n $dog->speak();\n?>`
+                },
+                {
+                    title: 'Reading Command-Line Arguments',
+                    description: 'Reading arguments passed from the command line.',
+                    code: `<?php\n $arg1 = $argv[1];\n echo "Argument: $arg1";\n?>`
+                },
+                {
+                    title: 'Using PDO for Database Connection',
+                    description: 'Connecting to a MySQL database using PDO.',
+                    code: `<?php\n try {\n     $pdo = new PDO("mysql:host=localhost;dbname=test", "user", "password");\n     echo "Connected!";\n } catch (PDOException $e) {\n     echo "Connection failed: " . $e->getMessage();\n }\n?>`
+                },
+                {
+                    title: 'Exception Handling',
+                    description: 'Using try-catch blocks to handle exceptions.',
+                    code: `<?php\n try {\n     throw new Exception("Error occurred!");\n } catch (Exception $e) {\n     echo $e->getMessage();\n }\n?>`
+                },
+                {
+                    title: 'Curl Request',
+                    description: 'Sending an HTTP GET request using cURL.',
+                    code: `<?php\n $ch = curl_init("https://api.example.com/data");\n curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);\n $response = curl_exec($ch);\n curl_close($ch);\n echo $response;\n?>`
+                },
+                {
+                    title: 'Working with Sessions',
+                    description: 'Starting a session and storing session variables.',
+                    code: `<?php\n session_start();\n $_SESSION['username'] = "Alice";\n echo "Session set: " . $_SESSION['username'];\n?>`
+                },
+                {
+                    title: 'Working with Files and Directories',
+                    description: 'Creating a directory and writing a file in it.',
+                    code: `<?php\n mkdir("new_folder");\n file_put_contents("new_folder/hello.txt", "Hello, File!");\n?>`
+                },
+                {
+                    title: 'Creating Threads using Pthreads',
+                    description: 'Creating a thread in PHP (requires pthreads extension).',
+                    code: `<?php\n class MyThread extends Thread {\n     public function run() {\n         echo "Thread running\\n";\n     }\n }\n $thread = new MyThread();\n $thread->start();\n?>`
+                },
+                {
+                    title: 'Using Traits in PHP',
+                    description: 'Using traits to reuse code in multiple classes.',
+                    code: `<?php\n trait Logger {\n     public function log($msg) {\n         echo "Log: $msg";\n     }\n }\n class User {\n     use Logger;\n }\n $user = new User();\n $user->log("Hello, Traits!");\n?>`
+                }
               ];
           }
   

@@ -232,21 +232,56 @@
                 document.querySelector("#medium").style.backgroundColor = "";
                 sectionIntro = `<h1>R Basics</h1><p>Learn the basics of R with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Hello World Example',
-                        description: 'The simplest R program that prints "Hello, World!".',
-                        code: `print("Hello, World!")`
-                    },
-                    {
-                        title: 'Basic For Loop',
-                        description: 'A "for" loop in R, printing numbers from 1 to 5.',
-                        code: `for (i in 1:5) {\n    print(i)\n}`
-                    },
-                    {
-                        title: 'Basic If-Else Condition',
-                        description: 'Checking if a number is greater than 5.',
-                        code: `number <- 10\nif (number > 5) {\n    print("Number is greater than 5")\n} else {\n    print("Number is less than or equal to 5")\n}`
-                    }
+                {
+                    title: 'Hello World Example',
+                    description: 'The simplest R program that prints "Hello, World!".',
+                    code: `print("Hello, World!")`
+                },
+                {
+                    title: 'Variable Assignment',
+                    description: 'Assigning values to variables in R.',
+                    code: `name <- "Alice"\nage <- 25\nprint(paste("Name:", name, "Age:", age))`
+                },
+                {
+                    title: 'Basic Arithmetic Operations',
+                    description: 'Performing addition, subtraction, multiplication, and division.',
+                    code: `a <- 10\nb <- 5\ncat("Add:", a + b, "\nSubtract:", a - b, "\nMultiply:", a * b, "\nDivide:", a / b)`
+                },
+                {
+                    title: 'Basic If-Else Condition',
+                    description: 'Checking if a number is even or odd.',
+                    code: `number <- 7\nif (number %% 2 == 0) {\n  print("Even")\n} else {\n  print("Odd")\n}`
+                },
+                {
+                    title: 'Basic For Loop',
+                    description: 'A "for" loop in R, printing numbers from 1 to 5.',
+                    code: `for (i in 1:5) {\n  print(paste("Number:", i))\n}`
+                },
+                {
+                    title: 'While Loop Example',
+                    description: 'Printing numbers from 1 to 5 using a "while" loop.',
+                    code: `i <- 1\nwhile (i <= 5) {\n  print(i)\n  i <- i + 1\n}`
+                },
+                {
+                    title: 'Simple Function',
+                    description: 'Defining and calling a function to add two numbers.',
+                    code: `add <- function(a, b) {\n  return(a + b)\n}\nprint(add(3, 4))`
+                },
+                {
+                    title: 'Creating a Vector',
+                    description: 'Creating a vector and accessing its elements.',
+                    code: `fruits <- c("Apple", "Banana", "Cherry")\nprint(fruits[1])\nprint(fruits[3])`
+                },
+                {
+                    title: 'Creating a List',
+                    description: 'Creating a list and accessing its elements.',
+                    code: `person <- list(name = "Alice", age = 25)\nprint(person$name)\nprint(person$age)`
+                },
+                {
+                    title: 'String Concatenation',
+                    description: 'Concatenating strings using "paste()" function.',
+                    code: `greet <- "Hello"\nname <- "John"\nprint(paste(greet, name, "!"))`
+                }
                 ];
             } else if (section === 'medium') {
                 document.querySelector("#basic").style.backgroundColor = "";
@@ -254,33 +289,113 @@
                 document.querySelector("#medium").style.backgroundColor = "green";
                 sectionIntro = `<h1>R Medium</h1><p>Learn the medium level of R with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Using Vectors',
-                        description: 'Creating and modifying a vector in R.',
-                        code: `numbers <- c(1, 2, 3)\nnumbers <- c(numbers, 4, 5)\nprint(numbers)`
-                    },
-                    {
-                        title: 'Basic String Operations',
-                        description: 'Concatenating strings in R.',
-                        code: `s <- "Hello"\ns <- paste(s, "world!")\nprint(s)`
-                    }
+                {
+                    title: 'Using the Apply Function',
+                    description: 'Applying a function to each element of a matrix using "apply()".',
+                    code: `matrix_data <- matrix(1:9, nrow = 3)\nresult <- apply(matrix_data, 1, sum)\nprint(result)`
+                },
+                {
+                    title: 'Filtering Vectors',
+                    description: 'Filtering even numbers from a vector using "subset()".',
+                    code: `nums <- c(1, 2, 3, 4, 5, 6)\nevens <- subset(nums, nums %% 2 == 0)\nprint(evens)`
+                },
+                {
+                    title: 'Switch Statement Example',
+                    description: 'Using a "switch" statement to check a variable\'s value.',
+                    code: `day <- 3\nswitch(day, "Monday", "Tuesday", "Wednesday", "Other day")`
+                },
+                {
+                    title: 'Recursive Function',
+                    description: 'Calculating the factorial of a number using recursion.',
+                    code: `factorial <- function(n) {\n  if (n == 0) return(1)\n  return(n * factorial(n - 1))\n}\nprint(factorial(5))`
+                },
+                {
+                    title: 'Reading CSV File',
+                    description: 'Reading data from a CSV file using "read.csv()".',
+                    code: `data <- read.csv("sample.csv")\nprint(head(data))`
+                },
+                {
+                    title: 'Sorting a Vector',
+                    description: 'Sorting a vector of numbers in ascending order.',
+                    code: `nums <- c(5, 3, 8, 1)\nprint(sort(nums))`
+                },
+                {
+                    title: 'Regular Expressions',
+                    description: 'Matching a pattern in a string using "grep()".',
+                    code: `text <- c("apple", "banana", "cherry")\nprint(grep("a", text))`
+                },
+                {
+                    title: 'Handling User Input',
+                    description: 'Reading user input from the console.',
+                    code: `name <- readline(prompt = "Enter your name: ")\nprint(paste("Hello,", name))`
+                },
+                {
+                    title: 'Working with JSON',
+                    description: 'Parsing JSON data using "jsonlite" library.',
+                    code: `library(jsonlite)\ndata <- '{"name": "Alice", "age": 25}'\nparsed <- fromJSON(data)\nprint(parsed)`
+                },
+                {
+                    title: 'Date and Time',
+                    description: 'Getting the current date and time using "Sys.time()".',
+                    code: `print(Sys.time())`
+                }
                 ];
             } else if (section === 'advanced') {
                 document.querySelector("#basic").style.backgroundColor = "";
                 document.querySelector("#medium").style.backgroundColor = "";
                 document.querySelector("#advanced").style.backgroundColor = "green";
                 sectionIntro = `<h1>R Advanced</h1><p>Explore advanced R concepts with examples...</p>`;
-                topics = [
-                    {
-                        title: 'Using Functions',
-                        description: 'Defining and using functions in R.',
-                        code: `myFunction <- function(x) {\n    return(x * 2)\n}\nresult <- myFunction(10)\nprint(result)`
-                    },
-                    {
-                        title: 'Data Frames and Plotting',
-                        description: 'Creating a data frame and plotting data in R.',
-                        code: `df <- data.frame(x = 1:10, y = rnorm(10))\nplot(df$x, df$y)`
-                    }
+                topics = [    
+                {
+                    title: 'Higher-Order Function',
+                    description: 'Passing a function as an argument to another function.',
+                    code: `apply_func <- function(func, val) {\n  return(func(val))\n}\nprint(apply_func(function(x) x^2, 4))`
+                },
+                {
+                    title: 'Object-Oriented Programming',
+                    description: 'Creating a simple S3 class and method in R.',
+                    code: `person <- function(name, age) {\n  list(name = name, age = age, class = "person")\n}\nprint.person <- function(obj) {\n  cat("Name:", obj$name, "Age:", obj$age, "\\n")\n}\np <- person("Alice", 30)\nprint(p)`
+                },
+                {
+                    title: 'Reading Command-Line Arguments',
+                    description: 'Reading arguments passed from the command line.',
+                    code: `args <- commandArgs(trailingOnly = TRUE)\nprint(args)`
+                },
+                {
+                    title: 'Connecting to a MySQL Database',
+                    description: 'Connecting to a MySQL database using "RMySQL" package.',
+                    code: `library(RMySQL)\nconn <- dbConnect(MySQL(), user = 'root', password = '', dbname = 'test', host = 'localhost')\nprint("Connected!")\ndbDisconnect(conn)`
+                },
+                {
+                    title: 'Exception Handling',
+                    description: 'Using "tryCatch()" to handle exceptions.',
+                    code: `result <- tryCatch({\n  log(-1)\n}, warning = function(w) {\n  print("Warning:"); print(w)\n}, error = function(e) {\n  print("Error:"); print(e)\n})`
+                },
+                {
+                    title: 'HTTP Requests using httr',
+                    description: 'Sending a GET request using the "httr" package.',
+                    code: `library(httr)\nresponse <- GET("https://api.example.com/data")\nprint(content(response, "text"))`
+                },
+                {
+                    title: 'Working with S4 Classes',
+                    description: 'Creating and using S4 classes in R.',
+                    code: `setClass("Person", slots = list(name = "character", age = "numeric"))\np <- new("Person", name = "John", age = 25)\nprint(p)`
+                },
+                {
+                    title: 'Parallel Processing',
+                    description: 'Using the "parallel" package for parallel computation.',
+                    code: `library(parallel)\nsum_parallel <- mclapply(1:5, function(x) x^2, mc.cores = 2)\nprint(sum_parallel)`
+                },
+                {
+                    title: 'Data Visualization with ggplot2',
+                    description: 'Creating a bar plot using the "ggplot2" package.',
+                    code: `library(ggplot2)\ndata <- data.frame(category = c("A", "B", "C"), values = c(10, 15, 7))\nggplot(data, aes(x = category, y = values)) + geom_bar(stat = "identity")`
+                },
+                {
+                    title: 'Using R Shiny for Web Apps',
+                    description: 'Creating a basic R Shiny web app.',
+                    code: `library(shiny)\nui <- fluidPage(titlePanel("Hello Shiny"))\nserver <- function(input, output) {}\nshinyApp(ui, server)`
+                }
                 ];
             }
     

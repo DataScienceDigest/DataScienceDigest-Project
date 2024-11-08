@@ -235,21 +235,56 @@
                 document.querySelector("#medium").style.backgroundColor = "";
                 sectionIntro = `<h1>Swift Basics</h1><p>Learn the basics of Swift with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Hello World Example',
-                        description: 'The simplest Swift program that prints "Hello, World!".',
-                        code: `import Foundation\n\nprint("Hello, World!")`
-                    },
-                    {
-                        title: 'Basic For Loop',
-                        description: 'A "for" loop in Swift, printing numbers from 0 to 4.',
-                        code: `for i in 0..<5 {\n    print("Number", i)\n}`
-                    },
-                    {
-                        title: 'Basic If-Else Condition',
-                        description: 'Checking if a number is greater than 5.',
-                        code: `let number = 10\nif number > 5 {\n    print("Number is greater than 5")\n} else {\n    print("Number is less than or equal to 5")\n}`
-                    }
+                {
+                    title: 'Print Statement',
+                    description: 'Display a simple message in the console.',
+                    code: `print("Hello, World!")`
+                },
+                {
+                    title: 'Variable Declaration',
+                    description: 'Declare and assign a variable.',
+                    code: `var message = "Hello, Swift!"`
+                },
+                {
+                    title: 'Constant Declaration',
+                    description: 'Declare a constant and assign a value.',
+                    code: `let pi = 3.14159`
+                },
+                {
+                    title: 'String Interpolation',
+                    description: 'Combine variables with text in a string.',
+                    code: `let name = "John"; print("Hello, \\(name)!")`
+                },
+                {
+                    title: 'Basic Arithmetic',
+                    description: 'Perform basic arithmetic operations.',
+                    code: `let result = 5 + 3 * 2`
+                },
+                {
+                    title: 'If Statement',
+                    description: 'Use an if statement to check a condition.',
+                    code: `let age = 18; if age >= 18 { print("Adult") }`
+                },
+                {
+                    title: 'For Loop',
+                    description: 'Print numbers from 1 to 5 using a for loop.',
+                    code: `for i in 1...5 { print(i) }`
+                },
+                {
+                    title: 'While Loop',
+                    description: 'Use a while loop to count down from 5.',
+                    code: `var count = 5; while count > 0 { print(count); count -= 1 }`
+                },
+                {
+                    title: 'Functions',
+                    description: 'Create a simple function that returns a greeting message.',
+                    code: `func greet(name: String) -> String { return "Hello, \\(name)!" }`
+                },
+                {
+                    title: 'Array Declaration',
+                    description: 'Create and print an array of integers.',
+                    code: `let numbers = [1, 2, 3, 4, 5]; print(numbers)`
+                }
                 ];
             } else if (section === 'medium') {
                 document.querySelector("#basic").style.backgroundColor = "";
@@ -257,16 +292,57 @@
                 document.querySelector("#medium").style.backgroundColor = "green";
                 sectionIntro = `<h1>Swift Medium</h1><p>Learn the medium level of Swift with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Using Arrays',
-                        description: 'Creating and modifying an array in Swift.',
-                        code: `var numbers = [1, 2, 3]\nnumbers.append(4)\nprint("Numbers:", numbers)`
-                    },
-                    {
-                        title: 'String Interpolation',
-                        description: 'Combining strings with variables in Swift.',
-                        code: `let name = "World"\nprint("Hello, \\(name)!")`
-                    }
+                {
+                    title: 'Optional Binding',
+                    description: 'Safely unwrap an optional using if let.',
+                    code: `var name: String? = "Swift"; if let unwrappedName = name { print("Hello, \\(unwrappedName)") }`
+                },
+                {
+                    title: 'Switch Statement',
+                    description: 'Use a switch statement to print different messages based on a number.',
+                    code: `let number = 3; switch number { case 1: print("One"); case 2: print("Two"); default: print("Other") }`
+                },
+                {
+                    title: 'Dictionary Declaration',
+                    description: 'Create a dictionary and retrieve a value.',
+                    code: `let scores = ["Alice": 95, "Bob": 85]; print(scores["Alice"]!)`
+                },
+                {
+                    title: 'Enumerations',
+                    description: 'Define and use an enum with associated values.',
+                    code: `enum Direction { case north, south, east, west }; let direction = Direction.north`
+                },
+                {
+                    title: 'Struct Definition',
+                    description: 'Create a struct with properties and a method.',
+                    code: `struct Car { var make: String; func drive() { print("Driving \\(make)") } }`
+                },
+                {
+                    title: 'Class Definition',
+                    description: 'Create a class with properties and methods.',
+                    code: `class Person { var name: String; init(name: String) { self.name = name } func greet() { print("Hello, \\(name)") } }`
+                },
+                {
+                    title: 'Guard Statement',
+                    description: 'Use a guard statement to ensure a condition is met.',
+                    code: `func checkAge(_ age: Int) { guard age >= 18 else { print("Underage"); return }; print("Adult") }`
+                },
+                {
+                    title: 'Computed Properties',
+                    description: 'Create a computed property in a struct.',
+                    code: `struct Rectangle { var width = 10.0; var height = 5.0; var area: Double { return width * height } }`
+                },
+                {
+                    title: 'Closure Syntax',
+                    description: 'Define and use a simple closure.',
+                    code: `let greet = { (name: String) -> String in return "Hello, \\(name)!" }; print(greet("Swift"))`
+                },
+                {
+                    title: 'Error Handling',
+                    description: 'Use do-catch to handle errors in a function.',
+                    code: `enum DivisionError: Error { case divideByZero }; func divide(_ a: Int, _ b: Int) throws -> Int { guard b != 0 else { throw DivisionError.divideByZero }; return a / b }`
+                }
+
                 ];
             } else if (section === 'advanced') {
                 document.querySelector("#basic").style.backgroundColor = "";
@@ -274,16 +350,57 @@
                 document.querySelector("#advanced").style.backgroundColor = "green";
                 sectionIntro = `<h1>Swift Advanced</h1><p>Explore advanced Swift concepts with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Using Protocols',
-                        description: 'Implementing protocols for flexible functionality.',
-                        code: `protocol Describable {\n    func describe() -> String\n}\n\nstruct Product: Describable {\n    var name: String\n    var price: Double\n    func describe() -> String {\n        return "\\(name) costs $\\(price)"\n    }\n}\n\nlet item = Product(name: "Gadget", price: 29.99)\nprint(item.describe())`
-                    },
-                    {
-                        title: 'Concurrency with async/await',
-                        description: 'Using concurrency with async/await in Swift.',
-                        code: `import Foundation\n\nfunc asyncPrint() async {\n    for _ in 1...3 {\n        print("Hello from async")\n        try? await Task.sleep(nanoseconds: 500_000_000)\n    }\n}\n\nTask {\n    await asyncPrint()\n    print("Main function")\n}`
-                    }
+                {
+                    title: 'Protocol Definition',
+                    description: 'Create and implement a protocol.',
+                    code: `protocol Greetable { func greet() }; class Friend: Greetable { func greet() { print("Hello!") } }`
+                },
+                {
+                    title: 'Protocol Extensions',
+                    description: 'Extend a protocol to add default implementation.',
+                    code: `protocol Greetable { func greet() }; extension Greetable { func greet() { print("Hello!") } }`
+                },
+                {
+                    title: 'Generics',
+                    description: 'Create a generic function that swaps two values.',
+                    code: `func swapValues<T>(_ a: inout T, _ b: inout T) { let temp = a; a = b; b = temp }`
+                },
+                {
+                    title: 'Type Casting',
+                    description: 'Use type casting to handle different types in an array.',
+                    code: `let items: [Any] = ["Hello", 42, 3.14]; for item in items { if let integer = item as? Int { print("Integer: \\(integer)") } }`
+                },
+                {
+                    title: 'Extensions',
+                    description: 'Add a method to an existing type using an extension.',
+                    code: `extension Int { func squared() -> Int { return self * self } }; print(5.squared())`
+                },
+                {
+                    title: 'Custom Initializers',
+                    description: 'Create a struct with a custom initializer.',
+                    code: `struct Person { var name: String; init(name: String = "Anonymous") { self.name = name } }`
+                },
+                {
+                    title: 'Lazy Properties',
+                    description: 'Use a lazy property to defer initialization.',
+                    code: `class DataLoader { lazy var data: [String] = { return ["Data1", "Data2"] }() }`
+                },
+                {
+                    title: 'Memory Management with Weak References',
+                    description: 'Use weak references to prevent strong reference cycles.',
+                    code: `class Person { var name: String; init(name: String) { self.name = name } }; class Car { weak var owner: Person? }`
+                },
+                {
+                    title: 'Nested Functions',
+                    description: 'Define and use a function within another function.',
+                    code: `func outerFunction() { func innerFunction() { print("Hello from inner function") }; innerFunction() }`
+                },
+                {
+                    title: 'Async Functions with Task',
+                    description: 'Run asynchronous code using Swift’s Task.',
+                    code: `func fetchData() async { print("Fetching data...") }; Task { await fetchData() }`
+                }
+
                 ];
             }
     

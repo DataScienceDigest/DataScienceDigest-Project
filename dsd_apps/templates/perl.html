@@ -235,21 +235,57 @@
                 document.querySelector("#medium").style.backgroundColor = "";
                 sectionIntro = `<h1>Perl Basics</h1><p>Learn the basics of Perl with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Hello World Example',
-                        description: 'The simplest Perl program that prints "Hello, World!".',
-                        code: `print "Hello, World!\\n";`
-                    },
-                    {
-                        title: 'Basic For Loop',
-                        description: 'A "for" loop in Perl, printing numbers from 1 to 5.',
-                        code: `for (my $i = 1; $i <= 5; $i++) {\n    print "Number: $i\\n";\n}`
-                    },
-                    {
-                        title: 'Basic If-Else Condition',
-                        description: 'Checking if a number is greater than 5.',
-                        code: `my $number = 10;\nif ($number > 5) {\n    print "Number is greater than 5\\n";\n} else {\n    print "Number is 5 or less\\n";\n}`
-                    }
+                {
+                    title: 'Hello World Example',
+                    description: 'The simplest Perl program that prints "Hello, World!".',
+                    code: `print "Hello, World!\\n";`
+                },
+                {
+                    title: 'Variable Declaration',
+                    description: 'Declaring and printing scalar variables in Perl.',
+                    code: `my $name = "Alice";\nmy $age = 25;\nprint "Name: $name, Age: $age\\n";`
+                },
+                {
+                    title: 'Basic Arithmetic Operations',
+                    description: 'Performing addition, subtraction, multiplication, and division.',
+                    code: `my $a = 10;\nmy $b = 5;\nprint "Add: ", $a + $b, "\\n";\nprint "Subtract: ", $a - $b, "\\n";\nprint "Multiply: ", $a * $b, "\\n";\nprint "Divide: ", $a / $b, "\\n";`
+                },
+                {
+                    title: 'Basic If-Else Condition',
+                    description: 'Checking if a number is even or odd.',
+                    code: `my $number = 7;\nif ($number % 2 == 0) {\n    print "Even\\n";\n} else {\n    print "Odd\\n";\n}`
+                },
+                {
+                    title: 'Basic For Loop',
+                    description: 'A "for" loop in Perl, printing numbers from 1 to 5.',
+                    code: `for (my $i = 1; $i <= 5; $i++) {\n    print "Number: $i\\n";\n}`
+                },
+                {
+                    title: 'While Loop Example',
+                    description: 'Printing numbers from 1 to 5 using a "while" loop.',
+                    code: `my $i = 1;\nwhile ($i <= 5) {\n    print "$i\\n";\n    $i++;\n}`
+                },
+                {
+                    title: 'Simple Function',
+                    description: 'Defining and calling a function to add two numbers.',
+                    code: `sub add {\n    my ($a, $b) = @_;\n    return $a + $b;\n}\nprint "Sum: ", add(3, 4), "\\n";`
+                },
+                {
+                    title: 'Array Example',
+                    description: 'Creating an array and accessing its elements.',
+                    code: `my @fruits = ("Apple", "Banana", "Cherry");\nprint "$fruits[0]\\n";\nprint "$fruits[2]\\n";`
+                },
+                {
+                    title: 'Hash Example',
+                    description: 'Creating a hash and accessing its values.',
+                    code: `my %phone_book = ("Alice" => "123-4567", "Bob" => "987-6543");\nprint "Alice's number: $phone_book{'Alice'}\\n";`
+                },
+                {
+                    title: 'String Concatenation',
+                    description: 'Concatenating strings using the "." operator.',
+                    code: `my $greet = "Hello";\nmy $name = "John";\nprint $greet . ", " . $name . "!\\n";`
+                }
+
                 ];
             } else if (section === 'medium') {
                 document.querySelector("#basic").style.backgroundColor = "";
@@ -257,16 +293,57 @@
                 document.querySelector("#medium").style.backgroundColor = "green";
                 sectionIntro = `<h1>Perl Medium</h1><p>Learn intermediate Perl with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Using Arrays',
-                        description: 'Creating and manipulating an array in Perl.',
-                        code: `my @array = (1, 2, 3, 4, 5);\npush(@array, 6);\nprint "Array: @array\\n";`
-                    },
-                    {
-                        title: 'String Concatenation',
-                        description: 'Concatenating strings in Perl.',
-                        code: `my $greeting = "Hello";\n$greeting .= ", world!";\nprint "$greeting\\n";`
-                    }
+                {
+                    title: 'Using the Map Function',
+                    description: 'Applying a function to each element of an array using "map".',
+                    code: `my @numbers = (1, 2, 3, 4);\nmy @squares = map { $_ * $_ } @numbers;\nprint "@squares\\n";`
+                },
+                {
+                    title: 'Array Filtering',
+                    description: 'Filtering even numbers from an array.',
+                    code: `my @nums = (1, 2, 3, 4, 5, 6);\nmy @evens = grep { $_ % 2 == 0 } @nums;\nprint "@evens\\n";`
+                },
+                {
+                    title: 'Switch Statement Example',
+                    description: 'Using a "given-when" statement to check a variable\'s value.',
+                    code: `use feature 'switch';\nmy $day = 3;\ngiven($day) {\n    when(1) { print "Monday\\n"; }\n    when(2) { print "Tuesday\\n"; }\n    when(3) { print "Wednesday\\n"; }\n    default { print "Other day\\n"; }\n}`
+                },
+                {
+                    title: 'Recursive Function',
+                    description: 'Calculating the factorial of a number using recursion.',
+                    code: `sub factorial {\n    my ($n) = @_;\n    return 1 if $n == 0;\n    return $n * factorial($n - 1);\n}\nprint factorial(5), "\\n";`
+                },
+                {
+                    title: 'Reading from a File',
+                    description: 'Reading content from a text file.',
+                    code: `open(my $fh, '<', 'sample.txt') or die "Cannot open file: $!";\nwhile (my $line = <$fh>) {\n    print $line;\n}\nclose($fh);`
+                },
+                {
+                    title: 'Sorting an Array',
+                    description: 'Sorting an array of numbers in ascending order.',
+                    code: `my @nums = (5, 3, 8, 1);\nmy @sorted = sort { $a <=> $b } @nums;\nprint "@sorted\\n";`
+                },
+                {
+                    title: 'Regular Expressions',
+                    description: 'Matching a pattern in a string using regex.',
+                    code: `my $text = "Hello, Perl!";\nif ($text =~ /Perl/) {\n    print "Match found!\\n";\n}`
+                },
+                {
+                    title: 'Subroutine with Arguments',
+                    description: 'Passing arguments to a subroutine.',
+                    code: `sub greet {\n    my ($name) = @_;\n    print "Hello, $name!\\n";\n}\ngreet("Alice");`
+                },
+                {
+                    title: 'Hash Operations',
+                    description: 'Adding and deleting elements in a hash.',
+                    code: `my %data = (A => 1, B => 2);\n$data{C} = 3;\ndelete $data{B};\nprint "$_ => $data{$_}\\n" for keys %data;`
+                },
+                {
+                    title: 'Anonymous Function',
+                    description: 'Using an anonymous function to double the numbers in an array.',
+                    code: `my $double = sub { $_[0] * 2 };\nprint $double->(5), "\\n";`
+                }
+
                 ];
             } else if (section === 'advanced') {
                 document.querySelector("#basic").style.backgroundColor = "";
@@ -274,16 +351,56 @@
                 document.querySelector("#advanced").style.backgroundColor = "green";
                 sectionIntro = `<h1>Perl Advanced</h1><p>Explore advanced Perl concepts with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Subroutines',
-                        description: 'Creating and using subroutines in Perl.',
-                        code: `sub greet {\n    my ($name) = @_;\n    print "Hello, $name!\\n";\n}\ngreet("Alice");`
-                    },
-                    {
-                        title: 'File Handling',
-                        description: 'Reading a file line by line in Perl.',
-                        code: `open(my $fh, '<', 'example.txt') or die "Could not open file!";\nwhile (my $line = <$fh>) {\n    print $line;\n}\nclose($fh);`
-                    }
+                {
+                    title: 'Higher-Order Function',
+                    description: 'Passing a function as an argument to another function.',
+                    code: `sub apply {\n    my ($func, $val) = @_;\n    return $func->($val);\n}\nprint apply(sub { $_[0] ** 2 }, 4), "\\n";`
+                },
+                {
+                    title: 'Object-Oriented Programming',
+                    description: 'Creating a simple class and object in Perl.',
+                    code: `package Animal;\nsub new { my $class = shift; return bless {}, $class; }\nsub speak { print "Woof!\\n"; }\nmy $dog = Animal->new();\n$dog->speak();`
+                },
+                {
+                    title: 'Reading Command-Line Arguments',
+                    description: 'Reading arguments passed from the command line.',
+                    code: `my $arg1 = $ARGV[0];\nprint "Argument: $arg1\\n";`
+                },
+                {
+                    title: 'Working with Modules',
+                    description: 'Using the "Math::Complex" module for complex numbers.',
+                    code: `use Math::Complex;\nmy $z = cplx(2, 3);\nprint "Complex number: $z\\n";`
+                },
+                {
+                    title: 'Exception Handling',
+                    description: 'Using "eval" to catch runtime errors.',
+                    code: `eval {\n    die "An error occurred!\\n";\n};\nprint "Error: $@" if $@;`
+                },
+                {
+                    title: 'Coroutines using Coro',
+                    description: 'Creating coroutines with the Coro module.',
+                    code: `use Coro;\nasync { print "Coroutine running\\n"; }->join();`
+                },
+                {
+                    title: 'Database Connection',
+                    description: 'Connecting to a SQLite database using DBI.',
+                    code: `use DBI;\nmy $dbh = DBI->connect("dbi:SQLite:dbname=test.db");\nprint "Connected!\\n";`
+                },
+                {
+                    title: 'File Handling with Locking',
+                    description: 'Writing to a file with exclusive lock.',
+                    code: `open(my $fh, '>', 'output.txt') or die $!;\nflock($fh, 2);\nprint $fh "Locked write\\n";\nclose($fh);`
+                },
+                {
+                    title: 'Forking Processes',
+                    description: 'Creating a child process using fork.',
+                    code: `if (my $pid = fork()) {\n    print "Parent process\\n";\n} else {\n    print "Child process\\n";\n}`
+                },
+                {
+                    title: 'Working with Threads',
+                    description: 'Creating and managing threads using threads module.',
+                    code: `use threads;\nmy $thr = threads->create(sub { print "Thread running\\n"; });\n$thr->join();`
+                }
                 ];
             }
     

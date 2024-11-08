@@ -376,56 +376,7 @@
     </div>
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="text-white mb-3">Quick Link</h4>
-                    <p><a class="text-light" href="about.html">About Us</a></p>
-                    <p><a class="text-light" href="contact.html">Contact Us</a></p>
-                    <p><a class="text-light" href="">Privacy Policy</a></p>
-                    <p><a class="text-light" href="">Terms & Condition</a></p>
-                    <p><a class="text-light" href="">FAQs & Help</a></p>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, Bangalore, Karnataka</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 8683045908</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>datasciencedigest.in@gmail.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="text-white mb-3">Subscribe to our Newsletter</h4>
-                    <p>Subscribe now and join our growing community of learners committed to lifelong education! </p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <form action="#">
-                            <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="email"
-                                placeholder="Your email" required>
-                            <button type="submit"
-                                class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2"><a
-                                    href="mailto:keertidvcorai@gmail.com">Subscribe</a></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="index.html">DataScienceDigest</a>, All Right Reserved.
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include 'footer.html' %}
     <!-- Footer End -->
     <script>
         const editors = {};
@@ -450,16 +401,57 @@
                 document.querySelector("#medium").style.backgroundColor = "";
                 sectionIntro = `<h1>HTML Basics</h1><p>Learn the basics of HTML with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Basic HTML Structure',
-                        description: 'A basic HTML structure with a heading.',
-                        code: `<!DOCTYPE html>\n<html>\n<head>\n    <title>Basic HTML</title>\n</head>\n<body>\n    <h1>Hello, World!</h1>\n</body>\n</html>`
-                    },
-                    {
-                        title: 'Simple HTML List',
-                        description: 'An example of an HTML unordered list.',
-                        code: `<ul>\n    <li>Item 1</li>\n    <li>Item 2</li>\n    <li>Item 3</li>\n</ul>`
-                    }
+                {
+                    title: 'HTML Paragraphs',
+                    description: 'An example of how to create paragraphs in HTML.',
+                    code: `<p>This is the first paragraph.</p>\n<p>This is the second paragraph.</p>`
+                },
+                {
+                    title: 'HTML Links',
+                    description: 'Creating a clickable link in HTML.',
+                    code: `<a href="https://www.example.com" target="_blank">Visit Example</a>`
+                },
+                {
+                    title: 'HTML Images',
+                    description: 'Embedding an image in an HTML page.',
+                    code: `<img src="https://via.placeholder.com/150" alt="Sample Image">`
+                },
+                {
+                    title: 'HTML Tables',
+                    description: 'A simple HTML table with headers and data rows.',
+                    code: `<table border="1">\n    <tr>\n        <th>Name</th>\n        <th>Age</th>\n    </tr>\n    <tr>\n        <td>Alice</td>\n        <td>24</td>\n    </tr>\n    <tr>\n        <td>Bob</td>\n        <td>30</td>\n    </tr>\n</table>`
+                },
+                {
+                    title: 'HTML Forms',
+                    description: 'A basic HTML form with text input and a submit button.',
+                    code: `<form>\n    <label for="name">Name:</label>\n    <input type="text" id="name" name="name">\n    <input type="submit" value="Submit">\n</form>`
+                },
+                {
+                    title: 'HTML Button',
+                    description: 'Creating a button element in HTML.',
+                    code: `<button onclick="alert('Button clicked!')">Click Me</button>`
+                },
+                {
+                    title: 'HTML Input Types',
+                    description: 'Demonstrating different input types in a form.',
+                    code: `<form>\n    <input type="text" placeholder="Text input">\n    <input type="email" placeholder="Email input">\n    <input type="password" placeholder="Password input">\n</form>`
+                },
+                {
+                    title: 'HTML Div and Span',
+                    description: 'Using div and span elements for layout and inline content.',
+                    code: `<div style="background-color: lightblue;">\n    <span style="color: red;">This is a span inside a div.</span>\n</div>`
+                },
+                {
+                    title: 'HTML Audio',
+                    description: 'Embedding an audio file with HTML.',
+                    code: `<audio controls>\n    <source src="audio.mp3" type="audio/mpeg">\n    Your browser does not support the audio element.\n</audio>`
+                },
+                {
+                    title: 'HTML Video',
+                    description: 'Embedding a video file with HTML.',
+                    code: `<video width="320" height="240" controls>\n    <source src="video.mp4" type="video/mp4">\n    Your browser does not support the video tag.\n</video>`
+                }
+
                 ];
             } else if (section === 'medium') {
                 document.querySelector("#medium").style.backgroundColor = "green";
@@ -467,16 +459,48 @@
                 document.querySelector("#advanced").style.backgroundColor = "";
                 sectionIntro = `<h1>Medium Level HTML</h1><p>Examples with CSS included...</p>`;
                 topics = [
-                    {
-                        title: 'Styled Heading',
-                        description: 'HTML with inline CSS styling.',
-                        code: `<html>\n<head>\n    <style>\n        h1 { color: blue; }\n    </style>\n</head>\n<body>\n    <h1>Styled Heading</h1>\n</body>\n</html>`
-                    },
-                    {
-                        title: 'HTML with Inline CSS',
-                        description: 'An example using inline CSS styles.',
-                        code: `<p style="color: green;">This is a green paragraph.</p>`
-                    }
+                {
+                    title: 'HTML Form with Validation',
+                    description: 'A form with required fields and email validation.',
+                    code: `<form>\n    <label for="email">Email:</label>\n    <input type="email" id="email" name="email" required>\n    <br>\n    <label for="password">Password:</label>\n    <input type="password" id="password" name="password" required>\n    <br>\n    <input type="submit" value="Submit">\n</form>`
+                },
+                
+                
+                {
+                    title: 'HTML Image with Link',
+                    description: 'Making an image clickable to navigate to another page.',
+                    code: `<a href="https://www.example.com">\n    <img src="https://via.placeholder.com/100" alt="Example Image">\n</a>`
+                },
+                {
+                    title: 'HTML Ordered List with Nested Lists',
+                    description: 'Creating an ordered list with nested sub-lists.',
+                    code: `<ol>\n    <li>Item 1</li>\n    <li>Item 2\n        <ol>\n            <li>Sub-item 2.1</li>\n            <li>Sub-item 2.2</li>\n        </ol>\n    </li>\n    <li>Item 3</li>\n</ol>`
+                },
+                {
+                    title: 'HTML Iframe Example',
+                    description: 'Embedding another website using an iframe.',
+                    code: `<iframe src="https://www.example.com" width="600" height="400"></iframe>`
+                },
+                {
+                    title: 'HTML Form with Radio Buttons',
+                    description: 'Creating a form with radio button options.',
+                    code: `<form>\n    <label><input type="radio" name="gender" value="male"> Male</label><br>\n    <label><input type="radio" name="gender" value="female"> Female</label><br>\n    <label><input type="radio" name="gender" value="other"> Other</label><br>\n    <input type="submit" value="Submit">\n</form>`
+                },
+                {
+                    title: 'HTML Navigation Bar',
+                    description: 'Creating a simple navigation bar with links.',
+                    code: `<nav>\n    <ul>\n        <li><a href="#home">Home</a></li>\n        <li><a href="#about">About</a></li>\n        <li><a href="#services">Services</a></li>\n        <li><a href="#contact">Contact</a></li>\n    </ul>\n</nav>`
+                },
+                {
+                    title: 'HTML Progress Bar',
+                    description: 'Using the <progress> tag to show progress.',
+                    code: `<label for="progress">Downloading:</label>\n<progress id="progress" value="70" max="100"></progress>`
+                },
+                {
+                    title: 'HTML Audio with Controls and Autoplay',
+                    description: 'Embedding an audio file with controls and autoplay.',
+                    code: `<audio controls autoplay>\n    <source src="audio.mp3" type="audio/mpeg">\n    Your browser does not support the audio element.\n</audio>`
+                }
                 ];
             } else if (section === 'advanced') {
                 document.querySelector("#advanced").style.backgroundColor = "green";
@@ -484,15 +508,56 @@
                 document.querySelector("#medium").style.backgroundColor = "";
                 sectionIntro = `<h1>Advanced HTML</h1><p>HTML with form and advanced styling...</p>`;
                 topics = [
+                
                     {
-                        title: 'HTML Form',
-                        description: 'A simple form with text inputs.',
-                        code: `<form>\n    Name: <input type="text" name="name"><br>\n    Email: <input type="email" name="email"><br>\n    <input type="submit" value="Submit">\n</form>`
+                        "title": "HTML5 Audio Player",
+                        "description": "Embedding an audio player with controls.",
+                        "code": "<audio controls>\n  <source src=\"audio.mp3\" type=\"audio/mpeg\">\n  Your browser does not support the audio tag.\n</audio>"
                     },
                     {
-                        title: 'HTML Table',
-                        description: 'A basic HTML table structure.',
-                        code: `<table border="1">\n    <tr>\n        <th>Column 1</th>\n        <th>Column 2</th>\n    </tr>\n    <tr>\n        <td>Row 1, Cell 1</td>\n        <td>Row 1, Cell 2</td>\n    </tr>\n</table>`
+                        "title": "HTML5 Video Player",
+                        "description": "Embedding a video player with controls.",
+                        "code": "<video width=\"320\" height=\"240\" controls>\n  <source src=\"video.mp4\" type=\"video/mp4\">\n  Your browser does not support the video tag.\n</video>"
+                    },
+                    {
+                        "title": "HTML Details Tag",
+                        "description": "Using the <details> and <summary> tags to create collapsible content.",
+                        "code": "<details>\n  <summary>Click to expand</summary>\n  <p>This is some hidden content revealed when you click.</p>\n</details>"
+                    },
+                    {
+                        "title": "HTML Tooltip",
+                        "description": "Creating a tooltip using the title attribute.",
+                        "code": "<p title=\"This is a tooltip\">Hover over this text to see the tooltip.</p>"
+                    },
+                    {
+                        "title": "HTML Progress Bar",
+                        "description": "Creating a progress bar using the <progress> tag.",
+                        "code": "<label for=\"file\">File Upload Progress:</label>\n<progress id=\"file\" value=\"70\" max=\"100\"></progress>"
+                    },
+                    {
+                        "title": "HTML Responsive Image",
+                        "description": "Using the <picture> tag for responsive images.",
+                        "code": "<picture>\n  <source media=\"(max-width: 600px)\" srcset=\"small.jpg\">\n  <source media=\"(min-width: 601px)\" srcset=\"large.jpg\">\n  <img src=\"default.jpg\" alt=\"Responsive Image\">\n</picture>"
+                    },
+                    {
+                        "title": "HTML Input Date Picker",
+                        "description": "Using the <input type='date'> to pick a date.",
+                        "code": "<label for=\"birthday\">Select your birthday:</label>\n<input type=\"date\" id=\"birthday\" name=\"birthday\">"
+                    },
+                    {
+                        "title": "HTML Data List",
+                        "description": "Using a <datalist> to provide autocomplete options for an input field.",
+                        "code": "<label for=\"browser\">Choose a browser:</label>\n<input list=\"browsers\" id=\"browser\" name=\"browser\">\n<datalist id=\"browsers\">\n  <option value=\"Chrome\">\n  <option value=\"Firefox\">\n  <option value=\"Edge\">\n  <option value=\"Safari\">\n</datalist>"
+                    },
+                    {
+                        "title": "HTML Meter Tag",
+                        "description": "Using the <meter> tag to display a numeric measurement.",
+                        "code": "<label for=\"battery\">Battery Level:</label>\n<meter id=\"battery\" value=\"0.6\">60%</meter>"
+                    },
+                    {
+                        "title": "HTML Fieldset and Legend",
+                        "description": "Grouping form elements using <fieldset> and <legend>.",
+                        "code": "<fieldset>\n  <legend>Personal Information</legend>\n  <label for=\"name\">Name:</label>\n  <input type=\"text\" id=\"name\">\n  <br>\n  <label for=\"email\">Email:</label>\n  <input type=\"email\" id=\"email\">\n</fieldset>"
                     }
                 ];
             }

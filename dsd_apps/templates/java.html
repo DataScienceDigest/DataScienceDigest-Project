@@ -357,16 +357,56 @@
                 document.querySelector("#advanced").style.backgroundColor = "";
                 document.querySelector("#medium").style.backgroundColor = "";
                 sectionIntro = `<h1>Java Basics</h1><p>Learn the basics of Java with examples...</p>`;
-                topics = [
+                topics =[
                     {
-                        title: 'Hello World Example',
-                        description: 'This is the simplest Java program. It uses "System.out.println()" to display "Hello, World!"',
-                        code: `public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}`
+                        "title": "Hello World",
+                        "description": "A basic program to print 'Hello, World!' to the console.",
+                        "code": `public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println("Hello, World!");\n    }\n}`
                     },
                     {
-                        title: 'Basic For Loop',
-                        description: 'A "for" loop in Java is used to repeat a block of code. In this example, it prints numbers from 1 to 5.',
-                        code: `public class Main {\n    public static void main(String[] args) {\n        for (int i = 1; i <= 5; i++) {\n            System.out.println("Number " + i);\n        }\n    }\n}`
+                        "title": "Simple Addition",
+                        "description": "A program to add two numbers and print the result.",
+                        "code": `public class Addition {\n    public static void main(String[] args) {\n        int a = 5;\n        int b = 3;\n        int sum = a + b;\n        System.out.println("Sum: " + sum);\n    }\n}`
+                    },
+                    {
+                        "title": "If Statement",
+                        "description": "A program demonstrating a simple if statement.",
+                        "code": `public class IfExample {\n    public static void main(String[] args) {\n        int num = 10;\n        if (num > 5) {\n            System.out.println("Number is greater than 5");\n        }\n    }\n}`
+                    },
+                    {
+                        "title": "For Loop",
+                        "description": "Using a for loop to print numbers from 1 to 5.",
+                        "code": `public class ForLoopExample {\n    public static void main(String[] args) {\n        for (int i = 1; i <= 5; i++) {\n            System.out.println(i);\n        }\n    }\n}`
+                    },
+                    {
+                        "title": "Array Example",
+                        "description": "Creating and printing elements of an array.",
+                        "code": `public class ArrayExample {\n    public static void main(String[] args) {\n        int[] numbers = {1, 2, 3, 4, 5};\n        for (int num : numbers) {\n            System.out.println(num);\n        }\n    }\n}`
+                    },
+                    {
+                        "title": "Switch Statement",
+                        "description": "Using a switch statement to choose an option.",
+                        "code": `public class SwitchExample {\n    public static void main(String[] args) {\n        int day = 2;\n        switch (day) {\n            case 1: System.out.println("Monday"); break;\n            case 2: System.out.println("Tuesday"); break;\n            default: System.out.println("Other day");\n        }\n    }\n}`
+                    },
+                    {
+                        "title": "Basic Method",
+                        "description": "Defining and calling a simple method.",
+                        "code": `public class MethodExample {\n    public static void main(String[] args) {\n        greet();\n    }\n\n    public static void greet() {\n        System.out.println("Hello from greet method!");\n    }\n}`
+                    },
+                    {
+                        "title": "Class and Object",
+                        "description": "Creating a class and an object in Java.",
+                        "code": `class Dog {\n    String name = "Buddy";\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Dog dog = new Dog();\n        System.out.println(dog.name);\n    }\n}`
+                    },
+                    {
+                        "title": "User Input",
+                        "description": "Using Scanner to get user input.",
+                        "code": `import java.util.Scanner;\n\npublic class UserInput {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print("Enter your name: ");\n        String name = scanner.nextLine();\n        System.out.println("Hello, " + name);\n        scanner.close();\n    }\n}`
+                    },
+                    {
+                        "title": "String Concatenation",
+                        "description": "Concatenating strings in Java.",
+                        "code": `public class StringConcat {\n    public static void main(String[] args) {\n        String firstName = "John";\n        String lastName = "Doe";\n        String fullName = firstName + " " + lastName;\n        System.out.println("Full Name: " + fullName);\n    }\n}`
                     }
                 ];
             } 
@@ -377,14 +417,54 @@
                 sectionIntro = `<h1>Medium Level Java</h1><p>This section covers medium-difficulty Java programs...</p>`;
                 topics = [
                     {
-                        title: 'Square of Numbers',
-                        description: 'This program calculates the square of numbers from 1 to 5 using a for loop.',
-                        code: `public class Main {\n    public static void main(String[] args) {\n        for (int i = 1; i <= 5; i++) {\n            System.out.println("Square of " + i + " is " + (i * i));\n        }\n    }\n}`
+                        "title": "Constructor Example",
+                        "description": "Using a constructor to initialize an object.",
+                        "code": `class Car {\n    String model;\n\n    Car(String model) {\n        this.model = model;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Car car = new Car("Toyota");\n        System.out.println("Car model: " + car.model);\n    }\n}`
                     },
                     {
-                        title: 'Conditional Statements',
-                        description: 'A simple if-else conditional example that checks if a number is even or odd.',
-                        code: `import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print("Enter a number: ");\n        int num = scanner.nextInt();\n\n        if (num % 2 == 0) {\n            System.out.println(num + " is even.");\n        } else {\n            System.out.println(num + " is odd.");\n        }\n    }\n}`
+                        "title": "Overloading Methods",
+                        "description": "Method overloading in Java.",
+                        "code": `public class OverloadExample {\n    public static int add(int a, int b) {\n        return a + b;\n    }\n\n    public static double add(double a, double b) {\n        return a + b;\n    }\n\n    public static void main(String[] args) {\n        System.out.println(add(5, 3));\n        System.out.println(add(5.5, 3.3));\n    }\n}`
+                    },
+                    {
+                        "title": "Inheritance",
+                        "description": "An example of inheritance in Java.",
+                        "code": `class Animal {\n    void sound() {\n        System.out.println("Animal sound");\n    }\n}\n\nclass Dog extends Animal {\n    void sound() {\n        System.out.println("Bark");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Dog dog = new Dog();\n        dog.sound();\n    }\n}`
+                    },
+                    {
+                        "title": "ArrayList Example",
+                        "description": "Creating and using an ArrayList.",
+                        "code": `import java.util.ArrayList;\n\npublic class ArrayListExample {\n    public static void main(String[] args) {\n        ArrayList<String> names = new ArrayList<>();\n        names.add("Alice");\n        names.add("Bob");\n        for (String name : names) {\n            System.out.println(name);\n        }\n    }\n}`
+                    },
+                    {
+                        "title": "Exception Handling",
+                        "description": "Using try-catch for exception handling.",
+                        "code": `public class ExceptionExample {\n    public static void main(String[] args) {\n        try {\n            int divide = 10 / 0;\n        } catch (ArithmeticException e) {\n            System.out.println("Cannot divide by zero");\n        }\n    }\n}`
+                    },
+                    {
+                        "title": "Static Keyword",
+                        "description": "Using static methods and variables.",
+                        "code": `public class StaticExample {\n    static int count = 0;\n\n    static void increment() {\n        count++;\n    }\n\n    public static void main(String[] args) {\n        increment();\n        System.out.println("Count: " + count);\n    }\n}`
+                    },
+                    {
+                        "title": "Reading Files",
+                        "description": "Reading from a file using Scanner.",
+                        "code": `import java.io.File;\nimport java.io.FileNotFoundException;\nimport java.util.Scanner;\n\npublic class FileReadExample {\n    public static void main(String[] args) {\n        try {\n            File file = new File("example.txt");\n            Scanner scanner = new Scanner(file);\n            while (scanner.hasNextLine()) {\n                System.out.println(scanner.nextLine());\n            }\n            scanner.close();\n        } catch (FileNotFoundException e) {\n            System.out.println("File not found");\n        }\n    }\n}`
+                    },
+                    {
+                        "title": "Simple Calculator",
+                        "description": "Implementing a simple calculator using switch.",
+                        "code": `import java.util.Scanner;\n\npublic class Calculator {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        System.out.print("Enter first number: ");\n        int a = scanner.nextInt();\n        System.out.print("Enter operator (+, -, *, /): ");\n        char operator = scanner.next().charAt(0);\n        System.out.print("Enter second number: ");\n        int b = scanner.nextInt();\n        int result;\n\n        switch (operator) {\n            case '+': result = a + b; break;\n            case '-': result = a - b; break;\n            case '*': result = a * b; break;\n            case '/': result = a / b; break;\n            default: result = 0;\n        }\n        System.out.println("Result: " + result);\n    }\n}`
+                    },
+                    {
+                        "title": "Multithreading",
+                        "description": "Creating a thread by extending Thread class.",
+                        "code": `class MyThread extends Thread {\n    public void run() {\n        System.out.println("Thread running");\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        MyThread t = new MyThread();\n        t.start();\n    }\n}`
+                    },
+                    {
+                        "title": "HashMap Example",
+                        "description": "Creating and iterating over a HashMap.",
+                        "code": `import java.util.HashMap;\n\npublic class HashMapExample {\n    public static void main(String[] args) {\n        HashMap<Integer, String> map = new HashMap<>();\n        map.put(1, "Apple");\n        map.put(2, "Banana");\n        for (int key : map.keySet()) {\n            System.out.println("Key: " + key + ", Value: " + map.get(key));\n        }\n    }\n}`
                     }
                 ];
             }
@@ -395,14 +475,54 @@
                 sectionIntro = `<h1>Advanced Java</h1><p>Explore advanced topics in Java...</p>`;
                 topics = [
                     {
-                        title: 'Using Classes and Objects',
-                        description: 'This example demonstrates defining a class with attributes and methods, then creating an object to use those methods.',
-                        code: `class Dog {\n    String name;\n    int age;\n\n    Dog(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n\n    public void bark() {\n        System.out.println(name + " is barking!");\n    }\n\n    public static void main(String[] args) {\n        Dog dog = new Dog("Rex", 5);\n        dog.bark();\n    }\n}`
+                        "title": "Lambda Expressions",
+                        "description": "Using lambda expressions to implement functional interfaces.",
+                        "code": `import java.util.function.Consumer;\n\npublic class LambdaExample {\n    public static void main(String[] args) {\n        Consumer<String> greet = message -> System.out.println("Hello, " + message);\n        greet.accept("World");\n    }\n}`
                     },
                     {
-                        title: 'Handling Exceptions',
-                        description: 'This example shows how to handle exceptions in Java using try-catch blocks.',
-                        code: `public class Main {\n    public static void main(String[] args) {\n        try {\n            int result = 10 / 0;\n            System.out.println("Result: " + result);\n        } catch (ArithmeticException e) {\n            System.out.println("Error: Division by zero is not allowed.");\n        }\n    }\n}`
+                        "title": "Stream API for Data Processing",
+                        "description": "Using the Stream API to filter, map, and collect data from a list.",
+                        "code": `import java.util.Arrays;\nimport java.util.List;\nimport java.util.stream.Collectors;\n\npublic class StreamExample {\n    public static void main(String[] args) {\n        List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David");\n        List<String> filteredNames = names.stream()\n                .filter(name -> name.startsWith("A"))\n                .collect(Collectors.toList());\n        filteredNames.forEach(System.out::println);\n    }\n}`
+                    },
+                    {
+                        "title": "Optional Usage",
+                        "description": "Using Optional to handle null values gracefully.",
+                        "code": `import java.util.Optional;\n\npublic class OptionalExample {\n    public static void main(String[] args) {\n        Optional<String> name = Optional.ofNullable(null);\n        System.out.println(name.orElse("Default Name"));\n    }\n}`
+                    },
+                    {
+                        "title": "Method References",
+                        "description": "Using method references to simplify lambda expressions.",
+                        "code": `import java.util.Arrays;\nimport java.util.List;\n\npublic class MethodReferenceExample {\n    public static void main(String[] args) {\n        List<String> names = Arrays.asList("Alice", "Bob", "Charlie");\n        names.forEach(System.out::println);\n    }\n}`
+                    },
+                    {
+                        "title": "Parallel Streams",
+                        "description": "Using parallel streams to improve performance on large data sets.",
+                        "code": `import java.util.stream.IntStream;\n\npublic class ParallelStreamExample {\n    public static void main(String[] args) {\n        int sum = IntStream.range(1, 1000000)\n                .parallel()\n                .sum();\n        System.out.println("Sum: " + sum);\n    }\n}`
+                    },
+                    {
+                        "title": "CompletableFuture",
+                        "description": "Handling asynchronous programming with CompletableFuture.",
+                        "code": `import java.util.concurrent.CompletableFuture;\n\npublic class CompletableFutureExample {\n    public static void main(String[] args) {\n        CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {\n            System.out.println("Running asynchronously");\n        });\n        future.join();\n    }\n}`
+                    },
+                    {
+                        "title": "Annotations",
+                        "description": "Creating and using custom annotations.",
+                        "code": `import java.lang.annotation.ElementType;\nimport java.lang.annotation.Retention;\nimport java.lang.annotation.RetentionPolicy;\nimport java.lang.annotation.Target;\n\n@Target(ElementType.METHOD)\n@Retention(RetentionPolicy.RUNTIME)\n@interface MyAnnotation {\n    String value();\n}\n\npublic class AnnotationExample {\n    @MyAnnotation(value = "Example Annotation")\n    public void annotatedMethod() {\n        System.out.println("Method annotated with @MyAnnotation");\n    }\n}`
+                    },
+                    {
+                        "title": "Synchronized Blocks",
+                        "description": "Using synchronized blocks for thread-safe operations.",
+                        "code": `public class SynchronizedExample {\n    private int counter = 0;\n\n    public void increment() {\n        synchronized (this) {\n            counter++;\n        }\n    }\n\n    public static void main(String[] args) {\n        SynchronizedExample example = new SynchronizedExample();\n        example.increment();\n        System.out.println("Counter: " + example.counter);\n    }\n}`
+                    },
+                    {
+                        "title": "Advanced Generics",
+                        "description": "Using generics with wildcards for flexible data structures.",
+                        "code": `import java.util.ArrayList;\nimport java.util.List;\n\npublic class GenericsExample {\n    public static void printList(List<?> list) {\n        for (Object elem : list) {\n            System.out.println(elem);\n        }\n    }\n\n    public static void main(String[] args) {\n        List<String> stringList = new ArrayList<>();\n        stringList.add("Hello");\n        printList(stringList);\n    }\n}`
+                    },
+                    {
+                        "title": "Reflection API",
+                        "description": "Using reflection to inspect and manipulate classes at runtime.",
+                        "code": `import java.lang.reflect.Method;\n\npublic class ReflectionExample {\n    public static void main(String[] args) throws Exception {\n        Class<?> clazz = Class.forName("java.lang.String");\n        Method[] methods = clazz.getDeclaredMethods();\n        for (Method method : methods) {\n            System.out.println(method.getName());\n        }\n    }\n}`
                     }
                 ];
             }

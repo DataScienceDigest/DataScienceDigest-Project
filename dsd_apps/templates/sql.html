@@ -443,56 +443,7 @@
     </div>
     <!-- Course Detail End -->
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="text-white mb-3">Quick Link</h4>
-                    <p><a class="text-light" href="about.html">About Us</a></p>
-                    <p><a class="text-light" href="contact.html">Contact Us</a></p>
-                    <p><a class="text-light" href="">Privacy Policy</a></p>
-                    <p><a class="text-light" href="">Terms & Condition</a></p>
-                    <p><a class="text-light" href="">FAQs & Help</a></p>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, Bangalore, Karnataka</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 6239739375</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>datasciencedigest.in@gmail.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="text-white mb-3">Subscribe to our Newsletter</h4>
-                    <p>Subscribe now and join our growing community of learners committed to lifelong education! </p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <form action="#">
-                            <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="email"
-                                placeholder="Your email" required>
-                            <button type="submit"
-                                class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2"><a
-                                    href="mailto:keertidvcorai@gmail.com">Subscribe</a></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="index.html">DataScienceDigest</a>, All Right Reserved.
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include 'footer.html' %}
     <!-- Footer End -->
     <script>
         const editors = {};
@@ -522,58 +473,166 @@
             if (section === 'basic') {
                 sectionIntro = `<h1>Basic SQL Queries</h1><p>Learn basic SQL queries...</p>`;
                 queries = [
-                    {
-                        title: 'Select Query',
-                        description: 'This query selects all rows from a table.',
-                        code: `SELECT * FROM your_table;`
-                    },
-                    {
-                        title: 'Simple Insert Query',
-                        description: 'Inserts a new row into a table.',
-                        code: `INSERT INTO your_table (column1, column2) VALUES ('value1', 'value2');`
-                    },
-                    {
-                        title: 'Min and Max Functions',
-                        description: 'Retrieves the minimum or maximum value in a column.',
-                        code: `SELECT MIN(column1), MAX(column1)
-                FROM your_table;`
-                    },
-                    {
-                        title: 'Sum Function',
-                        description: 'Calculates the sum of a numeric column.',
-                        code: `SELECT SUM(column1)
-                FROM your_table;`
-                    }
-                    
+                {
+                    title: 'Simple SELECT Query',
+                    description: 'Retrieve all records from a table.',
+                    code: `SELECT * FROM your_table;`
+                },
+                {
+                    title: 'Column Selection',
+                    description: 'Retrieve specific columns from a table.',
+                    code: `SELECT column1, column2 FROM your_table;`
+                },
+                {
+                    title: 'Filtering with WHERE',
+                    description: 'Filter records in a table based on a condition.',
+                    code: `SELECT * FROM your_table WHERE column1 = 'value';`
+                },
+                {
+                    title: 'Sorting Results with ORDER BY',
+                    description: 'Sort records in ascending or descending order.',
+                    code: `SELECT * FROM your_table ORDER BY column1 ASC;`
+                },
+                {
+                    title: 'Using DISTINCT',
+                    description: 'Retrieve unique values from a column in a table.',
+                    code: `SELECT DISTINCT column1 FROM your_table;`
+                },
+                {
+                    title: 'COUNT Aggregate Function',
+                    description: 'Count the number of rows in a table.',
+                    code: `SELECT COUNT(*) FROM your_table;`
+                },
+                {
+                    title: 'Simple SUM Aggregate',
+                    description: 'Calculate the sum of values in a column.',
+                    code: `SELECT SUM(column1) FROM your_table;`
+                },
+                {
+                    title: 'Simple AVG Aggregate',
+                    description: 'Calculate the average of values in a column.',
+                    code: `SELECT AVG(column1) FROM your_table;`
+                },
+                {
+                    title: 'MIN Function',
+                    description: 'Find the minimum value in a column.',
+                    code: `SELECT MIN(column1) FROM your_table;`
+                },
+                {
+                    title: 'MAX Function',
+                    description: 'Find the maximum value in a column.',
+                    code: `SELECT MAX(column1) FROM your_table;`
+                }    
                 ];
 
             } else if (section === 'medium') {
                 sectionIntro = `<h1>Medium Level SQL</h1><p>This section covers intermediate SQL queries...</p>`;
                 queries = [
-                    {
-                        title: 'Join Query',
-                        description: 'Combines rows from two tables based on a related column.',
-                        code: `SELECT a.column1, b.column2 FROM table_a a INNER JOIN table_b b ON a.id = b.id;`
-                    },
-                    {
-                        title: 'Update Query',
-                        description: 'Updates values in a table based on a condition.',
-                        code: `UPDATE your_table SET column1 = 'new_value' WHERE column2 = 'some_value';`
-                    }
+                {
+                    title: 'JOIN Query',
+                    description: 'Combine rows from two tables based on a related column.',
+                    code: `SELECT a.column1, b.column2 FROM table_a a INNER JOIN table_b b ON a.id = b.id;`
+                },
+                {
+                    title: 'LEFT JOIN Query',
+                    description: 'Retrieve all records from one table and matched records from another.',
+                    code: `SELECT a.column1, b.column2 FROM table_a a LEFT JOIN table_b b ON a.id = b.id;`
+                },
+                {
+                    title: 'RIGHT JOIN Query',
+                    description: 'Retrieve all records from one table and matched records from another.',
+                    code: `SELECT a.column1, b.column2 FROM table_a a RIGHT JOIN table_b b ON a.id = b.id;`
+                },
+                {
+                    title: 'GROUP BY Clause',
+                    description: 'Group records by a specific column.',
+                    code: `SELECT column1, COUNT(*) FROM your_table GROUP BY column1;`
+                },
+                {
+                    title: 'HAVING Clause',
+                    description: 'Filter groups based on a condition.',
+                    code: `SELECT column1, COUNT(*) FROM your_table GROUP BY column1 HAVING COUNT(*) > 1;`
+                },
+                {
+                    title: 'Subquery in WHERE Clause',
+                    description: 'Use a subquery to filter results.',
+                    code: `SELECT column1 FROM your_table WHERE column2 = (SELECT MAX(column2) FROM your_table);`
+                },
+                {
+                    title: 'EXISTS Operator',
+                    description: 'Check for the existence of rows in a subquery.',
+                    code: `SELECT column1 FROM your_table WHERE EXISTS (SELECT * FROM other_table WHERE condition);`
+                },
+                {
+                    title: 'IN Operator with Subquery',
+                    description: 'Filter results based on a subquery using IN.',
+                    code: `SELECT column1 FROM your_table WHERE column2 IN (SELECT column2 FROM other_table);`
+                },
+                {
+                    title: 'UPDATE with Condition',
+                    description: 'Update specific records in a table.',
+                    code: `UPDATE your_table SET column1 = 'new_value' WHERE column2 = 'some_value';`
+                },
+                {
+                    title: 'DELETE with Condition',
+                    description: 'Delete specific records from a table.',
+                    code: `DELETE FROM your_table WHERE column1 = 'value_to_delete';`
+                }
+
                 ];
             } else if (section === 'advanced') {
                 sectionIntro = `<h1>Advanced SQL</h1><p>Explore advanced SQL queries...</p>`;
                 queries = [
-                    {
-                        title: 'Complex Join Query',
-                        description: 'Combines multiple tables and includes complex conditions.',
-                        code: `SELECT a.*, b.* FROM table_a a LEFT JOIN table_b b ON a.id = b.id WHERE a.column3 = 'value';`
-                    },
-                    {
-                        title: 'Nested Queries',
-                        description: 'A query that includes another query inside it.',
-                        code: `SELECT * FROM your_table WHERE column1 = (SELECT MAX(column1) FROM your_table);`
-                    }
+                {
+                    title: 'Self JOIN Query',
+                    description: 'Join a table to itself to compare rows within the same table.',
+                    code: `SELECT a.column1, b.column1 FROM your_table a JOIN your_table b ON a.column2 = b.column2;`
+                },
+                {
+                    title: 'Complex Subquery with JOIN',
+                    description: 'Use a subquery to retrieve related data from multiple tables.',
+                    code: `SELECT column1 FROM your_table WHERE column2 IN (SELECT column2 FROM other_table WHERE condition);`
+                },
+                {
+                    title: 'Nested Subqueries',
+                    description: 'Use multiple levels of subqueries to retrieve specific data.',
+                    code: `SELECT column1 FROM (SELECT column1 FROM your_table WHERE condition) AS subquery;`
+                },
+                {
+                    title: 'CTE (Common Table Expression)',
+                    description: 'Use a common table expression to structure complex queries.',
+                    code: `WITH temp_table AS (SELECT column1 FROM your_table WHERE condition) SELECT * FROM temp_table;`
+                },
+                {
+                    title: 'Window Functions',
+                    description: 'Use window functions to calculate values over a specified partition of rows.',
+                    code: `SELECT column1, RANK() OVER(PARTITION BY column2 ORDER BY column3) FROM your_table;`
+                },
+                {
+                    title: 'Recursive CTE',
+                    description: 'Use a recursive common table expression to handle hierarchical data.',
+                    code: `WITH RECURSIVE temp_table AS (SELECT column1 FROM your_table WHERE condition UNION ALL SELECT column1 FROM temp_table) SELECT * FROM temp_table;`
+                },
+                {
+                    title: 'CASE Expression',
+                    description: 'Use CASE to apply conditional logic within a SELECT statement.',
+                    code: `SELECT column1, CASE WHEN condition THEN 'value1' ELSE 'value2' END FROM your_table;`
+                },
+                {
+                    title: 'Complex UPDATE with JOIN',
+                    description: 'Update records in one table based on a related column in another table.',
+                    code: `UPDATE table_a SET column1 = b.column1 FROM table_b b WHERE table_a.id = b.id;`
+                },
+                {
+                    title: 'DELETE with Subquery',
+                    description: 'Delete records in a table based on values from another table.',
+                    code: `DELETE FROM your_table WHERE column1 IN (SELECT column1 FROM other_table WHERE condition);`
+                },
+                {
+                    title: 'Using UNION and UNION ALL',
+                    description: 'Combine results from multiple SELECT statements with UNION or UNION ALL.',
+                    code: `SELECT column1 FROM table_a UNION SELECT column1 FROM table_b;`
+                }
                 ];
             }
 

@@ -233,66 +233,163 @@
               document.querySelector("#medium").style.backgroundColor = "";
               sectionIntro = `<h1>C++ Basics</h1><p>Learn the basics of C++ with examples...</p>`;
               topics = [
-                  {
-                      title: 'Hello World Example',
-                      description: 'The simplest C++ program that prints "Hello, World!".',
-                      code: `#include <iostream>\n\nint main() {\n    std::cout << "Hello, World!\\n";\n    return 0;\n}`
-                  },
-                  {
-                      title: 'Basic For Loop',
-                      description: 'A "for" loop in C++, printing numbers from 0 to 4.',
-                      code: `#include <iostream>\n\nint main() {\n    for (int i = 0; i < 5; i++) {\n        std::cout << "Number " << i << "\\n";\n    }\n    return 0;\n}`
-                  },
-                  {
-                      title: 'Basic If-Else Condition',
-                      description: 'Checking if a number is greater than 5.',
-                      code: `#include <iostream>\n\nint main() {\n    int number = 10;\n    if (number > 5) {\n        std::cout << "Number is greater than 5\\n";\n    } else {\n        std::cout << "Number is less than or equal to 5\\n";\n    }\n    return 0;\n}`
-                  }
-              ];
+                    {
+                        title: 'Hello World Example',
+                        description: 'The simplest C++ program that prints "Hello, World!".',
+                        code: `#include <iostream>\n\nint main() {\n    std::cout << "Hello, World!\\n";\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Basic For Loop',
+                        description: 'A "for" loop in C++, printing numbers from 0 to 4.',
+                        code: `#include <iostream>\n\nint main() {\n    for (int i = 0; i < 5; i++) {\n        std::cout << "Number " << i << "\\n";\n    }\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Basic If-Else Condition',
+                        description: 'Checking if a number is greater than 5.',
+                        code: `#include <iostream>\n\nint main() {\n    int number = 10;\n    if (number > 5) {\n        std::cout << "Number is greater than 5\\n";\n    } else {\n        std::cout << "Number is less than or equal to 5\\n";\n    }\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Switch Statement',
+                        description: 'Using a switch statement to print days of the week.',
+                        code: `#include <iostream>\n\nint main() {\n    int day = 3;\n    switch (day) {\n        case 1: std::cout << "Monday\\n"; break;\n        case 2: std::cout << "Tuesday\\n"; break;\n        case 3: std::cout << "Wednesday\\n"; break;\n        default: std::cout << "Invalid day\\n";\n    }\n    return 0;\n}`
+                    },
+                    {
+                        title: 'While Loop',
+                        description: 'Using a while loop to print numbers from 1 to 5.',
+                        code: `#include <iostream>\n\nint main() {\n    int i = 1;\n    while (i <= 5) {\n        std::cout << i << "\\n";\n        i++;\n    }\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Basic Arithmetic Operations',
+                        description: 'Performing basic arithmetic operations.',
+                        code: `#include <iostream>\n\nint main() {\n    int a = 10, b = 5;\n    std::cout << "Sum: " << (a + b) << "\\n";\n    std::cout << "Difference: " << (a - b) << "\\n";\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Input and Output',
+                        description: 'Taking input from the user and printing output.',
+                        code: `#include <iostream>\n\nint main() {\n    int age;\n    std::cout << "Enter your age: ";\n    std::cin >> age;\n    std::cout << "You are " << age << " years old.\\n";\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Simple Function',
+                        description: 'Creating a function to add two integers.',
+                        code: `#include <iostream>\n\nint add(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    std::cout << "Sum: " << add(3, 5) << "\\n";\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Basic Array Usage',
+                        description: 'Working with an array to store integers.',
+                        code: `#include <iostream>\n\nint main() {\n    int numbers[5] = {1, 2, 3, 4, 5};\n    for (int i = 0; i < 5; i++) {\n        std::cout << numbers[i] << " ";\n    }\n    std::cout << "\\n";\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Simple Do-While Loop',
+                        description: 'Using a do-while loop to execute code at least once.',
+                        code: `#include <iostream>\n\nint main() {\n    int i = 1;\n    do {\n        std::cout << i << "\\n";\n        i++;\n    } while (i <= 5);\n    return 0;\n}`
+                    }
+                ];
           } else if (section === 'medium') {
               document.querySelector("#basic").style.backgroundColor = "";
               document.querySelector("#advanced").style.backgroundColor = "";
               document.querySelector("#medium").style.backgroundColor = "green";
               sectionIntro = `<h1>C++ Medium</h1><p>Learn intermediate concepts in C++ programming...</p>`;
               topics = [
-                  {
-                      title: 'Using Arrays',
-                      description: 'Creating and initializing an array in C++.',
-                      code: `#include <iostream>\n\nint main() {\n    int numbers[] = {1, 2, 3, 4, 5};\n    for (int i = 0; i < 5; i++) {\n        std::cout << numbers[i] << " ";\n    }\n    std::cout << "\\n";\n    return 0;\n}`
-                  },
-                  {
-                      title: 'Basic String Operations',
-                      description: 'Concatenating strings in C++ using the `+` operator.',
-                      code: `#include <iostream>\n#include <string>\n\nint main() {\n    std::string s1 = "Hello";\n    std::string s2 = ", world!";\n    std::cout << s1 + s2 << "\\n";\n    return 0;\n}`
-                  },
-                  {
-                      title: 'Function Example',
-                      description: 'Defining and using a simple function to add two integers.',
-                      code: `#include <iostream>\n\nint add(int a, int b) {\n    return a + b;\n}\n\nint main() {\n    int result = add(3, 5);\n    std::cout << "Sum: " << result << "\\n";\n    return 0;\n}`
-                  }
-              ];
+                {
+                    title: 'Working with Strings',
+                    description: 'Using string manipulation functions.',
+                    code: `#include <iostream>\n#include <string>\n\nint main() {\n    std::string greeting = "Hello";\n    greeting += ", World!";\n    std::cout << greeting << "\\n";\n    return 0;\n}`
+                },
+                {
+                    title: 'Function Overloading',
+                    description: 'Creating overloaded functions.',
+                    code: `#include <iostream>\n\nint add(int a, int b) {\n    return a + b;\n}\n\ndouble add(double a, double b) {\n    return a + b;\n}\n\nint main() {\n    std::cout << "Int sum: " << add(3, 5) << "\\n";\n    std::cout << "Double sum: " << add(2.5, 3.1) << "\\n";\n    return 0;\n}`
+                },
+                
+                {
+                    title: 'Recursion',
+                    description: 'Using recursion to calculate factorial of a number.',
+                    code: `#include <iostream>\n\nint factorial(int n) {\n    if (n <= 1) return 1;\n    else return n * factorial(n - 1);\n}\n\nint main() {\n    std::cout << "Factorial of 5: " << factorial(5) << "\\n";\n    return 0;\n}`
+                },
+                {
+                    title: 'Structure Example',
+                    description: 'Using structures to store data.',
+                    code: `#include <iostream>\n\nstruct Student {\n    std::string name;\n    int age;\n};\n\nint main() {\n    Student student = {"Alice", 20};\n    std::cout << student.name << " is " << student.age << " years old.\\n";\n    return 0;\n}`
+                },
+                {
+                    title: 'Pointers',
+                    description: 'Basic usage of pointers to access memory address.',
+                    code: `#include <iostream>\n\nint main() {\n    int number = 10;\n    int *ptr = &number;\n    std::cout << "Value: " << *ptr << "\\n";\n    std::cout << "Address: " << ptr << "\\n";\n    return 0;\n}`
+                },
+                {
+                    title: 'File I/O',
+                    description: 'Reading from and writing to a file.',
+                    code: `#include <iostream>\n#include <fstream>\n\nint main() {\n    std::ofstream file("example.txt");\n    file << "Hello, file!\\n";\n    file.close();\n    std::ifstream infile("example.txt");\n    std::string line;\n    while (std::getline(infile, line)) {\n        std::cout << line << "\\n";\n    }\n    infile.close();\n    return 0;\n}`
+                },
+                {
+                    title: 'Basic Sorting',
+                    description: 'Sorting an array of integers.',
+                    code: `#include <iostream>\n#include <algorithm>\n\nint main() {\n    int arr[5] = {3, 1, 4, 5, 2};\n    std::sort(arr, arr + 5);\n    for (int i = 0; i < 5; i++) {\n        std::cout << arr[i] << " ";\n    }\n    return 0;\n}`
+                },
+                {
+                    title: 'Enum Usage',
+                    description: 'Using enumerations to define constants.',
+                    code: `#include <iostream>\n\nenum Day {Monday, Tuesday, Wednesday};\n\nint main() {\n    Day today = Monday;\n    if (today == Monday) {\n        std::cout << "It’s Monday!\\n";\n    }\n    return 0;\n}`
+                },
+                {
+                    title: 'Using Vectors',
+                    description: 'Using vectors in C++ for dynamic arrays.',
+                    code: `#include <iostream>\n#include <vector>\n\nint main() {\n    std::vector<int> numbers = {1, 2, 3, 4};\n    numbers.push_back(5);\n    for (int num : numbers) {\n        std::cout << num << " ";\n    }\n    return 0;\n}`
+                }
+            ];
           } else if (section === 'advanced') {
               document.querySelector("#basic").style.backgroundColor = "";
               document.querySelector("#medium").style.backgroundColor = "";
               document.querySelector("#advanced").style.backgroundColor = "green";
               sectionIntro = `<h1>C++ Advanced</h1><p>Explore advanced C++ concepts with examples...</p>`;
-              topics = [
-                  {
-                      title: 'Pointers',
-                      description: 'Using pointers to manipulate memory addresses in C++.',
-                      code: `#include <iostream>\n\nint main() {\n    int num = 10;\n    int *p = &num;\n    std::cout << "Value of num: " << *p << "\\n";\n    *p = 20;\n    std::cout << "New value of num: " << num << "\\n";\n    return 0;\n}`
-                  },
-                  {
-                      title: 'Structures',
-                      description: 'Defining and using a structure to store multiple data types.',
-                      code: `#include <iostream>\n\nstruct Person {\n    std::string name;\n    int age;\n};\n\nint main() {\n    Person p1 = {"Alice", 30};\n    std::cout << "Name: " << p1.name << ", Age: " << p1.age << "\\n";\n    return 0;\n}`
-                  },
-                  {
-                      title: 'Dynamic Memory Allocation',
-                      description: 'Allocating and freeing memory dynamically with `new` and `delete`.',
-                      code: `#include <iostream>\n\nint main() {\n    int *arr = new int[5];\n    for (int i = 0; i < 5; i++) {\n        arr[i] = i * 2;\n    }\n    for (int i = 0; i < 5; i++) {\n        std::cout << arr[i] << " ";\n    }\n    delete[] arr;\n    std::cout << "\\n";\n    return 0;\n}`
-                  }
-              ];
+              topics =[
+                    {
+                        title: 'Lambda Expressions',
+                        description: 'Using lambda expressions to define anonymous functions in C++.',
+                        code: `#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    std::vector<int> numbers = {5, 2, 8, 1, 3};\n    std::sort(numbers.begin(), numbers.end(), [](int a, int b) { return a < b; });\n    for (int num : numbers) {\n        std::cout << num << " ";\n    }\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Multithreading',
+                        description: 'Creating multiple threads to execute concurrently.',
+                        code: `#include <iostream>\n#include <thread>\n\nvoid printMessage(const std::string &message) {\n    std::cout << message << "\\n";\n}\n\nint main() {\n    std::thread t1(printMessage, "Hello from thread 1");\n    std::thread t2(printMessage, "Hello from thread 2");\n    t1.join();\n    t2.join();\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Smart Pointers',
+                        description: 'Using smart pointers to manage dynamic memory in C++.',
+                        code: `#include <iostream>\n#include <memory>\n\nint main() {\n    std::unique_ptr<int> ptr = std::make_unique<int>(10);\n    std::cout << "Value: " << *ptr << "\\n";\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Template Functions',
+                        description: 'Using templates to create generic functions.',
+                        code: `#include <iostream>\n\ntemplate <typename T>\nT add(T a, T b) {\n    return a + b;\n}\n\nint main() {\n    std::cout << "Int sum: " << add(3, 5) << "\\n";\n    std::cout << "Double sum: " << add(2.5, 3.1) << "\\n";\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Move Semantics',
+                        description: 'Demonstrating move semantics to optimize performance in C++.',
+                        code: `#include <iostream>\n#include <string>\n\nint main() {\n    std::string str = "Hello";\n    std::string movedStr = std::move(str);\n    std::cout << "Moved string: " << movedStr << "\\n";\n    std::cout << "Original string after move: " << str << "\\n";\n    return 0;\n}`
+                    },
+                    
+                    {
+                        title: 'File I/O with Binary Mode',
+                        description: 'Reading and writing binary data to a file.',
+                        code: `#include <iostream>\n#include <fstream>\n\nint main() {\n    std::ofstream outFile("binary.dat", std::ios::binary);\n    int number = 12345;\n    outFile.write(reinterpret_cast<char*>(&number), sizeof(number));\n    outFile.close();\n    int readNumber;\n    std::ifstream inFile("binary.dat", std::ios::binary);\n    inFile.read(reinterpret_cast<char*>(&readNumber), sizeof(readNumber));\n    std::cout << "Number read from file: " << readNumber << "\\n";\n    inFile.close();\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Operator Overloading',
+                        description: 'Overloading operators for custom data types.',
+                        code: `#include <iostream>\n\nclass Complex {\npublic:\n    int real, imag;\n    Complex(int r, int i) : real(r), imag(i) {}\n    Complex operator + (const Complex &obj) {\n        return Complex(real + obj.real, imag + obj.imag);\n    }\n    void display() {\n        std::cout << real << " + " << imag << "i\\n";\n    }\n};\n\nint main() {\n    Complex c1(3, 4), c2(1, 2);\n    Complex c3 = c1 + c2;\n    c3.display();\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Exception Handling',
+                        description: 'Using try-catch blocks for error handling.',
+                        code: `#include <iostream>\n\nint main() {\n    try {\n        int x = 0;\n        if (x == 0) throw std::runtime_error("Divide by zero error");\n        int y = 10 / x;\n    } catch (const std::exception &e) {\n        std::cout << "Exception: " << e.what() << "\\n";\n    }\n    return 0;\n}`
+                    },
+                    {
+                        title: 'Inheritance and Polymorphism',
+                        description: 'Demonstrating inheritance and polymorphism in C++.',
+                        code: `#include <iostream>\n\nclass Animal {\npublic:\n    virtual void sound() {\n        std::cout << "Some sound\\n";\n    }\n};\n\nclass Dog : public Animal {\npublic:\n    void sound() override {\n        std::cout << "Woof!\\n";\n    }\n};\n\nint main() {\n    Animal *animal = new Dog();\n    animal->sound();\n    delete animal;\n    return 0;\n}`
+                    }
+                ];
           }
 
   

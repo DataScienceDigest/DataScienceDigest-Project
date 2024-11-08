@@ -233,21 +233,56 @@
                 document.querySelector("#medium").style.backgroundColor = "";
                 sectionIntro = `<h1>Rust Basics</h1><p>Learn the basics of Rust with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Hello World Example',
-                        description: 'The simplest Rust program that prints "Hello, World!".',
-                        code: `fn main() {\n    println!("Hello, World!");\n}`
-                    },
-                    {
-                        title: 'Basic For Loop',
-                        description: 'A "for" loop in Rust, printing numbers from 0 to 4.',
-                        code: `fn main() {\n    for i in 0..5 {\n        println!("Number {}", i);\n    }\n}`
-                    },
-                    {
-                        title: 'Basic If-Else Condition',
-                        description: 'Checking if a number is greater than 5.',
-                        code: `fn main() {\n    let number = 10;\n    if number > 5 {\n        println!("Number is greater than 5");\n    } else {\n        println!("Number is less than or equal to 5");\n    }\n}`
-                    }
+                {
+                    title: 'Hello World Example',
+                    description: 'The simplest Rust program that prints "Hello, World!".',
+                    code: `fn main() {\n    println!("Hello, World!");\n}`
+                },
+                {
+                    title: 'Variable Declaration',
+                    description: 'Declaring variables in Rust and using them.',
+                    code: `fn main() {\n    let name = "Alice";\n    let age = 25;\n    println!("Name: {}, Age: {}", name, age);\n}`
+                },
+                {
+                    title: 'Basic Arithmetic Operations',
+                    description: 'Performing addition, subtraction, multiplication, and division.',
+                    code: `fn main() {\n    let a = 10;\n    let b = 5;\n    println!("Add: {}", a + b);\n    println!("Subtract: {}", a - b);\n    println!("Multiply: {}", a * b);\n    println!("Divide: {}", a / b);\n}`
+                },
+                {
+                    title: 'Basic If-Else Condition',
+                    description: 'Checking if a number is greater than 5.',
+                    code: `fn main() {\n    let number = 7;\n    if number > 5 {\n        println!("Number is greater than 5");\n    } else {\n        println!("Number is less than or equal to 5");\n    }\n}`
+                },
+                {
+                    title: 'For Loop Example',
+                    description: 'A "for" loop in Rust, printing numbers from 1 to 5.',
+                    code: `fn main() {\n    for i in 1..=5 {\n        println!("Number: {}", i);\n    }\n}`
+                },
+                {
+                    title: 'While Loop Example',
+                    description: 'Printing numbers from 1 to 5 using a "while" loop.',
+                    code: `fn main() {\n    let mut i = 1;\n    while i <= 5 {\n        println!("{}", i);\n        i += 1;\n    }\n}`
+                },
+                {
+                    title: 'Defining a Function',
+                    description: 'Creating a function to add two numbers.',
+                    code: `fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\nfn main() {\n    println!("{}", add(3, 4));\n}`
+                },
+                {
+                    title: 'Creating an Array',
+                    description: 'Creating an array and accessing its elements.',
+                    code: `fn main() {\n    let numbers = [1, 2, 3, 4, 5];\n    println!("First element: {}", numbers[0]);\n}`
+                },
+                {
+                    title: 'Using Tuples',
+                    description: 'Creating and accessing elements in a tuple.',
+                    code: `fn main() {\n    let person = ("Alice", 25);\n    println!("Name: {}, Age: {}", person.0, person.1);\n}`
+                },
+                {
+                    title: 'String Formatting',
+                    description: 'Using formatted strings in Rust.',
+                    code: `fn main() {\n    let name = "John";\n    println!("Hello, {}!", name);\n}`
+                }
                 ];
             } else if (section === 'medium') {
                 document.querySelector("#basic").style.backgroundColor = "";
@@ -255,16 +290,56 @@
                 document.querySelector("#medium").style.backgroundColor = "green";
                 sectionIntro = `<h1>Rust Medium</h1><p>Learn the medium level of Rust with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Using Vectors',
-                        description: 'Creating and modifying a vector in Rust.',
-                        code: `fn main() {\n    let mut numbers = vec![1, 2, 3];\n    numbers.push(4);\n    numbers.push(5);\n    println!("Numbers: {:?}", numbers);\n}`
-                    },
-                    {
-                        title: 'Basic String Operations',
-                        description: 'Manipulating strings with push and concatenation.',
-                        code: `fn main() {\n    let mut s = String::from("Hello");\n    s.push(',');\n    s.push_str(" world!");\n    println!("{}", s);\n}`
-                    }
+                {
+                    title: 'Using the Match Expression',
+                    description: 'Matching different cases using "match".',
+                    code: `fn main() {\n    let day = "Tuesday";\n    match day {\n        "Monday" => println!("Start of the week"),\n        "Tuesday" => println!("Second day"),\n        _ => println!("Other day"),\n    }\n}`
+                },
+                {
+                    title: 'Vectors in Rust',
+                    description: 'Creating and modifying a vector.',
+                    code: `fn main() {\n    let mut numbers = vec![1, 2, 3];\n    numbers.push(4);\n    println!("{:?}", numbers);\n}`
+                },
+                {
+                    title: 'Error Handling with Result',
+                    description: 'Using "Result" for error handling.',
+                    code: `fn main() {\n    let result: Result<i32, &str> = Ok(42);\n    match result {\n        Ok(value) => println!("Value: {}", value),\n        Err(e) => println!("Error: {}", e),\n    }\n}`
+                },
+                {
+                    title: 'Reading User Input',
+                    description: 'Reading input from the console.',
+                    code: `use std::io;\nfn main() {\n    let mut input = String::new();\n    io::stdin().read_line(&mut input).expect("Failed to read input");\n    println!("You entered: {}", input);\n}`
+                },
+                {
+                    title: 'Recursive Function',
+                    description: 'Calculating factorial using recursion.',
+                    code: `fn factorial(n: u32) -> u32 {\n    if n == 0 { 1 } else { n * factorial(n - 1) }\n}\nfn main() {\n    println!("{}", factorial(5));\n}`
+                },
+                {
+                    title: 'HashMap Example',
+                    description: 'Using a HashMap to store key-value pairs.',
+                    code: `use std::collections::HashMap;\nfn main() {\n    let mut scores = HashMap::new();\n    scores.insert("Alice", 10);\n    println!("{:?}", scores);\n}`
+                },
+                {
+                    title: 'File I/O',
+                    description: 'Writing to and reading from a file.',
+                    code: `use std::fs;\nfn main() {\n    fs::write("example.txt", "Hello, Rust!").expect("Unable to write file");\n    let content = fs::read_to_string("example.txt").expect("Unable to read file");\n    println!("{}", content);\n}`
+                },
+                {
+                    title: 'Closures in Rust',
+                    description: 'Using closures to add two numbers.',
+                    code: `fn main() {\n    let add = |a, b| a + b;\n    println!("{}", add(5, 3));\n}`
+                },
+                {
+                    title: 'Pattern Matching with Enums',
+                    description: 'Using enums and pattern matching.',
+                    code: `enum Direction { North, South, East, West }\nfn main() {\n    let dir = Direction::North;\n    match dir {\n        Direction::North => println!("Going North"),\n        _ => println!("Other direction"),\n    }\n}`
+                },
+                {
+                    title: 'Using Modules',
+                    description: 'Creating and using a module.',
+                    code: `mod greetings {\n    pub fn say_hello() { println!("Hello, Rust!"); }\n}\nfn main() {\n    greetings::say_hello();\n}`
+                }
                 ];
             } else if (section === 'advanced') {
                 document.querySelector("#basic").style.backgroundColor = "";
@@ -272,21 +347,41 @@
                 document.querySelector("#advanced").style.backgroundColor = "green";
                 sectionIntro = `<h1>Rust Advanced</h1><p>Explore advanced Rust concepts with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Using Traits and Generics',
-                        description: 'Implementing traits with generics for flexible functionality.',
-                        code: `trait Summary {\n    fn summarize(&self) -> String;\n}\n\nstruct Article {\n    title: String,\n    content: String,\n}\n\nimpl Summary for Article {\n    fn summarize(&self) -> String {\n        format!("{} - {}", self.title, self.content)\n    }\n}\n\nfn main() {\n    let article = Article {\n        title: String::from("Rust Generics and Traits"),\n        content: String::from("An advanced topic in Rust.")\n    };\n    println!("{}", article.summarize());\n}`
-                    },
-                    {
-                        title: 'Concurrency with Threads',
-                        description: 'Creating and handling multiple threads in Rust.',
-                        code: `use std::thread;\nuse std::time::Duration;\n\nfn main() {\n    let handle = thread::spawn(|| {\n        for i in 1..10 {\n            println!("hi number {} from the spawned thread!", i);\n            thread::sleep(Duration::from_millis(1));\n        }\n    });\n\n    for i in 1..5 {\n        println!("hi number {} from the main thread!", i);\n        thread::sleep(Duration::from_millis(1));\n    }\n\n    handle.join().unwrap();\n}`
-                    },
-                    {
-                        title: 'Error Handling with Result and Option',
-                        description: 'Handling errors using Result and Option types in Rust.',
-                        code: `fn divide(dividend: f64, divisor: f64) -> Result<f64, String> {\n    if divisor == 0.0 {\n        Err(String::from("Cannot divide by zero"))\n    } else {\n        Ok(dividend / divisor)\n    }\n}\n\nfn main() {\n    match divide(10.0, 2.0) {\n        Ok(result) => println!("Result: {}", result),\n        Err(e) => println!("Error: {}", e),\n    }\n\n    match divide(10.0, 0.0) {\n        Ok(result) => println!("Result: {}", result),\n        Err(e) => println!("Error: {}", e),\n    }\n}`
-                    }
+                {
+                    title: 'Structs and Methods',
+                    description: 'Defining a struct with methods.',
+                    code: `struct Rectangle { width: u32, height: u32 }\nimpl Rectangle {\n    fn area(&self) -> u32 { self.width * self.height }\n}\nfn main() {\n    let rect = Rectangle { width: 10, height: 5 };\n    println!("Area: {}", rect.area());\n}`
+                },
+                {
+                    title: 'Traits and Polymorphism',
+                    description: 'Using traits for polymorphism.',
+                    code: `trait Animal { fn speak(&self); }\nstruct Dog;\nimpl Animal for Dog { fn speak(&self) { println!("Woof!"); } }\nfn main() {\n    let dog = Dog;\n    dog.speak();\n}`
+                },
+                {
+                    title: 'Multithreading',
+                    description: 'Creating threads in Rust.',
+                    code: `use std::thread;\nfn main() {\n    let handle = thread::spawn(|| {\n        println!("Thread is running");\n    });\n    handle.join().unwrap();\n}`
+                },
+                {
+                    title: 'Asynchronous Programming',
+                    description: 'Using async/await in Rust.',
+                    code: `use tokio::time::{sleep, Duration};\n#[tokio::main]\nasync fn main() {\n    sleep(Duration::from_secs(1)).await;\n    println!("Async Task Complete");\n}`
+                },
+                {
+                    title: 'Command-Line Arguments',
+                    description: 'Reading command-line arguments.',
+                    code: `use std::env;\nfn main() {\n    let args: Vec<String> = env::args().collect();\n    println!("Arguments: {:?}", args);\n}`
+                },
+                {
+                    title: 'Working with JSON',
+                    description: 'Parsing JSON data using the serde crate.',
+                    code: `use serde_json::Value;\nfn main() {\n    let data = r#"{"name": "Alice", "age": 30}"#;\n    let v: Value = serde_json::from_str(data).unwrap();\n    println!("{}", v["name"]);\n}`
+                },
+                {
+                    title: 'Implementing a Linked List',
+                    description: 'Creating a simple linked list.',
+                    code: `struct Node { data: i32, next: Option<Box<Node>> }\nfn main() {\n    let node = Node { data: 1, next: None };\n    println!("Node data: {}", node.data);\n}`
+                }
                 ];
             }
 
