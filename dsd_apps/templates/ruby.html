@@ -235,21 +235,56 @@
                 document.querySelector("#medium").style.backgroundColor = "";
                 sectionIntro = `<h1>Ruby Basics</h1><p>Learn the basics of Ruby with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Hello World Example',
-                        description: 'The simplest Ruby program that prints "Hello, World!".',
-                        code: `puts 'Hello, World!'`
-                    },
-                    {
-                        title: 'Basic For Loop',
-                        description: 'A "for" loop in Ruby, printing numbers from 0 to 4.',
-                        code: `for i in 0..4\n    puts "Number #{i}"\nend`
-                    },
-                    {
-                        title: 'Basic If-Else Condition',
-                        description: 'Checking if a number is greater than 5.',
-                        code: `number = 10\nif number > 5\n    puts "Number is greater than 5"\nelse\n    puts "Number is less than or equal to 5"\nend`
-                    }
+                {
+                    title: 'Hello World Example',
+                    description: 'The simplest Ruby program that prints "Hello, World!".',
+                    code: `puts "Hello, World!"`
+                },
+                {
+                    title: 'Variable Assignment',
+                    description: 'Assigning values to variables in Ruby.',
+                    code: `name = "Alice"\nage = 25\nputs "Name: #{name}, Age: #{age}"`
+                },
+                {
+                    title: 'Basic Arithmetic Operations',
+                    description: 'Performing addition, subtraction, multiplication, and division.',
+                    code: `a = 10\nb = 5\nputs "Add: #{a + b}", "Subtract: #{a - b}", "Multiply: #{a * b}", "Divide: #{a / b}"`
+                },
+                {
+                    title: 'Basic If-Else Condition',
+                    description: 'Checking if a number is even or odd.',
+                    code: `number = 7\nif number.even?\n  puts "Even"\nelse\n  puts "Odd"\nend`
+                },
+                {
+                    title: 'Basic For Loop',
+                    description: 'A "for" loop in Ruby, printing numbers from 1 to 5.',
+                    code: `for i in 1..5\n  puts "Number: #{i}"\nend`
+                },
+                {
+                    title: 'While Loop Example',
+                    description: 'Printing numbers from 1 to 5 using a "while" loop.',
+                    code: `i = 1\nwhile i <= 5\n  puts i\n  i += 1\nend`
+                },
+                {
+                    title: 'Simple Function',
+                    description: 'Defining and calling a function to add two numbers.',
+                    code: `def add(a, b)\n  a + b\nend\nputs add(3, 4)`
+                },
+                {
+                    title: 'Creating an Array',
+                    description: 'Creating an array and accessing its elements.',
+                    code: `fruits = ["Apple", "Banana", "Cherry"]\nputs fruits[0]\nputs fruits[2]`
+                },
+                {
+                    title: 'Creating a Hash',
+                    description: 'Creating a hash and accessing its elements.',
+                    code: `person = { name: "Alice", age: 25 }\nputs person[:name]\nputs person[:age]`
+                },
+                {
+                    title: 'String Interpolation',
+                    description: 'Using string interpolation in Ruby.',
+                    code: `name = "John"\nputs "Hello, #{name}!"`
+                }
                 ];
             } else if (section === 'medium') {
                 document.querySelector("#basic").style.backgroundColor = "";
@@ -257,16 +292,56 @@
                 document.querySelector("#medium").style.backgroundColor = "green";
                 sectionIntro = `<h1>Ruby Medium</h1><p>Learn the medium level of Ruby with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Using Arrays',
-                        description: 'Creating and modifying an array in Ruby.',
-                        code: `numbers = [1, 2, 3]\nnumbers.push(4, 5)\nputs "Numbers: #{numbers}"`
-                    },
-                    {
-                        title: 'Basic String Operations',
-                        description: 'Concatenating strings in Ruby.',
-                        code: `s = "Hello"\ns += ", world!"\nputs s`
-                    }
+                {
+                    title: 'Using the Each Iterator',
+                    description: 'Iterating through an array using "each".',
+                    code: `numbers = [1, 2, 3, 4, 5]\nnumbers.each { |num| puts "Number: #{num}" }`
+                },
+                {
+                    title: 'Filtering an Array',
+                    description: 'Filtering even numbers from an array.',
+                    code: `nums = [1, 2, 3, 4, 5, 6]\nevens = nums.select { |n| n.even? }\nputs evens`
+                },
+                {
+                    title: 'Case Statement Example',
+                    description: 'Using a "case" statement to check a variable\'s value.',
+                    code: `day = "Tuesday"\ncase day\nwhen "Monday"\n  puts "Start of the week"\nwhen "Tuesday"\n  puts "Second day"\nelse\n  puts "Other day"\nend`
+                },
+                {
+                    title: 'Recursive Function',
+                    description: 'Calculating the factorial of a number using recursion.',
+                    code: `def factorial(n)\n  return 1 if n == 0\n  n * factorial(n - 1)\nend\nputs factorial(5)`
+                },
+                {
+                    title: 'Reading a File',
+                    description: 'Reading data from a file using "File.read".',
+                    code: `content = File.read("example.txt")\nputs content`
+                },
+                {
+                    title: 'Sorting an Array',
+                    description: 'Sorting an array of numbers in ascending order.',
+                    code: `nums = [5, 3, 8, 1]\nputs nums.sort`
+                },
+                {
+                    title: 'Regular Expressions',
+                    description: 'Matching a pattern in a string using regular expressions.',
+                    code: `text = "hello world"\nputs "Match found!" if text =~ /world/`
+                },
+                {
+                    title: 'Handling User Input',
+                    description: 'Reading user input from the console.',
+                    code: `puts "Enter your name:"\nname = gets.chomp\nputs "Hello, #{name}!"`
+                },
+                {
+                    title: 'Working with JSON',
+                    description: 'Parsing JSON data using the "json" library.',
+                    code: `require 'json'\ndata = '{"name": "Alice", "age": 25}'\nparsed = JSON.parse(data)\nputs parsed["name"]`
+                },
+                {
+                    title: 'Date and Time',
+                    description: 'Getting the current date and time using "Time.now".',
+                    code: `puts Time.now`
+                }
                 ];
             } else if (section === 'advanced') {
                 document.querySelector("#basic").style.backgroundColor = "";
@@ -274,17 +349,57 @@
                 document.querySelector("#advanced").style.backgroundColor = "green";
                 sectionIntro = `<h1>Ruby Advanced</h1><p>Explore advanced Ruby concepts with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Using Modules',
-                        description: 'Creating and using modules in Ruby.',
-                        code: `module Greeting\n    def self.hello\n        puts 'Hello from the module!'\n    end\nend\nGreeting.hello`
-                    },
-                    {
-                        title: 'Concurrency with Threads',
-                        description: 'Using threads for concurrent programming in Ruby.',
-                        code: `Thread.new do\n    5.times do\n        puts "Hello from thread"\n        sleep(0.5)\n    end\nend\n\nputs "Main thread"\nThread.list.each { |t| t.join unless t == Thread.current }`
-                    }
-                ];
+                {
+                    title: 'Higher-Order Function',
+                    description: 'Passing a function as an argument to another function.',
+                    code: `def apply_func(func, val)\n  func.call(val)\nend\nputs apply_func(->(x) { x**2 }, 4)`
+                },
+                {
+                    title: 'Class and Objects',
+                    description: 'Creating a class with a method in Ruby.',
+                    code: `class Person\n  def initialize(name)\n    @name = name\n  end\n  def greet\n    puts "Hello, #{@name}"\n  end\nend\np = Person.new("Alice")\np.greet`
+                },
+                {
+                    title: 'Reading Command-Line Arguments',
+                    description: 'Reading arguments passed from the command line.',
+                    code: `puts ARGV.join(", ")`
+                },
+                {
+                    title: 'Connecting to a MySQL Database',
+                    description: 'Connecting to a MySQL database using the "mysql2" gem.',
+                    code: `require 'mysql2'\nclient = Mysql2::Client.new(host: "localhost", username: "root", password: "", database: "test")\nputs "Connected!"`
+                },
+                {
+                    title: 'Exception Handling',
+                    description: 'Using "begin-rescue" to handle exceptions.',
+                    code: `begin\n  result = 10 / 0\nrescue ZeroDivisionError => e\n  puts "Error: #{e.message}"\nend`
+                },
+                {
+                    title: 'HTTP Requests using Net::HTTP',
+                    description: 'Sending a GET request using "Net::HTTP".',
+                    code: `require 'net/http'\nuri = URI('https://api.example.com/data')\nresponse = Net::HTTP.get(uri)\nputs response`
+                },
+                {
+                    title: 'Working with Modules',
+                    description: 'Defining and using a module in Ruby.',
+                    code: `module Greet\n  def self.say_hello(name)\n    puts "Hello, #{name}!"\n  end\nend\nGreet.say_hello("Alice")`
+                },
+                {
+                    title: 'Multithreading',
+                    description: 'Creating a thread in Ruby.',
+                    code: `thread = Thread.new { puts "Thread running" }\nthread.join`
+                },
+                {
+                    title: 'Data Visualization with Rubyvis',
+                    description: 'Creating a bar chart using the "rubyvis" gem.',
+                    code: `require 'rubyvis'\ndata = [10, 15, 7]\nvis = Rubyvis::Bar.new(data)\nvis.render`
+                },
+                {
+                    title: 'Building a Sinatra Web App',
+                    description: 'Creating a basic web app using Sinatra.',
+                    code: `require 'sinatra'\nget '/' do\n  "Hello, Sinatra!"\nend`
+                }
+            ];
             }
     
             // Set up accordion content

@@ -347,16 +347,56 @@
                 document.querySelector("#medium").style.backgroundColor = "";
                 sectionIntro = `<h1>JavaScript Basics</h1><p>Learn the basics of JavaScript with examples...</p>`;
                 topics = [
-                    {
-                        title: 'Hello World Example',
-                        description: 'This is the simplest JavaScript program. It uses "console.log()" to display "Hello, World!" in the console.',
-                        code: `console.log("Hello, World!");`
-                    },
-                    {
-                        title: 'Basic For Loop',
-                        description: 'A "for" loop in JavaScript is used to repeat a block of code multiple times. This example prints numbers from 0 to 4 in the console.',
-                        code: `for (let i = 0; i < 5; i++) {\n    console.log("Number " + i);\n}`
-                    }
+                {
+                    title: 'Hello World Example',
+                    description: 'This is the simplest JavaScript program. It uses "console.log()" to display "Hello, World!" in the console.',
+                    code: `console.log("Hello, World!");`
+                },
+                {
+                    title: 'Variable Declaration',
+                    description: 'This example shows how to declare and initialize variables using "let" and "const".',
+                    code: `let age = 25;\nconst name = "John";\nconsole.log("Name:", name, "Age:", age);`
+                },
+                {
+                    title: 'Basic Arithmetic',
+                    description: 'This example performs basic arithmetic operations like addition, subtraction, multiplication, and division.',
+                    code: `let a = 10, b = 5;\nconsole.log("Add:", a + b);\nconsole.log("Subtract:", a - b);\nconsole.log("Multiply:", a * b);\nconsole.log("Divide:", a / b);`
+                },
+                {
+                    title: 'If-Else Condition',
+                    description: 'This example uses an "if-else" statement to check if a number is positive, negative, or zero.',
+                    code: `let num = 5;\nif (num > 0) {\n    console.log("Positive");\n} else if (num < 0) {\n    console.log("Negative");\n} else {\n    console.log("Zero");\n}`
+                },
+                {
+                    title: 'Switch Case Example',
+                    description: 'The "switch" statement is used to execute different blocks of code based on a specific value.',
+                    code: `let day = 2;\nswitch (day) {\n    case 1: console.log("Sunday"); break;\n    case 2: console.log("Monday"); break;\n    case 3: console.log("Tuesday"); break;\n    default: console.log("Other day");\n}`
+                },
+                {
+                    title: 'Basic Function Example',
+                    description: 'This example demonstrates how to define and call a simple function.',
+                    code: `function greet() {\n    console.log("Hello, JavaScript!");\n}\ngreet();`
+                },
+                {
+                    title: 'Array Example',
+                    description: 'This example shows how to create an array and access its elements.',
+                    code: `let fruits = ["Apple", "Banana", "Cherry"];\nconsole.log(fruits[0]);\nconsole.log(fruits[2]);`
+                },
+                {
+                    title: 'Object Example',
+                    description: 'This example demonstrates how to define a JavaScript object and access its properties.',
+                    code: `let person = { name: "Alice", age: 30 };\nconsole.log(person.name);\nconsole.log(person.age);`
+                },
+                {
+                    title: 'For Loop Example',
+                    description: 'This "for" loop example prints numbers from 1 to 5 in the console.',
+                    code: `for (let i = 1; i <= 5; i++) {\n    console.log(i);\n}`
+                },
+                {
+                    title: 'While Loop Example',
+                    description: 'This "while" loop example prints numbers from 1 to 3 in the console.',
+                    code: `let i = 1;\nwhile (i <= 3) {\n    console.log(i);\n    i++;\n}`
+                }
                 ];
             } else if (section === 'medium') {
                 document.querySelector("#medium").style.backgroundColor = "green";
@@ -364,16 +404,56 @@
                 document.querySelector("#advanced").style.backgroundColor = "";
                 sectionIntro = `<h1>Medium Level JavaScript</h1><p>This section covers medium-difficulty JavaScript programs...</p>`;
                 topics = [
-                    {
-                        title: 'Square of Numbers',
-                        description: 'This program calculates the square of numbers from 1 to 5.',
-                        code: `for (let i = 1; i <= 5; i++) {\n    console.log("Square of " + i + " is " + (i * i));\n}`
-                    },
-                    {
-                        title: 'Conditional Statements',
-                        description: 'A simple if-else conditional example.',
-                        code: `let number = 10;\nif (number > 5) {\n    console.log("Number is greater than 5");\n} else {\n    console.log("Number is less than or equal to 5");\n}`
-                    }
+                {
+                    title: 'Arrow Function Example',
+                    description: 'This example demonstrates the use of an arrow function to add two numbers.',
+                    code: `const add = (a, b) => a + b;\nconsole.log(add(3, 4));`
+                },
+                {
+                    title: 'Array Methods - Map',
+                    description: 'The "map" method is used to create a new array by transforming each element.',
+                    code: `let numbers = [1, 2, 3, 4];\nlet squares = numbers.map(x => x * x);\nconsole.log(squares);`
+                },
+                {
+                    title: 'String Methods',
+                    description: 'This example shows how to use common string methods like "toUpperCase()" and "slice()".',
+                    code: `let text = "JavaScript";\nconsole.log(text.toUpperCase());\nconsole.log(text.slice(0, 4));`
+                },
+                {
+                    title: 'Set Timeout Example',
+                    description: 'This example uses "setTimeout" to execute a function after a delay.',
+                    code: `setTimeout(() => {\n    console.log("Hello after 2 seconds");\n}, 2000);`
+                },
+                {
+                    title: 'Promise Example',
+                    description: 'This example demonstrates how to use a Promise to handle asynchronous operations.',
+                    code: `const promise = new Promise((resolve, reject) => {\n    let success = true;\n    if (success) resolve("Task completed");\n    else reject("Task failed");\n});\npromise.then(console.log).catch(console.error);`
+                },
+                {
+                    title: 'Filter Method',
+                    description: 'The "filter" method is used to create a new array with elements that pass a test.',
+                    code: `let nums = [10, 15, 20, 25];\nlet evens = nums.filter(n => n % 2 === 0);\nconsole.log(evens);`
+                },
+                {
+                    title: 'Recursive Function',
+                    description: 'This example demonstrates a recursive function to calculate factorial.',
+                    code: `function factorial(n) {\n    return n === 0 ? 1 : n * factorial(n - 1);\n}\nconsole.log(factorial(5));`
+                },
+                {
+                    title: 'Try-Catch Error Handling',
+                    description: 'This example shows how to handle errors using "try-catch".',
+                    code: `try {\n    let result = 10 / 0;\n    console.log(result);\n} catch (error) {\n    console.error("Error:", error.message);\n}`
+                },
+                {
+                    title: 'Object Destructuring',
+                    description: 'This example demonstrates how to use object destructuring to extract properties.',
+                    code: `let user = { name: "Jane", age: 28 };\nconst { name, age } = user;\nconsole.log(name, age);`
+                },
+                {
+                    title: 'Ternary Operator Example',
+                    description: 'The ternary operator is a shorthand for "if-else" conditions.',
+                    code: `let age = 18;\nlet status = (age >= 18) ? "Adult" : "Minor";\nconsole.log(status);`
+                }
                 ];
             } else if (section === 'advanced') {
                 document.querySelector("#advanced").style.backgroundColor = "green";
@@ -381,16 +461,58 @@
                 document.querySelector("#medium").style.backgroundColor = "";
                 sectionIntro = `<h1>Advanced JavaScript</h1><p>Explore advanced topics in JavaScript...</p>`;
                 topics = [
-                    {
-                        title: 'Arrow Functions',
-                        description: 'An example of using arrow functions to simplify syntax.',
-                        code: `const greet = (name) => {\n    console.log("Hello, " + name);\n};\ngreet("World");`
-                    },
-                    {
-                        title: 'Promises',
-                        description: 'An example of using Promises to handle asynchronous operations.',
-                        code: `const promiseExample = new Promise((resolve, reject) => {\n    let success = true;\n    if (success) {\n        resolve("Promise resolved!");\n    } else {\n        reject("Promise rejected.");\n    }\n});\n\npromiseExample.then(response => console.log(response)).catch(error => console.log(error));`
-                    }
+                {
+                    title: 'Arrow Function Example',
+                    description: 'This example shows how to use arrow functions in JavaScript.',
+                    code: `const add = (a, b) => a + b;\nconsole.log(add(3, 4));`
+                },
+                {
+                    title: 'Map Function Example',
+                    description: 'This example demonstrates how to use the "map" function to transform an array.',
+                    code: `const numbers = [1, 2, 3, 4, 5];\nconst doubled = numbers.map(num => num * 2);\nconsole.log(doubled);`
+                },
+                {
+                    title: 'Set Timeout Example',
+                    description: 'This example shows how to use "setTimeout" to delay the execution of code.',
+                    code: `console.log("Start");\nsetTimeout(() => console.log("Delayed message"), 2000);\nconsole.log("End");`
+                },
+                {
+                    title: 'Object Destructuring',
+                    description: 'This example demonstrates how to destructure an object in JavaScript.',
+                    code: `const person = { name: "Alice", age: 25 };\nconst { name, age } = person;\nconsole.log(name, age);`
+                },
+                {
+                    title: 'Promises Example',
+                    description: 'This example shows how to create and use a Promise.',
+                    code: `const myPromise = new Promise((resolve, reject) => {\n    setTimeout(() => resolve("Promise resolved"), 1000);\n});\nmyPromise.then(result => console.log(result));`
+                },
+                {
+                    title: 'Recursive Function',
+                    description: 'This example demonstrates recursion by calculating factorial.',
+                    code: `function factorial(n) {\n    return n === 0 ? 1 : n * factorial(n - 1);\n}\nconsole.log(factorial(5));`
+                },
+                {
+                    title: 'Spread Operator',
+                    description: 'This example shows how to use the spread operator to merge arrays.',
+                    code: `const arr1 = [1, 2, 3];\nconst arr2 = [4, 5, 6];\nconst combined = [...arr1, ...arr2];\nconsole.log(combined);`
+                },
+                {
+                    title: 'Async Function with Error Handling',
+                    description: 'Using async/await with try-catch to handle errors.',
+                    code: `async function fetchData() {\n    try {\n        let response = await fetch("https://jsonplaceholder.typicode.com/posts/invalid");\n        let data = await response.json();\n        console.log(data);\n    } catch (error) {\n        console.error("Error:", error);\n    }\n}\nfetchData();`
+                },
+                {
+                    title: 'Prototype Example',
+                    description: 'This example demonstrates how to use prototypes in JavaScript.',
+                    code: `function Animal(name) {\n    this.name = name;\n}\nAnimal.prototype.speak = function() {\n    console.log(this.name + " makes a sound");\n};\nconst dog = new Animal("Dog");\ndog.speak();`
+                },
+                {
+                    title: 'Promise.all Example',
+                    description: 'Using "Promise.all" to run multiple promises in parallel.',
+                    code: `const promise1 = Promise.resolve("Promise 1");\nconst promise2 = new Promise(resolve => setTimeout(() => resolve("Promise 2"), 1000));\nPromise.all([promise1, promise2]).then(results => console.log(results));`
+                }
+
+
                 ];
             }
     

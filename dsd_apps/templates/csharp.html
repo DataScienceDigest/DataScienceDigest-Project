@@ -246,6 +246,41 @@
                         title: 'Basic If-Else Condition',
                         description: 'Checking if a number is greater than 5.',
                         code: `using System;\n\nclass Program {\n    static void Main() {\n        int number = 10;\n        if (number > 5) {\n            Console.WriteLine("Number is greater than 5");\n        } else {\n            Console.WriteLine("Number is less than or equal to 5");\n        }\n    }\n}`
+                    },
+                    {
+                        title: 'Simple While Loop',
+                        description: 'Using a while loop to count down from 5 to 1.',
+                        code: `using System;\n\nclass Program {\n    static void Main() {\n        int count = 5;\n        while (count > 0) {\n            Console.WriteLine(count);\n            count--;\n        }\n    }\n}`
+                    },
+                    {
+                        title: 'Switch Statement',
+                        description: 'Using a switch statement to print a day of the week.',
+                        code: `using System;\n\nclass Program {\n    static void Main() {\n        int day = 3;\n        switch (day) {\n            case 1:\n                Console.WriteLine("Monday");\n                break;\n            case 2:\n                Console.WriteLine("Tuesday");\n                break;\n            case 3:\n                Console.WriteLine("Wednesday");\n                break;\n            default:\n                Console.WriteLine("Other day");\n                break;\n        }\n    }\n}`
+                    },
+                    {
+                        title: 'Simple Array',
+                        description: 'Using an array to store and print integers.',
+                        code: `using System;\n\nclass Program {\n    static void Main() {\n        int[] numbers = {1, 2, 3, 4, 5};\n        foreach (int number in numbers) {\n            Console.WriteLine(number);\n        }\n    }\n}`
+                    },
+                    {
+                        title: 'Method with Parameters',
+                        description: 'A method that takes parameters and prints a greeting.',
+                        code: `using System;\n\nclass Program {\n    static void Greet(string name) {\n        Console.WriteLine("Hello, " + name);\n    }\n\n    static void Main() {\n        Greet("Alice");\n    }\n}`
+                    },
+                    {
+                        title: 'Basic Do-While Loop',
+                        description: 'Using a do-while loop to ensure code runs at least once.',
+                        code: `using System;\n\nclass Program {\n    static void Main() {\n        int count = 0;\n        do {\n            Console.WriteLine("Count: " + count);\n            count++;\n        } while (count < 3);\n    }\n}`
+                    },
+                    {
+                        title: 'User Input',
+                        description: 'Reading user input from the console.',
+                        code: `using System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine("Enter your name:");\n        string name = Console.ReadLine();\n        Console.WriteLine("Hello, " + name);\n    }\n}`
+                    },
+                    {
+                        title: 'Math Operations',
+                        description: 'Performing basic math operations.',
+                        code: `using System;\n\nclass Program {\n    static void Main() {\n        int a = 5, b = 3;\n        Console.WriteLine("Addition: " + (a + b));\n        Console.WriteLine("Subtraction: " + (a - b));\n        Console.WriteLine("Multiplication: " + (a * b));\n        Console.WriteLine("Division: " + (a / b));\n    }\n}`
                     }
                 ];
             } else if (section === 'medium') {
@@ -255,14 +290,50 @@
                 sectionIntro = `<h1>C# Medium</h1><p>Learn intermediate concepts in C#...</p>`;
                 topics = [
                     {
-                        title: 'Working with Arrays',
-                        description: 'Creating and iterating through an array in C#.',
-                        code: `using System;\n\nclass Program {\n    static void Main() {\n        int[] numbers = {1, 2, 3, 4};\n        foreach (int num in numbers) {\n            Console.WriteLine(num);\n        }\n    }\n}`
+                        title: 'Classes and Objects',
+                        description: 'Creating a simple class and object in C#.',
+                        code: `using System;\n\nclass Car {\n    public string model = "Toyota";\n}\n\nclass Program {\n    static void Main() {\n        Car myCar = new Car();\n        Console.WriteLine(myCar.model);\n    }\n}`
                     },
                     {
-                        title: 'String Manipulation',
-                        description: 'Concatenating strings in C#.',
-                        code: `using System;\n\nclass Program {\n    static void Main() {\n        string greeting = "Hello";\n        greeting += ", world!";\n        Console.WriteLine(greeting);\n    }\n}`
+                        title: 'Constructor Usage',
+                        description: 'Defining and using constructors in C#.',
+                        code: `using System;\n\nclass Car {\n    public string model;\n    public Car(string m) {\n        model = m;\n    }\n}\n\nclass Program {\n    static void Main() {\n        Car myCar = new Car("Ford");\n        Console.WriteLine(myCar.model);\n    }\n}`
+                    },
+                    {
+                        title: 'Properties in C#',
+                        description: 'Using properties to control access to fields.',
+                        code: `using System;\n\nclass Person {\n    private int age;\n    public int Age {\n        get { return age; }\n        set { if (value >= 0) age = value; }\n    }\n}\n\nclass Program {\n    static void Main() {\n        Person person = new Person();\n        person.Age = 25;\n        Console.WriteLine(person.Age);\n    }\n}`
+                    },
+                    {
+                        title: 'Inheritance',
+                        description: 'Demonstrating inheritance in C#.',
+                        code: `using System;\n\nclass Animal {\n    public void Speak() {\n        Console.WriteLine("Animal sound");\n    }\n}\n\nclass Dog : Animal {\n}\n\nclass Program {\n    static void Main() {\n        Dog dog = new Dog();\n        dog.Speak();\n    }\n}`
+                    },
+                    {
+                        title: 'Lists in C#',
+                        description: 'Using List collections to store dynamic data.',
+                        code: `using System;\nusing System.Collections.Generic;\n\nclass Program {\n    static void Main() {\n        List<string> fruits = new List<string> {"Apple", "Banana", "Cherry"};\n        foreach (string fruit in fruits) {\n            Console.WriteLine(fruit);\n        }\n    }\n}`
+                    },
+                    {
+                        title: 'Exception Handling',
+                        description: 'Using try-catch to handle exceptions.',
+                        code: `using System;\n\nclass Program {\n    static void Main() {\n        try {\n            int[] arr = {1, 2, 3};\n            Console.WriteLine(arr[5]);\n        } catch (IndexOutOfRangeException e) {\n            Console.WriteLine("Exception: " + e.Message);\n        }\n    }\n}`
+                    },
+                    {
+                        title: 'File I/O',
+                        description: 'Reading and writing text files.',
+                        code: `using System;\nusing System.IO;\n\nclass Program {\n    static void Main() {\n        File.WriteAllText("test.txt", "Hello, file!");\n        string text = File.ReadAllText("test.txt");\n        Console.WriteLine(text);\n    }\n}`
+                    },
+                   
+                    {
+                        title: 'Delegates in C#',
+                        description: 'Using delegates for function pointers.',
+                        code: `using System;\n\ndelegate void GreetDelegate(string name);\n\nclass Program {\n    static void Greet(string name) {\n        Console.WriteLine("Hello, " + name);\n    }\n\n    static void Main() {\n        GreetDelegate del = Greet;\n        del("Alice");\n    }\n}`
+                    },
+                    {
+                        title: 'LINQ Basics',
+                        description: 'Using LINQ to filter and select data.',
+                        code: `using System;\nusing System.Linq;\n\nclass Program {\n    static void Main() {\n        int[] numbers = {1, 2, 3, 4, 5};\n        var evenNumbers = numbers.Where(n => n % 2 == 0);\n        foreach (int number in evenNumbers) {\n            Console.WriteLine(number);\n        }\n    }\n}`
                     }
                 ];
             } else if (section === 'advanced') {
@@ -272,14 +343,54 @@
                 sectionIntro = `<h1>C# Advanced</h1><p>Explore advanced C# concepts...</p>`;
                 topics = [
                     {
-                        title: 'Using Interfaces',
-                        description: 'Implementing interfaces for flexible functionality.',
-                        code: `using System;\n\ninterface IDescriber {\n    string Describe();\n}\n\nclass Product : IDescriber {\n    public string Name { get; set; }\n    public double Price { get; set; }\n    public string Describe() {\n        return $"{Name} costs ${Price}";\n    }\n}\n\nclass Program {\n    static void Main() {\n        IDescriber item = new Product { Name = "Gadget", Price = 29.99 };\n        Console.WriteLine(item.Describe());\n    }\n}`
+                        title: 'Async and Await',
+                        description: 'Using async and await to perform asynchronous programming.',
+                        code: `using System;\nusing System.Threading.Tasks;\n\nclass Program {\n    static async Task Main() {\n        await AsyncMethod();\n        Console.WriteLine("Main Method Complete");\n    }\n\n    static async Task AsyncMethod() {\n        await Task.Delay(1000);\n        Console.WriteLine("Async Method Complete");\n    }\n}`
                     },
                     {
-                        title: 'Multithreading',
-                        description: 'Using threads in C# for concurrent programming.',
-                        code: `using System;\nusing System.Threading;\n\nclass Program {\n    static void Main() {\n        Thread t = new Thread(new ThreadStart(SayHello));\n        t.Start();\n        Console.WriteLine("Main function");\n    }\n\n    static void SayHello() {\n        for (int i = 0; i < 5; i++) {\n            Console.WriteLine("Hello");\n            Thread.Sleep(500);\n        }\n    }\n}`
+                        title: 'Lambda Expressions',
+                        description: 'Using lambda expressions to create short and simple functions.',
+                        code: `using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\nclass Program {\n    static void Main() {\n        List<int> numbers = new List<int> {1, 2, 3, 4, 5};\n        var squared = numbers.Select(n => n * n);\n        foreach (int n in squared) {\n            Console.WriteLine(n);\n        }\n    }\n}`
+                    },
+                    {
+                        title: 'Extension Methods',
+                        description: 'Creating custom extension methods.',
+                        code: `using System;\n\npublic static class StringExtensions {\n    public static string Reverse(this string s) {\n        char[] arr = s.ToCharArray();\n        Array.Reverse(arr);\n        return new string(arr);\n    }\n}\n\nclass Program {\n    static void Main() {\n        string str = "hello";\n        Console.WriteLine(str.Reverse());\n    }\n}`
+                    },
+                    {
+                        title: 'Events and Delegates',
+                        description: 'Using events and delegates to implement the observer pattern.',
+                        code: `using System;\n\nclass Publisher {\n    public delegate void Notify();\n    public event Notify OnNotify;\n\n    public void Trigger() {\n        OnNotify?.Invoke();\n    }\n}\n\nclass Subscriber {\n    public void Respond() {\n        Console.WriteLine("Event triggered!");\n    }\n}\n\nclass Program {\n    static void Main() {\n        Publisher pub = new Publisher();\n        Subscriber sub = new Subscriber();\n        pub.OnNotify += sub.Respond;\n        pub.Trigger();\n    }\n}`
+                    },
+                    {
+                        title: 'LINQ GroupBy',
+                        description: 'Using LINQ to group data by a specific attribute.',
+                        code: `using System;\nusing System.Collections.Generic;\nusing System.Linq;\n\nclass Student {\n    public string Name { get; set; }\n    public string Grade { get; set; }\n}\n\nclass Program {\n    static void Main() {\n        List<Student> students = new List<Student> {\n            new Student { Name = "Alice", Grade = "A" },\n            new Student { Name = "Bob", Grade = "B" },\n            new Student { Name = "Charlie", Grade = "A" }\n        };\n\n        var grouped = students.GroupBy(s => s.Grade);\n        foreach (var group in grouped) {\n            Console.WriteLine($"Grade {group.Key}:");\n            foreach (var student in group) {\n                Console.WriteLine(student.Name);\n            }\n        }\n    }\n}`
+                    },
+                    {
+                        title: 'Reflection in C#',
+                        description: 'Using reflection to get information about a class at runtime.',
+                        code: `using System;\nusing System.Reflection;\n\nclass Person {\n    public string Name { get; set; }\n    public void Speak() {\n        Console.WriteLine("Hello");\n    }\n}\n\nclass Program {\n    static void Main() {\n        Type type = typeof(Person);\n        Console.WriteLine("Properties:");\n        foreach (PropertyInfo prop in type.GetProperties()) {\n            Console.WriteLine(prop.Name);\n        }\n\n        Console.WriteLine("Methods:");\n        foreach (MethodInfo method in type.GetMethods()) {\n            Console.WriteLine(method.Name);\n        }\n    }\n}`
+                    },
+                    {
+                        title: 'File Streaming',
+                        description: 'Reading and writing files using FileStream.',
+                        code: `using System;\nusing System.IO;\n\nclass Program {\n    static void Main() {\n        string path = "example.txt";\n\n        using (FileStream fs = new FileStream(path, FileMode.Create)) {\n            byte[] info = new UTF8Encoding(true).GetBytes("Hello, FileStream!");\n            fs.Write(info, 0, info.Length);\n        }\n\n        using (FileStream fs = File.OpenRead(path)) {\n            byte[] b = new byte[1024];\n            UTF8Encoding temp = new UTF8Encoding(true);\n            while (fs.Read(b, 0, b.Length) > 0) {\n                Console.WriteLine(temp.GetString(b));\n            }\n        }\n    }\n}`
+                    },
+                    {
+                        title: 'Generics in C#',
+                        description: 'Using generics to create reusable data structures.',
+                        code: `using System;\nusing System.Collections.Generic;\n\nclass Program {\n    static void PrintItems<T>(List<T> items) {\n        foreach (var item in items) {\n            Console.WriteLine(item);\n        }\n    }\n\n    static void Main() {\n        List<int> numbers = new List<int> {1, 2, 3};\n        PrintItems(numbers);\n\n        List<string> words = new List<string> {"hello", "world"};\n        PrintItems(words);\n    }\n}`
+                    },
+                    {
+                        title: 'Multithreading with Threads',
+                        description: 'Using threads to run parallel tasks.',
+                        code: `using System;\nusing System.Threading;\n\nclass Program {\n    static void PrintMessage() {\n        Console.WriteLine("Hello from a new thread!");\n    }\n\n    static void Main() {\n        Thread thread = new Thread(PrintMessage);\n        thread.Start();\n        thread.Join();\n        Console.WriteLine("Main thread complete.");\n    }\n}`
+                    },
+                    {
+                        title: 'Task Parallel Library (TPL)',
+                        description: 'Using the TPL to run tasks concurrently.',
+                        code: `using System;\nusing System.Threading.Tasks;\n\nclass Program {\n    static void Main() {\n        Task task1 = Task.Run(() => Console.WriteLine("Task 1 running"));\n        Task task2 = Task.Run(() => Console.WriteLine("Task 2 running"));\n        Task.WaitAll(task1, task2);\n        Console.WriteLine("All tasks complete");\n    }\n}`
                     }
                 ];
             }
