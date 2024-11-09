@@ -1283,94 +1283,85 @@
 
     <!-- Categories Start -->
     <div class="container-xxl py-5 category">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center px-3">Categories</h6>
-                <h1 class="mb-5" style="color: #fb873f;">Popular Topics to Explore</h1>
+      <div class="container">
+          <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+              <h6 class="section-title bg-white text-center px-3">Categories</h6>
+              <h1 class="mb-5" style="color: #fb873f;">Popular Topics to Explore</h1>
+          </div>
+          <div class="row g-2 m-2">
+            <div class="col-lg-3 col-md-6 text-center">
+              <a href="{% url 'python-tutorial' %}" class="d-block text-decoration-none">
+                  <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                      <img src="{% static 'images/python-5.svg' %}" class="img-fluid" alt="Python">
+                      <h5 class="my-2">Python</h5>
+                  </div>
+              </a>
             </div>
-            <div class="row g-2 m-2">
-                <div class="col-lg-3 col-md-6  text-center">
+            
+            <div class="col-lg-3 col-md-6 text-center">
+                <a href="{% url 'sql-tutorial' %}" class="d-block text-decoration-none">
                     <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/python-5.svg' %}" class="img-fluid" alt="Python"></i>
-
-                        <h5 class="my-2">
-                            <a href="{% url 'python-tutorial' %}" class="text-center">Python</a>
-                        </h5>
+                        <img src="{% static 'images/database-floating-squares.png' %}" class="img-fluid" alt="SQL">
+                        <h5 class="my-2">SQL</h5>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/database-floating-squares.png' %}" class="img-fluid" alt="SQL"></i>
-
-                        <h5 class="my-2">
-                            <a href="sql-tutorial/" class="text-center"> SQL </a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/html-1.svg' %}" alt="HTML" class="img-fluid"></i>
-
-                        <h5 class="my-2">
-                            <a href="html-tutorial/" class="text-center">HTML</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/java.svg' %}" class="img-fluid" alt="java"></i>
-
-                        <h5 class="my-2">
-                            <a href="java-tutorial/" class="text-center">Java</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/golang-1.svg' %}" class="img-fluid" alt="go-lang"></i>
-
-                        <h5 class="my-2">
-                            <a href="go-tutorial/" class="text-center">GO lang</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/Swift.svg' %}" class="img-fluid" alt="swift"></i>
-
-                        <h5 class="my-2">
-                            <a href="swift-tutorial/" class="text-center">Swift</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/c--4.svg' %}" class="img-fluid" alt="c#"></i>
-
-                        <h5 class="my-2">
-                            <a href="csharp-tutorial/" class="text-center">C#</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'images/rust.svg' %}" class="img-fluid" alt="RUST"></i>
-
-                        <h5 class="my-2">
-                            <a href="rust-tutorial/" class="text-center" >RUST</a>
-                        </h5>
-                    </div>
-                </div>
+                </a>
             </div>
-        </div>
+            
+            <div class="col-lg-3 col-md-6 text-center">
+                <a href="{% url 'html-tutorial' %}" class="d-block text-decoration-none">
+                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                        <img src="{% static 'images/html-1.svg' %}" class="img-fluid" alt="HTML">
+                        <h5 class="my-2">HTML</h5>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 text-center">
+                <a href="{% url 'java-tutorial' %}" class="d-block text-decoration-none">
+                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                        <img src="{% static 'images/java.svg' %}" class="img-fluid" alt="Java">
+                        <h5 class="my-2">Java</h5>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 text-center">
+                <a href="{% url 'go-tutorial' %}" class="d-block text-decoration-none">
+                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                        <img src="{% static 'images/golang-1.svg' %}" class="img-fluid" alt="GO lang">
+                        <h5 class="my-2">GO lang</h5>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 text-center">
+                <a href="{% url 'swift-tutorial' %}" class="d-block text-decoration-none">
+                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                        <img src="{% static 'images/Swift.svg' %}" class="img-fluid" alt="Swift">
+                        <h5 class="my-2">Swift</h5>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 text-center">
+                <a href="{% url 'csharp-tutorial' %}" class="d-block text-decoration-none">
+                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                        <img src="{% static 'images/c--4.svg' %}" class="img-fluid" alt="C#">
+                        <h5 class="my-2">C#</h5>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 text-center">
+                <a href="{% url 'rust-tutorial' %}" class="d-block text-decoration-none">
+                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                        <img src="{% static 'images/rust.svg' %}" class="img-fluid" alt="RUST">
+                        <h5 class="my-2">RUST</h5>
+                    </div>
+                </a>
+            </div>
+          </div>
+      </div>
     </div>
     <!-- Categories End -->
 
@@ -1378,437 +1369,264 @@
 
     <!-- Courses Start -->
     <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center px-3">Popular Courses</h6>
-                <h1 class="mb-5" style="color: #fb873f;">Explore new and trending free online courses</h1>
-            </div>
-            <div class="row g-4 py-2">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-1.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-                            <h5 class="mb-1"><a href="single.html" class="text-dark">Lear HTML</a></h5>
-                        </div>
-                        <div class="d-flex">
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-2.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
-                                class="px-2 py-1 fw-bold text-uppercase">Free</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">CSS Basics to Advance
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                           
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-3.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">Introduction to JavaScript
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                           
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-4.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
-                                class="px-2 py-1 fw-bold text-uppercase">Free</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">Python Programming
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-5.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">SQL for Data Science
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                           
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-6.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">R Programming
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-7.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">Learn GO Language
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-8.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
-                                class="px-2 py-1 fw-bold text-uppercase">Free</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">Swift Programming
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-9.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">RUST Basics to Advance</h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-10.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
-                                class="px-2 py-1 fw-bold text-uppercase">Free</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">Learn PHP
-
-
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-11.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">Java Programming
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-12.png' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">C for Beginners
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-12.png' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">C for Beginners
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-7.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">Learn GO Language
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-8.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
-                                class="px-2 py-1 fw-bold text-uppercase">Free</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">Swift Programming
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-9.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">RUST Basics to Advance</h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-10.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
-                                class="px-2 py-1 fw-bold text-uppercase">Free</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">Learn PHP
-
-
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-11.jpg' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">Java Programming
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-12.png' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">C for Beginners
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item shadow">
-                        <div class="position-relative overflow-hidden text-light image">
-                            <img class="img-fluid" src="{% static 'img/course-12.png' %}" alt="">
-                            <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
-                                class="px-2 py-1 fw-bold text-uppercase">FREE</div>
-
-                        </div>
-                        <div class="p-2 pb-0">
-
-                            <h5 class="mb-1">C for Beginners
-                            </h5>
-                        </div>
-                        
-                        <div class="d-flex">
-                            
-                            <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="#">Start
-                                    Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center px-3">Popular Courses</h6>
+            <h1 class="mb-5" style="color: #fb873f;">Explore new and trending free online courses</h1>
         </div>
+        <div class="row g-4 py-2">
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="course-item shadow">
+                    <div class="position-relative overflow-hidden text-light image">
+                        <img class="img-fluid" src="{% static 'img/html.webp' %}" alt="">
+                        <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
+                            class="px-2 py-1 fw-bold text-uppercase">FREE</div>
+
+                    </div>
+                    <div class="p-2 pb-0">
+                        <h5 class="mb-1"><a href="{% url 'html-tutorial' %}" class="text-dark">Learn HTML</a></h5>
+                    </div>
+                    <div class="d-flex">
+                        <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="{% url 'html-tutorial' %}">Start
+                                Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="course-item shadow">
+                    <div class="position-relative overflow-hidden text-light image">
+                        <img class="img-fluid" src="{% static 'img/Pytho.jpg' %}" alt="">
+                        <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
+                            class="px-2 py-1 fw-bold text-uppercase">Free</div>
+
+                    </div>
+                    <div class="p-2 pb-0">
+
+                        <h5 class="mb-1"><a href="{% url 'python-tutorial' %}" class="text-dark">Learn Python</a></h5>
+                    </div>
+                    
+                    <div class="d-flex">
+                        
+                        <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="{% url 'python-tutorial' %}">Start
+                                Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="course-item shadow">
+                    <div class="position-relative overflow-hidden text-light image">
+                        <img class="img-fluid" src="{% static 'img/c.jpg' %}" alt="">
+                        <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
+                            class="px-2 py-1 fw-bold text-uppercase">FREE</div>
+
+                    </div>
+                    <div class="p-2 pb-0">
+
+                        <h5 class="mb-1"><a href="{% url 'c-tutorial' %}" class="text-dark">Learn C</a></h5>
+                    </div>
+                    
+                    <div class="d-flex">
+                        
+                        <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="{% url 'c-tutorial' %}">Start
+                                Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="course-item shadow">
+                    <div class="position-relative overflow-hidden text-light image">
+                        <img class="img-fluid" src="{% static 'img/cpp.jpg' %}" alt="">
+                        <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
+                            class="px-2 py-1 fw-bold text-uppercase">Free</div>
+
+                    </div>
+                    <div class="p-2 pb-0">
+
+                        <h5 class="mb-1"><a href="{% url 'cpp-tutorial' %}" class="text-dark">Learn C++</a>
+                        </h5>
+                    </div>
+                    
+                    <div class="d-flex">
+                        
+                        <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="{% url 'cpp-tutorial' %}">Start
+                                Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="course-item shadow">
+                    <div class="position-relative overflow-hidden text-light image">
+                        <img class="img-fluid" src="{% static 'img/swift2.jpg' %}" alt="">
+                        <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
+                            class="px-2 py-1 fw-bold text-uppercase">FREE</div>
+
+                    </div>
+                    <div class="p-2 pb-0">
+
+                        <h5 class="mb-1"><a href="{% url 'swift-tutorial' %}" class="text-dark">Learn Swift</a>
+                        </h5>
+                    </div>
+                    
+                    <div class="d-flex">
+                        
+                        <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="{% url 'swift-tutorial' %}">Start
+                                Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="course-item shadow">
+                    <div class="position-relative overflow-hidden text-light image">
+                        <img class="img-fluid" src="{% static 'img/golang.jpg' %}" alt="">
+                        <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
+                            class="px-2 py-1 fw-bold text-uppercase">FREE</div>
+
+                    </div>
+                    <div class="p-2 pb-0">
+
+                        <h5 class="mb-1"><a href="{% url 'go-tutorial' %}" class="text-dark">Learn Go</a>
+                        </h5>
+                    </div>
+                    
+                    <div class="d-flex">
+                        
+                        <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="{% url 'go-tutorial' %}">Start
+                                Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="course-item shadow">
+                    <div class="position-relative overflow-hidden text-light image">
+                        <img class="img-fluid" src="{% static 'img/rust.jpg' %}" alt="">
+                        <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
+                            class="px-2 py-1 fw-bold text-uppercase">FREE</div>
+
+                    </div>
+                    <div class="p-2 pb-0">
+
+                        <h5 class="mb-1"><a href="{% url 'rust-tutorial' %}" class="text-dark">Learn Rust</a>
+                        </h5>
+                    </div>
+                    
+                    <div class="d-flex">
+                        
+                        <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="{% url 'rust-tutorial' %}">Start
+                                Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="course-item shadow">
+                    <div class="position-relative overflow-hidden text-light image">
+                        <img class="img-fluid" src="{% static 'img/perl.jpg' %}" alt="">
+                        <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
+                            class="px-2 py-1 fw-bold text-uppercase">Free</div>
+
+                    </div>
+                    <div class="p-2 pb-0">
+
+                        <h5 class="mb-1"><a href="{% url 'perl-tutorial' %}" class="text-dark">Learn Perl</a>
+                        </h5>
+                    </div>
+                    
+                    <div class="d-flex">
+                        
+                        <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="{% url 'perl-tutorial' %}">Start
+                                Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="course-item shadow">
+                    <div class="position-relative overflow-hidden text-light image">
+                        <img class="img-fluid" src="{% static 'img/ruby.svg' %}" alt="">
+                        <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
+                            class="px-2 py-1 fw-bold text-uppercase">FREE</div>
+
+                    </div>
+                    <div class="p-2 pb-0">
+
+                        <h5 class="mb-1"><a href="{% url 'ruby-tutorial' %}" class="text-dark">Learn RUBY</a></h5>
+                    </div>
+                    
+                    <div class="d-flex">
+                        
+                        <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="{% url 'ruby-tutorial' %}">Start
+                                Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="course-item shadow">
+                    <div class="position-relative overflow-hidden text-light image">
+                        <img class="img-fluid" src="{% static 'img/julia1.jpg' %}" alt="">
+                        <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
+                            class="px-2 py-1 fw-bold text-uppercase">Free</div>
+
+                    </div>
+                    <div class="p-2 pb-0">
+
+                        <h5 class="mb-1"><a href="{% url 'julia-tutorial' %}" class="text-dark">Learn Julia</a>
+
+
+                        </h5>
+                    </div>
+                    
+                    <div class="d-flex">
+                        
+                        <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="{% url 'julia-tutorial' %}">Start
+                                Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="course-item shadow">
+                    <div class="position-relative overflow-hidden text-light image">
+                        <img class="img-fluid" src="{% static 'img/kotlin.jpg' %}" alt="">
+                        <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
+                            class="px-2 py-1 fw-bold text-uppercase">FREE</div>
+
+                    </div>
+                    <div class="p-2 pb-0">
+
+                        <h5 class="mb-1"><a href="{% url 'kotlin-tutorial' %}" class="text-dark">Learn Kotlin</a>
+                        </h5>
+                    </div>
+                    
+                    <div class="d-flex">
+                        
+                        <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="{% url 'kotlin-tutorial' %}">Start
+                                Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="course-item shadow">
+                    <div class="position-relative overflow-hidden text-light image">
+                        <img class="img-fluid" src="{% static 'img/scala1.jpg' %}" alt="">
+                        <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
+                            class="px-2 py-1 fw-bold text-uppercase">FREE</div>
+
+                    </div>
+                    <div class="p-2 pb-0">
+
+                        <h5 class="mb-1"><a href="{% url 'scala-tutorial' %}" class="text-dark">Learn Scala</a>
+                        </h5>
+                    </div>
+                    
+                    <div class="d-flex">
+                        
+                        <small class=" text-primary py-1 px-2 fw-bold fs-6" style="float:right;"><a href="{% url 'scala-tutorial' %}">Start
+                                Now </a><i class="fa fa-chevron-right me-2 fs-10"></i></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <!-- Courses End -->
-
-
+    </div>
+<!-- Courses End -->
     <!-- Footer Start -->
     {% include 'footer.html' %}
     <!-- Footer End -->
