@@ -897,3 +897,46 @@ def run_bash_code(request):
         return JsonResponse({'output': output})
 
     return JsonResponse({'error': 'Invalid request'}, status=400)
+
+def dart_index(request):
+    return render(request, 'dart.html')
+@csrf_exempt
+def run_dart_code(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        code = data.get('code', '')
+        inputs = data.get('inputs', [])
+
+        try:
+            # Create a temporary Dart file to store the user-submitted code
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.dart') as temp_script:
+                temp_script.write(code.encode())
+                temp_script_path = temp_script.name
+
+            # Start the Dart process using the temporary file
+            process = subprocess.Popen(
+                ['dart', temp_script_path],
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True
+            )
+
+            # Prepare the input data to be passed to the subprocess
+            input_data = "\n".join(inputs) + "\n"
+            stdout, stderr = process.communicate(input=input_data, timeout=10)
+
+            # Capture output or errors
+            output = stdout if process.returncode == 0 else stderr
+        except subprocess.TimeoutExpired:
+            output = "Execution timed out after 10 seconds."
+        except Exception as e:
+            output = str(e)
+        finally:
+            # Clean up the temporary file
+            if os.path.exists(temp_script_path):
+                os.remove(temp_script_path)
+
+        return JsonResponse({'output': output})
+
+    return JsonResponse({'error': 'Invalid request'}, status=400)
