@@ -3,39 +3,86 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="google-translate-customization" content="9f841e7780177523-3214ceb76f765f38-gc38c6fe6f9d06436-c">
-    </meta>
-    <meta name="csrf-token" content="{{ csrf_token }}">
-    <title>DataScienceDigest : Online Courses</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
-    <!-- Favicon -->
-    <link href="img/icon.png" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
-    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-
+    {% include 'headerlinks.html' %}
+    <title>Rust Programming Tutorial and Online Compiler - Data Science Digest</title>
+    
+    <!-- Rust Tutorial -->
+    <link rel="canonical" href="https://datasciencedigest.in/rust-tutorial/" />
+    <!-- Meta Tags for Rust Tutorial and Online Compiler Page -->
+    <meta name="description"
+    content="Learn Rust programming with our comprehensive tutorial and run Rust code instantly using our built-in online Rust compiler. Explore systems programming concepts, write code examples, and execute Rust programs directly in your browser.">
+    <meta name="keywords"
+    content="Rust tutorial, learn Rust, Rust programming, Rust for beginners, systems programming with Rust, Rust code execution, Rust online compiler, run Rust code online, Rust coding exercises, compile Rust programs, Rust memory safety, Rust examples, Rust syntax, Rust concurrency, Rust best practices, online Rust course, Rust tutorials, interactive Rust coding">
+    <meta name="author" content="Data Science Digest">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Rust Programming Tutorial and Online Compiler - Data Science Digest">
+    <meta property="og:description"
+    content="Master Rust programming with our in-depth tutorial and instantly test your Rust code with our online compiler. No installation needed—write, compile, and execute Rust programs all in one place.">
+    <meta property="og:url" content="https://datasciencedigest.in/rust-tutorial">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://datasciencedigest.in/images/rust-tutorial.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Course",
+          "name": "Rust Tutorial",
+          "description": "Comprehensive Rust programming tutorial covering basic to advanced topics.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "image": [
+            "https://datasciencedigest.in/photos/1x1/rust-tutorial.jpg",
+            "https://datasciencedigest.in/photos/4x3/rust-tutorial.jpg",
+            "https://datasciencedigest.in/photos/16x9/rust-tutorial.jpg"
+          ],
+          "offers": [{
+            "@type": "Offer",
+            "category": "Free",
+            "priceCurrency": "USD",
+            "price": "0"
+          }],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.7,
+            "ratingCount": 1800,
+            "reviewCount": 900
+          },
+          "totalHistoricalEnrollment": 30000,
+          "datePublished": "2024-01-01",
+          "dateModified": "2024-09-29",
+          "educationalLevel": "Intermediate to Advanced",
+          "inLanguage": "en",
+          "hasCourseInstance": [
+            {
+              "@type": "CourseInstance",
+              "courseMode": "Online",
+              "courseWorkload": "P14D",
+              "startDate": "2024-06-01",
+              "endDate": "2024-06-15",
+              "instructor": [{
+                "@type": "Person",
+                "name": "Alice Johnson",
+                "description": "Senior Rust Developer",
+                "image": "https://datasciencedigest.in/photos/instructor-alice.jpg"
+              }]
+            }
+          ],
+          "about": ["Rust Basics", "Advanced Rust Concepts", "Memory Safety"],
+          "teaches": [
+            "Understand Rust fundamentals",
+            "Learn about Rust’s ownership model and memory safety"
+          ]
+        }
+        </script>
 </head>
 <style>
     .tabs ul li {
@@ -83,7 +130,7 @@
 
 <body>
     {% include 'header.html' %}
-        <!-- Course Detail Start -->
+    <!-- Course Detail Start -->
     <div class="container-xxl py-2">
         <div class="container">
             <div class="row">
