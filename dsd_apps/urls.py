@@ -53,6 +53,12 @@ urlpatterns = [
     # ________________kotlin Section _______________________
     path('kotlin-tutorial/',views.kotlin_index,name='kotlin-tutorial'),
     path('run_kotlin_code/',views.run_kotlin_code,name='run_kotlin_code'),
+    # ________________Dart Section _______________________
+    # path('dart-tutorial/',views.dart_index,name='dart-tutorial'),
+    # path('run_dart_code/',views.run_dart_code,name='run_dart_code'),
+    # ________________Bash Section _______________________
+    path('bash-tutorial/',views.bash_index,name='bash-tutorial'),
+    path('run_bash_code/',views.run_bash_code,name='run_bash_code'),
     path('single-course',views.single),
     path('sitemap.xml', views.sitemap_view, name='sitemap'),
     path('ads.txt', views.ads_txt_view),

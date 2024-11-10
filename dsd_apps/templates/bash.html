@@ -1,0 +1,496 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="google-translate-customization" content="9f841e7780177523-3214ceb76f765f38-gc38c6fe6f9d06436-c">
+    </meta>
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <title>DataScienceDigest : Online Courses</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/icon.png" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+<style>
+    .tabs ul li {
+        list-style-type: none;
+    }
+
+    .tabs ul li a {
+        font-size: 25px;
+        color: #4e4e4e !important;
+        font-weight: 500;
+    }
+
+    .tabs ul li a.active {
+        color: #f69050 !important;
+    }
+
+    .tabs ul li a:hover {
+        color: #f69050 !important;
+    }
+
+    #more {
+        display: none;
+    }
+
+    button {
+        border: none;
+        color: #f69050;
+    }
+
+    .clickable-span {
+        cursor: pointer;
+        background-color: #004085;
+        /* Changes the cursor to a pointer */
+        transition: background-color 0.3s, transform 0.2s;
+        /* Smooth hover effect */
+    }
+
+    .clickable-span:hover {
+        background-color: #004085;
+        /* Darker shade for hover effect */
+        transform: scale(1.05);
+        /* Slightly enlarges on hover */
+    }
+</style>
+
+<body>
+    {% include 'header.html' %}
+    <!-- Course Detail Start -->
+    <div class="container-xxl py-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 wow fadeInUp">
+
+                    <div class="container">
+                        <div class="row g-5 justify-content-center">
+
+                            <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
+                                <h2>Bash Programming Course for Beginners</h2>
+                                <p>Unlock the power of shell scripting with Bash — the most popular shell language for Linux and Unix systems. This course covers everything from the basics of shell scripting to advanced techniques, empowering you to automate tasks, enhance productivity, and streamline system administration.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-fluid wow fadeInUp mt-5 tabs">
+                        <!-- Tab panes -->
+                        <div class="tab-content mt-4">
+
+                            <div class="tab-pane container active" id="Overview">
+                                <h2>About this Course</h2>
+                                <p>Bash, short for Bourne Again Shell, is a command-line interpreter widely used in Unix-based systems like Linux and macOS. It’s an essential tool for system administrators, DevOps engineers, and software developers for automating tasks, managing system operations, and handling repetitive jobs efficiently. In this course, you’ll learn the fundamentals of Bash scripting, from simple commands to creating powerful scripts for real-world applications. By the end, you'll be equipped with the skills needed for system automation, server management, and beyond.</p>
+                                <h2 class="mt-4">Select Level</h2>
+                                <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
+                                    style="font-size: 15px; font-weight: normal;"
+                                    onclick="loadSection('basic')" id="basic">Basic</span>
+
+                                <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
+                                    style="font-size: 15px; font-weight: normal;"
+                                    onclick="loadSection('medium')" id="medium">Medium</span>
+
+                                <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
+                                    style="font-size: 15px; font-weight: normal;"
+                                    onclick="loadSection('advanced')" id="advanced">Advanced</span>
+                            </div>
+
+                            <div class="container" id="sectionContent">
+                                <h2 class="mt-4">Syllabus</h2>
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button"
+                                                onclick="loadSection('basic')" data-bs-toggle="collapse"
+                                                data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                                aria-controls="flush-collapseOne">
+                                                Bash Basics
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body" id="basicContent">
+                                                <!-- Basic section content will be injected here -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button"
+                                                onclick="loadSection('medium')" data-bs-toggle="collapse"
+                                                data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                                aria-controls="flush-collapseTwo">
+                                                Medium Level Bash
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body" id="mediumContent">
+                                                <!-- Medium section content will be injected here -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button"
+                                                onclick="loadSection('advanced')" data-bs-toggle="collapse"
+                                                data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                                aria-controls="flush-collapseThree">
+                                                Advanced Bash
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body" id="advancedContent">
+                                                <!-- Advanced section content will be injected here -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container" id="Instructor">
+                                <h2 class="mt-4">About the Writer</h2>
+                                <div class="image-div text-left mt-4">
+
+                                    <div class="des mt-4 mb-5">
+                                        Curriculum Director at DataScienceDigest and Creative Technologist. As the Curriculum Director, 
+                                        I have designed a variety of courses at DataScienceDigest, including Learn Python, Learn Bash, Learn SQL, 
+                                        and the beginner-friendly Introduction to Data Science. My focus is on creating engaging and practical content 
+                                        that empowers learners to automate tasks, enhance system performance, and build powerful scripts.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Course Detail End -->
+
+
+
+    <div id="inputModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalPromptMessage">Enter Input</h2>
+            <input type="text" id="userInput" placeholder="Type your input here...">
+            <button onclick="submitInput()">Submit</button>
+        </div>
+    </div>
+    {% include 'footer.html' %}
+    <script>
+        const editors = {}; // Stores editor instances
+        let currentInputResolve = null; // Used for handling input prompts
+    
+        document.addEventListener("DOMContentLoaded", function () {
+            loadSection('basic');  // Load the basic section by default
+        });
+    
+        function loadSection(section) {
+            // Clear previous editor instances
+            for (let key in editors) {
+                editors[key].dispose();
+                delete editors[key];
+            }
+    
+            // Clear accordion content
+            document.querySelector('#accordionFlushExample').innerHTML = '';
+    
+            let sectionIntro = '';
+            let topics = [];
+    
+            if (section === 'basic') {
+                document.querySelector("#basic").style.backgroundColor = "green";
+                document.querySelector("#advanced").style.backgroundColor = "";
+                document.querySelector("#medium").style.backgroundColor = "";
+                sectionIntro = `<h1>Bash Basics</h1><p>Learn the basics of bash with examples...</p>`;
+                topics =[
+                    {
+                        "title": "Hello World Example",
+                        "description": "The simplest Bash script to print 'Hello, World!'.",
+                        "code": `#!/bin/bash\necho "Hello, World!"`
+                    },
+                    {
+                        "title": "Variable Declaration",
+                        "description": "Declaring and printing a variable in Bash.",
+                        "code": `#!/bin/bash\nname="Bash Programming"\necho "Welcome to $name"`
+                    },
+                    {
+                        "title": "Basic If-Else Condition",
+                        "description": "Checking if a number is greater than 10.",
+                        "code": `#!/bin/bash\nnumber=15\nif [ $number -gt 10 ]; then\n    echo "Number is greater than 10"\nelse\n    echo "Number is less than or equal to 10"\nfi`
+                    },
+                    {
+                        "title": "Basic For Loop",
+                        "description": "Using a for loop to print numbers from 1 to 5.",
+                        "code": `#!/bin/bash\nfor i in {1..5}; do\n    echo "Number: $i"\ndone`
+                    },
+                    {
+                        "title": "Reading User Input",
+                        "description": "Reading input from the user and displaying it.",
+                        "code": `#!/bin/bash\necho "Enter your name:"\nread name\necho "Hello, $name!"`
+                    },
+                    {
+                        "title": "Simple Function",
+                        "description": "Defining and calling a function in Bash.",
+                        "code": `#!/bin/bash\nfunction greet() {\n    echo "Hello from Bash function!"\n}\ngreet`
+                    },
+                    {
+                        "title": "Case Statement",
+                        "description": "Using a case statement to print a message based on user input.",
+                        "code": `#!/bin/bash\necho "Enter a number (1-3):"\nread num\ncase $num in\n    1) echo "You entered one";;\n    2) echo "You entered two";;\n    3) echo "You entered three";;\n    *) echo "Invalid number";;\nesac`
+                    },
+                    
+                    {
+                        "title": "While Loop",
+                        "description": "Using a while loop to print numbers from 1 to 3.",
+                        "code": `#!/bin/bash\ncount=1\nwhile [ $count -le 3 ]; do\n    echo "Count: $count"\n    ((count++))\ndone`
+                    },
+                    {
+                        "title": "Arithmetic Operations",
+                        "description": "Performing basic arithmetic operations in Bash.",
+                        "code": `#!/bin/bash\na=10\nb=5\necho "Addition: $((a + b))"\necho "Subtraction: $((a - b))"`
+                    }
+                ];
+            } else if (section === 'medium') {
+                document.querySelector("#basic").style.backgroundColor = "";
+                document.querySelector("#advanced").style.backgroundColor = "";
+                document.querySelector("#medium").style.backgroundColor = "green";
+                sectionIntro = `<h1>Bash Medium</h1><p>Learn the medium level of Bash with examples...</p>`;
+                topics = [
+                    {
+                        "title": "Reading a File Line by Line",
+                        "description": "Using a while loop to read a file line by line.",
+                        "code": `#!/bin/bash\nfilename="example.txt"\nwhile IFS= read -r line; do\n    echo "$line"\ndone < "$filename"`
+                    },
+                    {
+                        "title": "Passing Arguments to a Script",
+                        "description": "Accessing command-line arguments in a Bash script.",
+                        "code": `#!/bin/bash\necho "Script name: $0"\necho "First argument: $1"\necho "Second argument: $2"`
+                    },
+                    {
+                        "title": "Checking File Existence",
+                        "description": "Checking if a file exists in the current directory.",
+                        "code": `#!/bin/bash\nfile="example.txt"\nif [ -f "$file" ]; then\n    echo "$file exists."\nelse\n    echo "$file does not exist."\nfi`
+                    },
+                    {
+                        "title": "Creating and Deleting a Directory",
+                        "description": "Creating and removing directories.",
+                        "code": `#!/bin/bash\ndir="mydir"\nmkdir $dir\necho "$dir created"\nrmdir $dir\necho "$dir removed"`
+                    },
+                    
+                    {
+                        "title": "Using sed for Text Replacement",
+                        "description": "Replacing text in a file using sed.",
+                        "code": `#!/bin/bash\nsed -i 's/old/new/g' example.txt`
+                    },
+                    {
+                        "title": "Scheduling with Cron",
+                        "description": "Setting up a cron job to run a script every minute.",
+                        "code": `* * * * * /path/to/script.sh`
+                    },
+                    {
+                        "title": "Finding Files",
+                        "description": "Using the find command to search for files.",
+                        "code": `#!/bin/bash\nfind . -name "*.txt"`
+                    },
+                    {
+                        "title": "Using awk for Text Processing",
+                        "description": "Extracting specific columns from a text file using awk.",
+                        "code": `#!/bin/bash\nawk '{print $2}' data.txt`
+                    },
+                    {
+                        "title": "Sorting a List",
+                        "description": "Sorting numbers in ascending order using sort.",
+                        "code": `#!/bin/bash\necho -e "3\\n1\\n2" | sort`
+                    }
+                ];
+            } else if (section === 'advanced') {
+                document.querySelector("#basic").style.backgroundColor = "";
+                document.querySelector("#medium").style.backgroundColor = "";
+                document.querySelector("#advanced").style.backgroundColor = "green";
+                sectionIntro = `<h1>Bash Advanced</h1><p>Explore advanced Bash concepts with examples...</p>`;
+                topics = [
+                    {
+                        "title": "Writing a Log Rotation Script",
+                        "description": "Automatically rotating log files.",
+                        "code": `#!/bin/bash\nlogfile="/var/log/myapp.log"\ncp $logfile $logfile.$(date +%F)\n> $logfile`
+                    },
+                    {
+                        "title": "Working with Background Processes",
+                        "description": "Running a process in the background and killing it.",
+                        "code": `#!/bin/bash\nsleep 30 &\npid=$!\necho "Process ID: $pid"\nkill $pid`
+                    },
+                    {
+                        "title": "Parsing JSON with jq",
+                        "description": "Extracting data from a JSON file using jq.",
+                        "code": `#!/bin/bash\ncat data.json | jq '.name'`
+                    },
+                    {
+                        "title": "Creating a Menu with select",
+                        "description": "Creating an interactive menu using select.",
+                        "code": `#!/bin/bash\nselect option in "Option1" "Option2" "Quit"; do\n    case $option in\n        "Quit") break;;\n        *) echo "You chose $option";;\n    esac\ndone`
+                    },
+                    {
+                        "title": "Using rsync for Backup",
+                        "description": "Backing up files using rsync.",
+                        "code": `#!/bin/bash\nrsync -av /source/ /destination/`
+                    },
+                    {
+                        "title": "Handling Signals",
+                        "description": "Catching and handling signals like SIGINT.",
+                        "code": `#!/bin/bash\ntrap "echo 'Interrupted'; exit" SIGINT\nwhile true; do :; done`
+                    },
+                    {
+                        "title": "Automating SSH Login",
+                        "description": "Using sshpass for automated SSH login.",
+                        "code": `#!/bin/bash\nsshpass -p 'password' ssh user@host`
+                    },
+                    {
+                        "title": "Generating SSH Keys",
+                        "description": "Creating SSH keys for secure connections.",
+                        "code": `#!/bin/bash\nssh-keygen -t rsa -b 2048`
+                    },
+                    {
+                        "title": "Multithreading with xargs",
+                        "description": "Using xargs to run multiple processes in parallel.",
+                        "code": `#!/bin/bash\necho -e "task1\\ntask2\\ntask3" | xargs -n 1 -P 3 bash -c`
+                    },
+                    {
+                        "title": "Creating a Daemon Process",
+                        "description": "Running a script as a background daemon.",
+                        "code": `#!/bin/bash\nnohup ./my_script.sh &`
+                    }
+                ];
+            }
+    
+            // Set up accordion content
+            let accordionContent = '';
+            topics.forEach((topic, index) => {
+                accordionContent += `
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapse${index}"
+                                    aria-expanded="false" aria-controls="flush-collapse${index}">
+                                ${topic.title}
+                            </button>
+                        </h2>
+                        <div id="flush-collapse${index}" class="accordion-collapse collapse" 
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body" style="padding-bottom: 6rem;">
+                                <p>${topic.description}</p>
+                                <div class="compiler" style="height: 200px; border: 1px solid #ccc;">
+                                    <div id="editorContainer${index}" style="height: 200px;"></div>
+                                    <button onclick="runCode('editor${index}', 'output${index}')">Run</button>
+                                    <div class="output" id="output${index}" style="margin-top: 10px; background: #f4f4f4; padding: 10px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+            });
+            document.querySelector('#accordionFlushExample').innerHTML = accordionContent;
+    
+            require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs' } });
+            require(['vs/editor/editor.main'], function () {
+                topics.forEach((topic, index) => {
+                    initializeEditor(`editor${index}`, topic.code);
+                });
+            });
+        }
+    
+                // Function to initialize a Monaco Editor instance for Bash
+        function initializeEditor(editorId, defaultValue) {
+            const container = document.getElementById(`editorContainer${editorId.slice(-1)}`);
+            if (!editors[editorId]) {
+                editors[editorId] = monaco.editor.create(container, {
+                    value: defaultValue,
+                    language: 'shell',  // Changed from 'go' to 'shell'
+                    theme: 'vs-dark',
+                    automaticLayout: true
+                });
+            }
+        }
+
+    
+        async function runCode(editorId, outputId) {
+            const code = editors[editorId].getValue();
+            document.getElementById(outputId).textContent = 'Running...';
+
+            // Detect the occurrences of Bash input commands (e.g., `read`)
+            const inputPatterns = /\bread\b/g;
+            const inputMatches = code.match(inputPatterns) || [];
+            const inputs = [];
+
+            // Prompt the user for each required input based on the detected `read` occurrences
+            for (let i = 0; i < inputMatches.length; i++) {
+                let userInput = prompt(`Enter input ${i + 1}:`);
+                if (userInput === null) {
+                    document.getElementById(outputId).textContent = 'Execution aborted due to missing input.';
+                    return;
+                }
+                inputs.push(userInput); // Add each input to the array
+            }
+
+            // Create the payload with the code and multiple inputs
+            const payload = {
+                code: code,
+                inputs: inputs // Send array of inputs to the backend
+            };
+
+            // Send the code and inputs to the backend
+            fetch('/run_bash_code/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCSRFToken()
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById(outputId).textContent = data.output;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById(outputId).textContent = 'Error executing the code.';
+            });
+        }
+
+        function getCSRFToken() {
+            return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        }
+    </script>
+    
+     
+</body>
+
+</html>
