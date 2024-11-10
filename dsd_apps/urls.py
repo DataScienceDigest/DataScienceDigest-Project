@@ -59,6 +59,12 @@ urlpatterns = [
     # ________________Bash Section _______________________
     path('bash-tutorial/',views.bash_index,name='bash-tutorial'),
     path('run_bash_code/',views.run_bash_code,name='run_bash_code'),
+    # ________________terms and conditions __________________
+    path('terms/',views.terms,name='terms'),
+    # ______________privacy policy _____________________
+    path('privacy-policy/',views.privacy_policy,name='privacy-policy'),
+    # ________________FAQ _______________________
+    path('faqs-help/',views.faq,name='faqs-help'),
     path('single-course',views.single),
     path('sitemap.xml', views.sitemap_view, name='sitemap'),
     path('ads.txt', views.ads_txt_view),
