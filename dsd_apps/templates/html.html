@@ -3,23 +3,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-translate-customization" content="9f841e7780177523-3214ceb76f765f38-gc38c6fe6f9d06436-c">
-    </meta>
-      <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVH1VPXS3F"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-QVH1VPXS3F');
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8256284122277421"
-        crossorigin="anonymous"></script>
+    {% include 'headerlinks.html' %}
     <title>HTML and CSS Tutorial and Online Editor - Data Science Digest</title>
-    <meta name="google-site-verification" content="mkIFT0Gf0kASPWjbgMCGIgw2bHVQthe6wMzfyldxmuM" />
     <!-- HTML CSS Tutorial -->
     <link rel="canonical" href="https://datasciencedigest.in/html-tutorial/" />
     <!-- Meta Tags for Combined HTML and CSS Tutorial with Online Editors -->
@@ -32,26 +17,67 @@
     <meta property="og:url" content="https://datasciencedigest.in/html_css_tutorial_and_editor">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://datasciencedigest.in/images/html-css-tutorial-and-editor.png">
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap"
-        rel="stylesheet">
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Course",
+          "name": "HTML and CSS Tutorial",
+          "description": "Comprehensive HTML and CSS tutorial covering fundamental to advanced topics, including responsive web design and advanced styling techniques.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Data Science Digest",
+            "url": "https://datasciencedigest.in"
+          },
+          "image": [
+            "https://datasciencedigest.in/photos/1x1/html-css-tutorial.jpg",
+            "https://datasciencedigest.in/photos/4x3/html-css-tutorial.jpg",
+            "https://datasciencedigest.in/photos/16x9/html-css-tutorial.jpg"
+          ],
+          "offers": [{
+            "@type": "Offer",
+            "category": "Free",
+            "priceCurrency": "USD",
+            "price": "0"
+          }],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.7,
+            "ratingCount": 4500,
+            "reviewCount": 2000
+          },
+          "totalHistoricalEnrollment": 85000,
+          "datePublished": "2024-01-01",
+          "dateModified": "2024-09-29",
+          "educationalLevel": "Beginner to Advanced",
+          "inLanguage": "en",
+          "hasCourseInstance": [
+            {
+              "@type": "CourseInstance",
+              "courseMode": "Online",
+              "courseWorkload": "P14D",
+              "startDate": "2024-03-01",
+              "endDate": "2024-03-15",
+              "instructor": [{
+                "@type": "Person",
+                "name": "Alice Harper",
+                "description": "Web Developer and Designer",
+                "image": "https://datasciencedigest.in/photos/instructor-alice.jpg"
+              }]
+            }
+          ],
+          "about": ["HTML Basics", "CSS Basics", "Responsive Web Design", "Advanced CSS Techniques"],
+          "teaches": [
+            "Understand the fundamentals of HTML and CSS",
+            "Learn responsive web design and advanced styling techniques"
+          ]
+        }
+        </script>
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
-    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <style>
         .tabs ul li {
             list-style-type: none;
@@ -117,136 +143,11 @@
         }
     
     </style>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org/",
-      "@type": "Course",
-      "name": "HTML and CSS Tutorial",
-      "description": "Comprehensive HTML and CSS tutorial covering fundamental to advanced topics, including responsive web design and advanced styling techniques.",
-      "provider": {
-        "@type": "Organization",
-        "name": "Data Science Digest",
-        "url": "https://datasciencedigest.in"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Data Science Digest",
-        "url": "https://datasciencedigest.in"
-      },
-      "image": [
-        "https://datasciencedigest.in/photos/1x1/html-css-tutorial.jpg",
-        "https://datasciencedigest.in/photos/4x3/html-css-tutorial.jpg",
-        "https://datasciencedigest.in/photos/16x9/html-css-tutorial.jpg"
-      ],
-      "offers": [{
-        "@type": "Offer",
-        "category": "Free",
-        "priceCurrency": "USD",
-        "price": "0"
-      }],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": 4.7,
-        "ratingCount": 4500,
-        "reviewCount": 2000
-      },
-      "totalHistoricalEnrollment": 85000,
-      "datePublished": "2024-01-01",
-      "dateModified": "2024-09-29",
-      "educationalLevel": "Beginner to Advanced",
-      "inLanguage": "en",
-      "hasCourseInstance": [
-        {
-          "@type": "CourseInstance",
-          "courseMode": "Online",
-          "courseWorkload": "P14D",
-          "startDate": "2024-03-01",
-          "endDate": "2024-03-15",
-          "instructor": [{
-            "@type": "Person",
-            "name": "Alice Harper",
-            "description": "Web Developer and Designer",
-            "image": "https://datasciencedigest.in/photos/instructor-alice.jpg"
-          }]
-        }
-      ],
-      "about": ["HTML Basics", "CSS Basics", "Responsive Web Design", "Advanced CSS Techniques"],
-      "teaches": [
-        "Understand the fundamentals of HTML and CSS",
-        "Learn responsive web design and advanced styling techniques"
-      ]
-    }
-    </script>
+    
 
 </head>
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
-
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <p class="m-0 fw-bold" style="font-size: 25px;">
-                DataScienceDigest<span style="color: #fb873f;">.in</span>
-            </p>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
-                <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
-                <a href="{% url 'all-courses' %}" class="nav-item nav-link">Courses</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu fade-down m-0">
-                        <a href="{% url 'about' %}" class="dropdown-item">Blogs</a>
-                        <a href="{% url 'about' %}" class="dropdown-item">Testimonial</a>
-
-                    </div>
-                </div>
-                <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
-                <a href="{% url 'login' %}" class="nav-item nav-link"><i class="fa fa-user"></i></a>
-                <a href="#" class="nav-item nav-link">
-
-                    <div id="google_translate_element">
-                    </div>
-
-
-                </a>
-            </div>
-        </div>
-    </nav>
-    <!-- Navbar End -->
-
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 page-header">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">Course</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a class="text-white" href="index.html">Home</a></li>
-                            <li class="breadcrumb-item"><a class="text-white" href="courses.html">Course</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">HTML Course for Beginners
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Header End -->
-
+    {% include 'header.html' %}
 
     <!-- Course Detail Start -->
     <div class="container-xxl py-2">
@@ -664,23 +565,6 @@
 
     </script>
     
-    
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
-    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
-    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
-    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
-    
-    <!-- Include Monaco Editor from CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 

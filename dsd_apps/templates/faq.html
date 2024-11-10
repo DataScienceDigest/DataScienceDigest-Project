@@ -1,0 +1,140 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'headerlinks.html' %}
+</head>
+
+<body>
+    {% include 'header.html' %}
+
+
+    <!-- FAQs and Help Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
+                    <h6 class="section-title bg-white text-start pe-3">FAQs and Help</h6>
+                    <h1 class="mb-4" style="color: #fb873f;">Frequently Asked Questions</h1>
+                    <p class="mb-4">Find answers to common questions about our courses, certifications, and more.</p>
+
+                    <!-- FAQ Sections -->
+                    <div id="faqAccordion" class="accordion">
+
+                        <!-- General Questions -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="generalQuestions">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeneral" aria-expanded="true" aria-controls="collapseGeneral">
+                                    General Questions
+                                </button>
+                            </h2>
+                            <div id="collapseGeneral" class="accordion-collapse collapse show" aria-labelledby="generalQuestions">
+                                <div class="accordion-body">
+                                    <h3>What is DataScienceDigest?</h3>
+                                    <p>DataScienceDigest is an online platform offering courses in data science, programming, and analytics, complete with interactive compilers and certifications.</p>
+
+                                    <h3>How do I sign up for a course?</h3>
+                                    <p>To sign up, click on the “Courses” section in the main menu, choose a course, and follow the enrollment instructions.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Courses and Content -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="coursesContent">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCourses" aria-expanded="false" aria-controls="collapseCourses">
+                                    Courses and Content
+                                </button>
+                            </h2>
+                            <div id="collapseCourses" class="accordion-collapse collapse" aria-labelledby="coursesContent">
+                                <div class="accordion-body">
+                                    <h3>What type of courses do you offer?</h3>
+                                    <p>We offer a variety of courses in data science, programming languages, and analytics. Each course is designed with interactive learning components, including online compilers.</p>
+
+                                    <h3>Are the courses self-paced?</h3>
+                                    <p>Yes, most of our courses are self-paced, allowing you to learn at your own convenience.</p>
+
+                                    <h3>Can I preview a course before enrolling?</h3>
+                                    <p>Yes, we offer previews for select courses. Look for the “Preview” button on the course details page.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Certification -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="certification">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCertification" aria-expanded="false" aria-controls="collapseCertification">
+                                    Certification
+                                </button>
+                            </h2>
+                            <div id="collapseCertification" class="accordion-collapse collapse" aria-labelledby="certification">
+                                <div class="accordion-body">
+                                    <h3>Do I receive a certificate after completing a course?</h3>
+                                    <p>Yes, we provide certificates for most of our courses upon successful completion and passing of any required assessments.</p>
+
+                                    <h3>How can I download my certificate?</h3>
+                                    <p>Once you complete a course, a download link will be available in your profile under the "Certificates" section.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Technical Support -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="technicalSupport">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTechnical" aria-expanded="false" aria-controls="collapseTechnical">
+                                    Technical Support
+                                </button>
+                            </h2>
+                            <div id="collapseTechnical" class="accordion-collapse collapse" aria-labelledby="technicalSupport">
+                                <div class="accordion-body">
+                                    <h3>How do I use the online compilers?</h3>
+                                    <p>Our online compilers are available on each course page. Simply type your code in the editor, click “Run,” and view the output below.</p>
+
+                                    <h3>I’m having trouble accessing a course. What should I do?</h3>
+                                    <p>If you experience issues, try refreshing the page or clearing your browser cache. For further assistance, contact our support team.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment and Billing -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="paymentBilling">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePayment" aria-expanded="false" aria-controls="collapsePayment">
+                                    Payment and Billing
+                                </button>
+                            </h2>
+                            <div id="collapsePayment" class="accordion-collapse collapse" aria-labelledby="paymentBilling">
+                                <div class="accordion-body">
+                                    <h3>What payment methods are accepted?</h3>
+                                    <p>Currently, all courses and resources on DataScienceDigest are completely free of cost. You do not need to make any payment to access our content.</p>
+                            
+                                    <h3>Can I get a refund if I’m not satisfied with a course?</h3>
+                                    <p>As all of our courses are currently offered free of charge, refunds are not applicable. Enjoy exploring and learning with no cost or commitment!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Support -->
+                        <div class="text-center mt-5">
+                            <h3>Need Further Assistance?</h3>
+                            <p>If your question isn’t answered here, please contact our support team.</p>
+                            <a href="{% url 'contact' %}" class="btn btn-primary">Contact Us</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FAQs and Help End -->
+
+
+    <!-- Footer Start -->
+    {% include 'footer.html' %}
+    <!-- Footer End -->
+
+</body>
+</html>

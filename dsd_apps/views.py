@@ -940,3 +940,15 @@ def run_dart_code(request):
         return JsonResponse({'output': output})
 
     return JsonResponse({'error': 'Invalid request'}, status=400)
+
+
+# terms and conditions
+def terms(request):
+    return render(request, 'terms-conditions.html')
+
+# privacy policy
+def privacy_policy(request):
+    return render(request, 'privacy-policy.html')
+
+def faq(request):
+    return render(request, 'faq.html')
