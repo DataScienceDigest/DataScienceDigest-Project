@@ -11,7 +11,7 @@ from django.http import FileResponse
 import re
 
 def ads_txt_view(request):
-    ads_path = settings.BASE_DIR / 'static/ads.txt'
+    ads_path = settings.BASE_DIR / 'ads.txt'
     with open(ads_path) as f:
         return HttpResponse(f.read(), content_type="text/plain")
 
