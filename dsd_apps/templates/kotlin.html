@@ -130,116 +130,98 @@
 <body>
     {% include 'header.html' %}
     <!-- Course Detail Start -->
-    <div class="container-xxl py-2">
+    <section class="container-xxl py-2">
         <div class="container">
-            <div class="row">
+            <article class="row">
                 <div class="col-lg-12 wow fadeInUp">
 
-                    <div class="container">
+                    <header>
+                        <h1>Kotlin Programming Course for Beginners</h1>
+                        <p>Start your programming journey with Kotlin — a modern programming language that makes coding more enjoyable. This course introduces Kotlin’s fundamental concepts, providing essential skills to create efficient and robust applications.</p>
+                    </header>
+
+                    <section class="container mt-5">
                         <div class="row g-5 justify-content-center">
-
                             <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.3s">
-                                <h2>Kotlin Programming Course for Beginners</h2>
-                                <p>Start your programming journey with Kotlin — a modern programming language that makes coding more enjoyable. This course introduces Kotlin’s fundamental concepts, providing essential skills to create efficient and robust applications.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-fluid wow fadeInUp mt-5 tabs">
-                        <!-- Tab panes -->
-                        <div class="tab-content mt-4">
-
-                            <div class="tab-pane container active" id="Overview">
                                 <h2>About this Course</h2>
                                 <p>Kotlin is a statically typed programming language developed by JetBrains that runs on the Java Virtual Machine (JVM). It is designed to be fully interoperable with Java while offering modern language features. In this course, you’ll learn to write concise and expressive Kotlin code, explore object-oriented and functional programming paradigms, and tackle real-world problems using Kotlin’s extensive standard library. This course covers Kotlin basics and offers hands-on practice, preparing you for real-world applications and advanced topics in mobile and web development.</p>
-                                <h2 class="mt-4">Select Level</h2>
-                                <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
-                                    style="font-size: 15px; font-weight: normal;"
-                                    onclick="loadSection('basic')" id="basic">Basic</span>
-
-                                <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
-                                    style="font-size: 15px; font-weight: normal;"
-                                    onclick="loadSection('medium')" id="medium">Medium</span>
-
-                                <span class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
-                                    style="font-size: 15px; font-weight: normal;"
-                                    onclick="loadSection('advanced')" id="advanced">Advanced</span>
                             </div>
-
-                            <div class="container" id="sectionContent">
-                                <h2 class="mt-4">Syllabus</h2>
-                                <div class="accordion accordion-flush" id="accordionFlushExample">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button"
-                                                    onclick="loadSection('basic')" data-bs-toggle="collapse"
-                                                    data-bs-target="#flush-collapseOne" aria-expanded="false"
-                                                    aria-controls="flush-collapseOne">
-                                                Kotlin Basics
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                            data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body" id="basicContent">
-                                                <!-- Basic section content will be injected here -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button"
-                                                    onclick="loadSection('medium')" data-bs-toggle="collapse"
-                                                    data-bs-target="#flush-collapseTwo" aria-expanded="false"
-                                                    aria-controls="flush-collapseTwo">
-                                                Medium Level Kotlin
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                            data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body" id="mediumContent">
-                                                <!-- Medium section content will be injected here -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button"
-                                                    onclick="loadSection('advanced')" data-bs-toggle="collapse"
-                                                    data-bs-target="#flush-collapseThree" aria-expanded="false"
-                                                    aria-controls="flush-collapseThree">
-                                                Advanced Kotlin
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                            data-bs-parent="#accordionFlushExample">
-                                            <div class="accordion-body" id="advancedContent">
-                                                <!-- Advanced section content will be injected here -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="container" id="Instructor">
-                                <h2 class="mt-4">About the Writer</h2>
-                                <div class="image-div text-left mt-4">
-
-                                    <div class="des mt-4 mb-5">
-                                        Curriculum Director at DataScienceDigest and Creative Technologist. As the Curriculum Director, 
-                                        I have designed a variety of courses at DataScienceDigest, including Learn Python, Learn Kotlin, Learn SQL, 
-                                        and the beginner-friendly Introduction to Data Science. My focus is on creating engaging and practical content 
-                                        that empowers learners to build their skills in programming and systems development.
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
+                    </section>
 
-                    </div>
+                    <section class="container-fluid wow fadeInUp mt-5 tabs">
+                        <h2>Select Level</h2>
+                        <nav class="tab-navigation">
+                            <button class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
+                                style="font-size: 15px; font-weight: normal;" onclick="loadSection('basic')" id="basic">
+                                Basic
+                            </button>
+                            <button class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
+                                style="font-size: 15px; font-weight: normal;" onclick="loadSection('medium')" id="medium">
+                                Medium
+                            </button>
+                            <button class="badge rounded-pill text-white px-4 py-2 m-2 clickable-span"
+                                style="font-size: 15px; font-weight: normal;" onclick="loadSection('advanced')" id="advanced">
+                                Advanced
+                            </button>
+                        </nav>
+
+                        <article id="sectionContent" class="mt-4">
+                            <h2>Syllabus</h2>
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" onclick="loadSection('basic')" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            Kotlin Basics
+                                        </button>
+                                    </h3>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body" id="basicContent">
+                                            <!-- Basic section content will be injected here -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" onclick="loadSection('medium')" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                            Medium Level Kotlin
+                                        </button>
+                                    </h3>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body" id="mediumContent">
+                                            <!-- Medium section content will be injected here -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" onclick="loadSection('advanced')" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                            Advanced Kotlin
+                                        </button>
+                                    </h3>
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body" id="advancedContent">
+                                            <!-- Advanced section content will be injected here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <aside id="Instructor" class="mt-5">
+                            <h2>About the Writer</h2>
+                            <figure class="image-div text-left mt-4">
+                                <figcaption>
+                                    <p>Curriculum Director at DataScienceDigest and Creative Technologist. As the Curriculum Director, I have designed a variety of courses at DataScienceDigest, including Learn Python, Learn Kotlin, Learn SQL, and the beginner-friendly Introduction to Data Science. My focus is on creating engaging and practical content that empowers learners to build their skills in programming and systems development.</p>
+                                </figcaption>
+                            </figure>
+                        </aside>
+                    </section>
 
                 </div>
-            </div>
+            </article>
         </div>
-    </div>
+    </section>
     <!-- Course Detail End -->
 
 
