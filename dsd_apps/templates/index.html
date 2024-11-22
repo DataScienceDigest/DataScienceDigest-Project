@@ -6,6 +6,7 @@
     {% include 'headerlinks.html' %}
     <title>Free Tutorials & Compilers | Python, Java, SQL - DataScienceDigest</title>
     <link rel="preload" href="{% static 'img/carousel-1.webp' %}" as="image">
+    <link rel="preload" href="{% static 'img/carousel-2.webp' %}" as="image">
       <!-- Preload the font -->
     <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     
@@ -1167,7 +1168,7 @@
     <div class="container-fluid p-0 mb-4">
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="{% static 'img/carousel-1.webp' %}" alt="background">
+                <img class="img-fluid" src="{% static 'img/carousel-1.webp' %}" alt="background" fetchpriority="high">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
                     style="background: rgba(24, 29, 56, .7);">
                     <div class="container">
