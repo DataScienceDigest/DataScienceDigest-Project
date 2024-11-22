@@ -718,3 +718,10 @@
         width: 100%;
     }
 }
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff2') format('woff2');
+    font-display: swap;
+  }
+  
