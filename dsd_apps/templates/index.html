@@ -1854,6 +1854,20 @@
         </div>
     </div>
     <!-- FAQ End  -->
+    <script>
+          window.addEventListener('load', function () {
+              const script = document.createElement('script');
+              script.src = "{% static 'lib/owlcarousel/owl.carousel.min.js' %}";
+              document.body.appendChild(script);
+          });
+      </script>
+    <script>
+      window.addEventListener('load', function () {
+          const monacoScript = document.createElement('script');
+          monacoScript.src = "https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js";
+          document.body.appendChild(monacoScript);
+      });
+    </script>
 
    {% include 'footer.html' %}
 </body>
