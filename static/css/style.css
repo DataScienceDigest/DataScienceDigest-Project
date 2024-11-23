@@ -506,3 +506,9 @@
     format("woff2");
   font-display: swap;
 }
+.lazy-bg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 300px; /* Adjust as needed */
+}
