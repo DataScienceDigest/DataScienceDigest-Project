@@ -5,14 +5,6 @@
 <head>
     {% include 'headerlinks.html' %}
     <title>Free Tutorials & Compilers | Python, Java, SQL - DataScienceDigest</title>
-    <!-- <link rel="preload" href="{% static 'img/carousel-1.webp' %}" as="image"> -->
-    <!-- <link rel="preload" href="{% static 'img/carousel-2.webp' %}" as="image"> -->
-      <!-- Preload the font -->
-    <!-- <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    
-    Fallback stylesheet
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"> -->
-
     <!-- ++++++++++++++++++++++++++++++++++++++++++ -->
     <meta name="description" content="Learn programming for free with hands-on tutorials and online compilers from DataScienceDigest.in. Master Python, HTML, JavaScript, SQL, and more with real coding examples. Practice live coding with our online compilers. Join now!">
     <meta name="keywords" content="DataScience Digest,Programming Tutorials, Learn Python Free, JavaScript Tutorial, SQL Tutorial, Free Coding Examples, Online Compiler, DataScienceDigest">
@@ -1294,8 +1286,10 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img loading="lazy" class="img-fluid position-absolute w-100 h-100" src="{% static 'img/about1.webp' %}" alt="about-image"
-                            style="object-fit: cover;">
+                      <img loading="lazy" class="img-fluid position-absolute w-100 h-100" 
+                      src="{% static 'img/about1.webp' %}" alt="about-image" 
+                      width="500" height="300" style="object-fit: cover;">
+                 
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -1359,7 +1353,7 @@
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
                         <img loading="lazy" class="img-fluid position-absolute w-100 h-100" src="{% static 'img\rb_67396.webp' %}"
-                            alt="road-map" style="object-fit: fill;">
+                        width="500" height="300" alt="road-map" style="object-fit: fill;">
                     </div>
                 </div>
             </div>
@@ -1380,7 +1374,7 @@
               <div class="col-lg-3 col-md-6 text-center">
                 <a href="{% url 'python-tutorial' %}" class="d-block text-decoration-none">
                     <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-                        <img loading="lazy" src="{% static 'images/python-5.svg' %}" class="img-fluid" width="60" height="60" alt="Python">
+                        <img loading="lazy" src="{% static 'images/python-5.svg' %}" class="img-fluid" width="200" height="100" alt="Python">
                         <h5 class="my-2">Python</h5>
                     </div>
                 </a>
@@ -1389,7 +1383,7 @@
               <div class="col-lg-3 col-md-6 text-center">
                   <a href="{% url 'sql-tutorial' %}" class="d-block text-decoration-none">
                       <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-                          <img loading="lazy" src="{% static 'img/database-floating-squares.webp' %}" class="img-fluid" alt="SQL">
+                          <img loading="lazy" src="{% static 'img/database-floating-squares.webp' %}" width="200" height="100" class="img-fluid" alt="SQL">
                           <h5 class="my-2">SQL</h5>
                       </div>
                   </a>
@@ -1398,7 +1392,7 @@
               <div class="col-lg-3 col-md-6 text-center">
                   <a href="{% url 'html-tutorial' %}" class="d-block text-decoration-none">
                       <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-                          <img loading="lazy" src="{% static 'images/html-1.svg' %}" class="img-fluid" alt="HTML">
+                          <img loading="lazy" src="{% static 'images/html-1.svg' %}" class="img-fluid" alt="HTML" width="200" height="100">
                           <h5 class="my-2">HTML</h5>
                       </div>
                   </a>
@@ -1407,7 +1401,7 @@
               <div class="col-lg-3 col-md-6 text-center">
                   <a href="{% url 'java-tutorial' %}" class="d-block text-decoration-none">
                       <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-                          <img loading="lazy" src="{% static 'images/java.svg' %}" class="img-fluid" alt="Java">
+                          <img loading="lazy" src="{% static 'images/java.svg' %}" class="img-fluid" alt="Java" width="200" height="100">
                           <h5 class="my-2">Java</h5>
                       </div>
                   </a>
@@ -1416,7 +1410,7 @@
               <div class="col-lg-3 col-md-6 text-center">
                   <a href="{% url 'go-tutorial' %}" class="d-block text-decoration-none">
                       <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-                          <img loading="lazy" src="{% static 'images/golang-1.svg' %}" class="img-fluid" alt="GO lang">
+                          <img loading="lazy" src="{% static 'images/golang-1.svg' %}" class="img-fluid" alt="GO lang" width="200" height="100">
                           <h5 class="my-2">GO lang</h5>
                       </div>
                   </a>
@@ -1425,7 +1419,7 @@
               <div class="col-lg-3 col-md-6 text-center">
                   <a href="{% url 'swift-tutorial' %}" class="d-block text-decoration-none">
                       <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-                          <img loading="lazy" src="{% static 'images/Swift.svg' %}" class="img-fluid" alt="Swift">
+                          <img loading="lazy" src="{% static 'images/Swift.svg' %}" class="img-fluid" alt="Swift" width="200" height="100">
                           <h5 class="my-2">Swift</h5>
                       </div>
                   </a>
@@ -1434,7 +1428,7 @@
               <div class="col-lg-3 col-md-6 text-center">
                   <a href="{% url 'csharp-tutorial' %}" class="d-block text-decoration-none">
                       <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-                          <img loading="lazy" src="{% static 'images/c--4.svg' %}" class="img-fluid" alt="C#">
+                          <img loading="lazy" src="{% static 'images/c--4.svg' %}" class="img-fluid" alt="C#" width="200" height="100">
                           <h5 class="my-2">C#</h5>
                       </div>
                   </a>
@@ -1443,7 +1437,7 @@
               <div class="col-lg-3 col-md-6 text-center">
                   <a href="{% url 'rust-tutorial' %}" class="d-block text-decoration-none">
                       <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-                          <img loading="lazy" src="{% static 'images/rust.svg' %}" class="img-fluid" alt="RUST">
+                          <img loading="lazy" src="{% static 'images/rust.svg' %}" class="img-fluid" alt="RUST" width="200" height="100">
                           <h5 class="my-2">RUST</h5>
                       </div>
                   </a>
@@ -1627,7 +1621,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img loading="lazy" class="img-fluid" src="{% static 'img/ruby.svg' %}" alt="ruby-image">
+                            <img loading="lazy" class="img-fluid" src="{% static 'img/ruby.svg' %}" alt="ruby-image" width="200" height="100">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
