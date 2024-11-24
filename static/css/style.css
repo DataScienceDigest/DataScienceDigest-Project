@@ -290,7 +290,7 @@
   width: calc(100% + 60px);
   left: 0;
 }
-/* .service-item {
+.service-item {
   transition: 0.5s;
 }
 .service-item i {
@@ -305,43 +305,7 @@
 }
 .service-item:hover * {
   color: #fff !important;
-} */
- /* css of offers */
- @media (max-width: 767px) {
-  /* Icons and text sizes */
-  .service-item img {
-    width: 60px;
-    height: 60px;
-  }
-  .service-item h5 {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  .service-item p {
-    font-size: 13px;
-    line-height: 1.6;
-  }
-
-  /* Compact spacing */
-  .service-item {
-    padding: 15px;
-  }
-  .row.g-4 {
-    gap: 15px;
-  }
-
-  /* Disable hover effects on touch devices */
-  .service-item:hover {
-    transform: none;
-  }
-
-  /* WOW animations */
-  .wow {
-    min-height: 100px;
-  }
 }
-
- /* offers css end */
 .course-item img {
   width: 100%;
   height: 200px;
