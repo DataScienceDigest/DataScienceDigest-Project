@@ -1135,7 +1135,7 @@
 
 
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <!-- <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <p class="m-0 fw-bold" style="font-size: 25px;">
                 DataScienceDigest<span style="color: #fb873f;">.in</span>
@@ -1168,6 +1168,35 @@
                 </a>
             </div>
         </div>
+    </nav> -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+      <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <p class="m-0 fw-bold" style="font-size: 25px;">
+          DataScienceDigest<span style="color: #fb873f;">.in</span>
+        </p>
+      </a>
+      <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+          <a href="{% url 'index' %}" class="nav-item nav-link active">Home</a>
+          <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+          <a href="{% url 'all-courses' %}" class="nav-item nav-link">Courses</a>
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+            <div class="dropdown-menu fade-down m-0">
+              <a href="{% url 'about' %}" class="dropdown-item">Blogs</a>
+              <a href="{% url 'about' %}" class="dropdown-item">Testimonial</a>
+            </div>
+          </div>
+          <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+          <a href="{% url 'login' %}" class="nav-item nav-link"><i class="fa fa-user"></i></a>
+          <a href="#" class="nav-item nav-link">
+            <div id="google_translate_element"></div>
+          </a>
+        </div>
+      </div>
     </nav>
     <!-- Navbar End -->
 
@@ -1176,7 +1205,7 @@
     <div class="container-fluid p-0 mb-4">
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="{% static 'img/cat-4.webp' %}" alt="background">
+                <img class="img-fluid" src="{% static 'img/cat-4.webp' %}" alt="background" width="2000" height="1000">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
                     style="background: rgba(24, 29, 56, .7);">
                     <div class="container">
@@ -1198,7 +1227,7 @@
                 </div>
             </div>
             <div class="owl-carousel-item position-relative">
-                <img loading="lazy" class="img-fluid" src="{% static 'img/banner-1.webp' %}" alt="background2">
+                <img loading="lazy" class="img-fluid" src="{% static 'img/banner-1.webp' %}" alt="background2" width="2000" height="1000">
                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center"
                     style="background: rgba(24, 29, 56, .7);">
                     <div class="container">
@@ -1238,7 +1267,7 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="service-item text-center pt-3 shadow">
                         <div class="p-4">
-                            <img loading="lazy" src="{% static 'img/icon1.webp' %}" alt="icon" width="60px" class="mb-4">
+                            <img loading="lazy" src="{% static 'img/icon1.webp' %}" alt="icon"  width="60" height="60" class="mb-4">
                             <h5 class="mb-3">Learn anything</h5>
                             <p>Explore any interest or trending topic, take prerequisites, and advance</p>
                         </div>
@@ -1247,8 +1276,8 @@
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="service-item text-center pt-3 shadow">
                         <div class="p-4">
-                            <img loading="lazy" src="{% static 'img/icon2.webp' %}" alt="icon" width="60px" class="mb-4">
-                            <img loading="lazy" src="{% static 'img/icon2.webp' %}" alt="icon" class="mb-4 responsive-img">
+                            <img loading="lazy" src="{% static 'img/icon2.webp' %}" alt="icon" width="60" height="60" class="mb-4 responsive-img">
+                            <!-- <img loading="lazy" src="{% static 'img/icon2.webp' %}" alt="icon" class="mb-4 responsive-img"> -->
 
                             <h5 class="mb-3">Save money</h5>
                             <p>Spend less money on your learning if you plan to take multiple courses this year</p>
@@ -1459,7 +1488,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img loading="lazy" class="img-fluid" src="{% static 'img/html.webp' %}" alt="html-image">
+                            <img loading="lazy" class="img-fluid" src="{% static 'img/html.webp' %}" alt="html-image" width="200" height="100">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
@@ -1537,7 +1566,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img loading="lazy" class="img-fluid" src="{% static 'img/swift2.webp' %}" alt="swift-image">
+                            <img loading="lazy" class="img-fluid" src="{% static 'img/swift2.webp' %}" alt="swift-image" width="200" height="100">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
@@ -1558,7 +1587,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img loading="lazy" class="img-fluid" src="{% static 'img/golang1.webp' %}" alt="golang-image">
+                            <img loading="lazy" class="img-fluid" src="{% static 'img/golang1.webp' %}" alt="golang-image" width="200" height="100">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
@@ -1600,7 +1629,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img loading="lazy" class="img-fluid" src="{% static 'img/perl.webp' %}" alt="perl-image">
+                            <img loading="lazy" class="img-fluid" src="{% static 'img/perl.webp' %}" alt="perl-image" width="200" height="100">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
                                 class="px-2 py-1 fw-bold text-uppercase">Free</div>
 
@@ -1641,7 +1670,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img loading="lazy" class="img-fluid" src="{% static 'img/julia1.webp' %}" alt="julia-image">
+                            <img loading="lazy" class="img-fluid" src="{% static 'img/julia1.webp' %}" alt="julia-image" width="200" height="100">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#0ed44c;"
                                 class="px-2 py-1 fw-bold text-uppercase">Free</div>
 
@@ -1664,7 +1693,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img loading="lazy" class="img-fluid" src="{% static 'img/kotlin.webp' %}" alt="kotlon-image">
+                            <img loading="lazy" class="img-fluid" src="{% static 'img/kotlin.webp' %}" alt="kotlin-image" width="200" height="100">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
@@ -1685,7 +1714,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="course-item shadow">
                         <div class="position-relative overflow-hidden text-light image">
-                            <img loading="lazy" class="img-fluid" src="{% static 'img/scala1.webp' %}" alt="scala image">
+                            <img loading="lazy" class="img-fluid" src="{% static 'img/scala1.webp' %}" alt="scala image" width="200" height="100">
                             <div style="position:absolute;top: 15px;left: 16px; font-size:12px; border-radius:3px; background-color:#fb873f;"
                                 class="px-2 py-1 fw-bold text-uppercase">FREE</div>
 
