@@ -31,7 +31,25 @@
     <meta property="og:site_name" content="DataScienceDigest" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.datasciencedigest.in/" />
-    
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+      const lazyBackgrounds = document.querySelectorAll(".lazy-bg");
+
+      const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  const bgElement = entry.target;
+                  const bgUrl = bgElement.getAttribute('data-bg');
+                  bgElement.style.backgroundImage = `url(${bgUrl})`;
+                  observer.unobserve(bgElement); // Stop observing after applying the background
+              }
+          });
+      });
+
+      lazyBackgrounds.forEach(bg => observer.observe(bg));
+  });
+
+    </script>
     <!-- additional seo  -->
     <script type="application/ld+json">
         {
