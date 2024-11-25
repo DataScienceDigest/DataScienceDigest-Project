@@ -76,7 +76,7 @@
   font-weight: 400;
   border-radius: 0;
 }
-/* .navbar .dropdown-toggle::after {
+.navbar .dropdown-toggle::after {
   border: none;
   content: "\f107";
   font-family: "Font Awesome 5 Free";
@@ -143,9 +143,9 @@
     transition: 0.5s;
     opacity: 1;
   }
-} */
+}
  /* new css start */
- .navbar-light .navbar-brand {
+ /* .navbar-light .navbar-brand {
   height: 75px;
   line-height: 75px;
   font-size: 25px;
@@ -186,7 +186,7 @@
     padding: 15px 0;
     line-height: 20px;
   }
-}
+} */
 /* new css end */
 .header-carousel .owl-carousel-item {
   position: relative;
